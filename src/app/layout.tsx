@@ -1,7 +1,10 @@
+// layout.tsx
+"use client";
+
 import type { Metadata } from "next";
 import "../styles/globals.css";
 import ClientLayout from "./ClientLayout";
-import ServiceSchema from '@/components/ServiceSchema';
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Web Cresson Tech - Intelligence Artificielle et RPA",
@@ -44,6 +47,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
+      <head>
+        {/* Google Analytics Script */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-H206EG4TH7"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-H206EG4TH7', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+      </head>
       <body className="bg-background text-text antialiased">
         <ClientLayout>{children}</ClientLayout>
       </body>

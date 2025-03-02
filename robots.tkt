@@ -1,3 +1,16 @@
 User-agent: *
 Allow: /
+
+# Empêcher l'indexation de certaines pages sensibles ou inutiles
+Disallow: /admin/
+Disallow: /api/
+Disallow: /404
+Disallow: /500
+
+# Empêcher l'indexation des fichiers temporaires ou privés
+Disallow: /private/
+Disallow: /temp/
+Disallow: /scripts/
+
+# Spécifier le chemin du sitemap
 Sitemap: https://webcresson.com/sitemap.xml

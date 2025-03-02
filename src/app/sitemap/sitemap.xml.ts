@@ -5,21 +5,17 @@ export async function GET() {
 
   // Définition des chemins statiques avec leurs métadonnées SEO
   const staticPaths = [
-    { path: "/", changefreq: "daily", priority: "1.0", lastmod: "2025-03-01" },
-    { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-01" },
-    { path: "/about", changefreq: "monthly", priority: "0.7", lastmod: "2025-03-01" },
-    { path: "/services", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-01" },
-    { path: "/services/audit-ia", changefreq: "monthly", priority: "0.8", lastmod: "2025-03-01" },
-    { path: "/services/ia-generative", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-01" },
-    { path: "/services/maintenance-predictive", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-01" },
-    { path: "/services/rpa-ia", changefreq: "monthly", priority: "0.8", lastmod: "2025-03-01" },
-    { path: "/services/ia-traitement-images", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-01" },
-    { path: "/services/ia-sur-mesure", changefreq: "monthly", priority: "0.8", lastmod: "2025-03-01" },
-    { path: "/services/ia-archeologie", changefreq: "monthly", priority: "0.8", lastmod: "2025-03-01" },
-    { path: "/services/integration-saas-ia", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-01" },
-    { path: "/services/pricing-analyse-avancee", changefreq: "monthly", priority: "0.8", lastmod: "2025-03-01" },
-    { path: "/TermsOfSale", changefreq: "yearly", priority: "0.6", lastmod: "2025-03-01" },
-    { path: "/LegalMentions", changefreq: "yearly", priority: "0.6", lastmod: "2025-03-01" },
+    { path: "/", changefreq: "daily", priority: "1.0", lastmod: "2025-03-02" },
+    { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-02" },
+    { path: "/about", changefreq: "monthly", priority: "0.7", lastmod: "2025-03-02" },
+    { path: "/services", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-02" },
+    { path: "/services/ia-generative", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-02" },
+    { path: "/services/deep-learning", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-02" },
+    { path: "/services/machine-learning", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-02" },
+    { path: "/services/rpa-automatisation", changefreq: "monthly", priority: "0.8", lastmod: "2025-03-02" },
+    { path: "/services/ia-archeologie", changefreq: "monthly", priority: "0.8", lastmod: "2025-03-02" },
+    { path: "/TermsOfSale", changefreq: "yearly", priority: "0.6", lastmod: "2025-03-02" },
+    { path: "/LegalMentions", changefreq: "yearly", priority: "0.6", lastmod: "2025-03-02" },
   ];
 
   // Génération du contenu XML du sitemap

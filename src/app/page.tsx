@@ -6,6 +6,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Script from "next/script";
 import ServiceSchema from '@/components/ServiceSchema';
 
 import styles from "@/styles/home.module.css";
@@ -29,16 +30,7 @@ export default function Home(meta: MetaProps = {}) {
   const pageMeta = { ...defaultMeta, ...meta };
   const router = useRouter();
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.dataLayer = window.dataLayer || [];
-      function gtag(...args: any[]) {
-        window.dataLayer.push(args);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-H206EG4TH7");
-    }
-  }, []);
+  
 
   const handleClickEvent = (label: string, path: string) => {
     window?.gtag?.("event", "button_click", {
@@ -60,6 +52,21 @@ export default function Home(meta: MetaProps = {}) {
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="canonical" href={pageMeta.url} />
       </Head>
+      
+      <Script
+  src={`https://www.googletagmanager.com/gtag/js?id=G-H206EG4TH7`}
+  strategy="afterInteractive"
+/>
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-H206EG4TH7', {
+      page_path: window.location.pathname,
+    });
+  `}
+</Script>
 
       <ServiceSchema
         serviceName="WebCressonTech - Expert en IA et solutions technologiques"
