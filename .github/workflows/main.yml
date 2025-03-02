@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
     # 1. Récupérer le code source
     - name: Checkout code
       uses: actions/checkout@v3
@@ -20,8 +21,25 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    # 3. Déployer le projet sur le VPS
-    - name: Deploy Project to VPS
+    # 3. Fixer les dépendances problématiques (grub-efi)
+    - name: Fix grub-efi Issues
+      run: |
+        ssh -o StrictHostKeyChecking=no root@194.164.72.129 << 'EOF'
+          set -e
+          
+          # Supprimer les paquets problématiques
+          apt remove --purge -y grub-efi-amd64-signed shim-signed grub-efi grub-pc
+          apt-mark hold grub-efi-amd64-signed shim-signed grub-efi grub-pc
+          
+          # Nettoyage et configuration
+          dpkg --configure -a
+          apt-get install -f -y
+          apt autoremove -y
+          apt clean
+        EOF
+
+    # 4. Déployer le projet sur le VPS
+    - name: Prepare Project Directory
       run: |
         ssh -o StrictHostKeyChecking=no root@194.164.72.129 << 'EOF'
           set -e
@@ -35,10 +53,12 @@ jobs:
           mkdir -p /var/www/nextjs-app
         EOF
 
-        # Utiliser rsync pour synchroniser les fichiers de manière sécurisée
+    # 5. Utiliser rsync pour synchroniser les fichiers de manière sécurisée
+    - name: Sync Files to VPS
+      run: |
         rsync -avz --exclude='.git' --exclude='node_modules' ./ root@194.164.72.129:/var/www/nextjs-app/
 
-    # 4. Transférer les variables d'environnement (.env)
+    # 6. Transférer les variables d'environnement (.env)
     - name: Transfer Environment Variables
       run: |
         echo "EMAIL_USER=${{ secrets.EMAIL_USER }}" > .env
@@ -47,7 +67,7 @@ jobs:
 
         rsync -avz .env root@194.164.72.129:/var/www/nextjs-app/.env
 
-    # 5. Installer les dépendances et démarrer l'application avec PM2
+    # 7. Installer les dépendances et démarrer l'application avec PM2
     - name: Install Dependencies and Start App
       run: |
         ssh -o StrictHostKeyChecking=no root@194.164.72.129 << 'EOF'
