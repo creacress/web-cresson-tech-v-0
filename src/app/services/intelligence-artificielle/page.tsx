@@ -12,8 +12,7 @@ export default function IntelligenceArtificiellePage() {
     <>
       <Head>
         <title>
-          Intelligence Artificielle - Deep Learning & Machine Learning | Web
-          Cresson Tech
+          Intelligence Artificielle - Deep Learning & Machine Learning | Web Cresson Tech
         </title>
         <meta
           name="description"
@@ -66,72 +65,52 @@ export default function IntelligenceArtificiellePage() {
       />
 
       <main className={styles.mainContent}>
-        {/* Section Hero */}
         <section className={styles.hero}>
           <h1>Intelligence Artificielle : Solutions sur mesure</h1>
           <p>
-            Optimisez vos processus métiers avec des solutions en Intelligence
-            Artificielle personnalisées : Deep Learning, Machine Learning, IA
-            générative et traitement d'images.
+            Optimisez vos processus métiers avec des solutions en Intelligence Artificielle personnalisées : Deep Learning, Machine Learning, IA générative et traitement d'images.
           </p>
         </section>
 
-        {/* Définition de l'IA */}
         <section className={styles.section} id="definition">
           <h2>Qu'est-ce que l'intelligence artificielle ?</h2>
           <p>
-            L'intelligence artificielle (IA) permet aux machines de simuler
-            l'intelligence humaine pour accomplir des tâches complexes telles
-            que la reconnaissance d'images, l'analyse prédictive et
-            l'automatisation des processus métiers. Grâce à des technologies
-            avancées comme le <strong>Deep Learning</strong> et le{' '}
-            <strong>Machine Learning</strong>, l'IA peut apprendre, s'adapter et
+            L'intelligence artificielle (IA) permet aux machines de simuler l'intelligence humaine pour accomplir des tâches complexes telles
+            que la reconnaissance d'images, l'analyse prédictive et l'automatisation des processus métiers. Grâce à des technologies
+            avancées comme le <strong>Deep Learning</strong> et le <strong>Machine Learning</strong>, l'IA peut apprendre, s'adapter et
             offrir des solutions innovantes dans divers secteurs d'activité.
           </p>
         </section>
 
-        {/* Comparaison : Deep Learning vs Machine Learning */}
-        <section className={styles.section} id="comparison-table">
-          <h2>Comparaison : Deep Learning vs Machine Learning</h2>
-          <table className={styles.comparisonTable}>
-            <thead>
-              <tr>
-                <th>Critère</th>
-                <th>Deep Learning</th>
-                <th>Machine Learning</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Types de données</td>
-                <td>Images, vidéos, données non structurées</td>
-                <td>Données structurées et semi-structurées</td>
-              </tr>
-              <tr>
-                <td>Complexité des modèles</td>
-                <td>Élevée (réseaux de neurones profonds)</td>
-                <td>Modérée (algorithmes traditionnels)</td>
-              </tr>
-              <tr>
-                <td>Exemples d'utilisation</td>
-                <td>Reconnaissance faciale, analyse d'images</td>
-                <td>Prédiction des ventes, classification de données</td>
-              </tr>
-            </tbody>
-          </table>
+        {/* Section Deep Learning */}
+        <section className={styles.section} id="deep-learning">
+          <h2>Le Deep Learning : Apprentissage profond pour des solutions avancées</h2>
+          <p>
+            Le <strong>Deep Learning</strong> utilise des réseaux de neurones profonds pour traiter des données complexes telles que les images, les vidéos et le langage naturel. Il est idéal pour des tâches telles que la reconnaissance faciale, la détection d'anomalies et la génération de contenu.
+          </p>
+          <Link href="/services/deep-learning">
+            <span className={styles.linkButton}>En savoir plus sur le Deep Learning</span>
+          </Link>
+        </section>
+
+        {/* Section Machine Learning */}
+        <section className={styles.section} id="machine-learning">
+          <h2>Le Machine Learning : Automatisation intelligente des processus</h2>
+          <p>
+            Le <strong>Machine Learning</strong> permet aux systèmes d'apprendre à partir de données structurées et semi-structurées pour automatiser des tâches telles que la prédiction des ventes, l'analyse des comportements utilisateurs et l'optimisation des processus métiers.
+          </p>
+          <Link href="/services/machine-learning">
+            <span className={styles.linkButton}>Découvrir le Machine Learning</span>
+          </Link>
         </section>
 
         <section className={styles.ctaSection}>
           <h2>Prêt à optimiser vos processus métiers avec l'IA ?</h2>
           <p>
-            Contactez Web Cresson Tech dès maintenant pour une consultation
-            gratuite et découvrez comment l'intelligence artificielle peut
-            transformer votre entreprise !
+            Contactez Web Cresson Tech dès maintenant pour une consultation gratuite et découvrez comment l'intelligence artificielle peut transformer votre entreprise !
           </p>
           <Link href="/contact">
-            <span className={styles.ctaButton}>
-              Demander une consultation gratuite
-            </span>
+            <span className={styles.ctaButton}>Demander une consultation gratuite</span>
           </Link>
         </section>
       </main>
