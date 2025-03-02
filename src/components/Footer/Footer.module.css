@@ -1,0 +1,150 @@
+/* Footer */
+.footer {
+    background: #000; /* Couleur de fond noir */
+    color: #fff;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .footerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .footerTop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .footerSection {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+  }
+  
+  .footerSection h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #f5f5f5;
+  }
+  
+  .footerSection p {
+    font-size: 1rem;
+    margin: 0 0 10px;
+    color: #d1d1d1;
+  }
+  
+  .ctaLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .primaryCta,
+  .secondaryCta {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .primaryCta {
+    background: #00e0ff;
+  }
+  
+  .primaryCta:hover {
+    background: #00e1ffc0;
+    transform: scale(1.05);
+  }
+  
+  .secondaryCta:hover {
+    color: #f5f5f5;
+    border-color: #f5f5f5;
+    transform: scale(1.05);
+  }
+  .maltButton {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff;
+    background: #ff4a00; /* Couleur officielle de Malt */
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .maltButton:hover {
+    background: #e54300; /* Couleur légèrement plus foncée au hover */
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .footerBottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 20px;
+    padding-top: 20px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .footerLinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .footerLinks a {
+    text-decoration: none;
+    color: #d1d1d1;
+    transition: color 0.3s ease;
+  }
+  
+  .footerLinks a:hover {
+    color: #fff;
+  }
+  
+  .enhancedLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background: #00e0ff;
+  }
+  
+  .enhancedLink:hover {
+    background: rgba(0, 123, 255, 0.2);
+    color: #00e0ff;
+    border-color: #00e0ff;
+    transform: scale(1.1);
+    box-shadow: 0px 4px 12px rgba(0, 123, 255, 0.3);
+  }
+  
+  .enhancedLink i {
+    font-size: 1.6rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .enhancedLink:hover i {
+    transform: rotate(15deg);
+  }

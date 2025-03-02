@@ -1,0 +1,89 @@
+:root {
+  --primary-color: #f0f4f5;
+  --secondary-color: #00e0ff;
+  --background-color: #1a1a1a;
+  --text-color: #1a1a1a;
+  --accent-color: #00e0ff;
+  --overlay-color: rgba(0, 0, 0, 0.87);
+  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --transition-speed: 0.3s;
+  --font-family: "Play", serif;
+}
+  /* Reset CSS */
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: var(--font-geist-sans);
+    color: var(--text);
+    background-color: var(--background);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  p {
+    margin-bottom: 1rem;
+    color: #4b5563;
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  a:hover {
+    color: var(--secondary-color);
+  }
+  
+  button, .button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent-color);
+    color: var(--light);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  button:hover, .button:hover {
+    background-color: #d97706;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  
+  ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  
+    p {
+      font-size: 1rem;
+    }
+  }
+  
