@@ -21,21 +21,27 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    # 3. Fixer les dépendances problématiques (grub-efi)
+    # 3. Supprimer complètement les paquets EFI problématiques
     - name: Fix grub-efi Issues
       run: |
         ssh -o StrictHostKeyChecking=no root@194.164.72.129 << 'EOF'
           set -e
 
-          # Empêcher les paquets problématiques de se configurer ou de se mettre à jour
-          apt-mark hold grub-efi-amd64-signed shim-signed grub-efi grub-pc
-
-          # Utiliser un mode non interactif pour éviter les erreurs debconf
-          export DEBIAN_FRONTEND=noninteractive
-
-          # Nettoyage et configuration en douceur
+          # Arrêter les processus en attente
           dpkg --configure -a || true
           apt-get install -f -y || true
+
+          # Supprimer les paquets EFI problématiques
+          DEBIAN_FRONTEND=noninteractive apt remove --purge -y \
+            grub-efi-amd64-signed \
+            shim-signed \
+            grub-efi \
+            grub-pc
+
+          # Bloquer ces paquets pour empêcher leur réinstallation
+          apt-mark hold grub-efi-amd64-signed shim-signed grub-efi grub-pc
+
+          # Nettoyage du système
           apt autoremove -y
           apt clean
         EOF
