@@ -125,9 +125,8 @@ export default function ContactForm() {
               value={email}
               onChange={handleEmailChange}
               required
-              className={`${styles.inputField} ${
-                isValidEmail === false ? styles.error : ""
-              }`}
+              className={`${styles.inputField} ${isValidEmail === false ? styles.error : ""
+                }`}
             />
             {isValidEmail === false && (
               <small className={styles.errorText}>Email invalide</small>
@@ -147,6 +146,19 @@ export default function ContactForm() {
               className={styles.inputField}
             />
           </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="company">Entreprise</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              placeholder="Votre entreprise"
+              value={company}
+              onChange={(e) => setCompany(e.target.value)}
+              className={styles.inputField}
+            />
+          </div>
+
 
           <div className={styles.formGroup}>
             <label htmlFor="phone">Téléphone*</label>

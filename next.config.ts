@@ -1,7 +1,14 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['webcresson.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'webcresson.com',
+        pathname: '**',
+      },
+    ],
     formats: ['image/avif', 'image/webp'],
   },
   typescript: {
@@ -34,3 +41,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = nextConfig;

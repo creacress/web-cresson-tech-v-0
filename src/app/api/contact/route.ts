@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     const { email, name, phone, company, comments } = await req.json();
 
     // Validation des champs obligatoires
-    if (!email || !name || !phone || !company) {
+    if (!email || !name || !phone) {
       return NextResponse.json(
         { error: "Tous les champs obligatoires doivent être remplis." },
         { status: 400 }
