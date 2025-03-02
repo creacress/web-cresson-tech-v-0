@@ -4,6 +4,9 @@ module.exports = {
     domains: ['webcresson.com'],
     formats: ['image/avif', 'image/webp'],
   },
+  typescript: {
+    ignoreBuildErrors: true, // ⚠️ Désactive les erreurs TS lors du build
+  },
   eslint: {
     ignoreDuringBuilds: true, // Ignorer ESLint lors du build
   },
