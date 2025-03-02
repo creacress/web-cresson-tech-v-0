@@ -27,10 +27,13 @@ jobs:
         ssh -o StrictHostKeyChecking=no root@194.164.72.129 << 'EOF'
           set -e
 
-          # Éviter les erreurs liées à grub-efi et shim-signed
+          # Empêcher les paquets problématiques de se configurer ou de se mettre à jour
           apt-mark hold grub-efi-amd64-signed shim-signed grub-efi grub-pc
 
-          # Nettoyage et configuration
+          # Utiliser un mode non interactif pour éviter les erreurs debconf
+          export DEBIAN_FRONTEND=noninteractive
+
+          # Nettoyage et configuration en douceur
           dpkg --configure -a || true
           apt-get install -f -y || true
           apt autoremove -y
