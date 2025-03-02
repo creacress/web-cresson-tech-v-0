@@ -6,7 +6,7 @@ const { EMAIL_USER, EMAIL_PASS, EMAIL_RECIPIENT } = process.env;
 
 export async function POST(req: Request) {
   try {
-    const { email, name, phone, company, comments } = await req.json();
+    const { email, name, phone, company = '', comments = '' } = await req.json();
 
     // Validation des champs obligatoires
     if (!email || !name || !phone) {
@@ -37,8 +37,8 @@ export async function POST(req: Request) {
         - Nom : ${name}
         - Email : ${email}
         - Téléphone : ${phone}
-        - Entreprise : ${company}
-        - Commentaires : ${comments}
+        - Entreprise : ${company || 'Non spécifiée'}
+        - Commentaires : ${comments || 'Pas de commentaires'}
       `,
     };
 
@@ -55,8 +55,8 @@ export async function POST(req: Request) {
         Voici un récapitulatif de votre message :
         - Nom : ${name}
         - Téléphone : ${phone}
-        - Entreprise : ${company}
-        - Commentaires : ${comments}
+        - Entreprise : ${company || 'Non spécifiée'}
+        - Commentaires : ${comments || 'Pas de commentaires'}
 
         Cordialement,
         L'équipe WebCressonTech
