@@ -36,7 +36,8 @@ jobs:
             grub-efi-amd64-signed \
             shim-signed \
             grub-efi \
-            grub-pc
+            grub-pc \
+            --allow-remove-essential
 
           # Bloquer ces paquets pour empêcher leur réinstallation
           apt-mark hold grub-efi-amd64-signed shim-signed grub-efi grub-pc
