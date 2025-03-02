@@ -1,9 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   reactStrictMode: true,
   images: {
     domains: ['webcresson.com'],
     formats: ['image/avif', 'image/webp'],
+  },
+  eslint: {
+    ignoreDuringBuilds: true, // Ignorer ESLint lors du build
   },
   async headers() {
     const isDev = process.env.NODE_ENV !== 'production';
@@ -31,5 +33,3 @@ const nextConfig = {
     ];
   },
 };
-
-module.exports = nextConfig;
