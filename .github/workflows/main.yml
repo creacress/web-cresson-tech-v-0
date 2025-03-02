@@ -27,22 +27,23 @@ jobs:
         ssh -o StrictHostKeyChecking=no root@194.164.72.129 << 'EOF'
           set -e
 
-          # Arrêter les processus en attente
-          dpkg --configure -a || true
-          apt-get install -f -y || true
+          # Débloquer et supprimer les paquets EFI problématiques
+          apt-mark unhold grub-efi-amd64-signed shim-signed grub-efi grub-pc || true
 
-          # Supprimer les paquets EFI problématiques
+          # Supprimer les paquets EFI avec force
           DEBIAN_FRONTEND=noninteractive apt remove --purge -y \
             grub-efi-amd64-signed \
             shim-signed \
             grub-efi \
             grub-pc \
-            --allow-remove-essential
+            --allow-remove-essential --allow-change-held-packages
 
           # Bloquer ces paquets pour empêcher leur réinstallation
           apt-mark hold grub-efi-amd64-signed shim-signed grub-efi grub-pc
 
           # Nettoyage du système
+          dpkg --configure -a || true
+          apt-get install -f -y || true
           apt autoremove -y
           apt clean
         EOF
@@ -62,7 +63,7 @@ jobs:
           mkdir -p /var/www/nextjs-app
         EOF
 
-    # 5. Synchroniser les fichiers avec rsync
+    # 5. Utiliser rsync pour synchroniser les fichiers de manière sécurisée
     - name: Sync Files to VPS
       run: |
         rsync -avz --exclude='.git' --exclude='node_modules' ./ root@194.164.72.129:/var/www/nextjs-app/
