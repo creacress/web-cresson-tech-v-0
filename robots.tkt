@@ -13,4 +13,4 @@ Disallow: /temp/
 Disallow: /scripts/
 
 # Spécifier le chemin du sitemap
-Sitemap: https://webcresson.com/sitemap.xml
+Sitemap: https://webcresson.com/sitemap/sitemap.xml
