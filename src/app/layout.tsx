@@ -1,11 +1,11 @@
-// layout.tsx
-"use client";
+// src/app/layout.tsx (ne PAS utiliser "use client" ici)
 
 import type { Metadata } from "next";
-import "../styles/globals.css";
 import ClientLayout from "./ClientLayout";
 import Script from "next/script";
+import "../styles/globals.css";
 
+// Définir le metadata côté serveur
 export const metadata: Metadata = {
   title: "Web Cresson Tech - Intelligence Artificielle et RPA",
   description:
@@ -48,7 +48,6 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
-        {/* Google Analytics Script */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-H206EG4TH7"
           strategy="afterInteractive"
