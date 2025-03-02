@@ -11,8 +11,6 @@ module.exports = {
     ignoreDuringBuilds: true, // Ignorer ESLint lors du build
   },
   async headers() {
-    const isDev = process.env.NODE_ENV !== 'production';
-
     return [
       {
         source: '/(.*)',
@@ -25,7 +23,7 @@ module.exports = {
             value: `
               default-src 'self';
               img-src 'self' data: https://webcresson.com;
-              script-src 'self' https://www.googletagmanager.com ${isDev ? "'unsafe-eval' 'unsafe-inline'" : ''};
+              script-src 'self' https://www.googletagmanager.com 'unsafe-inline';
               style-src 'self' 'unsafe-inline';
               connect-src 'self' https://region1.google-analytics.com ws:;
               font-src 'self';
