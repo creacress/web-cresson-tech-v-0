@@ -30,9 +30,9 @@ const nextConfig = {
             value: `
               default-src 'self';
               img-src 'self' data: https://webcresson.com;
-              script-src 'self' https://www.googletagmanager.com 'unsafe-inline';  // Ajout de 'unsafe-inline'
-              style-src 'self' 'unsafe-inline';  // Ajout de 'unsafe-inline' pour les styles inline
-              connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com ws:;
+              script-src 'self' https://www.googletagmanager.com 'unsafe-inline';
+              style-src 'self' 'unsafe-inline'; 
+              connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
               font-src 'self';
             `.replace(/\n/g, ' ').trim(),
           },
