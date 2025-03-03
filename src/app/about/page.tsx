@@ -4,7 +4,7 @@ import ServiceSchema from "@/components/ServiceSchema";
 import Link from "next/link";
 import { Metadata } from "next";
 import { FaLightbulb, FaHandshake, FaAward, FaUsers, FaLeaf } from "react-icons/fa";
-
+import Head from "next/head"; // Importation pour manipuler le head
 import styles from "@/styles/about.module.css";
 
 export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
@@ -47,6 +47,11 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
+    <Head>
+        {/* Balise canonique ajoutée manuellement dans le Head */}
+        <link rel="canonical" href="https://webcresson.com/about" />
+      </Head>
+
       <ServiceSchema
         serviceName="À propos de WebCressonTech"
         serviceDescription={metadata.description || ""}

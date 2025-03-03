@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ServiceSchema from '@/components/ServiceSchema';
 import styles from '@/styles/home.module.css';
 import ClientWrapper from "@/components/ClientWrapper/ClientWrapper";
+import Head from 'next/head';
 
 export const revalidate = 86400; // Revalidation toutes les 24 heures
 
@@ -51,6 +52,10 @@ export const metadata = {
 export default function Home() {
   return (
     <>
+    <Head>
+        {/* Balise canonique ajoutée manuellement dans le Head */}
+        <link rel="canonical" href="https://webcresson.com/" />
+      </Head>
       <ServiceSchema
         serviceName={metadata.title}
         serviceDescription={metadata.description}

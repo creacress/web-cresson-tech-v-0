@@ -4,6 +4,8 @@ import ServiceSchema from "@/components/ServiceSchema";
 import ContactForm from "@/components/ContactForm/ContactForm"; 
 import styles from "@/styles/contact.module.css";
 import { Metadata } from "next";
+import Head from "next/head"; // Importation pour manipuler le head
+
 
 export const revalidate = 86400; // Active le SSG avec revalidation toutes les 24 heures
 
@@ -45,6 +47,11 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
+    <Head>
+        {/* Balise canonique ajoutée manuellement dans le Head */}
+        <link rel="canonical" href="https://webcresson.com/contact" />
+      </Head>
+
       <ServiceSchema
         serviceName="Contactez-nous | Cresson Tech"
         serviceDescription={metadata.description as string}

@@ -3,6 +3,8 @@ import React from "react";
 import Link from "next/link";
 import ServiceSchema from "@/components/ServiceSchema";
 import { Metadata } from "next";
+import Head from "next/head"; // Importation pour manipuler le head
+
 
 import styles from "@/styles/services.module.css";
 
@@ -48,6 +50,10 @@ export const metadata: Metadata = {
 export default function MachineLearningPage() {
   return (
     <>
+    <Head>
+        {/* Balise canonique ajoutée manuellement dans le Head */}
+        <link rel="canonical" href="https://webcresson.com/services/machine-learning" />
+      </Head>
       <ServiceSchema
         serviceName="Service Machine Learning"
         serviceDescription="Web Cresson Tech propose des solutions sur mesure en Machine Learning pour automatiser les processus métiers et améliorer les performances de votre entreprise."

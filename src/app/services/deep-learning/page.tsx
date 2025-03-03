@@ -3,6 +3,8 @@ import React from "react";
 import ServiceSchema from "@/components/ServiceSchema";
 import Link from "next/link";
 import { Metadata } from "next";
+import Head from "next/head"; // Importation pour manipuler le head
+
 
 import styles from "@/styles/services.module.css";
 
@@ -46,6 +48,11 @@ export const metadata: Metadata = {
 export default function DeepLearningPage() {
   return (
     <>
+    <Head>
+        {/* Balise canonique ajoutée manuellement dans le Head */}
+        <link rel="canonical" href="https://webcresson.com/services/deep-learning" />
+      </Head>
+
       <ServiceSchema
         serviceName="Service Deep Learning"
         serviceDescription="Web Cresson Tech propose des solutions sur mesure en Deep Learning pour automatiser des tâches complexes et améliorer la précision des prédictions."

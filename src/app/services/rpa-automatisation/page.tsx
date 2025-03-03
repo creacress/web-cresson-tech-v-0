@@ -1,8 +1,8 @@
-// src/app/services/rpa-automatisation/page.tsx
 import React from "react";
 import Link from "next/link";
 import ServiceSchema from "@/components/ServiceSchema";
 import { Metadata } from "next";
+import Head from "next/head"; // Importation pour manipuler le head
 
 import styles from "@/styles/services.module.css";
 
@@ -46,6 +46,11 @@ export const metadata: Metadata = {
 export default function RPAAutomatisationPage() {
   return (
     <>
+      <Head>
+        {/* Balise canonique ajoutée manuellement dans le Head */}
+        <link rel="canonical" href="https://webcresson.com/services/rpa-automatisation" />
+      </Head>
+      
       <ServiceSchema
         serviceName="Service RPA Automatisation"
         serviceDescription="Web Cresson Tech propose des solutions sur mesure en RPA Automatisation pour optimiser les processus métiers et automatiser les tâches répétitives."

@@ -3,6 +3,9 @@ import React from "react";
 import ServiceSchema from "@/components/ServiceSchema";
 import Link from "next/link";
 import { Metadata } from "next";
+import Head from "next/head"; // Importation pour manipuler le head
+
+
 
 import styles from "@/styles/services.module.css";
 
@@ -46,6 +49,11 @@ export const metadata: Metadata = {
 export default function IAGenerativePage() {
   return (
     <>
+    <Head>
+        {/* Balise canonique ajoutée manuellement dans le Head */}
+        <link rel="canonical" href="https://webcresson.com/services/ia-generative" />
+      </Head>
+
       <ServiceSchema
         serviceName="IA Générative - Web Cresson Tech"
         serviceDescription="Libérez votre créativité avec l'IA Générative : génération de contenu, d'images et automatisation créative."

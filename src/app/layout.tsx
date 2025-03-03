@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
 import ClientLayout from "./ClientLayout";
 import Script from "next/script";
@@ -67,12 +66,13 @@ export default function RootLayout({
           type="image/webp"
           sizes="(max-width: 600px) 150px, (max-width: 1024px) 300px, 384px"
         />
-        
+        <link rel="canonical" href="https://webcresson.com/" />
+
+
         {/* Charger Google Tag Manager de manière asynchrone */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-H206EG4TH7"
           strategy="beforeInteractive" // avant l'interactivité
-          async
         />
         <Script id="google-analytics" strategy="beforeInteractive">
           {`

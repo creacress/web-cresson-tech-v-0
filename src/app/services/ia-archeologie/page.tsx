@@ -3,6 +3,8 @@ import React from "react";
 import ServiceSchema from "@/components/ServiceSchema";
 import Link from "next/link";
 import { Metadata } from "next";
+import Head from "next/head"; // Importation pour manipuler le head
+
 
 import styles from "@/styles/services.module.css";
 
@@ -46,6 +48,11 @@ export const metadata: Metadata = {
 export default function ArcheologieIA() {
   return (
     <>
+    <Head>
+        {/* Balise canonique ajoutée manuellement dans le Head */}
+        <link rel="canonical" href="https://webcresson.com/services/ia-archeologie" />
+      </Head>
+
       <ServiceSchema
         serviceName="Intelligence Artificielle pour l'Archéologie"
         serviceDescription="Découvrez comment l'IA pourrait transformer l'archéologie avec des outils avancés pour la détection, l'analyse et la préservation des sites historiques."

@@ -3,6 +3,7 @@ import React from "react";
 import ServiceSchema from "@/components/ServiceSchema";
 import ServiceLink from "@/components/ServiceLink/ServiceLink";
 import { Metadata } from "next";
+import Head from "next/head";
 
 import styles from "@/styles/ServicePage.module.css";
 
@@ -46,6 +47,11 @@ export const metadata: Metadata = {
 export default function Service() {
   return (
     <>
+    <Head>
+        {/* Balise canonique ajoutée manuellement dans le Head */}
+        <link rel="canonical" href="https://webcresson.com/services/" />
+      </Head>
+
       <ServiceSchema
         serviceName="Services en Intelligence Artificielle"
         serviceDescription="Découvrez une large gamme de services en IA par Web Cresson Tech : automatisation, maintenance prédictive, IA générative, deep learning, machine learning et bien plus."
