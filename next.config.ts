@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -29,8 +30,8 @@ const nextConfig = {
             value: `
               default-src 'self';
               img-src 'self' data: https://webcresson.com;
-              script-src 'self' https://www.googletagmanager.com 'unsafe-inline';
-              style-src 'self' 'unsafe-inline';
+              script-src 'self' 'nonce-randomvalue' https://www.googletagmanager.com;  // Ajout de nonce
+              style-src 'self' 'nonce-randomvalue';  // Ajout de nonce pour les styles inline
               connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
               font-src 'self';
             `.replace(/\n/g, ' ').trim(),
