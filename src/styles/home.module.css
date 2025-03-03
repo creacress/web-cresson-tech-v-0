@@ -1,4 +1,3 @@
-
 /* Conteneur principal */
 .page {
   display: flex;
@@ -7,10 +6,17 @@
   min-height: 100vh;
   padding: 40px 20px;
   font-family: var(--font-family);
-  background: url("/robot_humain_main.webp") no-repeat center center / cover;
   color: #00e0ff;
   position: relative;
   overflow: hidden;
+  
+  /* Image de fond avec un préchargement rapide */
+  background: url("/robot_humain_main.webp") no-repeat center center / cover;
+  background-size: cover;
+  background-position: center center;
+
+  /* Si l'image n'est pas encore chargée, appliquer une couleur de fond */
+  background-color: #1a1a1a; /* Optionnel, couleur de secours */
 }
 
 /* Effet d'overlay */
@@ -24,7 +30,9 @@
   background: var(--overlay-color);
   z-index: 0;
   backdrop-filter: blur(4px);
+  /* Vérifie si le flou a un impact de performance et ajuste si nécessaire */
 }
+
 
 .mainContent {
   z-index: 1;
