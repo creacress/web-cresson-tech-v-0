@@ -60,7 +60,6 @@ export default function RootLayout({
       <head>
         {/* Précharger l'image LCP */}
         <link
-          rel="preload"
           href="/robot_humain_main.webp"
           as="image"
           type="image/webp"

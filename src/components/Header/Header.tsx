@@ -34,7 +34,6 @@ export default function Header() {
               alt="Logo WebCressonTech représentant l'intelligence artificielle et la technologie"
               width={150}
               height={50}
-              priority
               className={styles.logo}
               sizes="(max-width: 600px) 150px, (max-width: 1024px) 300px, 384px"
             />
