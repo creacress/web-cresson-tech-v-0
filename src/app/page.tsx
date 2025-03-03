@@ -8,7 +8,7 @@ import styles from '@/styles/home.module.css';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
-const CookieModal = dynamic(() => import('@/components/CookieModal'), { ssr: false });
+import ClientWrapper from "@/components/ClientWrapper/ClientWrapper"; // Import du composant client
 
 const defaultMeta = {
   title: 'WebCressonTech - Expert en IA et solutions technologiques',
@@ -143,7 +143,8 @@ export default function Home() {
           </div>
         </section>
 
-        <CookieModal />
+        <ClientWrapper />
+
       </main>
     </>
   );
