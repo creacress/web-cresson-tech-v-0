@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Web Cresson Tech - IA et Automatisation",
     description:
       "Solutions en intelligence artificielle, machine learning, deep learning et RPA.",
-    images: ["https://webcresson.com/images/twitter-image.png"],
+    images: ["https://webcresson.com/Logo_webcressontech.webp"],
   },
   robots: {
     index: true,
@@ -48,6 +48,7 @@ export const metadata: Metadata = {
   other: {
     "theme-color": "#00e0ff",
   },
+  metadataBase: new URL("https://webcresson.com"), // Ajoute cette ligne pour définir la base des URLs
 };
 
 export default function RootLayout({

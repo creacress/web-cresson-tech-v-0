@@ -43,9 +43,10 @@ export const metadata = {
     title: 'WebCressonTech - IA et Automatisation',
     description:
       'Solutions en intelligence artificielle, machine learning, deep learning et RPA.',
-    images: ['https://www.webcresson.com/images/twitter-image.png'],
+    images: ['https://webcresson.com/Logo_webcressontech.webp'], 
   },
 };
+
 
 export default function Home() {
   return (
