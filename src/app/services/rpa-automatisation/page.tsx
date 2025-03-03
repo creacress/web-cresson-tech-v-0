@@ -1,38 +1,51 @@
-import React from 'react';
-import Head from "next/head";
+// src/app/services/rpa-automatisation/page.tsx
+import React from "react";
 import Link from "next/link";
-import ServiceSchema from '@/components/ServiceSchema';
+import ServiceSchema from "@/components/ServiceSchema";
+import { Metadata } from "next";
+
+import styles from "@/styles/services.module.css";
 
 export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
 
-import styles from "@/styles/services.module.css";
+// Définition des métadonnées via l'API Metadata de Next.js 15
+export const metadata: Metadata = {
+  title: "RPA Automatisation | Web Cresson Tech",
+  description:
+    "Découvrez les avantages de la RPA Automatisation avec Web Cresson Tech : définition, automatisation des processus métiers et exemples concrets.",
+  openGraph: {
+    title: "RPA Automatisation : Optimisation des processus métiers | Web Cresson Tech",
+    description:
+      "Web Cresson Tech propose des solutions sur mesure en RPA Automatisation pour automatiser les processus métiers répétitifs et améliorer l'efficacité opérationnelle.",
+    url: "https://webcresson.com/services/rpa-automatisation",
+    images: [
+      {
+        url: "https://webcresson.com/images/rpa-automatisation.webp",
+        width: 1200,
+        height: 630,
+        alt: "RPA Automatisation",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "RPA Automatisation : Définition, Avantages, Utilisations | Web Cresson Tech",
+    description:
+      "Découvrez comment la RPA Automatisation peut transformer vos processus métiers avec Web Cresson Tech.",
+    images: ["https://webcresson.com/images/rpa-automatisation.webp"],
+  },
+  alternates: {
+    canonical: "https://webcresson.com/services/rpa-automatisation",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function RPAAutomatisationPage() {
   return (
     <>
-      <Head>
-        <title>RPA Automatisation : Définition, Avantages, Utilisations | Web Cresson Tech</title>
-        <meta
-          name="description"
-          content="Découvrez les avantages de la RPA Automatisation avec Web Cresson Tech : définition, automatisation des processus métiers et exemples concrets."
-        />
-        <link rel="canonical" href="https://webcresson.com/services/rpa-automatisation" />
-        <meta property="og:title" content="RPA Automatisation : Optimisation des processus métiers" />
-        <meta
-          property="og:description"
-          content="Web Cresson Tech propose des solutions sur mesure en RPA Automatisation pour automatiser les processus métiers répétitifs et améliorer l'efficacité opérationnelle."
-        />
-        <meta property="og:image" content="/images/rpa-automatisation.webp" />
-        <meta property="og:url" content="https://webcresson.com/services/rpa-automatisation" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="RPA Automatisation : Définition, Avantages, Utilisations" />
-        <meta
-          name="twitter:description"
-          content="Découvrez comment la RPA Automatisation peut transformer vos processus métiers avec Web Cresson Tech."
-        />
-        <meta name="twitter:image" content="/images/rpa-automatisation.webp" />
-      </Head>
-
       <ServiceSchema
         serviceName="Service RPA Automatisation"
         serviceDescription="Web Cresson Tech propose des solutions sur mesure en RPA Automatisation pour optimiser les processus métiers et automatiser les tâches répétitives."
@@ -40,23 +53,27 @@ export default function RPAAutomatisationPage() {
         faq={[
           {
             question: "Qu'est-ce que la RPA Automatisation ?",
-            answer: "La RPA Automatisation utilise des robots logiciels pour automatiser les tâches répétitives et améliorer l'efficacité des processus métiers."
+            answer:
+              "La RPA Automatisation utilise des robots logiciels pour automatiser les tâches répétitives et améliorer l'efficacité des processus métiers.",
           },
           {
             question: "Quels sont les avantages de la RPA pour mon entreprise ?",
-            answer: "La RPA permet de réduire les coûts, d'améliorer la précision des tâches et de libérer du temps pour des activités à plus forte valeur ajoutée."
+            answer:
+              "La RPA permet de réduire les coûts, d'améliorer la précision des tâches et de libérer du temps pour des activités à plus forte valeur ajoutée.",
           },
           {
             question: "Quels sont les exemples concrets d'utilisation de la RPA ?",
-            answer: "La RPA est utilisée pour automatiser la saisie de données, traiter les factures automatiquement et optimiser les flux de travail."
+            answer:
+              "La RPA est utilisée pour automatiser la saisie de données, traiter les factures automatiquement et optimiser les flux de travail.",
           },
           {
             question: "Comment la RPA se compare-t-elle à d'autres solutions d'automatisation ?",
-            answer: "Contrairement aux scripts manuels ou à l'automatisation traditionnelle, la RPA est plus flexible, nécessite moins de maintenance et s'intègre facilement avec des systèmes existants."
-          }
+            answer:
+              "Contrairement aux scripts manuels ou à l'automatisation traditionnelle, la RPA est plus flexible, nécessite moins de maintenance et s'intègre facilement avec des systèmes existants.",
+          },
         ]}
       />
-      
+
       <main className={styles.mainContent}>
         {/* Section Hero */}
         <section className={styles.hero}>
@@ -66,6 +83,7 @@ export default function RPAAutomatisationPage() {
           </p>
         </section>
 
+        {/* Section de contenu */}
         <section className={styles.section}>
           <h2>Qu'est-ce que la RPA Automatisation ?</h2>
           <p>
@@ -118,7 +136,6 @@ export default function RPAAutomatisationPage() {
           </Link>
         </section>
       </main>
-
     </>
   );
 }

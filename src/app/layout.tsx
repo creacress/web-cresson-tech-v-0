@@ -1,10 +1,9 @@
-
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import ClientLayout from "./ClientLayout";
 import Script from "next/script";
 import "../styles/globals.css";
 
-// Définir le metadata côté serveur
 export const metadata: Metadata = {
   title: "Web Cresson Tech - Intelligence Artificielle et RPA",
   description:
@@ -28,6 +27,8 @@ export const metadata: Metadata = {
         alt: "Web Cresson Tech",
       },
     ],
+    locale: "fr_FR",
+    siteName: "Web Cresson Tech",
   },
   twitter: {
     card: "summary_large_image",
@@ -36,6 +37,16 @@ export const metadata: Metadata = {
     description:
       "Solutions en intelligence artificielle, machine learning, deep learning et RPA.",
     images: ["https://webcresson.com/images/twitter-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://webcresson.com",
+  },
+  other: {
+    "theme-color": "#00e0ff",
   },
 };
 

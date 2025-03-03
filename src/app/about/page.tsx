@@ -1,62 +1,80 @@
-import React from 'react';
-import Head from "next/head";
+// src/app/about/page.tsx
+import React from "react";
+import ServiceSchema from "@/components/ServiceSchema";
 import Link from "next/link";
-import ServiceSchema from '@/components/ServiceSchema';
+import { Metadata } from "next";
 import { FaLightbulb, FaHandshake, FaAward, FaUsers, FaLeaf } from "react-icons/fa";
-
-export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
-
 
 import styles from "@/styles/about.module.css";
 
-const pageMeta = {
+export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
+
+// Utilisation de l'API Metadata pour Next.js 15
+export const metadata: Metadata = {
   title: "À propos de WebCressonTech - Expert en IA",
-  description: "Découvrez WebCressonTech, entreprise dédiée à l'innovation technologique avec des solutions d'intelligence artificielle sur mesure.",
-  keywords: "WebCressonTech, intelligence artificielle, machine learning, deep learning, solutions technologiques",
-  image: "https://www.webcresson.com/Logo_webcressontech.webp",
-  url: "https://www.webcresson.com/about",
+  description:
+    "Découvrez WebCressonTech, entreprise dédiée à l'innovation technologique avec des solutions d'intelligence artificielle sur mesure.",
+  openGraph: {
+    title: "À propos de WebCressonTech - Expert en IA",
+    description:
+      "WebCressonTech aide les entreprises à innover avec des solutions sur mesure en intelligence artificielle et technologies avancées.",
+    url: "https://www.webcresson.com/about",
+    images: [
+      {
+        url: "https://www.webcresson.com/Logo_webcressontech.webp",
+        width: 1200,
+        height: 630,
+        alt: "Web Cresson Tech",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "À propos de WebCressonTech - Expert en IA",
+    description:
+      "Entreprise spécialisée dans l'IA et les solutions technologiques avancées.",
+    images: ["https://www.webcresson.com/Logo_webcressontech.webp"],
+  },
+  alternates: {
+    canonical: "https://www.webcresson.com/about",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function About() {
   return (
     <>
-      <Head>
-        <title>{pageMeta.title}</title>
-        <meta name="description" content={pageMeta.description} />
-        <meta name="keywords" content={pageMeta.keywords} />
-        <meta name="author" content="WebCressonTech" />
-        <link rel="canonical" href={pageMeta.url} />
-        <meta property="og:title" content={pageMeta.title} />
-        <meta property="og:description" content={pageMeta.description} />
-        <meta property="og:image" content={pageMeta.image} />
-        <meta property="og:url" content={pageMeta.url} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="index, follow" />
-      </Head>
-
       <ServiceSchema
         serviceName="À propos de WebCressonTech"
-        serviceDescription={pageMeta.description}
-        serviceTypes={["Innovation technologique", "Intelligence Artificielle", "Solutions sur mesure"]}
+        serviceDescription={metadata.description || ""}
+        serviceTypes={[
+          "Innovation technologique",
+          "Intelligence Artificielle",
+          "Solutions sur mesure",
+        ]}
         faq={[
           {
             question: "Quelle est la mission de WebCressonTech ?",
-            answer: "Notre mission est d'aider nos clients à tirer parti de l'intelligence artificielle et des technologies avancées pour transformer leurs entreprises."
+            answer:
+              "Notre mission est d'aider nos clients à tirer parti de l'intelligence artificielle et des technologies avancées pour transformer leurs entreprises.",
           },
           {
             question: "Quelles sont les valeurs de WebCressonTech ?",
-            answer: "Nous valorisons l'innovation, l'engagement, l'excellence, la collaboration et la durabilité dans toutes nos démarches."
+            answer:
+              "Nous valorisons l'innovation, l'engagement, l'excellence, la collaboration et la durabilité dans toutes nos démarches.",
           },
           {
             question: "Comment puis-je contacter WebCressonTech ?",
-            answer: "Vous pouvez nous contacter via notre page dédiée ou par téléphone pour discuter de vos projets."
-          }
+            answer:
+              "Vous pouvez nous contacter via notre page dédiée ou par téléphone pour discuter de vos projets.",
+          },
         ]}
       />
 
       <main className={styles.mainContent}>
-        {/* Section Hero */}
         <section className={styles.hero}>
           <h1 className={styles.heroTitle}>À propos de WebCressonTech</h1>
           <p className={styles.heroText}>
@@ -66,16 +84,35 @@ export default function About() {
           </p>
         </section>
 
-        {/* Section Valeurs */}
         <section className={styles.values} aria-labelledby="values-title">
           <h2 id="values-title" className={styles.sectionTitle}>Nos Valeurs</h2>
           <div className={styles.valuesGrid}>
             {[
-              { icon: <FaLightbulb />, title: "Innovation", text: "Proposer des solutions uniques et créatives." },
-              { icon: <FaHandshake />, title: "Engagement", text: "Vos défis sont notre priorité." },
-              { icon: <FaAward />, title: "Excellence", text: "Maîtrise des dernières technologies." },
-              { icon: <FaUsers />, title: "Collaboration", text: "Atteindre des objectifs ambitieux ensemble." },
-              { icon: <FaLeaf />, title: "Durabilité", text: "Des solutions respectueuses de l'environnement." },
+              {
+                icon: <FaLightbulb />,
+                title: "Innovation",
+                text: "Proposer des solutions uniques et créatives.",
+              },
+              {
+                icon: <FaHandshake />,
+                title: "Engagement",
+                text: "Vos défis sont notre priorité.",
+              },
+              {
+                icon: <FaAward />,
+                title: "Excellence",
+                text: "Maîtrise des dernières technologies.",
+              },
+              {
+                icon: <FaUsers />,
+                title: "Collaboration",
+                text: "Atteindre des objectifs ambitieux ensemble.",
+              },
+              {
+                icon: <FaLeaf />,
+                title: "Durabilité",
+                text: "Des solutions respectueuses de l'environnement.",
+              },
             ].map((value, index) => (
               <div key={index} className={styles.valueCard}>
                 <div className={styles.icon}>{value.icon}</div>
@@ -86,12 +123,19 @@ export default function About() {
           </div>
         </section>
 
-        {/* Section Call-to-Action */}
         <section className={styles.ctas}>
-          <Link href="/contact" className={styles.primaryCta} aria-label="Contactez-nous pour discuter de vos projets">
+          <Link
+            href="/contact"
+            className={styles.primaryCta}
+            aria-label="Contactez-nous pour discuter de vos projets"
+          >
             Contactez-nous
           </Link>
-          <Link href="/services" className={styles.secondaryCta} aria-label="Découvrez nos services en IA">
+          <Link
+            href="/services"
+            className={styles.secondaryCta}
+            aria-label="Découvrez nos services en IA"
+          >
             Nos services
           </Link>
         </section>

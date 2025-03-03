@@ -1,47 +1,51 @@
+// src/app/services/ia-generative/page.tsx
 import React from "react";
-import Head from "next/head";
-import Link from "next/link";
 import ServiceSchema from "@/components/ServiceSchema";
+import Link from "next/link";
+import { Metadata } from "next";
+
+import styles from "@/styles/services.module.css";
 
 export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
 
-import styles from "@/styles/services.module.css";
+// Définition des métadonnées via l'API Metadata de Next.js 15
+export const metadata: Metadata = {
+  title: "IA Générative - Créativité augmentée | Web Cresson Tech",
+  description:
+    "Découvrez comment l'IA Générative révolutionne la création de contenu, la génération d'images et la créativité assistée avec Web Cresson Tech.",
+  openGraph: {
+    title: "IA Générative - Créativité augmentée | Web Cresson Tech",
+    description:
+      "Boostez votre créativité avec l'IA Générative : génération d'images, création de contenu, ChatGPT, DALL-E et innovation.",
+    url: "https://webcresson.com/services/ia-generative",
+    images: [
+      {
+        url: "https://webcresson.com/images/ia-generative.webp",
+        width: 1200,
+        height: 630,
+        alt: "Web Cresson Tech",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "IA Générative | Web Cresson Tech",
+    description:
+      "Découvrez comment l'IA Générative améliore la créativité avec des outils comme ChatGPT, DALL-E pour la génération de contenu et d'images.",
+    images: ["https://webcresson.com/images/ia-generative.webp"],
+  },
+  alternates: {
+    canonical: "https://webcresson.com/services/ia-generative",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function IAGenerativePage() {
   return (
     <>
-      <Head>
-        <title>IA Générative - Créativité augmentée | Web Cresson Tech</title>
-        <meta
-          name="description"
-          content="Découvrez comment l'IA Générative révolutionne la création de contenu, la génération d'images et la créativité assistée avec Web Cresson Tech."
-        />
-        <meta
-          name="keywords"
-          content="IA générative, génération d'images, génération de contenu, Web Cresson Tech, intelligence artificielle créative, GPT, DALL-E, ChatGPT"
-        />
-        <link
-          rel="canonical"
-          href="https://webcresson.com/services/ia-generative"
-        />
-        <meta
-          property="og:title"
-          content="IA Générative - Créativité augmentée | Web Cresson Tech"
-        />
-        <meta
-          property="og:description"
-          content="Boostez votre créativité avec l'IA Générative : génération d'images, création de contenu, ChatGPT, DALL-E et innovation."
-        />
-        <meta
-          property="og:image"
-          content="/images/ia-generative.webp"
-        />
-        <meta
-          property="og:url"
-          content="https://webcresson.com/services/ia-generative"
-        />
-      </Head>
-
       <ServiceSchema
         serviceName="IA Générative - Web Cresson Tech"
         serviceDescription="Libérez votre créativité avec l'IA Générative : génération de contenu, d'images et automatisation créative."
@@ -72,7 +76,6 @@ export default function IAGenerativePage() {
       />
 
       <main className={styles.mainContent}>
-        {/* Section Hero */}
         <section className={styles.hero}>
           <h1>IA Générative : Créez l'avenir avec Web Cresson Tech</h1>
           <p>
@@ -82,7 +85,6 @@ export default function IAGenerativePage() {
           </p>
         </section>
 
-        {/* Qu'est-ce que l'IA Générative ? */}
         <section className={styles.section} id="definition">
           <h2>Qu'est-ce que l'IA Générative ?</h2>
           <p>
@@ -93,12 +95,11 @@ export default function IAGenerativePage() {
             innover dans de nombreux secteurs d'activité.
           </p>
           <p>
-            Les technologies comme <strong>ChatGPT</strong> pour le texte ou
+            Les technologies comme <strong>ChatGPT</strong> pour le texte ou{" "}
             <strong>DALL-E</strong> pour les images en sont des exemples concrets.
           </p>
         </section>
 
-        {/* Comparaison avec d'autres technologies IA */}
         <section className={styles.section} id="comparison-table">
           <h2>Comparaison : IA Générative vs Deep Learning vs Machine Learning</h2>
           <table className={styles.comparisonTable}>
@@ -139,7 +140,6 @@ export default function IAGenerativePage() {
           </table>
         </section>
 
-        {/* Cas pratiques de l'IA Générative */}
         <section className={styles.section} id="case-studies">
           <h2>Exemples concrets d'utilisation de l'IA Générative</h2>
           <ul>
@@ -150,7 +150,6 @@ export default function IAGenerativePage() {
           </ul>
         </section>
 
-        {/* Section CTA */}
         <section className={styles.ctaSection}>
           <h2>Besoin d'une solution en IA Générative ?</h2>
           <p>
@@ -158,10 +157,8 @@ export default function IAGenerativePage() {
             Générative. Ensemble, donnons vie à vos projets créatifs grâce à
             l'intelligence artificielle.
           </p>
-          <Link href="/contact">
-            <span className={styles.ctaButton}>
-              Demander une consultation gratuite
-            </span>
+          <Link href="/contact" className={styles.ctaButton}>
+            Demander une consultation gratuite
           </Link>
         </section>
       </main>

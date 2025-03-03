@@ -1,51 +1,77 @@
 // src/app/services/page.tsx
-import React from 'react';
-import Head from "next/head";
-import ServiceSchema from '@/components/ServiceSchema';
-import ServiceLink from '@/components/ServiceLink/ServiceLink';
-
-export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
+import React from "react";
+import ServiceSchema from "@/components/ServiceSchema";
+import ServiceLink from "@/components/ServiceLink/ServiceLink";
+import { Metadata } from "next";
 
 import styles from "@/styles/ServicePage.module.css";
 
-export default function Service() {
+export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
 
+// Utilisation de l'API Metadata pour Next.js 15
+export const metadata: Metadata = {
+  title: "Nos Services en Intelligence Artificielle | Web Cresson Tech",
+  description:
+    "Découvrez les solutions innovantes de Web Cresson Tech en intelligence artificielle : maintenance prédictive, RPA, IA générative, audit IA et bien plus.",
+  openGraph: {
+    title: "Nos Services - Expertise en IA",
+    description:
+      "Solutions et expertises avancées en intelligence artificielle par Web Cresson Tech.",
+    url: "https://webcresson.com/services",
+    images: [
+      {
+        url: "/images/services.webp",
+        width: 1200,
+        height: 630,
+        alt: "Web Cresson Tech",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nos Services en Intelligence Artificielle",
+    description:
+      "Web Cresson Tech propose des solutions sur mesure en intelligence artificielle et automatisation des processus.",
+    images: ["/images/services.webp"],
+  },
+  alternates: {
+    canonical: "https://webcresson.com/services",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export default function Service() {
   return (
     <>
-      <Head>
-        <title>Nos Services en Intelligence Artificielle | Web Cresson Tech</title>
-        <meta
-          name="description"
-          content="Découvrez les solutions innovantes de Web Cresson Tech en intelligence artificielle : maintenance prédictive, RPA, IA générative, audit IA et bien plus."
-        />
-        <link rel="canonical" href="https://webcresson.com/services" />
-        <meta property="og:title" content="Nos Services - Expertise en IA" />
-        <meta
-          property="og:description"
-          content="Solutions et expertises avancées en intelligence artificielle par Web Cresson Tech."
-        />
-        <meta property="og:url" content="https://webcresson.com/services" />
-        <meta property="og:image" content="/images/services.webp" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-
       <ServiceSchema
         serviceName="Services en Intelligence Artificielle"
         serviceDescription="Découvrez une large gamme de services en IA par Web Cresson Tech : automatisation, maintenance prédictive, IA générative, deep learning, machine learning et bien plus."
-        serviceTypes={["Automatisation", "IA Générative", "Deep Learning", "Machine Learning", "RPA"]}
+        serviceTypes={[
+          "Automatisation",
+          "IA Générative",
+          "Deep Learning",
+          "Machine Learning",
+          "RPA",
+        ]}
         faq={[
           {
             question: "Quels services propose Web Cresson Tech ?",
-            answer: "Nous proposons des solutions sur mesure en intelligence artificielle, y compris l'automatisation (RPA), l'IA générative, le deep learning et le machine learning."
+            answer:
+              "Nous proposons des solutions sur mesure en intelligence artificielle, y compris l'automatisation (RPA), l'IA générative, le deep learning et le machine learning.",
           },
           {
             question: "Comment l'IA peut-elle aider mon entreprise ?",
-            answer: "L'IA permet d'automatiser des tâches répétitives, d'améliorer la prise de décision grâce aux données et d'innover avec des solutions personnalisées."
+            answer:
+              "L'IA permet d'automatiser des tâches répétitives, d'améliorer la prise de décision grâce aux données et d'innover avec des solutions personnalisées.",
           },
           {
             question: "Proposez-vous des audits IA gratuits ?",
-            answer: "Oui, nous offrons un audit gratuit pour évaluer vos besoins et déterminer comment l'IA peut optimiser vos processus métiers."
-          }
+            answer:
+              "Oui, nous offrons un audit gratuit pour évaluer vos besoins et déterminer comment l'IA peut optimiser vos processus métiers.",
+          },
         ]}
       />
 
@@ -55,7 +81,9 @@ export default function Service() {
             Nos solutions et expertises en intelligence artificielle (IA)
           </h1>
           <p className={styles.pageDescription}>
-            Découvrez comment Web Cresson Tech peut transformer vos processus métiers grâce à des solutions d'IA sur mesure et adaptées à vos besoins.
+            Découvrez comment Web Cresson Tech peut transformer vos processus
+            métiers grâce à des solutions d'IA sur mesure et adaptées à vos
+            besoins.
           </p>
         </section>
 
@@ -105,5 +133,5 @@ const servicesData = [
     title: "Machine Learning",
     text: "Déployez des modèles de Machine Learning pour optimiser vos processus métiers.",
     link: "/services/machine-learning",
-  }
+  },
 ];

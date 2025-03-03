@@ -1,4 +1,3 @@
-// src/components/ContactForm.tsx
 "use client";
 
 import React, { useState, FormEvent } from "react";
@@ -26,6 +25,7 @@ export default function ContactForm() {
 
       if (response.ok) {
         setStatus("success");
+        // Réinitialiser les champs du formulaire après envoi
         setEmail("");
         setName("");
         setPhone("");
@@ -66,6 +66,45 @@ export default function ContactForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
+          className={styles.inputField}
+        />
+      </div>
+
+      <div className={styles.formGroup}>
+        <label htmlFor="phone">Téléphone*</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Votre numéro de téléphone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          required
+          className={styles.inputField}
+        />
+      </div>
+
+      <div className={styles.formGroup}>
+        <label htmlFor="company">Entreprise</label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          placeholder="Nom de votre entreprise (facultatif)"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+          className={styles.inputField}
+        />
+      </div>
+
+      <div className={styles.formGroup}>
+        <label htmlFor="comments">Commentaires</label>
+        <textarea
+          id="comments"
+          name="comments"
+          placeholder="Votre message ou question"
+          value={comments}
+          onChange={(e) => setComments(e.target.value)}
           className={styles.inputField}
         />
       </div>

@@ -1,41 +1,75 @@
-import React from 'react';
-import Head from "next/head";
+// src/app/services/deep-learning/page.tsx
+import React from "react";
+import ServiceSchema from "@/components/ServiceSchema";
 import Link from "next/link";
-import ServiceSchema from '@/components/ServiceSchema';
+import { Metadata } from "next";
 
 import styles from "@/styles/services.module.css";
 
 export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
 
+// Définition des métadonnées via l'API Metadata de Next.js 15
+export const metadata: Metadata = {
+  title: "Deep Learning | Web Cresson Tech",
+  description:
+    "Découvrez le Deep Learning avec Web Cresson Tech : utilisations concrètes et solutions sur mesure.",
+  openGraph: {
+    title: "Deep Learning | Web Cresson Tech",
+    description:
+      "Web Cresson Tech propose des solutions sur mesure en Deep Learning pour automatiser des tâches complexes et améliorer la précision des prédictions.",
+    url: "https://webcresson.com/services/deep-learning",
+    images: [
+      {
+        url: "https://webcresson.com/Logo_webcressontech.webp",
+        width: 1200,
+        height: 630,
+        alt: "Web Cresson Tech",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Deep Learning | Web Cresson Tech",
+    description:
+      "Solutions en Deep Learning pour automatiser des tâches complexes et optimiser vos processus métiers.",
+    images: ["https://webcresson.com/Logo_webcressontech.webp"],
+  },
+  alternates: {
+    canonical: "https://webcresson.com/services/deep-learning",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
 export default function DeepLearningPage() {
   return (
     <>
-      <Head>
-        <title>Deep Learning | Web Cresson Tech</title>
-        <meta
-          name="description"
-          content="Découvrez le Deep Learning avec Web Cresson Tech : utilisations concrètes et solutions sur mesure."
-        />
-        <link rel="canonical" href="https://webcresson.com/services/deep-learning" />
-      </Head>
-
       <ServiceSchema
         serviceName="Service Deep Learning"
         serviceDescription="Web Cresson Tech propose des solutions sur mesure en Deep Learning pour automatiser des tâches complexes et améliorer la précision des prédictions."
-        serviceTypes={["Deep Learning", "Réseaux de Neurones Convolutifs (CNN)", "Automatisation des Tâches Complexes"]}
+        serviceTypes={[
+          "Deep Learning",
+          "Réseaux de Neurones Convolutifs (CNN)",
+          "Automatisation des Tâches Complexes",
+        ]}
         faq={[
           {
             question: "Qu'est-ce que le Deep Learning ?",
-            answer: "Le Deep Learning utilise des réseaux de neurones profonds pour analyser des données volumineuses, notamment grâce aux Réseaux de Neurones Convolutifs (CNN)."
+            answer:
+              "Le Deep Learning utilise des réseaux de neurones profonds pour analyser des données volumineuses, notamment grâce aux Réseaux de Neurones Convolutifs (CNN).",
           },
           {
             question: "Quels sont les avantages du Deep Learning pour mon entreprise ?",
-            answer: "Le Deep Learning permet d'automatiser des tâches complexes, d'améliorer la précision des modèles prédictifs et d'analyser des données non structurées comme des images et des vidéos."
+            answer:
+              "Le Deep Learning permet d'automatiser des tâches complexes, d'améliorer la précision des modèles prédictifs et d'analyser des données non structurées comme des images et des vidéos.",
           },
           {
             question: "Quels sont les exemples concrets d'utilisation du Deep Learning ?",
-            answer: "Le Deep Learning est utilisé dans l'analyse d'imagerie médicale, la reconnaissance faciale et l'automatisation industrielle via l'analyse vidéo."
-          }
+            answer:
+              "Le Deep Learning est utilisé dans l'analyse d'imagerie médicale, la reconnaissance faciale et l'automatisation industrielle via l'analyse vidéo.",
+          },
         ]}
       />
 
@@ -50,7 +84,8 @@ export default function DeepLearningPage() {
         <section className={styles.section}>
           <h2>Qu'est-ce que le Deep Learning ?</h2>
           <p>
-            Le Deep Learning utilise des <strong>réseaux de neurones profonds</strong> pour analyser des données volumineuses. Les <strong>Réseaux de Neurones Convolutifs (CNN)</strong> sont particulièrement efficaces pour le traitement d'images et de vidéos.
+            Le Deep Learning utilise des <strong>réseaux de neurones profonds</strong> pour analyser des données volumineuses. 
+            Les <strong>Réseaux de Neurones Convolutifs (CNN)</strong> sont particulièrement efficaces pour le traitement d'images et de vidéos.
           </p>
         </section>
 

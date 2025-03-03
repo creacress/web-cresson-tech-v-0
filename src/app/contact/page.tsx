@@ -1,36 +1,53 @@
 // src/app/contact/page.tsx
 import React from "react";
-import Head from "next/head";
 import ServiceSchema from "@/components/ServiceSchema";
-import ContactForm from "@/components/ContactForm/ContactForm"; // Composant client
+import ContactForm from "@/components/ContactForm/ContactForm"; 
 import styles from "@/styles/contact.module.css";
+import { Metadata } from "next";
 
-const pageMeta = {
+export const revalidate = 86400; // Active le SSG avec revalidation toutes les 24 heures
+
+// Utilisation de l'API Metadata pour le SEO
+export const metadata: Metadata = {
   title: "Contactez-nous | Cresson Tech",
   description:
     "Contactez Cresson Tech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
-  url: "https://webcresson.com/contact",
-  image: "https://webcresson.com/Logo_webcressontech.webp",
+  openGraph: {
+    title: "Contactez-nous | Cresson Tech",
+    description:
+      "Contactez Cresson Tech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
+    url: "https://webcresson.com/contact",
+    images: [
+      {
+        url: "https://webcresson.com/Logo_webcressontech.webp",
+        width: 1200,
+        height: 630,
+        alt: "Cresson Tech",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contactez-nous | Cresson Tech",
+    description:
+      "Contactez Cresson Tech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
+    images: ["https://webcresson.com/Logo_webcressontech.webp"],
+  },
+  alternates: {
+    canonical: "https://webcresson.com/contact",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
-
-export const revalidate = 86400; // Active le SSG avec revalidation toutes les 24 heures
 
 export default function ContactPage() {
   return (
     <>
-      <Head>
-        <title>{pageMeta.title}</title>
-        <meta name="description" content={pageMeta.description} />
-        <meta property="og:title" content={pageMeta.title} />
-        <meta property="og:description" content={pageMeta.description} />
-        <meta property="og:url" content={pageMeta.url} />
-        <meta property="og:image" content={pageMeta.image} />
-        <link rel="canonical" href={pageMeta.url} />
-      </Head>
-
       <ServiceSchema
         serviceName="Contactez-nous | Cresson Tech"
-        serviceDescription={pageMeta.description}
+        serviceDescription={metadata.description as string}
         serviceTypes={["Contact", "Support Client", "Services Technologiques"]}
         faq={[
           {
