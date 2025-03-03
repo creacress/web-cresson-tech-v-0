@@ -51,58 +51,27 @@ export default function RPAAutomatisationPage() {
         {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/services/rpa-automatisation" />
       </Head>
-      
+
       <ServiceSchema
-        serviceName="Service RPA Automatisation"
-        serviceDescription="Web Cresson Tech propose des solutions sur mesure en RPA Automatisation pour optimiser les processus métiers et automatiser les tâches répétitives."
-        serviceTypes={["RPA Automatisation", "Automatisation des processus métiers", "Optimisation opérationnelle"]}
+        serviceName="Services RPA Automatisation"
+        serviceDescription="Optimisez vos processus métiers avec la RPA (Robotic Process Automation) pour améliorer l'efficacité et réduire les coûts."
+        serviceTypes={[
+          "RPA Automatisation",
+          "Optimisation des processus",
+          "Automatisation des tâches répétitives",
+        ]}
         faq={[
           {
             question: "Qu'est-ce que la RPA Automatisation ?",
-            answer: (
-              <>
-                La RPA Automatisation utilise des robots logiciels pour automatiser les tâches répétitives et améliorer l'efficacité des processus métiers. Pour en savoir plus, consultez notre{' '}
-                <a href="https://www.webcresson.com/services/rpa-automatisation" target="_blank" rel="noopener noreferrer">
-                  page des services RPA Automatisation
-                </a>.
-              </>
-            ),
+            answer: `La RPA Automatisation utilise des robots logiciels pour automatiser les tâches répétitives et améliorer l'efficacité des processus métiers. Pour en savoir plus, visitez notre page des services RPA Automatisation : https://www.webcresson.com/services/rpa-automatisation`,
           },
           {
-            question: "Quels sont les avantages de la RPA pour mon entreprise ?",
-            answer: (
-              <>
-                La RPA permet de réduire les coûts, d'améliorer la précision des tâches et de libérer du temps pour des activités à plus forte valeur ajoutée. Découvrez les avantages de la RPA sur notre{' '}
-                <a href="https://www.webcresson.com/services/rpa-automatisation" target="_blank" rel="noopener noreferrer">
-                  page des services RPA
-                </a>.
-              </>
-            ),
-          },
-          {
-            question: "Quels sont les exemples concrets d'utilisation de la RPA ?",
-            answer: (
-              <>
-                La RPA est utilisée pour automatiser la saisie de données, traiter les factures automatiquement et optimiser les flux de travail. Découvrez ces exemples concrets dans notre{' '}
-                <a href="https://www.webcresson.com/services/rpa-automatisation" target="_blank" rel="noopener noreferrer">
-                  page des exemples d'utilisation de la RPA
-                </a>.
-              </>
-            ),
-          },
-          {
-            question: "Comment la RPA se compare-t-elle à d'autres solutions d'automatisation ?",
-            answer: (
-              <>
-                Contrairement aux scripts manuels ou à l'automatisation traditionnelle, la RPA est plus flexible, nécessite moins de maintenance et s'intègre facilement avec des systèmes existants. Pour plus de détails, consultez notre{' '}
-                <a href="https://www.webcresson.com/services/rpa-automatisation" target="_blank" rel="noopener noreferrer">
-                  page des comparaisons RPA
-                </a>.
-              </>
-            ),
+            question: "Quels sont les avantages de la RPA ?",
+            answer: `La RPA permet de réduire les coûts, d'améliorer la précision des tâches et de libérer du temps pour des activités à plus forte valeur ajoutée. Découvrez les avantages de la RPA sur notre page des services : https://www.webcresson.com/services/rpa-automatisation`,
           },
         ]}
       />
+
 
       <main className={styles.mainContent}>
         {/* Section Hero */}

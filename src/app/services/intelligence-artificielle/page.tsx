@@ -57,55 +57,31 @@ export default function IntelligenceArtificiellePage() {
       </Head>
 
       <ServiceSchema
-        serviceName="Solutions en Intelligence Artificielle"
-        serviceDescription="Solutions IA sur mesure en Deep Learning, Machine Learning, IA générative et traitement d'images avec Web Cresson Tech."
+        serviceName="Services en Intelligence Artificielle"
+        serviceDescription="Découvrez une large gamme de services en IA par Web Cresson Tech : automatisation, maintenance prédictive, IA générative, deep learning, machine learning et bien plus."
         serviceTypes={[
-          "Intelligence Artificielle",
+          "Automatisation",
+          "IA Générative",
           "Deep Learning",
           "Machine Learning",
+          "RPA",
         ]}
         faq={[
           {
-            question:
-              "Quelle est la différence entre le Deep Learning et le Machine Learning ?",
-            answer: (
-              <>
-                Le Deep Learning est un sous-ensemble du Machine Learning utilisant des réseaux de neurones profonds pour analyser des données complexes, tandis que le Machine Learning applique des algorithmes plus classiques pour automatiser des tâches basées sur des données structurées. Pour plus de détails, découvrez notre{' '}
-                <a href="https://www.webcresson.com/services/deep-learning" target="_blank" rel="noopener noreferrer">
-                  page sur le Deep Learning
-                </a> et notre{' '}
-                <a href="https://www.webcresson.com/services/machine-learning" target="_blank" rel="noopener noreferrer">
-                  page sur le Machine Learning
-                </a>.
-              </>
-            ),
+            question: "Quels services propose Web Cresson Tech ?",
+            answer: `Nous proposons des solutions sur mesure en intelligence artificielle, y compris l'automatisation (RPA), l'IA générative, le deep learning et le machine learning. Pour plus de détails, consultez notre page des services IA : https://www.webcresson.com/services`,
           },
           {
-            question:
-              "Quels sont les avantages de l'intelligence artificielle pour mon entreprise ?",
-            answer: (
-              <>
-                L'IA optimise les processus métiers, améliore la prise de décision, personnalise l'expérience utilisateur et automatise les tâches répétitives, offrant un gain de temps et une meilleure efficacité. Pour en savoir plus sur l'impact de l'IA dans votre entreprise, consultez notre{' '}
-                <a href="https://www.webcresson.com/services/intelligence-artificielle" target="_blank" rel="noopener noreferrer">
-                  page des services IA
-                </a>.
-              </>
-            ),
+            question: "Comment l'IA peut-elle aider mon entreprise ?",
+            answer: `L'IA permet d'automatiser des tâches répétitives, d'améliorer la prise de décision grâce aux données et d'innover avec des solutions personnalisées. Découvrez comment nous pouvons vous aider sur notre page des services : https://www.webcresson.com/services`,
           },
           {
-            question:
-              "Comment Web Cresson Tech développe-t-il des solutions IA sur mesure ?",
-            answer: (
-              <>
-                Nous analysons vos besoins spécifiques pour créer des modèles de Deep Learning, Machine Learning ou d'IA générative adaptés à vos objectifs métiers. Nos solutions sont personnalisées pour offrir un retour sur investissement rapide. Pour plus de détails, découvrez nos{' '}
-                <a href="https://www.webcresson.com/services/intelligence-artificielle" target="_blank" rel="noopener noreferrer">
-                  services sur mesure
-                </a>.
-              </>
-            ),
+            question: "Proposez-vous des audits IA gratuits ?",
+            answer: `Oui, nous offrons un audit gratuit pour évaluer vos besoins et déterminer comment l'IA peut optimiser vos processus métiers. Pour plus d'informations, visitez notre page d'audit IA : https://www.webcresson.com/services/contact`,
           },
         ]}
       />
+
 
       <main className={styles.mainContent}>
         <section className={styles.hero}>

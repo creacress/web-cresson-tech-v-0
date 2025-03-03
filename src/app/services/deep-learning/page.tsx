@@ -53,49 +53,25 @@ export default function DeepLearningPage() {
       </Head>
 
       <ServiceSchema
-        serviceName="Service Deep Learning"
-        serviceDescription="Web Cresson Tech propose des solutions sur mesure en Deep Learning pour automatiser des tâches complexes et améliorer la précision des prédictions."
+        serviceName="Services Deep Learning"
+        serviceDescription="Web Cresson Tech offre des solutions en Deep Learning pour l'analyse des données massives et la reconnaissance d'images."
         serviceTypes={[
           "Deep Learning",
-          "Réseaux de Neurones Convolutifs (CNN)",
-          "Automatisation des Tâches Complexes",
+          "Réseaux de neurones",
+          "Reconnaissance d'images",
         ]}
         faq={[
           {
             question: "Qu'est-ce que le Deep Learning ?",
-            answer: (
-              <>
-                Le Deep Learning utilise des réseaux de neurones profonds pour analyser des données volumineuses, notamment grâce aux Réseaux de Neurones Convolutifs (CNN). Pour en savoir plus, consultez notre{' '}
-                <a href="https://www.webcresson.com/services/deep-learning" target="_blank" rel="noopener noreferrer">
-                  page sur le Deep Learning
-                </a>.
-              </>
-            ),
+            answer: `Le Deep Learning utilise des réseaux de neurones profonds pour traiter des données complexes telles que les images, les vidéos et le langage naturel. Pour plus de détails, visitez notre page des services Deep Learning : https://www.webcresson.com/services/deep-learning`,
           },
           {
-            question: "Quels sont les avantages du Deep Learning pour mon entreprise ?",
-            answer: (
-              <>
-                Le Deep Learning permet d'automatiser des tâches complexes, d'améliorer la précision des modèles prédictifs et d'analyser des données non structurées comme des images et des vidéos. Découvrez comment il peut aider votre entreprise sur notre{' '}
-                <a href="https://www.webcresson.com/services/deep-learning" target="_blank" rel="noopener noreferrer">
-                  page des services Deep Learning
-                </a>.
-              </>
-            ),
-          },
-          {
-            question: "Quels sont les exemples concrets d'utilisation du Deep Learning ?",
-            answer: (
-              <>
-                Le Deep Learning est utilisé dans l'analyse d'imagerie médicale, la reconnaissance faciale et l'automatisation industrielle via l'analyse vidéo. Pour plus d'exemples, visitez notre{' '}
-                <a href="https://www.webcresson.com/services/deep-learning" target="_blank" rel="noopener noreferrer">
-                  page sur les exemples de Deep Learning
-                </a>.
-              </>
-            ),
+            question: "Quels sont les cas d'usage du Deep Learning ?",
+            answer: `Le Deep Learning est utilisé pour la reconnaissance faciale, l'analyse d'images médicales et l'automatisation de tâches complexes. Découvrez plus sur notre page des services : https://www.webcresson.com/services/deep-learning`,
           },
         ]}
       />
+
 
       <main className={styles.mainContent}>
         <section className={styles.hero}>
@@ -108,7 +84,7 @@ export default function DeepLearningPage() {
         <section className={styles.section}>
           <h2>Qu'est-ce que le Deep Learning ?</h2>
           <p>
-            Le Deep Learning utilise des <strong>réseaux de neurones profonds</strong> pour analyser des données volumineuses. 
+            Le Deep Learning utilise des <strong>réseaux de neurones profonds</strong> pour analyser des données volumineuses.
             Les <strong>Réseaux de Neurones Convolutifs (CNN)</strong> sont particulièrement efficaces pour le traitement d'images et de vidéos.
           </p>
         </section>

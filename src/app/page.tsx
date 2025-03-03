@@ -67,42 +67,19 @@ export default function Home() {
         faq={[
           {
             question: 'Quels services propose WebCressonTech ?',
-            answer: (
-              <>
-                Solutions sur mesure en intelligence artificielle, machine learning, deep learning et automatisation des processus.
-                Pour plus de détails, consultez notre{' '}
-                <a href="https://www.webcresson.com/services" target="_blank" rel="noopener noreferrer">
-                  page sur nos services IA
-                </a>.
-              </>
-            ),
+            answer: `Solutions sur mesure en intelligence artificielle, machine learning, deep learning et automatisation des processus. Pour plus de détails, consultez notre page sur nos services IA : https://www.webcresson.com/services`,
           },
           {
             question: 'Pourquoi choisir WebCressonTech pour vos projets IA ?',
-            answer: (
-              <>
-                Nous offrons une expertise certifiée, un accompagnement complet et des solutions adaptées à vos besoins.
-                Découvrez notre approche sur notre{' '}
-                <a href="https://www.webcresson.com/services" target="_blank" rel="noopener noreferrer">
-                  page d'expertise
-                </a>.
-              </>
-            ),
+            answer: `Nous offrons une expertise certifiée, un accompagnement complet et des solutions adaptées à vos besoins. Découvrez notre approche sur notre page d'expertise : https://www.webcresson.com/services`,
           },
           {
             question: 'Comment contacter WebCressonTech ?',
-            answer: (
-              <>
-                Contactez-nous via notre{' '}
-                <a href="https://www.webcresson.com/contact" target="_blank" rel="noopener noreferrer">
-                  page de contact
-                </a>{' '}
-                ou par téléphone pour discuter de vos projets IA.
-              </>
-            ),
+            answer: `Contactez-nous via notre page de contact : https://www.webcresson.com/contact ou par téléphone pour discuter de vos projets IA.`,
           },
         ]}
       />
+
 
       <main className={styles.page}>
         <div className={styles.mainContent}>

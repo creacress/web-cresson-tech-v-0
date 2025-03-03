@@ -63,61 +63,27 @@ export default function About() {
         faq={[
           {
             question: "Quelle est la mission de WebCressonTech ?",
-            answer: (
-              <>
-                Notre mission est d'accompagner les entreprises dans leur transformation numérique grâce à des solutions innovantes en intelligence artificielle et en technologies avancées. Nous créons des outils sur mesure qui permettent à nos clients de rester compétitifs et d'innover dans leur domaine. Pour en savoir plus, consultez notre{' '}
-                <a href="https://www.webcresson.com/services" target="_blank" rel="noopener noreferrer">
-                  page sur nos services IA
-                </a>.
-              </>
-            ),
+            answer: `Notre mission est d'accompagner les entreprises dans leur transformation numérique grâce à des solutions innovantes en intelligence artificielle et en technologies avancées. Nous créons des outils sur mesure qui permettent à nos clients de rester compétitifs et d'innover dans leur domaine. Pour en savoir plus, consultez notre page sur nos services IA : https://www.webcresson.com/services`,
           },
           {
             question: "Quelles sont les valeurs fondamentales de WebCressonTech ?",
-            answer: (
-              <>
-                Les valeurs qui guident notre entreprise sont l'innovation continue, la collaboration avec nos clients, l'engagement envers l'excellence, et un profond respect pour l'environnement à travers des solutions durables. Ces principes nous permettent de bâtir des relations solides et de garantir des résultats de qualité. Découvrez nos{' '}
-                <a href="https://www.webcresson.com/about#values" target="_blank" rel="noopener noreferrer">
-                  valeurs ici
-                </a>.
-              </>
-            ),
+            answer: `Les valeurs qui guident notre entreprise sont l'innovation continue, la collaboration avec nos clients, l'engagement envers l'excellence, et un profond respect pour l'environnement à travers des solutions durables. Ces principes nous permettent de bâtir des relations solides et de garantir des résultats de qualité. Découvrez nos valeurs ici : https://www.webcresson.com/about#values`,
           },
           {
             question: "Comment puis-je contacter WebCressonTech ?",
-            answer: (
-              <>
-                Pour toute question ou demande de projet, vous pouvez nous contacter directement via notre{' '}
-                <a href="https://www.webcresson.com/contact" target="_blank" rel="noopener noreferrer">
-                  page de contact
-                </a> en ligne ou par téléphone. Nous serons ravis de discuter de vos besoins et de vous proposer des solutions adaptées à vos enjeux technologiques.
-              </>
-            ),
+            answer: `Pour toute question ou demande de projet, vous pouvez nous contacter directement via notre page de contact en ligne ou par téléphone. Nous serons ravis de discuter de vos besoins et de vous proposer des solutions adaptées à vos enjeux technologiques. Contactez-nous ici : https://www.webcresson.com/contact`,
           },
           {
             question: "Quels types de projets WebCressonTech accompagne-t-il ?",
-            answer: (
-              <>
-                Nous accompagnons des entreprises de toutes tailles dans la mise en place de solutions en intelligence artificielle, machine learning, deep learning, et automatisation des processus. Que vous soyez dans le secteur industriel, le commerce, ou la santé, nous vous aidons à intégrer des solutions sur mesure pour optimiser vos performances. Découvrez nos{' '}
-                <a href="https://www.webcresson.com/services" target="_blank" rel="noopener noreferrer">
-                  services en IA
-                </a>.
-              </>
-            ),
+            answer: `Nous accompagnons des entreprises de toutes tailles dans la mise en place de solutions en intelligence artificielle, machine learning, deep learning, et automatisation des processus. Que vous soyez dans le secteur industriel, le commerce, ou la santé, nous vous aidons à intégrer des solutions sur mesure pour optimiser vos performances. Découvrez nos services en IA : https://www.webcresson.com/services`,
           },
           {
             question: "Qu'est-ce qui distingue WebCressonTech des autres entreprises ?",
-            answer: (
-              <>
-                Ce qui nous distingue est notre approche sur mesure et notre capacité à allier innovation, expertise technique et respect des besoins spécifiques de chaque client. Nous mettons un point d'honneur à offrir des solutions personnalisées et à travailler en étroite collaboration avec nos clients pour garantir leur succès. Découvrez pourquoi nous{' '}
-                <a href="https://www.webcresson.com/about#values" target="_blank" rel="noopener noreferrer">
-                  choisir
-                </a>.
-              </>
-            ),
+            answer: `Ce qui nous distingue est notre approche sur mesure et notre capacité à allier innovation, expertise technique et respect des besoins spécifiques de chaque client. Nous mettons un point d'honneur à offrir des solutions personnalisées et à travailler en étroite collaboration avec nos clients pour garantir leur succès. Découvrez pourquoi nous choisir : https://www.webcresson.com/about#values`,
           },
         ]}
       />
+
 
       <main className={styles.mainContent}>
         <section className={styles.hero}>
@@ -132,7 +98,7 @@ export default function About() {
         <section className={styles.values} aria-labelledby="values-title">
           <h2 id="values-title" className={styles.sectionTitle}>Nos Valeurs</h2>
           <div className={styles.valuesGrid}>
-            {[ 
+            {[
               {
                 icon: <FaLightbulb />,
                 title: "Innovation",
