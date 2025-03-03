@@ -43,17 +43,36 @@ ${[...staticPaths, ...dynamicPaths]
   });
 }
 
-// Exemple de fonction pour récupérer dynamiquement les pages (par exemple, à partir du dossier app/services)
 async function getDynamicPaths() {
-  // Le dossier 'app' est maintenant utilisé dans Next.js 13 et plus, donc le chemin est différent
-  const dynamicPagesDir = path.join(process.cwd(), "app", "services"); // Accède au dossier app/services
-  const files = await fs.readdir(dynamicPagesDir);
+  const dynamicPagesDir = path.join(process.cwd(), "src", "app", "services");
+  
+  try {
+    const serviceDirs = await fs.readdir(dynamicPagesDir); // Lire les dossiers dans 'services'
 
-  // Exemple de traitement pour obtenir les pages dynamiques
-  return files.map(file => ({
-    path: `/services/${file.replace(".tsx", "")}`, // Enlève l'extension .tsx et génère le chemin
-    changefreq: "weekly",
-    priority: "0.8",
-    lastmod: "2025-03-03", // Vous pouvez mettre à jour cette valeur dynamiquement selon vos besoins
-  }));
+    // Filtrer seulement les sous-dossiers (services) et générer les chemins
+    const paths = await Promise.all(
+      serviceDirs.map(async (dir) => {
+        const servicePath = path.join(dynamicPagesDir, dir);
+        
+        // Vérifier si c'est un dossier et s'il contient un fichier 'page.tsx'
+        const files = await fs.readdir(servicePath);
+        if (files.includes('page.tsx')) {
+          return {
+            path: `/services/${dir}`,
+            changefreq: "weekly",
+            priority: "0.8",
+            lastmod: "2025-03-03",
+          };
+        }
+        return null;
+      })
+    );
+
+    // Filtrer les valeurs nulles (les services sans 'page.tsx')
+    return paths.filter((path) => path !== null);
+  } catch (error) {
+    console.error("Erreur lors de la lecture du dossier services:", error);
+    return [];
+  }
 }
+
