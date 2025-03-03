@@ -1,7 +1,6 @@
 import React from 'react';
 import { Service, WithContext, FAQPage } from 'schema-dts';
 import { JsonLd } from 'react-schemaorg';
-import ReactDOMServer from 'react-dom/server';  // Importer ReactDOMServer pour convertir JSX en HTML
 
 interface ServiceSchemaProps {
   serviceName: string;
@@ -42,7 +41,7 @@ const ServiceSchema: React.FC<ServiceSchemaProps> = ({
       name: question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: answer ? ReactDOMServer.renderToStaticMarkup(answer) : '',  // Conversion de JSX en texte HTML
+        text: answer ? answer.toString() : '',  // Simple conversion en texte brut
       },
     })),
   };
