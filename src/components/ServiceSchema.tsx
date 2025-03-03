@@ -1,3 +1,4 @@
+// src/components/ServiceSchema.tsx
 import React from 'react';
 import { Service, WithContext, FAQPage } from 'schema-dts';
 import { JsonLd } from 'react-schemaorg';
@@ -8,7 +9,7 @@ interface ServiceSchemaProps {
   serviceTypes: string[];
   faq: {
     question: string;
-    answer: string;
+    answer: React.ReactNode | null | undefined;  // Permet à `answer` d'être null ou undefined
   }[];
 }
 
@@ -41,7 +42,7 @@ const ServiceSchema: React.FC<ServiceSchemaProps> = ({
       name: question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: answer,
+        text: answer ? answer.toString() : '',  // Vérification et conversion en string si `answer` est défini
       },
     })),
   };

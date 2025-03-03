@@ -1,11 +1,10 @@
 // src/app/contact/page.tsx
 import React from "react";
 import ServiceSchema from "@/components/ServiceSchema";
-import ContactForm from "@/components/ContactForm/ContactForm"; 
+import ContactForm from "@/components/ContactForm/ContactForm";
 import styles from "@/styles/contact.module.css";
 import { Metadata } from "next";
 import Head from "next/head"; // Importation pour manipuler le head
-
 
 export const revalidate = 86400; // Active le SSG avec revalidation toutes les 24 heures
 
@@ -47,7 +46,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-    <Head>
+      <Head>
         {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/contact" />
       </Head>
@@ -59,13 +58,31 @@ export default function ContactPage() {
         faq={[
           {
             question: "Comment puis-je contacter Cresson Tech ?",
-            answer:
-              "Vous pouvez nous contacter via ce formulaire ou par téléphone au +33-7-66-02-96-32.",
+            answer: (
+              <>
+                Vous pouvez nous contacter via ce formulaire ou par téléphone au{' '}
+                <a href="tel:+33766029632" target="_blank" rel="noopener noreferrer">
+                  +33-7-66-02-96-32
+                </a>.
+              </>
+            ),
           },
           {
             question: "Quels services propose Cresson Tech ?",
-            answer:
-              "Des solutions en IA, en automatisation des processus (RPA) et en services technologiques sur mesure.",
+            answer: (
+              <>
+                Nous proposons des solutions en{' '}
+                <a href="https://www.webcresson.com/services" target="_blank" rel="noopener noreferrer">
+                  IA
+                </a>, en{' '}
+                <a href="https://www.webcresson.com/services/rpa-automatisation" target="_blank" rel="noopener noreferrer">
+                  automatisation des processus (RPA)
+                </a> et des{' '}
+                <a href="https://www.webcresson.com/services" target="_blank" rel="noopener noreferrer">
+                  services technologiques sur mesure
+                </a>.
+              </>
+            ),
           },
         ]}
       />

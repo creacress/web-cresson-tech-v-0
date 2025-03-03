@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Metadata } from "next";
 import Head from "next/head"; // Importation pour manipuler le head
 
-
 import styles from "@/styles/services.module.css";
 
 export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
@@ -48,7 +47,7 @@ export const metadata: Metadata = {
 export default function ArcheologieIA() {
   return (
     <>
-    <Head>
+      <Head>
         {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/services/ia-archeologie" />
       </Head>
@@ -60,18 +59,36 @@ export default function ArcheologieIA() {
         faq={[
           {
             question: "Quels sont les avantages potentiels de l'IA en archéologie ?",
-            answer:
-              "L'IA pourrait faciliter la détection de sites archéologiques, automatiser l'analyse des données historiques et améliorer la préservation des artefacts grâce à des modèles prédictifs.",
+            answer: (
+              <>
+                L'IA pourrait faciliter la détection de sites archéologiques, automatiser l'analyse des données historiques et améliorer la préservation des artefacts grâce à des modèles prédictifs. Pour en savoir plus, consultez notre{' '}
+                <a href="https://www.webcresson.com/services/ia-archeologie" target="_blank" rel="noopener noreferrer">
+                  page sur l'IA en archéologie
+                </a>.
+              </>
+            ),
           },
           {
             question: "Existe-t-il déjà des solutions IA concrètes pour l'archéologie ?",
-            answer:
-              "Actuellement, il n'existe pas de solution complète et fonctionnelle dédiée spécifiquement à l'archéologie. Web Cresson Tech explore ce domaine pour développer des outils sur mesure.",
+            answer: (
+              <>
+                Actuellement, il n'existe pas de solution complète et fonctionnelle dédiée spécifiquement à l'archéologie. Web Cresson Tech explore ce domaine pour développer des outils sur mesure. Découvrez nos{' '}
+                <a href="https://www.webcresson.com/services/ia-archeologie" target="_blank" rel="noopener noreferrer">
+                  solutions sur mesure
+                </a>.
+              </>
+            ),
           },
           {
             question: "Comment l'IA pourrait-elle aider dans la reconstitution historique ?",
-            answer:
-              "Grâce au Deep Learning et à l'analyse d'images, l'IA peut aider à reconstruire virtuellement des artefacts ou des sites historiques en 3D avec une précision remarquable.",
+            answer: (
+              <>
+                Grâce au Deep Learning et à l'analyse d'images, l'IA peut aider à reconstruire virtuellement des artefacts ou des sites historiques en 3D avec une précision remarquable. Pour en savoir plus, consultez notre{' '}
+                <a href="https://www.webcresson.com/services/ia-archeologie" target="_blank" rel="noopener noreferrer">
+                  page des solutions de reconstitution 3D
+                </a>.
+              </>
+            ),
           },
         ]}
       />

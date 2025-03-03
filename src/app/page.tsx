@@ -44,15 +44,14 @@ export const metadata = {
     title: 'WebCressonTech - IA et Automatisation',
     description:
       'Solutions en intelligence artificielle, machine learning, deep learning et RPA.',
-    images: ['https://webcresson.com/Logo_webcressontech.webp'], 
+    images: ['https://webcresson.com/Logo_webcressontech.webp'],
   },
 };
-
 
 export default function Home() {
   return (
     <>
-    <Head>
+      <Head>
         {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/" />
       </Head>
@@ -68,18 +67,39 @@ export default function Home() {
         faq={[
           {
             question: 'Quels services propose WebCressonTech ?',
-            answer:
-              'Solutions sur mesure en intelligence artificielle, machine learning, deep learning et automatisation des processus.',
+            answer: (
+              <>
+                Solutions sur mesure en intelligence artificielle, machine learning, deep learning et automatisation des processus.
+                Pour plus de détails, consultez notre{' '}
+                <a href="https://www.webcresson.com/services" target="_blank" rel="noopener noreferrer">
+                  page sur nos services IA
+                </a>.
+              </>
+            ),
           },
           {
             question: 'Pourquoi choisir WebCressonTech pour vos projets IA ?',
-            answer:
-              'Nous offrons une expertise certifiée, un accompagnement complet et des solutions adaptées à vos besoins.',
+            answer: (
+              <>
+                Nous offrons une expertise certifiée, un accompagnement complet et des solutions adaptées à vos besoins.
+                Découvrez notre approche sur notre{' '}
+                <a href="https://www.webcresson.com/services" target="_blank" rel="noopener noreferrer">
+                  page d'expertise
+                </a>.
+              </>
+            ),
           },
           {
             question: 'Comment contacter WebCressonTech ?',
-            answer:
-              'Contactez-nous via notre page dédiée ou par téléphone pour discuter de vos projets IA.',
+            answer: (
+              <>
+                Contactez-nous via notre{' '}
+                <a href="https://www.webcresson.com/contact" target="_blank" rel="noopener noreferrer">
+                  page de contact
+                </a>{' '}
+                ou par téléphone pour discuter de vos projets IA.
+              </>
+            ),
           },
         ]}
       />
@@ -140,7 +160,6 @@ export default function Home() {
               ))}
             </ul>
           </section>
-
 
           <section className={styles.whyChooseUs}>
             <h2 className={styles.sectionTitle}>Pourquoi nous choisir ?</h2>

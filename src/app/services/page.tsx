@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 export default function Service() {
   return (
     <>
-    <Head>
+      <Head>
         {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/services/" />
       </Head>
@@ -65,18 +65,36 @@ export default function Service() {
         faq={[
           {
             question: "Quels services propose Web Cresson Tech ?",
-            answer:
-              "Nous proposons des solutions sur mesure en intelligence artificielle, y compris l'automatisation (RPA), l'IA générative, le deep learning et le machine learning.",
+            answer: (
+              <>
+                Nous proposons des solutions sur mesure en intelligence artificielle, y compris l'automatisation (RPA), l'IA générative, le deep learning et le machine learning. Pour plus de détails, consultez notre{' '}
+                <a href="https://www.webcresson.com/services" target="_blank" rel="noopener noreferrer">
+                  page des services IA
+                </a>.
+              </>
+            ),
           },
           {
             question: "Comment l'IA peut-elle aider mon entreprise ?",
-            answer:
-              "L'IA permet d'automatiser des tâches répétitives, d'améliorer la prise de décision grâce aux données et d'innover avec des solutions personnalisées.",
+            answer: (
+              <>
+                L'IA permet d'automatiser des tâches répétitives, d'améliorer la prise de décision grâce aux données et d'innover avec des solutions personnalisées. Découvrez comment nous pouvons vous aider sur notre{' '}
+                <a href="https://www.webcresson.com/services" target="_blank" rel="noopener noreferrer">
+                  page des services
+                </a>.
+              </>
+            ),
           },
           {
             question: "Proposez-vous des audits IA gratuits ?",
-            answer:
-              "Oui, nous offrons un audit gratuit pour évaluer vos besoins et déterminer comment l'IA peut optimiser vos processus métiers.",
+            answer: (
+              <>
+                Oui, nous offrons un audit gratuit pour évaluer vos besoins et déterminer comment l'IA peut optimiser vos processus métiers. Pour plus d'informations, visitez notre{' '}
+                <a href="https://www.webcresson.com/services/contact" target="_blank" rel="noopener noreferrer">
+                  page d'audit IA
+                </a>.
+              </>
+            ),
           },
         ]}
       />

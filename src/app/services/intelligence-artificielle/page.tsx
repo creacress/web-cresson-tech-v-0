@@ -5,7 +5,6 @@ import ServiceSchema from "@/components/ServiceSchema";
 import { Metadata } from "next";
 import Head from "next/head"; // Importation pour manipuler le head
 
-
 import styles from "@/styles/services.module.css";
 
 export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
@@ -52,7 +51,7 @@ export const metadata: Metadata = {
 export default function IntelligenceArtificiellePage() {
   return (
     <>
-    <Head>
+      <Head>
         {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/services/intelligence-artificielle" />
       </Head>
@@ -69,20 +68,41 @@ export default function IntelligenceArtificiellePage() {
           {
             question:
               "Quelle est la différence entre le Deep Learning et le Machine Learning ?",
-            answer:
-              "Le Deep Learning est un sous-ensemble du Machine Learning utilisant des réseaux de neurones profonds pour analyser des données complexes, tandis que le Machine Learning applique des algorithmes plus classiques pour automatiser des tâches basées sur des données structurées.",
+            answer: (
+              <>
+                Le Deep Learning est un sous-ensemble du Machine Learning utilisant des réseaux de neurones profonds pour analyser des données complexes, tandis que le Machine Learning applique des algorithmes plus classiques pour automatiser des tâches basées sur des données structurées. Pour plus de détails, découvrez notre{' '}
+                <a href="https://www.webcresson.com/services/deep-learning" target="_blank" rel="noopener noreferrer">
+                  page sur le Deep Learning
+                </a> et notre{' '}
+                <a href="https://www.webcresson.com/services/machine-learning" target="_blank" rel="noopener noreferrer">
+                  page sur le Machine Learning
+                </a>.
+              </>
+            ),
           },
           {
             question:
               "Quels sont les avantages de l'intelligence artificielle pour mon entreprise ?",
-            answer:
-              "L'IA optimise les processus métiers, améliore la prise de décision, personnalise l'expérience utilisateur et automatise les tâches répétitives, offrant un gain de temps et une meilleure efficacité.",
+            answer: (
+              <>
+                L'IA optimise les processus métiers, améliore la prise de décision, personnalise l'expérience utilisateur et automatise les tâches répétitives, offrant un gain de temps et une meilleure efficacité. Pour en savoir plus sur l'impact de l'IA dans votre entreprise, consultez notre{' '}
+                <a href="https://www.webcresson.com/services/intelligence-artificielle" target="_blank" rel="noopener noreferrer">
+                  page des services IA
+                </a>.
+              </>
+            ),
           },
           {
             question:
               "Comment Web Cresson Tech développe-t-il des solutions IA sur mesure ?",
-            answer:
-              "Nous analysons vos besoins spécifiques pour créer des modèles de Deep Learning, Machine Learning ou d'IA générative adaptés à vos objectifs métiers. Nos solutions sont personnalisées pour offrir un retour sur investissement rapide.",
+            answer: (
+              <>
+                Nous analysons vos besoins spécifiques pour créer des modèles de Deep Learning, Machine Learning ou d'IA générative adaptés à vos objectifs métiers. Nos solutions sont personnalisées pour offrir un retour sur investissement rapide. Pour plus de détails, découvrez nos{' '}
+                <a href="https://www.webcresson.com/services/intelligence-artificielle" target="_blank" rel="noopener noreferrer">
+                  services sur mesure
+                </a>.
+              </>
+            ),
           },
         ]}
       />

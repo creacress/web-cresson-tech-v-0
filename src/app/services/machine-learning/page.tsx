@@ -5,7 +5,6 @@ import ServiceSchema from "@/components/ServiceSchema";
 import { Metadata } from "next";
 import Head from "next/head"; // Importation pour manipuler le head
 
-
 import styles from "@/styles/services.module.css";
 
 export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
@@ -50,7 +49,7 @@ export const metadata: Metadata = {
 export default function MachineLearningPage() {
   return (
     <>
-    <Head>
+      <Head>
         {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/services/machine-learning" />
       </Head>
@@ -65,20 +64,38 @@ export default function MachineLearningPage() {
         faq={[
           {
             question: "Qu'est-ce que le Machine Learning ?",
-            answer:
-              "Le Machine Learning permet aux systèmes d'apprendre automatiquement à partir de données historiques pour améliorer leurs performances sans programmation explicite.",
+            answer: (
+              <>
+                Le Machine Learning permet aux systèmes d'apprendre automatiquement à partir de données historiques pour améliorer leurs performances sans programmation explicite. Pour plus de détails, consultez notre{' '}
+                <a href="https://www.webcresson.com/services/machine-learning" target="_blank" rel="noopener noreferrer">
+                  page des services Machine Learning
+                </a>.
+              </>
+            ),
           },
           {
             question:
               "Quels sont les avantages du Machine Learning pour mon entreprise ?",
-            answer:
-              "Le Machine Learning aide à automatiser les tâches répétitives, à optimiser les processus métiers et à personnaliser les expériences utilisateurs.",
+            answer: (
+              <>
+                Le Machine Learning aide à automatiser les tâches répétitives, à optimiser les processus métiers et à personnaliser les expériences utilisateurs. Découvrez comment le Machine Learning peut améliorer votre entreprise sur notre{' '}
+                <a href="https://www.webcresson.com/services/machine-learning" target="_blank" rel="noopener noreferrer">
+                  page des services Machine Learning
+                </a>.
+              </>
+            ),
           },
           {
             question:
               "Quels sont les exemples concrets d'utilisation du Machine Learning ?",
-            answer:
-              "Il est utilisé pour la prédiction des ventes, la détection de fraude en temps réel et la personnalisation des recommandations sur les plateformes digitales.",
+            answer: (
+              <>
+                Il est utilisé pour la prédiction des ventes, la détection de fraude en temps réel et la personnalisation des recommandations sur les plateformes digitales. Pour plus d'exemples, visitez notre{' '}
+                <a href="https://www.webcresson.com/services/machine-learning" target="_blank" rel="noopener noreferrer">
+                  page sur les exemples d'application du Machine Learning
+                </a>.
+              </>
+            ),
           },
         ]}
       />

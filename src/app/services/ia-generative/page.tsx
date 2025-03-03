@@ -5,8 +5,6 @@ import Link from "next/link";
 import { Metadata } from "next";
 import Head from "next/head"; // Importation pour manipuler le head
 
-
-
 import styles from "@/styles/services.module.css";
 
 export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
@@ -49,7 +47,7 @@ export const metadata: Metadata = {
 export default function IAGenerativePage() {
   return (
     <>
-    <Head>
+      <Head>
         {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/services/ia-generative" />
       </Head>
@@ -66,19 +64,36 @@ export default function IAGenerativePage() {
         faq={[
           {
             question: "Qu'est-ce que l'IA Générative ?",
-            answer:
-              "L'IA Générative utilise des algorithmes avancés pour créer de nouveaux contenus originaux, tels que des images, du texte ou même des musiques, à partir de données existantes.",
+            answer: (
+              <>
+                L'IA Générative utilise des algorithmes avancés pour créer de nouveaux contenus originaux, tels que des images, du texte ou même des musiques, à partir de données existantes. Pour en savoir plus, consultez notre{' '}
+                <a href="https://www.webcresson.com/services/ia-generative" target="_blank" rel="noopener noreferrer">
+                  page sur l'IA Générative
+                </a>.
+              </>
+            ),
           },
           {
             question: "Quand utiliser l'IA Générative dans mon entreprise ?",
-            answer:
-              "L'IA Générative est idéale pour la création automatique de contenus marketing, la génération d'images ou la production rapide de prototypes visuels.",
+            answer: (
+              <>
+                L'IA Générative est idéale pour la création automatique de contenus marketing, la génération d'images ou la production rapide de prototypes visuels. Découvrez comment l'IA Générative peut vous aider sur notre{' '}
+                <a href="https://www.webcresson.com/services/ia-generative" target="_blank" rel="noopener noreferrer">
+                  page des services IA Générative
+                </a>.
+              </>
+            ),
           },
           {
-            question:
-              "Quelle est la différence entre IA Générative, Deep Learning et Machine Learning ?",
-            answer:
-              "L'IA Générative produit du contenu original, le Deep Learning excelle dans l'analyse complexe des données visuelles et audio, tandis que le Machine Learning se concentre sur les prédictions et l'automatisation des processus basés sur des données structurées.",
+            question: "Quelle est la différence entre IA Générative, Deep Learning et Machine Learning ?",
+            answer: (
+              <>
+                L'IA Générative produit du contenu original, le Deep Learning excelle dans l'analyse complexe des données visuelles et audio, tandis que le Machine Learning se concentre sur les prédictions et l'automatisation des processus basés sur des données structurées. Pour plus de détails, consultez notre{' '}
+                <a href="https://www.webcresson.com/services/ia-generative" target="_blank" rel="noopener noreferrer">
+                  page des services IA
+                </a>.
+              </>
+            ),
           },
         ]}
       />
