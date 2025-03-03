@@ -1,21 +1,14 @@
+// src/app/services/page.tsx
 import React from 'react';
 import Head from "next/head";
-import Link from "next/link";
 import ServiceSchema from '@/components/ServiceSchema';
+import ServiceLink from '@/components/ServiceLink/ServiceLink';
 
 export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
-
 
 import styles from "@/styles/ServicePage.module.css";
 
 export default function Service() {
-  // Fonction de suivi des clics sur les liens des services
-  const handleLinkClick = (serviceTitle: string) => {
-    window?.gtag?.("event", "service_link_click", {
-      event_category: "Navigation",
-      event_label: serviceTitle,
-    });
-  };
 
   return (
     <>
@@ -68,22 +61,13 @@ export default function Service() {
 
         <section className={styles.servicesList}>
           {servicesData.map((service) => (
-            <Link
-              href={service.link}
+            <ServiceLink
               key={service.title}
-              className={`${styles.serviceCard} ${styles.magicpattern}`}
-              onClick={() => handleLinkClick(service.title)}
-            >
-              <div className={styles.serviceHeader}>
-                <i
-                  className={`fas ${service.icon} ${styles.serviceIcon}`}
-                  aria-hidden="true"
-                ></i>
-                <h2 className={styles.serviceTitle}>{service.title}</h2>
-              </div>
-              <p className={styles.serviceText}>{service.text}</p>
-              <span className={styles.cardButton}>En savoir plus</span>
-            </Link>
+              href={service.link}
+              title={service.title}
+              icon={service.icon}
+              text={service.text}
+            />
           ))}
         </section>
       </main>
