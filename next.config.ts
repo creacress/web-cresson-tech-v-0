@@ -18,8 +18,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   async headers() {
-    // Générer un nonce aléatoire pour chaque requête
-    const nonce = generateNonce();
+    const nonce = generateNonce(); // Génère un nonce unique pour chaque requête
 
     return [
       {
@@ -33,8 +32,8 @@ const nextConfig = {
             value: `
               default-src 'self';
               img-src 'self' data: https://webcresson.com;
-              script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com;  // Utilisation du nonce
-              style-src 'self' 'nonce-${nonce}';  // Utilisation du nonce pour les styles inline
+              script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com;
+              style-src 'self' 'nonce-${nonce}';
               connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
               font-src 'self';
             `.replace(/\n/g, ' ').trim(),
@@ -47,7 +46,7 @@ const nextConfig = {
 
 // Fonction pour générer un nonce unique
 function generateNonce() {
-  return Math.random().toString(36).substr(2);  // Génère un nonce unique
+  return Math.random().toString(36).slice(2); // Génère un nonce unique
 }
 
 module.exports = nextConfig;
