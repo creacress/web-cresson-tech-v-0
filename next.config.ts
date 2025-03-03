@@ -33,10 +33,10 @@ const nextConfig = {
               default-src 'self';
               img-src 'self' data: https://webcresson.com;
               script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com;
-              style-src 'self' 'nonce-${nonce}' 'unsafe-inline'; // Ajout de 'unsafe-inline' pour les styles inline si nécessaire
+              style-src 'self' 'nonce-${nonce}';
               connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
               font-src 'self';
-            `.replace(/\n/g, ' ').trim(),
+            `.replace(/\n/g, ' ').trim(), // Assurer que la chaîne ne contient pas de sauts de ligne non désirés
           },
         ],
       },
