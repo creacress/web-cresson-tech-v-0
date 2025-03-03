@@ -35,12 +35,12 @@ export default function Header() {
               width={150}
               height={50}
               priority
-              loading="lazy"
               className={styles.logo}
               sizes="(max-width: 600px) 150px, (max-width: 1024px) 300px, 384px"
             />
           </Link>
         </div>
+
 
         <button
           className={styles.hamburger}
