@@ -19,15 +19,14 @@ export async function GET() {
     { path: "/LegalMentions", changefreq: "yearly", priority: "0.6", lastmod: "2025-03-03" },
   ];
 
-  // Vous pouvez ajouter des pages dynamiques (par exemple, pages de services)
-  const dynamicPaths = await getDynamicPaths(); // Fonction à implémenter pour récupérer les pages dynamiques
+  // Ajouter des pages dynamiques (par exemple, pages de services)
+  const dynamicPaths = await getDynamicPaths(); // Récupérer dynamiquement les pages à partir du dossier app/services
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${[...staticPaths, ...dynamicPaths]
     .map(
-      ({ path, changefreq, priority, lastmod }) => `
-  <url>
+      ({ path, changefreq, priority, lastmod }) => `  <url>
     <loc>${baseUrl}${path}</loc>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
@@ -44,17 +43,17 @@ ${[...staticPaths, ...dynamicPaths]
   });
 }
 
-// Exemple de fonction pour récupérer les pages dynamiques (par exemple, à partir de la base de données ou de fichiers)
+// Exemple de fonction pour récupérer dynamiquement les pages (par exemple, à partir du dossier app/services)
 async function getDynamicPaths() {
-  // Exemple simple : lecture des fichiers dans le dossier 'pages' ou récupération depuis une base de données
-  const dynamicPagesDir = path.join(process.cwd(), "pages", "services");
+  // Le dossier 'app' est maintenant utilisé dans Next.js 13 et plus, donc le chemin est différent
+  const dynamicPagesDir = path.join(process.cwd(), "app", "services"); // Accède au dossier app/services
   const files = await fs.readdir(dynamicPagesDir);
-  
+
   // Exemple de traitement pour obtenir les pages dynamiques
   return files.map(file => ({
-    path: `/services/${file.replace(".tsx", "")}`,
+    path: `/services/${file.replace(".tsx", "")}`, // Enlève l'extension .tsx et génère le chemin
     changefreq: "weekly",
     priority: "0.8",
-    lastmod: "2025-03-03", // Vous pourriez mettre à jour cette valeur dynamiquement
+    lastmod: "2025-03-03", // Vous pouvez mettre à jour cette valeur dynamiquement selon vos besoins
   }));
 }
