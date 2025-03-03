@@ -36,7 +36,8 @@ const nextConfig = {
               style-src 'self' 'nonce-${nonce}';
               connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
               font-src 'self';
-            `.replace(/\n/g, ' ').trim(), // Assurer que la chaîne ne contient pas de sauts de ligne non désirés
+              script-src-elem 'self' https://www.googletagmanager.com;
+            `.replace(/\n/g, ' ').trim(),
           },
         ],
       },
