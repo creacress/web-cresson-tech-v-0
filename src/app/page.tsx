@@ -121,7 +121,7 @@ export default function Home() {
                   <Link href={service.link}>
                     <Image
                       src={service.image}
-                      alt={service.title}
+                      alt={`Illustration de ${service.title} avec des éléments représentatifs de la technologie`}
                       width={300}
                       height={300}
                       className={styles.serviceImage}
@@ -134,6 +134,7 @@ export default function Home() {
               ))}
             </ul>
           </section>
+
 
           <section className={styles.whyChooseUs}>
             <h2 className={styles.sectionTitle}>Pourquoi nous choisir ?</h2>

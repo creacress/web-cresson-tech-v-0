@@ -58,9 +58,18 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        {/* Précharger l'image du LCP */}
+        <link
+          rel="preload"
+          href="/robot_humain_main.webp"
+          as="image"
+          type="image/webp"
+          sizes="(max-width: 600px) 150px, (max-width: 1024px) 300px, 384px"
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-H206EG4TH7"
           strategy="afterInteractive"
+          async
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`

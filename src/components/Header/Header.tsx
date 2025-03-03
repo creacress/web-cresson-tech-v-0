@@ -31,11 +31,13 @@ export default function Header() {
           <Link href="/" aria-label="Retour à l'accueil">
             <Image
               src="/Logo_webcressontech.webp"
-              alt="Logo WebCressonTech"
+              alt="Logo WebCressonTech représentant l'intelligence artificielle et la technologie"
               width={150}
               height={50}
               priority
+              loading="lazy"
               className={styles.logo}
+              sizes="(max-width: 600px) 150px, (max-width: 1024px) 300px, 384px"
             />
           </Link>
         </div>
