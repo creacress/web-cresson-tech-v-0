@@ -1,4 +1,3 @@
-// src/app/layout.tsx (ne PAS utiliser "use client" ici)
 
 import type { Metadata } from "next";
 import ClientLayout from "./ClientLayout";

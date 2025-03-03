@@ -1,9 +1,9 @@
-"use client";
-
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import ServiceSchema from "@/components/ServiceSchema";
+
+export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
 
 import styles from "@/styles/services.module.css";
 

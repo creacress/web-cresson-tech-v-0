@@ -1,9 +1,10 @@
-"use client";
-
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import styles from "@/styles/contact.module.css";
 import Head from "next/head";
 import ServiceSchema from '@/components/ServiceSchema';
+
+export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
+
 
 type FormStatus = "success" | "error" | null;
 

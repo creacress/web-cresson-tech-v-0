@@ -1,11 +1,11 @@
-"use client";
-
 import React from 'react';
 import Head from "next/head";
 import Link from "next/link";
 import ServiceSchema from '@/components/ServiceSchema';
 
 import styles from "@/styles/services.module.css";
+
+export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
 
 export default function DeepLearningPage() {
   return (
@@ -76,7 +76,6 @@ export default function DeepLearningPage() {
           <span className={styles.cardButton}>Retour aux solutions IA</span>
         </Link>
       </main>
-
     </>
   );
 }
