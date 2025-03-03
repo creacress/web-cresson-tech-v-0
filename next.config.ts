@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -12,10 +11,10 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
   },
   typescript: {
-    ignoreBuildErrors: true, // ⚠️ Désactive les erreurs TS lors du build
+    ignoreBuildErrors: true,
   },
   eslint: {
-    ignoreDuringBuilds: true, // Ignorer ESLint lors du build
+    ignoreDuringBuilds: true,
   },
   async headers() {
     return [
@@ -31,7 +30,7 @@ const nextConfig = {
               default-src 'self';
               img-src 'self' data: https://webcresson.com;
               script-src 'self' https://www.googletagmanager.com 'unsafe-inline';
-              style-src 'self' 'unsafe-inline'; 
+              style-src 'self' 'unsafe-inline';
               connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
               font-src 'self';
             `.replace(/\n/g, ' ').trim(),
