@@ -32,9 +32,9 @@ const nextConfig = {
             value: `
               default-src 'self';
               img-src 'self' data: https://webcresson.com;
-              script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com; 
+              script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com;
               script-src-elem 'self' https://www.googletagmanager.com 'unsafe-inline';
-              style-src 'self' 'nonce-${nonce}';
+              style-src 'self' 'nonce-${nonce}' 'unsafe-inline'; 
               connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
               font-src 'self';
             `.replace(/\n/g, ' ').trim(),
