@@ -60,18 +60,20 @@ export default function RootLayout({
       <head>
         {/* Précharger l'image LCP */}
         <link
+          rel="preload"
           href="/robot_humain_main.webp"
           as="image"
           type="image/webp"
           sizes="(max-width: 600px) 150px, (max-width: 1024px) 300px, 384px"
         />
-        {/* Précharger le script Google Analytics */}
+        
+        {/* Charger Google Tag Manager de manière asynchrone */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-H206EG4TH7"
-          strategy="afterInteractive"
+          strategy="beforeInteractive" // avant l'interactivité
           async
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){window.dataLayer.push(arguments);}
