@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
-import path from "path";
+import { NextResponse } from 'next/server';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export async function GET() {
   const baseUrl = "https://webcresson.com";
@@ -19,8 +19,7 @@ export async function GET() {
     { path: "/LegalMentions", changefreq: "yearly", priority: "0.6", lastmod: "2025-03-03" },
   ];
 
-  // Ajouter des pages dynamiques (par exemple, pages de services)
-  const dynamicPaths = await getDynamicPaths(); // Récupérer dynamiquement les pages à partir du dossier app/services
+  const dynamicPaths = await getDynamicPaths();
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -45,31 +44,37 @@ ${[...staticPaths, ...dynamicPaths]
 
 async function getDynamicPaths() {
   const dynamicPagesDir = path.join(process.cwd(), "src", "app", "services");
-  
-  try {
-    const serviceDirs = await fs.readdir(dynamicPagesDir); // Lire les dossiers dans 'services'
 
-    // Filtrer seulement les sous-dossiers (services) et générer les chemins
-    const paths = await Promise.all(
+  try {
+    const serviceDirs = await fs.readdir(dynamicPagesDir);
+
+    // Déclare un tableau de chemins avec des valeurs valides seulement
+    const paths: ({ path: string, changefreq: string, priority: string, lastmod: string } | null)[] = await Promise.all(
       serviceDirs.map(async (dir) => {
         const servicePath = path.join(dynamicPagesDir, dir);
-        
-        // Vérifier si c'est un dossier et s'il contient un fichier 'page.tsx'
-        const files = await fs.readdir(servicePath);
-        if (files.includes('page.tsx')) {
-          return {
-            path: `/services/${dir}`,
-            changefreq: "weekly",
-            priority: "0.8",
-            lastmod: "2025-03-03",
-          };
+
+        try {
+          const files = await fs.readdir(servicePath);
+          if (files.includes('page.tsx')) {
+            const stats = await fs.stat(path.join(servicePath, 'page.tsx'));
+            const lastmod = stats.mtime.toISOString();
+
+            return {
+              path: `/services/${dir}`,
+              changefreq: "weekly",
+              priority: "0.8",
+              lastmod: lastmod,
+            };
+          }
+        } catch (err) {
+          console.error(`Erreur lors de la lecture de ${servicePath}:`, err);
         }
-        return null;
+        return null; // Retourne null si 'page.tsx' n'est pas trouvé
       })
     );
 
-    // Filtrer les valeurs nulles (les services sans 'page.tsx')
-    return paths.filter((path) => path !== null);
+    // Filtrer les valeurs nulles et assurer que le tableau a uniquement des objets valides
+    return paths.filter((path): path is { path: string, changefreq: string, priority: string, lastmod: string } => path !== null);
   } catch (error) {
     console.error("Erreur lors de la lecture du dossier services:", error);
     return [];

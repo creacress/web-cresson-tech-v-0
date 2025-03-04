@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import ServiceSchema from "@/components/ServiceSchema";
 import { Metadata } from "next";
-import Head from "next/head"; // Importation pour manipuler le head
+
 
 import styles from "@/styles/services.module.css";
 
@@ -36,21 +36,16 @@ export const metadata: Metadata = {
     images: ["https://webcresson.com/images/rpa-automatisation.webp"],
   },
   alternates: {
-    canonical: "https://webcresson.com/services/rpa-automatisation",
+    canonical: "https://webcresson.com/services/rpa-automatisation", // Canonical URL dans metadata
   },
   robots: {
     index: true,
     follow: true,
   },
 };
-
 export default function RPAAutomatisationPage() {
   return (
     <>
-      <Head>
-        {/* Balise canonique ajoutée manuellement dans le Head */}
-        <link rel="canonical" href="https://webcresson.com/services/rpa-automatisation" />
-      </Head>
 
       <ServiceSchema
         serviceName="Services RPA Automatisation"

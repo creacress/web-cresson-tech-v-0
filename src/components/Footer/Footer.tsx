@@ -104,10 +104,10 @@ export default function Footer() {
             <Link href="/contact" onClick={() => handleLinkClick("Contact", "/contact")}>
               Contact
             </Link>
-            <Link href="/TermsOfSale" onClick={() => handleLinkClick("Conditions de ventes", "/TermsOfSale")}>
+            <Link href="/terms-of-sale" onClick={() => handleLinkClick("Conditions de ventes", "/TermsOfSale")}>
               Conditions de ventes
             </Link>
-            <Link href="/LegalMentions" onClick={() => handleLinkClick("Mentions légales", "/LegalMentions")}>
+            <Link href="/legal-mentions" onClick={() => handleLinkClick("Mentions légales", "/LegalMentions")}>
               Mentions légales
             </Link>
           </nav>
