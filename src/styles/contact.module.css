@@ -1,3 +1,7 @@
+/********************************************/
+/*          STYLE DE LA SECTION CONTACT     */
+/********************************************/
+
 /* Container principal */
 .contactFormSection {
   max-width: 900px;
@@ -57,7 +61,9 @@
 }
 
 /* Champs de saisie */
-.inputField, .textAreaField, .selectField {
+.inputField,
+.textAreaField,
+.selectField {
   padding: 0.75rem 1.2rem;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -68,15 +74,18 @@
   background-color: #f9f9f9;
 }
 
-.inputField:focus, .textAreaField:focus, .selectField:focus {
-  border-color: #00bcd4; /* Ajout d'une couleur moderne */
+.inputField:focus,
+.textAreaField:focus,
+.selectField:focus {
+  border-color: #00bcd4; /* Couleur moderne */
   box-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
   outline: none;
   transform: scale(1.02);
-  background-color: #e8f7fb; /* Ajout d'un effet de fond légèrement coloré */
+  background-color: #e8f7fb;
 }
 
-.inputField::placeholder, .textAreaField::placeholder {
+.inputField::placeholder,
+.textAreaField::placeholder {
   color: #aaa;
   transition: color 0.3s ease;
 }
@@ -119,7 +128,8 @@
 }
 
 /* Messages de statut */
-.successMessage, .errorMessage {
+.successMessage,
+.errorMessage {
   grid-column: span 2;
   padding: 1rem;
   border-radius: 8px;
@@ -142,11 +152,13 @@
 }
 
 /* Champ de saisie valide ou invalide */
-.inputField.valid, .textAreaField.valid {
+.inputField.valid,
+.textAreaField.valid {
   border-color: #28a745;
 }
 
-.inputField.error, .textAreaField.error {
+.inputField.error,
+.textAreaField.error {
   border-color: #dc3545;
 }
 
@@ -175,4 +187,170 @@
     grid-column: span 1;
     width: 100%;
   }
+}
+
+/********************************************/
+/*        STYLES POUR LE DATEPICKER         */
+/********************************************/
+
+/* Conteneur principal autour du date picker */
+.datePickerContainer {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.datePickerContainer:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Titre */
+.datePickerTitle {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Champ input (si vous en aviez besoin hors inline) */
+.dateInput {
+  width: 100%;
+  padding: 0.75rem 1.2rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.dateInput:focus {
+  outline: none;
+  border-color: #00bcd4;
+  box-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
+  background-color: #e8f7fb;
+  transform: scale(1.02);
+}
+
+/* Paragraphe de la date sélectionnée */
+.selectedDate {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+  color: #333;
+}
+
+/********************************************/
+/*       OVERRIDE DE REACT-DATEPICKER       */
+/********************************************/
+
+/* Conteneur principal du calendrier */
+.customCalendar {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: inherit; /* Utilise la même police que le reste de votre site */
+  overflow: hidden;     /* Pour que les bords arrondis s'appliquent bien */
+}
+
+/* En-tête du calendrier (mois/année) */
+.customCalendar .react-datepicker__header {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Titre du mois/année */
+.customCalendar .react-datepicker__current-month {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Flèches de navigation (précédent/suivant) */
+.customCalendar .react-datepicker__navigation {
+  top: 1rem; /* Ajuste la position verticale */
+  line-height: 1.5rem;
+}
+
+.customCalendar .react-datepicker__navigation-icon::before {
+  border-color: #00bcd4; /* Couleur des flèches */
+}
+
+/* Jours de la semaine (lun, mar, mer, etc.) */
+.customCalendar .react-datepicker__day-names {
+  margin-top: 0.5rem;
+}
+
+.customCalendar .react-datepicker__day-name {
+  color: #777;
+  font-weight: 600;
+}
+
+/* Cases de chaque jour */
+.customCalendar .react-datepicker__day {
+  width: 2.2rem;
+  line-height: 2.2rem;
+  margin: 0.2rem;
+  border-radius: 50%;
+  transition: background-color 0.3s, color 0.3s;
+  color: #333;
+}
+
+/* Jour au survol */
+.customCalendar .react-datepicker__day:hover {
+  background-color: #e0f7fa;
+}
+
+/* Jour actuel (aujourd’hui) */
+.customCalendar .react-datepicker__day--today {
+  font-weight: 700;
+  color: #00bcd4;
+  border: 1px solid #00bcd4;
+}
+
+/* Jour sélectionné (click) */
+.customCalendar .react-datepicker__day--selected,
+.customCalendar .react-datepicker__day--keyboard-selected {
+  background-color: #00bcd4;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Désactive l’outline bleu par défaut */
+.customCalendar .react-datepicker__day--keyboard-selected:focus {
+  outline: none;
+}
+
+/* Dropdowns (mois/année) */
+.customCalendar .react-datepicker__month-year-dropdown,
+.customCalendar .react-datepicker__year-dropdown {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.customCalendar .react-datepicker__month-year-dropdown--scrollable,
+.customCalendar .react-datepicker__year-dropdown--scrollable {
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.customCalendar .react-datepicker__month-year-option--selected,
+.customCalendar .react-datepicker__year-option--selected {
+  background-color: #00bcd4;
+  color: #fff;
+}
+
+.customCalendar .react-datepicker__month-year-option:hover,
+.customCalendar .react-datepicker__year-option:hover {
+  background-color: #e0f7fa;
+  color: #333;
 }

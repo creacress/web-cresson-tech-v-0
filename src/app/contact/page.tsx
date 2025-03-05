@@ -1,10 +1,10 @@
-// src/app/contact/page.tsx
 import React from "react";
 import ServiceSchema from "@/components/ServiceSchema";
 import ContactForm from "@/components/ContactForm/ContactForm";
+import GoogleCalendar from "@/components/GoogleCalendar/GoogleCalendar";
 import styles from "@/styles/contact.module.css";
 import { Metadata } from "next";
-import Head from "next/head"; // Importation pour manipuler le head
+import Head from "next/head"; 
 
 export const revalidate = 86400; // Active le SSG avec revalidation toutes les 24 heures
 
@@ -47,7 +47,6 @@ export default function ContactPage() {
   return (
     <>
       <Head>
-        {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/contact" />
       </Head>
 
@@ -67,13 +66,18 @@ export default function ContactPage() {
         ]}
       />
 
-
       <main className={styles.contactFormSection}>
         <h1 className={styles.pageTitle}>Contactez-nous</h1>
         <p className={styles.contactText}>
           Vous avez des questions ? Remplissez le formulaire ci-dessous.
         </p>
         <ContactForm />
+
+        <h2 className={styles.pageTitle}>Prenez Rendez-vous</h2>
+        <p className={styles.contactText}>
+          Vous pouvez également réserver un rendez-vous directement via notre agenda Google ci-dessous :
+        </p>
+        <GoogleCalendar />
       </main>
     </>
   );

@@ -25,7 +25,7 @@ const nextConfig = {
         source: '/(.*)',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' }, // Permet l'intégration de frames sur le même domaine
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           {
             key: 'Content-Security-Policy',
@@ -36,6 +36,7 @@ const nextConfig = {
               script-src-elem 'self' https://www.googletagmanager.com 'unsafe-inline';
               style-src 'self' 'nonce-${nonce}' 'unsafe-inline'; 
               connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
+              frame-src 'self' https://calendar.google.com; /* Autorise l'iframe Google Agenda */
               font-src 'self';
             `.replace(/\n/g, ' ').trim(),
           },
@@ -47,7 +48,7 @@ const nextConfig = {
 
 // Fonction pour générer un nonce unique
 function generateNonce() {
-  return Math.random().toString(36).slice(2); // Génère un nonce unique
+  return Math.random().toString(36).slice(2);
 }
 
 module.exports = nextConfig;
