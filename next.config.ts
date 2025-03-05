@@ -36,7 +36,7 @@ const nextConfig = {
               script-src-elem 'self' https://www.googletagmanager.com 'unsafe-inline';
               style-src 'self' 'nonce-${nonce}' 'unsafe-inline'; 
               connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
-              frame-src 'self' https://calendar.google.com; /* Autorise l'iframe Google Agenda */
+              frame-src 'self' https://calendar.google.com;
               font-src 'self';
             `.replace(/\n/g, ' ').trim(),
           },

@@ -1,0 +1,22 @@
+/* styles/GoogleCalendar.module.css */
+.iframeContainer {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+}
+
+.iframeGoogleCalendar {
+    border: none;
+    width: 100%;
+    min-width: 600px;
+    max-width: 900px;
+    height: 700px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.iframeGoogleCalendar:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transform: scale(1.01);
+}
