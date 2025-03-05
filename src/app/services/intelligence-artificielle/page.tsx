@@ -1,7 +1,7 @@
 // src/app/services/intelligence-artificielle/page.tsx
 import React from "react";
 import Link from "next/link";
-import ServiceSchema from "@/components/ServiceSchema";
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
 import { Metadata } from "next";
 import Head from "next/head"; // Importation pour manipuler le head
 

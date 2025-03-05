@@ -60,7 +60,7 @@ export default function Header() {
         >
           {[
             { label: "Accueil", href: "/" },
-            { label: "Services", href: "/services" },
+            { label: "Services", href: "/pages-services" },
             { label: "À propos", href: "/about" },
             { label: "Contact", href: "/contact" },
           ].map((link) => (

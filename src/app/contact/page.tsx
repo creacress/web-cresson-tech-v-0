@@ -1,5 +1,5 @@
 import React from "react";
-import ServiceSchema from "@/components/ServiceSchema";
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
 import ContactForm from "@/components/ContactForm/ContactForm";
 import GoogleCalendar from "@/components/GoogleCalendar/GoogleCalendar";
 import styles from "@/styles/contact.module.css";

@@ -1,6 +1,6 @@
 // src/app/about/page.tsx
 import React from "react";
-import ServiceSchema from "@/components/ServiceSchema";
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
 import Link from "next/link";
 import { Metadata } from "next";
 import { FaLightbulb, FaHandshake, FaAward, FaUsers, FaLeaf } from "react-icons/fa";
@@ -143,7 +143,7 @@ export default function About() {
             Contactez-nous
           </Link>
           <Link
-            href="/services"
+            href="/pages-services"
             className={styles.secondaryCta}
             aria-label="Découvrez nos services en IA"
           >

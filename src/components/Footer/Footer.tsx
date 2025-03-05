@@ -98,7 +98,7 @@ export default function Footer() {
             <Link href="/about" onClick={() => handleLinkClick("Accueil", "/about")}>
               Accueil
             </Link>
-            <Link href="/services" onClick={() => handleLinkClick("L’agence IA", "/services")}>
+            <Link href="/pages-services" onClick={() => handleLinkClick("L’agence IA", "/pages-services")}>
               L’agence IA
             </Link>
             <Link href="/contact" onClick={() => handleLinkClick("Contact", "/contact")}>

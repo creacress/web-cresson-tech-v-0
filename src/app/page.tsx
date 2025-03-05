@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import ServiceSchema from '@/components/ServiceSchema';
+import ServiceSchema from '@/components/ServiceShema/ServiceSchema';
 import styles from '@/styles/home.module.css';
 import ClientWrapper from '@/components/ClientWrapper/ClientWrapper';
 import Head from 'next/head';
@@ -70,7 +70,7 @@ export default function Home() {
             <p className={styles.heroText}>
               Vous avez des besoins spécifiques en intelligence artificielle ? Découvrez comment nous pouvons y répondre.
             </p>
-            <Link href="/services">
+            <Link href="/pages-services">
               <button className={styles.ctaButton}>Découvrir nos services</button>
             </Link>
           </section>
