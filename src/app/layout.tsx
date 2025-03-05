@@ -90,6 +90,57 @@ export default function RootLayout({
             });
           `}
         </Script>
+
+        {/* Données structurées JSON-LD pour les sitelinks et Breadcrumbs */}
+        <Script
+          id="json-ld-global"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "url": "https://webcresson.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://webcresson.com/recherche?query={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            }),
+          }}
+        />
+
+        <Script
+          id="json-ld-breadcrumb"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "IA Générative",
+                  "item": "https://webcresson.com/ia-generative"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Data Engineering",
+                  "item": "https://webcresson.com/data-engineering"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Systèmes Prédictifs",
+                  "item": "https://webcresson.com/systemes-predictifs"
+                }
+              ]
+            }),
+          }}
+        />
       </head>
       <body className="bg-background text-text antialiased">
         <ClientLayout>{children}</ClientLayout>
