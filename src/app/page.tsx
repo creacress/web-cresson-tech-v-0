@@ -70,7 +70,7 @@ export default function Home() {
             <p className={styles.heroText}>
               Vous avez des besoins spécifiques en intelligence artificielle ? Découvrez comment nous pouvons y répondre.
             </p>
-            <Link href="/pages-services">
+            <Link href="/page-services">
               <button className={styles.ctaButton}>Découvrir nos services</button>
             </Link>
           </section>

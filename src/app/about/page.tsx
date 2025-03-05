@@ -143,7 +143,7 @@ export default function About() {
             Contactez-nous
           </Link>
           <Link
-            href="/pages-services"
+            href="/page-services"
             className={styles.secondaryCta}
             aria-label="Découvrez nos services en IA"
           >
