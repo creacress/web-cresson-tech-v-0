@@ -2,21 +2,22 @@ import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
 
+// Définition du type pour assurer la cohérence des chemins du sitemap
+type SitemapEntry = {
+  path: string;
+  changefreq: string;
+  priority: string;
+  lastmod: string;
+};
+
 export async function GET() {
   const baseUrl = "https://webcresson.com";
 
-  const staticPaths = [
+  const staticPaths: SitemapEntry[] = [
     { path: "/", changefreq: "daily", priority: "1.0", lastmod: "2025-03-03" },
     { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-03" },
     { path: "/about", changefreq: "monthly", priority: "0.7", lastmod: "2025-03-03" },
-    { path: "/services", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
-    { path: "/services/ia-generative", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-03" },
-    { path: "/services/deep-learning", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-03" },
-    { path: "/services/machine-learning", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-03" },
-    { path: "/services/rpa-automatisation", changefreq: "monthly", priority: "0.8", lastmod: "2025-03-03" },
-    { path: "/services/ia-archeologie", changefreq: "monthly", priority: "0.8", lastmod: "2025-03-03" },
-    { path: "/TermsOfSale", changefreq: "yearly", priority: "0.6", lastmod: "2025-03-03" },
-    { path: "/LegalMentions", changefreq: "yearly", priority: "0.6", lastmod: "2025-03-03" },
+    { path: "/services", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" }
   ];
 
   const dynamicPaths = await getDynamicPaths();
@@ -31,8 +32,7 @@ ${[...staticPaths, ...dynamicPaths]
     <priority>${priority}</priority>
     <lastmod>${lastmod}</lastmod>
   </url>`
-    )
-    .join("")}
+    ).join("")}
 </urlset>`.trim();
 
   return new NextResponse(sitemap, {
@@ -42,21 +42,29 @@ ${[...staticPaths, ...dynamicPaths]
   });
 }
 
-async function getDynamicPaths() {
-  const dynamicPagesDir = path.join(process.cwd(), "src", "app", "services");
+async function getDynamicPaths(): Promise<SitemapEntry[]> {
+  const dynamicPagesDir = path.resolve(process.cwd(), "src/app/services");
 
   try {
-    const serviceDirs = await fs.readdir(dynamicPagesDir);
+    if (!(await fs.stat(dynamicPagesDir)).isDirectory()) {
+      console.error("Le dossier 'services' n'existe pas ou n'est pas un répertoire.");
+      return [];
+    }
 
-    // Déclare un tableau de chemins avec des valeurs valides seulement
-    const paths: ({ path: string, changefreq: string, priority: string, lastmod: string } | null)[] = await Promise.all(
-      serviceDirs.map(async (dir) => {
-        const servicePath = path.join(dynamicPagesDir, dir);
+    const serviceDirs = await fs.readdir(dynamicPagesDir);
+    console.log("Dossiers trouvés dans 'services' :", serviceDirs);
+
+    const paths = await Promise.all(
+      serviceDirs.map(async (dir): Promise<SitemapEntry | null> => {
+        const servicePath = path.resolve(dynamicPagesDir, dir);
+        console.log("Exploration du répertoire :", servicePath);
 
         try {
           const files = await fs.readdir(servicePath);
+          console.log(`Fichiers trouvés dans ${servicePath} :`, files);
+
           if (files.includes('page.tsx')) {
-            const stats = await fs.stat(path.join(servicePath, 'page.tsx'));
+            const stats = await fs.stat(path.resolve(servicePath, 'page.tsx'));
             const lastmod = stats.mtime.toISOString();
 
             return {
@@ -69,15 +77,15 @@ async function getDynamicPaths() {
         } catch (err) {
           console.error(`Erreur lors de la lecture de ${servicePath}:`, err);
         }
-        return null; // Retourne null si 'page.tsx' n'est pas trouvé
+        return null;
       })
     );
 
-    // Filtrer les valeurs nulles et assurer que le tableau a uniquement des objets valides
-    return paths.filter((path): path is { path: string, changefreq: string, priority: string, lastmod: string } => path !== null);
+    // Utilisation d'un Type Guard pour filtrer les valeurs nulles
+    return paths.filter((path): path is SitemapEntry => path !== null);
+
   } catch (error) {
     console.error("Erreur lors de la lecture du dossier services:", error);
     return [];
   }
 }
-
