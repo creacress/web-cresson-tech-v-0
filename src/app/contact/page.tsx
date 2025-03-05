@@ -10,28 +10,28 @@ export const revalidate = 86400; // Active le SSG avec revalidation toutes les 2
 
 // Utilisation de l'API Metadata pour le SEO
 export const metadata: Metadata = {
-  title: "Contactez-nous | Cresson Tech",
+  title: "Contactez-nous | WebCressonTech",
   description:
-    "Contactez Cresson Tech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
+    "Contactez WebCressonTech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
   openGraph: {
-    title: "Contactez-nous | Cresson Tech",
+    title: "Contactez-nous | WebCressonTech",
     description:
-      "Contactez Cresson Tech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
+      "Contactez WebCressonTech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
     url: "https://webcresson.com/contact",
     images: [
       {
         url: "https://webcresson.com/Logo_webcressontech.webp",
         width: 1200,
         height: 630,
-        alt: "Cresson Tech",
+        alt: "WebCressonTech",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contactez-nous | Cresson Tech",
+    title: "Contactez-nous | WebCressonTech",
     description:
-      "Contactez Cresson Tech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
+      "Contactez WebCressonTech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
     images: ["https://webcresson.com/Logo_webcressontech.webp"],
   },
   alternates: {
@@ -51,33 +51,33 @@ export default function ContactPage() {
       </Head>
 
       <ServiceSchema
-        serviceName="Contactez-nous | Cresson Tech"
+        serviceName="Contactez-nous | WebCressonTech"
         serviceDescription={metadata.description as string}
         serviceTypes={["Contact", "Support Client", "Services Technologiques"]}
         faq={[
           {
-            question: "Comment puis-je contacter Cresson Tech ?",
+            question: "Comment puis-je contacter WebCressonTech ?",
             answer: `Vous pouvez nous contacter via ce formulaire ou par téléphone au +33-7-66-02-96-32. Cliquez sur le numéro pour passer un appel direct : tel:+33766029632`,
           },
           {
-            question: "Quels services propose Cresson Tech ?",
+            question: "Quels services propose WebCressonTech ?",
             answer: `Nous proposons des solutions en IA, en automatisation des processus (RPA), et des services technologiques sur mesure. Découvrez nos services sur les pages suivantes : IA : https://www.webcresson.com/services, RPA : https://www.webcresson.com/services/rpa-automatisation, Services technologiques : https://www.webcresson.com/services.`,
           },
         ]}
       />
 
       <main className={styles.contactFormSection}>
-        <h1 className={styles.pageTitle}>Contactez-nous</h1>
+        <h1 className={styles.pageTitle}>Prenez Rendez-vous</h1>
+        <p className={styles.contactText}>
+          Vous pouvez réserver un rendez-vous directement via notre agenda Google ci-dessous :
+        </p>
+        <GoogleCalendar />
+        <h2 className={styles.pageTitle}>Contactez-nous</h2>
         <p className={styles.contactText}>
           Vous avez des questions ? Remplissez le formulaire ci-dessous.
         </p>
         <ContactForm />
 
-        <h2 className={styles.pageTitle}>Prenez Rendez-vous</h2>
-        <p className={styles.contactText}>
-          Vous pouvez également réserver un rendez-vous directement via notre agenda Google ci-dessous :
-        </p>
-        <GoogleCalendar />
       </main>
     </>
   );

@@ -1,60 +1,38 @@
-// src/app/page.tsx
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ServiceSchema from '@/components/ServiceSchema';
 import styles from '@/styles/home.module.css';
-import ClientWrapper from "@/components/ClientWrapper/ClientWrapper";
+import ClientWrapper from '@/components/ClientWrapper/ClientWrapper';
 import Head from 'next/head';
+import ProblemSolutionCard from '@/components/ProblemSolutionCard/ProblemSolutionCard';
 
-export const revalidate = 86400; // Revalidation toutes les 24 heures
+export const revalidate = 86400;
 
 export const metadata = {
-  title: 'WebCressonTech - Expert en IA et solutions technologiques',
+  title: 'Entreprise Experte en IA | WebCressonTech',
   description:
-    'WebCressonTech accompagne les entreprises dans leurs projets IA avec des solutions sur mesure : gestion des données, machine learning, deep learning.',
+    "Développez votre entreprise avec des solutions d'intelligence artificielle sur mesure. Automatisation de processus, machine learning, deep learning avec WebCressonTech.",
+
   keywords: [
     'intelligence artificielle',
-    'machine learning',
-    'deep learning',
-    'solutions IA',
+    'solutions IA sur mesure',
+    'automatisation de processus',
+    'machine learning entreprise',
+    'deep learning professionnel',
     'WebCressonTech',
   ],
   authors: [{ name: 'WebCressonTech', url: 'https://www.webcresson.com' }],
-  openGraph: {
-    title: 'WebCressonTech - Expert en IA et solutions technologiques',
-    description:
-      'WebCressonTech accompagne les entreprises dans leurs projets IA avec des solutions sur mesure : gestion des données, machine learning, deep learning.',
-    url: 'https://www.webcresson.com',
-    siteName: 'WebCressonTech',
-    images: [
-      {
-        url: 'https://www.webcresson.com/Logo_webcressontech.webp',
-        width: 800,
-        height: 600,
-        alt: 'WebCressonTech Logo',
-      },
-    ],
-    locale: 'fr_FR',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@WebCressonTech',
-    title: 'WebCressonTech - IA et Automatisation',
-    description:
-      'Solutions en intelligence artificielle, machine learning, deep learning et RPA.',
-    images: ['https://webcresson.com/Logo_webcressontech.webp'],
-  },
+
 };
 
 export default function Home() {
   return (
     <>
       <Head>
-        {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/" />
       </Head>
+
       <ServiceSchema
         serviceName={metadata.title}
         serviceDescription={metadata.description}
@@ -67,19 +45,21 @@ export default function Home() {
         faq={[
           {
             question: 'Quels services propose WebCressonTech ?',
-            answer: `Solutions sur mesure en intelligence artificielle, machine learning, deep learning et automatisation des processus. Pour plus de détails, consultez notre page sur nos services IA : https://www.webcresson.com/services`,
+            answer:
+              'Solutions sur mesure en intelligence artificielle, machine learning, deep learning et automatisation des processus.',
           },
           {
             question: 'Pourquoi choisir WebCressonTech pour vos projets IA ?',
-            answer: `Nous offrons une expertise certifiée, un accompagnement complet et des solutions adaptées à vos besoins. Découvrez notre approche sur notre page d'expertise : https://www.webcresson.com/services`,
+            answer:
+              'Nous offrons une expertise certifiée, un accompagnement complet et des solutions adaptées à vos besoins.',
           },
           {
             question: 'Comment contacter WebCressonTech ?',
-            answer: `Contactez-nous via notre page de contact : https://www.webcresson.com/contact ou par téléphone pour discuter de vos projets IA.`,
+            answer:
+              'Contactez-nous via notre page de contact ou par téléphone pour discuter de vos projets IA.',
           },
         ]}
       />
-
 
       <main className={styles.page}>
         <div className={styles.mainContent}>
@@ -88,54 +68,11 @@ export default function Home() {
               WebCressonTech : <span className={styles.highlight}>Votre partenaire IA</span>
             </h1>
             <p className={styles.heroText}>
-              Des solutions innovantes en intelligence artificielle pour votre entreprise.
+              Vous avez des besoins spécifiques en intelligence artificielle ? Découvrez comment nous pouvons y répondre.
             </p>
             <Link href="/services">
               <button className={styles.ctaButton}>Découvrir nos services</button>
             </Link>
-          </section>
-
-          <section className={styles.services}>
-            <h2 className={styles.sectionTitle}>Nos services IA</h2>
-            <ul className={styles.servicesList}>
-              {[
-                {
-                  title: 'Intelligence Artificielle',
-                  image: '/Développement_IA.webp',
-                  link: '/services/intelligence-artificielle',
-                },
-                {
-                  title: 'Machine Learning',
-                  image: '/Machine_Learning.webp',
-                  link: '/services/machine-learning',
-                },
-                {
-                  title: 'Deep Learning',
-                  image: '/deep-learning.webp',
-                  link: '/services/deep-learning',
-                },
-                {
-                  title: 'RPA Automatisation',
-                  image: '/rpa.webp',
-                  link: '/services/rpa-automatisation',
-                },
-              ].map((service, index) => (
-                <li key={index} className={styles.serviceItem}>
-                  <Link href={service.link}>
-                    <Image
-                      src={service.image}
-                      alt={`Illustration de ${service.title} avec des éléments représentatifs de la technologie`}
-                      width={300}
-                      height={300}
-                      className={styles.serviceImage}
-                    />
-                    <div className={styles.serviceContent}>
-                      <h3>{service.title}</h3>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </section>
 
           <section className={styles.whyChooseUs}>
@@ -155,7 +92,7 @@ export default function Home() {
                   text: 'Adaptées à chaque besoin spécifique.',
                 },
               ].map((feature, index) => (
-                <div key={index} className={styles.featureCard}>
+                <div key={index} className={`${styles.featureCard} animate-fadeIn`}>
                   <h3>{feature.title}</h3>
                   <p>{feature.text}</p>
                 </div>
@@ -163,6 +100,55 @@ export default function Home() {
             </div>
           </section>
 
+          <section className={styles.problemSolution}>
+            <h2 className={styles.sectionTitle}>Pourquoi adopter l'IA ?</h2>
+            <div className={styles.problemSolutionGrid}>
+              {[
+                {
+                  problem: 'Des tâches répétitives ralentissent vos équipes ?',
+                  solution: "Notre IA automatise vos processus pour libérer du temps et booster l'innovation.",
+                },
+                {
+                  problem: "Difficile d'exploiter vos données ?",
+                  solution: 'Transformez vos données en informations clés avec nos solutions IA.',
+                },
+                {
+                  problem: 'Besoin de prédictions fiables pour vos décisions ?',
+                  solution: 'Utilisez le machine learning pour anticiper vos résultats et optimiser vos stratégies.',
+                },
+              ].map((item, index) => (
+                <ProblemSolutionCard key={index} problem={item.problem} solution={item.solution} />
+              ))}
+            </div>
+          </section>
+
+          <section className={styles.testimonials}>
+            <h2 className={styles.sectionTitle}>Ils nous font confiance</h2>
+            <div className={styles.testimonialsGrid}>
+              {[
+                {
+                  name: 'La Poste',
+                  feedback:
+                    "Grâce à WebCressonTech, nous avons mis en place un RPA et une IA d’email permettant de réduire de 30% notre temps de traitement et de réussir notre migration.",
+                  logo: '/logo_la_poste.webp',
+                },
+              ].map((testimonial, index) => (
+                <div key={index} className={`${styles.testimonialCard} animate-fadeIn`}>
+                  <p>"{testimonial.feedback}"</p>
+                  <div className={styles.testimonialFooter}>
+                    <h4>- {testimonial.name}</h4>
+                    <Image
+                      src={testimonial.logo}
+                      alt={`Logo ${testimonial.name}`}
+                      width={40}
+                      height={40}
+                      className={styles.testimonialLogo}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
           <ClientWrapper />
         </div>
       </main>

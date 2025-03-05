@@ -1,4 +1,3 @@
-/* Conteneur principal */
 .page {
   display: flex;
   flex-direction: column;
@@ -9,17 +8,12 @@
   color: #00e0ff;
   position: relative;
   overflow: hidden;
-  
-  /* Image de fond avec un préchargement rapide */
   background: url("/robot_humain_main.webp") no-repeat center center / cover;
   background-size: cover;
   background-position: center center;
-
-  /* Si l'image n'est pas encore chargée, appliquer une couleur de fond */
-  background-color: #1a1a1a; /* Optionnel, couleur de secours */
+  background-color: #1a1a1a;
 }
 
-/* Effet d'overlay */
 .page::before {
   content: "";
   position: absolute;
@@ -30,9 +24,7 @@
   background: var(--overlay-color);
   z-index: 0;
   backdrop-filter: blur(4px);
-  /* Vérifie si le flou a un impact de performance et ajuste si nécessaire */
 }
-
 
 .mainContent {
   z-index: 1;
@@ -45,13 +37,32 @@
 /* Animations */
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: translateY(20px);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 1s ease-out;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 /* Section Hero */
@@ -62,7 +73,7 @@
 
 .heroTitle {
   font-weight: bold;
-  font-size:1.8rem ;
+  font-size: 1.8rem;
   color: var(--text-color);
   text-transform: uppercase;
   text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
@@ -74,6 +85,11 @@
   margin-top: 1.5rem;
 }
 
+.highlight {
+  color: #fff;
+  font-weight: bold;
+}
+
 .heroText {
   font-size: 1.5rem;
   margin: 2rem 0;
@@ -83,7 +99,6 @@
   margin-right: auto;
 }
 
-/* Bouton d'appel à l'action */
 .ctaButton {
   padding: 15px 30px;
   font-size: 1.2rem;
@@ -103,7 +118,7 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
 }
 
-/* Section Services */
+/* Section Services (non utilisé dans TSX, mais conservé) */
 .services {
   margin: 50px 0;
   padding: 20px;
@@ -123,78 +138,6 @@
   text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
 }
 
-.servicesList {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-@media (min-width: 768px) {
-  .servicesList {
-      grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .servicesList {
-      grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.serviceItem {
-  background: #292929;
-  padding: 20px;
-  border-radius: 15px;
-  overflow: hidden;
-  position: relative;
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-  box-shadow: var(--box-shadow);
-  cursor: pointer;
-}
-
-.serviceItem:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-}
-
-.serviceImage {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 12px;
-  transition: transform var(--transition-speed);
-}
-
-.serviceItem:hover .serviceImage {
-  transform: scale(1.1);
-}
-
-.serviceContent {
-  margin-top: 15px;
-}
-
-.serviceContent h3 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 10px 0;
-  color: #00e0ff;
-  transition: color var(--transition-speed);
-}
-
-.serviceContent p {
-  font-size: 1rem;
-  color: #b0b0b0;
-  line-height: 1.6;
-}
-
-/* Pourquoi nous choisir */
-.whyChooseUs {
-  margin: 50px 0;
-}
-
 .featuresGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -209,6 +152,9 @@
   text-align: center;
   transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
+.featureCard p {
+  color: #fff !important; /* texte bien visible */
+}
 
 .featureCard:hover {
   transform: scale(1.05);
@@ -216,18 +162,89 @@
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
 }
 
-.featureCard h3 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: #00e0ff;
+/* Section Pourquoi adopter l'IA */
+.problemSolution {
+  margin: 50px 0;
 }
 
-.featureCard p {
-  font-size: 1rem;
-  color: #d1d1d1;
+.problemSolutionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
-/* Call-to-Action */
+.problemSolutionCard {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+.problemSolutionCard p {
+  color: #fff !important; /* texte bien visible */
+}
+.problemSolutionCard:hover {
+  transform: scale(1.05);
+  background: rgba(0, 123, 255, 0.2);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Section Témoignages */
+.testimonials {
+  margin: 50px 0;
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.testimonialCard p {
+  color: #fff !important; /* texte bien visible */
+}
+.testimonialCard {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.testimonialCard:hover {
+  transform: scale(1.05);
+  background: rgba(0, 123, 255, 0.2);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5);
+}
+.testimonialFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ou 'flex-start', 'flex-end', etc. selon le rendu souhaité */
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.testimonialLogo {
+  border-radius: 4px; /* si tu veux arrondir le logo */
+  /* Autres styles éventuels */
+}
+.problemSolutionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  align-items: stretch; /* Force la même hauteur sur chaque carte */
+}
+
+.problemSolutionCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Le bouton reste en bas */
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Bouton d'appel à l'action alternatif (non utilisé dans TSX) */
 .ctas {
   display: flex;
   flex-wrap: wrap;

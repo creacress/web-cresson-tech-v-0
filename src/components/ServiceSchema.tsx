@@ -1,5 +1,5 @@
 import React from 'react';
-import { Service, WithContext, FAQPage } from 'schema-dts';
+import { Service, WithContext, FAQPage, ContactPoint } from 'schema-dts';
 import { JsonLd } from 'react-schemaorg';
 
 interface ServiceSchemaProps {
@@ -8,7 +8,7 @@ interface ServiceSchemaProps {
   serviceTypes: string[];
   faq: {
     question: string;
-    answer: React.ReactNode | null | undefined;  // Permet à `answer` d'être null ou undefined
+    answer: React.ReactNode | null | undefined;
   }[];
 }
 
@@ -28,6 +28,13 @@ const ServiceSchema: React.FC<ServiceSchemaProps> = ({
       name: 'Web Cresson Tech',
       url: 'https://webcresson.com',
       logo: 'https://webcresson.com/Logo_webcressontech.webp',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+33 7 66 02 96 32',
+        contactType: 'Service Client',
+        areaServed: 'FR',
+        availableLanguage: ['Français', 'Anglais', 'Portugais'],
+      } as ContactPoint,
     },
     serviceType: serviceTypes,
     areaServed: 'France',
@@ -41,7 +48,7 @@ const ServiceSchema: React.FC<ServiceSchemaProps> = ({
       name: question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: answer ? answer.toString() : '',  // Simple conversion en texte brut
+        text: answer ? answer.toString() : 'Réponse non disponible',
       },
     })),
   };

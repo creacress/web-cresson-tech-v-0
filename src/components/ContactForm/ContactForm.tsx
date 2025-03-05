@@ -4,17 +4,22 @@ import React, { useState, FormEvent } from "react";
 import styles from "@/styles/contact.module.css";
 
 export default function ContactForm() {
-  const [email, setEmail] = useState<string>("");
-  const [name, setName] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-  const [company, setCompany] = useState<string>("");
-  const [comments, setComments] = useState<string>("");
+  const [formData, setFormData] = useState({
+    email: "",
+    name: "",
+    phone: "",
+    company: "",
+    comments: "",
+  });
+
   const [status, setStatus] = useState<"success" | "error" | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
-    const formData = { email, name, phone, company, comments };
 
     try {
       const response = await fetch("/api/contact", {
@@ -25,12 +30,7 @@ export default function ContactForm() {
 
       if (response.ok) {
         setStatus("success");
-        // Réinitialiser les champs du formulaire après envoi
-        setEmail("");
-        setName("");
-        setPhone("");
-        setCompany("");
-        setComments("");
+        setFormData({ email: "", name: "", phone: "", company: "", comments: "" });
       } else {
         setStatus("error");
       }
@@ -42,60 +42,26 @@ export default function ContactForm() {
 
   return (
     <form className={styles.contactForm} onSubmit={handleSubmit}>
-      <div className={styles.formGroup}>
-        <label htmlFor="email">Mail*</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Votre email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className={styles.inputField}
-        />
-      </div>
-
-      <div className={styles.formGroup}>
-        <label htmlFor="name">Nom Prénom*</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Votre nom et prénom"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          className={styles.inputField}
-        />
-      </div>
-
-      <div className={styles.formGroup}>
-        <label htmlFor="phone">Téléphone*</label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          placeholder="Votre numéro de téléphone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          required
-          className={styles.inputField}
-        />
-      </div>
-
-      <div className={styles.formGroup}>
-        <label htmlFor="company">Entreprise</label>
-        <input
-          type="text"
-          id="company"
-          name="company"
-          placeholder="Nom de votre entreprise (facultatif)"
-          value={company}
-          onChange={(e) => setCompany(e.target.value)}
-          className={styles.inputField}
-        />
-      </div>
+      {[
+        { id: "email", label: "Email*", type: "email", required: true },
+        { id: "name", label: "Nom Prénom*", type: "text", required: true },
+        { id: "phone", label: "Téléphone*", type: "tel", required: true },
+        { id: "company", label: "Entreprise", type: "text", required: false },
+      ].map(({ id, label, type, required }) => (
+        <div key={id} className={styles.formGroup}>
+          <label htmlFor={id}>{label}</label>
+          <input
+            type={type}
+            id={id}
+            name={id}
+            placeholder={label}
+            value={formData[id as keyof typeof formData]}
+            onChange={handleChange}
+            required={required}
+            className={styles.inputField}
+          />
+        </div>
+      ))}
 
       <div className={styles.formGroup}>
         <label htmlFor="comments">Commentaires</label>
@@ -103,8 +69,8 @@ export default function ContactForm() {
           id="comments"
           name="comments"
           placeholder="Votre message ou question"
-          value={comments}
-          onChange={(e) => setComments(e.target.value)}
+          value={formData.comments}
+          onChange={handleChange}
           className={styles.inputField}
         />
       </div>
