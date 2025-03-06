@@ -71,7 +71,7 @@ export default function Home() {
               Vous avez des besoins spécifiques en intelligence artificielle ? Découvrez comment nous pouvons y répondre.
             </p>
             <Link href="/services/page-services">
-              <button className={styles.ctaButton}>Découvrir nos services</button>
+              <button className={styles.ctaButton}>Découvrir nos solutions IA</button>
             </Link>
           </section>
 
