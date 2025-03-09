@@ -6,6 +6,7 @@ import { Metadata } from "next";
 
 
 import styles from "@/styles/services.module.css";
+import LivreBlancComponent from "@/components/LivreBlanc/LivreBlanc";
 
 export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
 
@@ -133,18 +134,37 @@ export default function RPAAutomatisationPage() {
             </Link>
           </button>
         </section>
-        
+        <section className={styles.section} id="case-studies-rpa">
+          <h2>Exemples concrets d'utilisation de l'automatisation RPA</h2>
+          <ul>
+            <li>Automatisation de la saisie de données dans les systèmes ERP</li>
+            <li>Traitement automatique des factures fournisseurs</li>
+            <li>Envoi de notifications et d'emails de suivi client automatisés</li>
+            <li>Intégration automatisée de données provenant de multiples sources</li>
+            <li>Gestion des tâches administratives répétitives sans intervention humaine</li>
+          </ul>
+          <LivreBlancComponent
+                        title="Automatisation RPA"
+                        description="Gagnez du temps et réduisez les erreurs grâce à la Robotic Process Automation."
+                        downloadLink="/downloads/WebCressonTech - RPA.pdf"
+                        imageUrl="/rpa.webp"
+                    />
+        </section>
+
+
         <section className={styles.section}>
           <h2>Découvrez nos autres services en intelligence artificielle</h2>
-          <Link href="/services/intelligence-artificielle">
-            <span className={styles.cardButton}>Solutions en Intelligence Artificielle</span>
-          </Link>
-          <Link href="/services/deep-learning">
-            <span className={styles.cardButton}>En savoir plus sur le Deep Learning</span>
-          </Link>
-          <Link href="/services/machine-learning">
-            <span className={styles.cardButton}>Découvrir le Machine Learning</span>
-          </Link>
+          <div className={styles.linkButtons}>
+            <Link href="/services/intelligence-artificielle">
+              <span className={styles.cardButton}>Solutions en Intelligence Artificielle</span>
+            </Link>
+            <Link href="/services/deep-learning">
+              <span className={styles.cardButton}>En savoir plus sur le Deep Learning</span>
+            </Link>
+            <Link href="/services/machine-learning">
+              <span className={styles.cardButton}>Découvrir le Machine Learning</span>
+            </Link>
+          </div>
         </section>
       </main>
     </>

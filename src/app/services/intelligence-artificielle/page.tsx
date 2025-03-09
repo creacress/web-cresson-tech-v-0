@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     url: "https://webcresson.com/services/intelligence-artificielle",
     images: [
       {
-        url: "https://webcresson.com/images/intelligence-artificielle.webp",
+        url: "https://webcresson.com/IA-sante.webp",
         width: 1200,
         height: 630,
         alt: "Web Cresson Tech",
