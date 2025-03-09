@@ -81,10 +81,10 @@ export default function Service() {
 
       <main className={styles.mainContent}>
         <section className={styles.hero}>
-          <h1 className={styles.pageTitle}>
+          <h1>
             Nos solutions et expertises en intelligence artificielle (IA)
           </h1>
-          <p className={styles.pageDescription}>
+          <p>
             Découvrez comment Web Cresson Tech peut transformer vos processus
             métiers grâce à des solutions d'IA sur mesure et adaptées à vos
             besoins.
@@ -110,32 +110,33 @@ export default function Service() {
 const servicesData = [
   {
     icon: "fa-robot",
-    title: "RPA Automatisation",
+    title: "Gagnez du temps avec l'Automatisation RPA",
     text: "Automatisez vos processus métiers avec la RPA couplée à l'intelligence artificielle.",
     link: "/services/rpa-automatisation",
   },
   {
     icon: "fa-magic",
-    title: "IA Générative",
+    title: "Boostez votre créativité avec l'IA Générative",
     text: "Exploitez l'IA générative pour créer automatiquement des contenus visuels et textuels.",
     link: "/services/ia-generative",
   },
   {
     icon: "fa-compass",
-    title: "IA pour l'Archéologie",
+    title: "Découvrez de nouveaux sites archéologiques grâce à l'IA",
     text: "Utilisez l'IA pour analyser des données géospatiales et découvrir des sites archéologiques.",
     link: "/services/ia-archeologie",
   },
   {
     icon: "fa-brain",
-    title: "Deep Learning",
+    title: "Analysez vos données en profondeur avec le Deep Learning",
     text: "Utilisez le Deep Learning pour analyser des données massives avec précision.",
     link: "/services/deep-learning",
   },
   {
     icon: "fa-chart-line",
-    title: "Machine Learning",
+    title: "Optimisez vos performances avec le Machine Learning",
     text: "Déployez des modèles de Machine Learning pour optimiser vos processus métiers.",
     link: "/services/machine-learning",
   },
 ];
+

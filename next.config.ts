@@ -19,24 +19,23 @@ const nextConfig = {
   },
   async headers() {
     const nonce = generateNonce(); // Génère un nonce unique pour chaque requête
-
     return [
       {
         source: '/(.*)',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'X-Frame-Options', value: 'SAMEORIGIN' }, // Permet l'intégration de frames sur le même domaine
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           {
             key: 'Content-Security-Policy',
             value: `
               default-src 'self';
               img-src 'self' data: https://webcresson.com;
-              script-src 'self' 'nonce-${nonce}' https://www.googletagmanager.com;
+              script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://www.googletagmanager.com;
               script-src-elem 'self' https://www.googletagmanager.com 'unsafe-inline';
-              style-src 'self' 'nonce-${nonce}' 'unsafe-inline'; 
+              style-src 'self' 'nonce-${nonce}' 'unsafe-inline';
               connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
-              frame-src 'self' https://calendar.google.com; /* Autorise l'iframe Google Agenda */
+              frame-src 'self' https://calendar.google.com;
               font-src 'self';
             `.replace(/\n/g, ' ').trim(),
           },
@@ -46,7 +45,6 @@ const nextConfig = {
   },
 };
 
-// Fonction pour générer un nonce unique
 function generateNonce() {
   return Math.random().toString(36).slice(2);
 }

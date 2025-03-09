@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
 import { Metadata } from "next";
-import Head from "next/head"; // Importation pour manipuler le head
+import Head from "next/head";
 
 import styles from "@/styles/services.module.css";
 
@@ -50,7 +50,6 @@ export default function MachineLearningPage() {
   return (
     <>
       <Head>
-        {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/services/machine-learning" />
       </Head>
       <ServiceSchema
@@ -73,55 +72,49 @@ export default function MachineLearningPage() {
         ]}
       />
 
-
       <main className={styles.mainContent}>
         <section className={styles.hero}>
-          <h1>Machine Learning</h1>
+          <h1>Améliorez vos performances avec le Machine Learning !</h1>
           <p>
-            Utilisez le Machine Learning pour analyser vos données, optimiser
-            vos processus et anticiper les comportements clients.
+            Utilisez le Machine Learning pour analyser vos données, optimiser vos processus métiers
+            et anticiper les comportements de vos clients avec précision.
+          </p>
+          <Link href="/contact">
+            <button className={styles.ctaButton}>
+              Parlez-nous de vos projets en Machine Learning
+            </button>
+          </Link>
+        </section>
+
+        <section className={styles.section}>
+          <h2>Pourquoi choisir le Machine Learning ?</h2>
+          <p>
+            Le Machine Learning permet à vos systèmes d'apprendre automatiquement à partir de données historiques
+            pour améliorer leurs performances sans programmation explicite. C'est un atout majeur pour l'analyse prédictive
+            et l'optimisation des processus métiers.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>Qu'est-ce que le Machine Learning ?</h2>
-          <p>
-            Le Machine Learning permet à vos systèmes d'apprendre
-            automatiquement à partir de données historiques pour améliorer leurs
-            performances sans programmation explicite.
-          </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2>Avantages du Machine Learning</h2>
+          <h2>Quels bénéfices pour votre entreprise ?</h2>
           <ul>
-            <li>Automatisation des tâches répétitives.</li>
-            <li>
-              Optimisation des processus métiers grâce à l'analyse prédictive.
-            </li>
-            <li>Personnalisation des expériences utilisateurs.</li>
+            <li>🚀 <strong>Automatisation des tâches répétitives :</strong> Gagnez du temps et augmentez votre productivité.</li>
+            <li>📊 <strong>Optimisation des processus :</strong> Exploitez vos données pour prendre des décisions éclairées.</li>
+            <li>🎯 <strong>Analyse prédictive :</strong> Anticipez les besoins clients et améliorez vos stratégies commerciales.</li>
           </ul>
         </section>
 
         <section className={styles.section}>
-          <h2>Exemples concrets d'utilisation</h2>
+          <h2>Des cas d'usage concrets</h2>
           <ul>
-            <li>
-              Prédiction des ventes pour optimiser la gestion des stocks.
-            </li>
-            <li>
-              Détection de fraude en temps réel dans les transactions
-              financières.
-            </li>
-            <li>
-              Personnalisation des recommandations sur les plateformes
-              digitales.
-            </li>
+            <li>📈 Prédiction des ventes pour optimiser la gestion des stocks.</li>
+            <li>🛡️ Détection de fraude en temps réel dans les transactions financières.</li>
+            <li>🎯 Personnalisation des recommandations sur les plateformes digitales.</li>
           </ul>
         </section>
 
-        <Link href="/services/intelligence-artificielle" className={styles.cardButton}>
-          Retour aux solutions IA
+        <Link href="/services/page-services" className={styles.cardButton}>
+          ← Retour aux solutions IA
         </Link>
       </main>
     </>

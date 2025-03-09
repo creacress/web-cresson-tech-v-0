@@ -75,6 +75,19 @@ export default function Home() {
             </Link>
           </section>
 
+          <section className={styles.hero} id="decouvrir-ia">
+            <h2 className={styles.heroTitle}>Découvrir qu'est-ce que l'intelligence artificielle</h2>
+            <p className={styles.heroText}>
+              L'intelligence artificielle (IA) est une technologie qui permet aux machines d'apprendre, de s'adapter et de
+              prendre des décisions intelligentes. Grâce à des algorithmes avancés et à l'analyse de grandes quantités de
+              données, l'IA peut automatiser des tâches complexes, optimiser les processus métiers et offrir des solutions
+              sur mesure dans de nombreux secteurs d'activité.
+            </p>
+            <Link href="/services/intelligence-artificielle" className={styles.ctaButton}>
+              En savoir plus sur l'Intelligence Artificielle
+            </Link>
+          </section>
+
           <section className={styles.whyChooseUs}>
             <h2 className={styles.sectionTitle}>Pourquoi nous choisir ?</h2>
             <div className={styles.featuresGrid}>

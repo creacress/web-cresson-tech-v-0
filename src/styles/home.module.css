@@ -143,7 +143,60 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
+/* Harmonisation de la section "Découvrir qu'est-ce que l'intelligence artificielle" */
+#decouvrir-ia {
+  padding: 40px 20px;
+  margin: 50px 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1.5s ease-in-out;
+}
 
+#decouvrir-ia h2 {
+  font-size: 2.2rem;
+  color: #00e0ff;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid var(--accent-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+#decouvrir-ia p {
+  font-size: 1.2rem;
+  color: #d1d1d1;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+#decouvrir-ia .linkButton {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #011518;
+  background-color: #00e0ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+#decouvrir-ia .linkButton:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Adaptation responsive pour petits écrans */
+@media (max-width: 768px) {
+  #decouvrir-ia h2 {
+    font-size: 1.8rem;
+  }
+  #decouvrir-ia p {
+    font-size: 1rem;
+  }
+}
 .featureCard {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);

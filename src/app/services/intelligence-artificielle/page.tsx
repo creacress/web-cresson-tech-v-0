@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
 import { Metadata } from "next";
-import Head from "next/head"; // Importation pour manipuler le head
+import Head from "next/head";
 
 import styles from "@/styles/services.module.css";
 
@@ -52,7 +52,6 @@ export default function IntelligenceArtificiellePage() {
   return (
     <>
       <Head>
-        {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/services/intelligence-artificielle" />
       </Head>
 
@@ -82,66 +81,48 @@ export default function IntelligenceArtificiellePage() {
         ]}
       />
 
-
       <main className={styles.mainContent}>
         <section className={styles.hero}>
-          <h1>Intelligence Artificielle : Solutions sur mesure</h1>
+          <h1>Transformez votre entreprise avec l'Intelligence Artificielle !</h1>
           <p>
-            Optimisez vos processus métiers avec des solutions en Intelligence
-            Artificielle personnalisées : Deep Learning, Machine Learning, IA
-            générative et traitement d'images.
+            Maximisez l'efficacité de vos processus métiers avec des solutions personnalisées en Intelligence
+            Artificielle : Deep Learning, Machine Learning, IA générative et traitement d'images.
           </p>
+          <Link href="/contact" className={styles.ctaButton}>
+            Obtenez une consultation gratuite dès maintenant
+          </Link>
         </section>
 
         <section className={styles.section} id="definition">
           <h2>Qu'est-ce que l'intelligence artificielle ?</h2>
           <p>
-            L'intelligence artificielle (IA) permet aux machines de simuler
-            l'intelligence humaine pour accomplir des tâches complexes telles
-            que la reconnaissance d'images, l'analyse prédictive et
-            l'automatisation des processus métiers. Grâce à des technologies
-            avancées comme le <strong>Deep Learning</strong> et le{" "}
-            <strong>Machine Learning</strong>, l'IA peut apprendre, s'adapter et
-            offrir des solutions innovantes dans divers secteurs d'activité.
+            L'Intelligence Artificielle (IA) simule l'intelligence humaine pour automatiser des tâches complexes
+            comme la reconnaissance d'images, l'analyse prédictive et l'amélioration des processus métiers. Avec des
+            technologies avancées telles que le <strong>Deep Learning</strong> et le <strong>Machine Learning</strong>,
+            l'IA apprend et s'adapte pour offrir des solutions innovantes à tous les secteurs.
           </p>
         </section>
 
         <section className={styles.section} id="deep-learning">
-          <h2>Le Deep Learning : Apprentissage profond pour des solutions avancées</h2>
+          <h2>Le Deep Learning : Apprentissage profond pour des performances optimales</h2>
           <p>
-            Le <strong>Deep Learning</strong> utilise des réseaux de neurones
-            profonds pour traiter des données complexes telles que les images,
-            les vidéos et le langage naturel. Il est idéal pour des tâches telles
-            que la reconnaissance faciale, la détection d'anomalies et la
-            génération de contenu.
+            Le <strong>Deep Learning</strong> utilise des réseaux de neurones profonds pour traiter de vastes quantités
+            de données complexes. Idéal pour la reconnaissance faciale, la détection d'anomalies et la génération de contenu.
           </p>
           <Link href="/services/deep-learning" className={styles.linkButton}>
-            En savoir plus sur le Deep Learning
+            Découvrez nos solutions en Deep Learning
           </Link>
         </section>
 
         <section className={styles.section} id="machine-learning">
-          <h2>Le Machine Learning : Automatisation intelligente des processus</h2>
+          <h2>Le Machine Learning : Automatisation intelligente pour votre entreprise</h2>
           <p>
-            Le <strong>Machine Learning</strong> permet aux systèmes d'apprendre
-            à partir de données structurées et semi-structurées pour automatiser
-            des tâches telles que la prédiction des ventes, l'analyse des
+            Le <strong>Machine Learning</strong> permet à vos systèmes d'apprendre automatiquement à partir de données
+            structurées et semi-structurées pour automatiser des tâches comme la prédiction des ventes, l'analyse des
             comportements utilisateurs et l'optimisation des processus métiers.
           </p>
           <Link href="/services/machine-learning" className={styles.linkButton}>
-            Découvrir le Machine Learning
-          </Link>
-        </section>
-
-        <section className={styles.ctaSection}>
-          <h2>Prêt à optimiser vos processus métiers avec l'IA ?</h2>
-          <p>
-            Contactez Web Cresson Tech dès maintenant pour une consultation
-            gratuite et découvrez comment l'intelligence artificielle peut
-            transformer votre entreprise !
-          </p>
-          <Link href="/contact" className={styles.ctaButton}>
-            Demander une consultation gratuite
+            En savoir plus sur le Machine Learning
           </Link>
         </section>
       </main>

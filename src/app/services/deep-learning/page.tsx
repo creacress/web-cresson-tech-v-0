@@ -3,7 +3,7 @@ import React from "react";
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
 import Link from "next/link";
 import { Metadata } from "next";
-import Head from "next/head"; // Importation pour manipuler le head
+import Head from "next/head";
 
 import styles from "@/styles/services.module.css";
 
@@ -48,7 +48,6 @@ export default function DeepLearningPage() {
   return (
     <>
       <Head>
-        {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/services/deep-learning" />
       </Head>
 
@@ -72,43 +71,62 @@ export default function DeepLearningPage() {
         ]}
       />
 
-
       <main className={styles.mainContent}>
         <section className={styles.hero}>
-          <h1>Deep Learning</h1>
+          <h1>Boostez vos performances avec le Deep Learning !</h1>
           <p>
-            Exploitez la puissance des réseaux neuronaux profonds pour automatiser des tâches complexes et optimiser vos processus métiers.
+            Vous souhaitez automatiser des tâches complexes et exploiter la puissance des réseaux neuronaux ?
+            Le Deep Learning est la solution pour analyser des données volumineuses avec une précision inégalée.
+          </p>
+          <Link href="/contact">
+            <button className={styles.ctaButton}>
+              Découvrez comment le Deep Learning peut transformer votre entreprise
+            </button>
+          </Link>
+        </section>
+
+        <section className={styles.section}>
+          <h2>Pourquoi choisir le Deep Learning ?</h2>
+          <p>
+            Le Deep Learning utilise des <strong>réseaux de neurones profonds</strong> pour analyser des données complexes
+            et volumineuses. Grâce aux <strong>Réseaux de Neurones Convolutifs (CNN)</strong>, vous pouvez automatiser
+            des processus métiers sophistiqués, notamment dans le traitement d'images et de vidéos.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>Qu'est-ce que le Deep Learning ?</h2>
+          <h2>Quels bénéfices pour votre entreprise ?</h2>
+          <ul>
+            <li>🎯 <strong>Précision maximale :</strong> Des modèles prédictifs ultra-performants.</li>
+            <li>🤖 <strong>Automatisation intelligente :</strong> Apprentissage autonome pour gagner en efficacité.</li>
+            <li>📈 <strong>Exploitation des données non structurées :</strong> Analyse d'images, vidéos, sons, etc.</li>
+          </ul>
+        </section>
+
+        <section className={styles.section}>
+          <h2>Des cas d'usage concrets et inspirants</h2>
+          <ul>
+            <li>🧬 Analyse d'imagerie médicale pour détecter précocement des maladies.</li>
+            <li>🔒 Reconnaissance faciale pour renforcer la sécurité et l'authentification.</li>
+            <li>🏭 Automatisation industrielle grâce à l'analyse vidéo en temps réel.</li>
+          </ul>
+        </section>
+
+        <section className={styles.section}>
+          <h2>Prêt à passer au niveau supérieur ?</h2>
           <p>
-            Le Deep Learning utilise des <strong>réseaux de neurones profonds</strong> pour analyser des données volumineuses.
-            Les <strong>Réseaux de Neurones Convolutifs (CNN)</strong> sont particulièrement efficaces pour le traitement d'images et de vidéos.
+            Contactez-nous dès maintenant pour découvrir comment le Deep Learning peut
+            booster vos performances et optimiser vos processus métiers.
           </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2>Avantages du Deep Learning</h2>
-          <ul>
-            <li>Précision accrue dans les modèles prédictifs.</li>
-            <li>Automatisation des tâches complexes avec apprentissage autonome.</li>
-            <li>Capacité à analyser des données non structurées (images, vidéos, sons).</li>
-          </ul>
-        </section>
-
-        <section className={styles.section}>
-          <h2>Exemples concrets d'utilisation</h2>
-          <ul>
-            <li>Analyse d'imagerie médicale pour la détection de maladies.</li>
-            <li>Reconnaissance faciale pour la sécurité et l'authentification.</li>
-            <li>Automatisation industrielle via l'analyse vidéo.</li>
-          </ul>
+          <Link href="/contact">
+            <button className={styles.ctaButton}>
+              Parlez-nous de vos projets en Deep Learning
+            </button>
+          </Link>
         </section>
 
         <Link href="/services/intelligence-artificielle">
-          <span className={styles.cardButton}>Retour aux solutions IA</span>
+          <span className={styles.cardButton}>← Retour aux solutions IA</span>
         </Link>
       </main>
     </>

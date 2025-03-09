@@ -3,7 +3,7 @@ import React from "react";
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
 import Link from "next/link";
 import { Metadata } from "next";
-import Head from "next/head"; // Importation pour manipuler le head
+import Head from "next/head";
 
 import styles from "@/styles/services.module.css";
 
@@ -48,7 +48,6 @@ export default function ArcheologieIA() {
   return (
     <>
       <Head>
-        {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/services/ia-archeologie" />
       </Head>
 
@@ -71,7 +70,6 @@ export default function ArcheologieIA() {
           },
         ]}
       />
-
 
       <main className={styles.mainContent}>
         <section className={styles.hero}>
@@ -100,26 +98,12 @@ export default function ArcheologieIA() {
             <li>🕰️ Prédire l'emplacement de découvertes potentielles grâce à l'analyse prédictive des données historiques.</li>
             <li>🎨 Créer des reconstitutions 3D interactives de sites anciens, offrant ainsi de nouvelles perspectives pour la recherche et l'éducation.</li>
           </ul>
-        </section>
-
-        <section className={styles.section} id="creer-besoin">
-          <h2>Pourquoi investir dans l'IA pour l'archéologie ?</h2>
-          <p>
-            Les professionnels de l'archéologie pourraient bénéficier d'un gain de temps considérable, d'une précision accrue dans l'analyse des données et d'une capacité d'automatisation inédite.
-            L'IA pourrait réduire les coûts liés aux fouilles manuelles, améliorer la précision des découvertes et ouvrir de nouvelles opportunités pour la recherche scientifique.
-          </p>
-        </section>
-
-        <section className={styles.section} id="alternatives">
-          <h2>Découvrez nos autres solutions d'IA</h2>
-          <div className={styles.buttonContainer}>
-            <Link href="/services/deep-learning" className={styles.linkButton}>
-              En savoir plus sur le Deep Learning
-            </Link>
-            <Link href="/services/machine-learning" className={styles.linkButton}>
-              Découvrir le Machine Learning
-            </Link>
-          </div>
+          <Link href="/contact" className={styles.ctaButton}>
+            Contactez-nous pour une consultation gratuite
+          </Link>
+          <Link href="/services/page-services" className={styles.linkButton}>
+            ← Revenir à tous les services
+          </Link>
         </section>
       </main>
     </>

@@ -71,52 +71,69 @@ export default function RPAAutomatisationPage() {
       <main className={styles.mainContent}>
         {/* Section Hero */}
         <section className={styles.hero}>
-          <h1>RPA Automatisation : Définition, Avantages, Utilisations</h1>
+          <h1>Libérez-vous des tâches répétitives avec la RPA Automatisation !</h1>
           <p>
-            Automatisez vos processus métiers grâce à la RPA (Robotic Process Automation) pour améliorer l'efficacité opérationnelle et réduire les coûts.
+            Vous en avez assez de perdre du temps sur des tâches manuelles et répétitives ?
+            La RPA (Robotic Process Automation) est la solution pour automatiser vos processus métiers,
+            gagner en efficacité et réduire vos coûts opérationnels.
           </p>
+          <button className={styles.ctaButton}>
+            Découvrir comment la RPA peut transformer votre business
+          </button>
         </section>
 
         {/* Section de contenu */}
         <section className={styles.section}>
-          <h2>Qu'est-ce que la RPA Automatisation ?</h2>
+          <h2>Pourquoi adopter la RPA Automatisation ?</h2>
           <p>
-            La RPA Automatisation utilise des robots logiciels pour automatiser les tâches répétitives et basées sur des règles. Ces robots imitent les actions humaines sur des interfaces numériques pour exécuter des processus métiers de manière autonome.
+            Imaginez un instant : plus de saisies de données fastidieuses, plus de copier-coller interminables.
+            Avec la RPA, vos tâches répétitives sont prises en charge par des robots logiciels qui imitent
+            les actions humaines. Vous pouvez ainsi vous concentrer sur ce qui compte vraiment :
+            développer votre entreprise et innover.
           </p>
         </section>
 
         <section className={styles.section}>
-          <h2>Avantages de la RPA Automatisation</h2>
+          <h2>Les avantages concrets de la RPA pour votre entreprise</h2>
           <ul>
-            <li>Automatisation des tâches répétitives pour libérer du temps pour des activités à forte valeur ajoutée.</li>
-            <li>Amélioration de la précision et réduction des erreurs humaines.</li>
-            <li>Gain de temps significatif dans les processus métiers courants.</li>
-            <li>Intégration facile avec les systèmes existants tels que ERP, CRM, et outils de gestion documentaire.</li>
-            <li>Réduction des coûts opérationnels jusqu'à 30 % en automatisant les processus manuels.</li>
+            <li>💼 <strong>Libérez du temps :</strong> Automatisez les tâches répétitives pour vous concentrer sur vos priorités.</li>
+            <li>🎯 <strong>Boostez la précision :</strong> Réduisez les erreurs humaines et améliorez la qualité de vos données.</li>
+            <li>🚀 <strong>Accélérez vos processus :</strong> Gagnez du temps sur vos opérations quotidiennes.</li>
+            <li>🔗 <strong>Intégration simple :</strong> Connectez facilement la RPA à vos outils existants (ERP, CRM, etc.).</li>
+            <li>💰 <strong>Optimisez vos coûts :</strong> Jusqu'à 30 % de réduction des coûts opérationnels.</li>
           </ul>
         </section>
 
         <section className={styles.section}>
-          <h2>Exemples concrets d'utilisation de la RPA</h2>
+          <h2>Comment la RPA peut transformer votre quotidien professionnel</h2>
+          <p>Voici quelques exemples d'applications concrètes :</p>
           <ul>
-            <li>Automatisation de la saisie de données dans les systèmes ERP ou CRM.</li>
-            <li>Traitement automatisé des factures ou des commandes clients.</li>
-            <li>Intégration avec des outils existants pour optimiser les flux de travail.</li>
-            <li>Automatisation des processus RH, comme l'intégration des nouveaux employés.</li>
-            <li>Suivi automatisé des stocks et gestion des commandes en temps réel.</li>
+            <li>📊 Automatisation de la saisie de données dans vos systèmes (ERP, CRM).</li>
+            <li>🧾 Traitement automatisé des factures et des commandes clients.</li>
+            <li>🔄 Optimisation des flux de travail avec des intégrations intelligentes.</li>
+            <li>👥 Automatisation des processus RH, comme l'intégration des nouveaux employés.</li>
+            <li>📦 Suivi des stocks en temps réel et gestion automatisée des commandes.</li>
           </ul>
         </section>
 
         <section className={styles.section}>
-          <h2>Comparaison : RPA vs Automatisation Traditionnelle</h2>
-          <p>La RPA se distingue des méthodes traditionnelles en offrant :</p>
+          <h2>Pourquoi choisir la RPA plutôt que l'automatisation traditionnelle ?</h2>
+          <p>
+            Contrairement aux solutions classiques, la RPA offre des avantages uniques pour simplifier
+            et accélérer vos projets d'automatisation :
+          </p>
           <ul>
-            <li>Une configuration sans code ou low-code, idéale pour les équipes non techniques.</li>
-            <li>Une meilleure flexibilité pour s'adapter aux changements des interfaces utilisateurs.</li>
-            <li>Un retour sur investissement rapide grâce à une mise en œuvre rapide.</li>
+            <li>⚙️ <strong>Sans code :</strong> Une configuration simple, même pour les non-techniciens.</li>
+            <li>📈 <strong>Adaptabilité :</strong> S'ajuste rapidement aux changements des interfaces utilisateurs.</li>
+            <li>⏱️ <strong>ROI rapide :</strong> Rentabilisez votre investissement en un temps record.</li>
           </ul>
+          <button className={styles.ctaButton}>
+            <Link href="/contact">
+              Parlez-nous de vos besoins en automatisation
+            </Link>
+          </button>
         </section>
-
+        
         <section className={styles.section}>
           <h2>Découvrez nos autres services en intelligence artificielle</h2>
           <Link href="/services/intelligence-artificielle">
