@@ -17,7 +17,17 @@ export async function GET() {
     { path: "/", changefreq: "daily", priority: "1.0", lastmod: "2025-03-03" },
     { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: "2025-03-03" },
     { path: "/about", changefreq: "monthly", priority: "0.7", lastmod: "2025-03-03" },
-    { path: "/services", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" }
+    { path: "/etude-de-cas", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
+    { path: "/services/audit-gratuit", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
+    { path: "/services/deep-learning", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
+    { path: "/services/ia-archeologie", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
+    { path: "/services/ia-generative", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
+    { path: "/services/intelligence-artificielle", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
+    { path: "/services/machine-learning", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
+    { path: "/services/page-services", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
+    { path: "/services/rpa-automatisation", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
+    { path: "/terms-of-sale", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
+    { path: "/legal-mentions", changefreq: "weekly", priority: "0.9", lastmod: "2025-03-03" },
   ];
 
   const dynamicPaths = await getDynamicPaths();
@@ -33,7 +43,11 @@ ${[...staticPaths, ...dynamicPaths]
     <lastmod>${lastmod}</lastmod>
   </url>`
     ).join("")}
-</urlset>`.trim();
+</urlset>
+
+<sitemap>
+  <loc>${baseUrl}/sitemap-images.xml</loc>
+</sitemap>`.trim();
 
   return new NextResponse(sitemap, {
     headers: {
@@ -81,7 +95,6 @@ async function getDynamicPaths(): Promise<SitemapEntry[]> {
       })
     );
 
-    // Utilisation d'un Type Guard pour filtrer les valeurs nulles
     return paths.filter((path): path is SitemapEntry => path !== null);
 
   } catch (error) {
