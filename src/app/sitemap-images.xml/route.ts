@@ -1,3 +1,4 @@
+// src/app/sitemap-images.xml/route.ts
 import { NextResponse } from 'next/server';
 
 export async function GET() {
@@ -17,21 +18,17 @@ export async function GET() {
   const sitemapImages = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${images
-    .map(
-      ({ url, title }) => `  <url>
+${images.map(({ url, title }) => `
+  <url>
     <loc>${baseUrl}${url}</loc>
     <image:image>
       <image:loc>${baseUrl}${url}</image:loc>
       <image:title>${title}</image:title>
     </image:image>
-  </url>`
-    ).join("\n")}
-</urlset>`;
+  </url>`).join('')}
+</urlset>`.trim();
 
   return new NextResponse(sitemapImages, {
-    headers: {
-      "Content-Type": "application/xml",
-    },
+    headers: { "Content-Type": "application/xml" },
   });
 }
