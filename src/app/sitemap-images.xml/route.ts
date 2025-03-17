@@ -14,7 +14,7 @@ export async function GET() {
     { url: "/favicon.ico", title: "Favicon du site" }
   ];
 
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const sitemapImages = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${images
@@ -26,10 +26,10 @@ ${images
       <image:title>${title}</image:title>
     </image:image>
   </url>`
-    ).join("")}
-</urlset>`.trim();
+    ).join("\n")}
+</urlset>`;
 
-  return new NextResponse(sitemap, {
+  return new NextResponse(sitemapImages, {
     headers: {
       "Content-Type": "application/xml",
     },
