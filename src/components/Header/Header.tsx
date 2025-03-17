@@ -45,7 +45,7 @@ export default function Header() {
           className={styles.hamburger}
           onClick={toggleMenu}
           aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-          aria-expanded={menuOpen}
+          aria-expanded={menuOpen ? "true" : "false"} 
           aria-controls="navigationMenu"
         >
           <span className={`${styles.line} ${menuOpen ? styles.open : ""}`}></span>
@@ -56,10 +56,11 @@ export default function Header() {
         <div
           id="navigationMenu"
           className={`${styles.menu} ${menuOpen ? styles.menuOpen : ""}`}
-          aria-hidden={!menuOpen}
+          aria-hidden={!menuOpen ? "true" : "false"} 
         >
           {[
             { label: "Accueil", href: "/" },
+            { label: "Audit Gratuit", href: "/services/audit-gratuit" },
             { label: "Services", href: "/services/page-services" },
             { label: "À propos", href: "/about" },
             { label: "Contact", href: "/contact" },
