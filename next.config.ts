@@ -1,24 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false, // Désactive le mode strict pour éviter les erreurs en double
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'webcresson.com',
-        pathname: '**',
-      },
-    ],
+    domains: ['webcresson.com'], // Remplace remotePatterns par domains pour éviter les conflits
     formats: ['image/avif', 'image/webp'],
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true, // Continue la compilation même si des erreurs TypeScript existent
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true, // Ignore ESLint pendant la build
   },
   async headers() {
-    const nonce = generateNonce(); // Génère un nonce unique pour chaque requête
     return [
       {
         source: '/(.*)',
@@ -29,14 +22,13 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value: `
-              default-src 'self';
+              default-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;
               img-src 'self' data: https://webcresson.com;
-              script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://www.googletagmanager.com;
-              script-src-elem 'self' https://www.googletagmanager.com 'unsafe-inline';
-              style-src 'self' 'nonce-${nonce}' 'unsafe-inline';
-              connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
+              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com;
+              style-src 'self' 'unsafe-inline';
+              connect-src 'self' https://www.google-analytics.com;
               frame-src 'self' https://calendar.google.com;
-              font-src 'self';
+              font-src 'self' data:;
             `.replace(/\n/g, ' ').trim(),
           },
         ],
@@ -44,9 +36,5 @@ const nextConfig = {
     ];
   },
 };
-
-function generateNonce() {
-  return Math.random().toString(36).slice(2);
-}
 
 module.exports = nextConfig;
