@@ -92,6 +92,7 @@ export default function Service() {
                 title={service.title}
                 icon={service.icon}
                 text={service.text}
+              
               />
             ))}
           </div>

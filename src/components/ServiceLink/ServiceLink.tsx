@@ -1,4 +1,3 @@
-// src/components/ServiceLink/ServiceLink.tsx
 "use client";
 
 import React from "react";
@@ -16,24 +15,24 @@ export default function ServiceLink({ href, title, icon, text }: ServiceLinkProp
   
   const handleClick = () => {
     console.log(`Service cliqué : ${title}`);
-    window?.gtag?.("event", "service_link_click", {
-      event_category: "Navigation",
-      event_label: title,
-    });
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "service_link_click", {
+        event_category: "Navigation",
+        event_label: title,
+      });
+    }
   };
 
   return (
-    <Link 
-      href={href} 
-      className={`${styles.serviceCard} ${styles.magicpattern}`} 
-      onClick={handleClick}
-    >
+    <div className={styles.serviceCard} onClick={handleClick}>
+      <Link href={href} className={styles.fullLink}>
         <div className={styles.serviceHeader}>
           <i className={`fas ${icon} ${styles.serviceIcon}`} aria-hidden="true"></i>
           <h2 className={styles.serviceTitle}>{title}</h2>
         </div>
         <p className={styles.serviceText}>{text}</p>
         <span className={styles.cardButton}>En savoir plus</span>
-    </Link>
+      </Link>
+    </div>
   );
 }
