@@ -120,7 +120,7 @@ export default function Home() {
               ))}
             </div>
 
-            <Link href="/services/developpement-python" className={styles.ctaButton}>
+            <Link href="/developpement-python" className={styles.ctaButton}>
               En savoir plus
             </Link>
           </section>

@@ -105,17 +105,6 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-background text-text antialiased">
-        
-        {/* ✅ Ajout de l’image optimisée directement ici pour le LCP */}
-        <Image
-          src="/robot_humain_main.webp"
-          alt="Illustration robot humain"
-          width={300}
-          height={200}
-          priority // ✅ Chargement prioritaire pour optimiser le LCP
-          className="hidden" // ✅ Cache l’image si elle n'est pas censée être visible
-        />
-
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
