@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import ClientLayout from "./ClientLayout";
 import Script from "next/script";
+import Image from "next/image"; // ✅ Import de l'image Next.js
 import "../styles/globals.css";
 
 export const metadata: Metadata = {
-  title: 'Entreprise Experte en IA | WebCressonTech',
+  title: "Entreprise Experte en IA | WebCressonTech",
   description:
     "Découvrez les solutions innovantes de Web Cresson Tech en intelligence artificielle, RPA, machine learning et deep learning.",
   applicationName: "Web Cresson Tech",
@@ -60,22 +61,15 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
-        {/* Préconnecter les ressources externes pour améliorer les temps de chargement */}
+        {/* ✅ Préconnecter Google Tag Manager */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-        {/* Précharger l'image LCP */}
-        <link
-          rel="preload"
-          href="/robot_humain_main.webp"
-          as="image"
-          type="image/webp"
-          sizes="(max-width: 600px) 150px, (max-width: 1024px) 300px, 384px"
-        />
+        {/* ✅ Suppression du preload qui causait l'erreur */}
 
         <link rel="canonical" href="https://webcresson.com/" />
 
-        {/* Google Tag Manager - Chargement après interactivité */}
+        {/* ✅ Google Tag Manager - Chargement après interactivité */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-H206EG4TH7"
           strategy="afterInteractive"
@@ -91,7 +85,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Données structurées JSON-LD pour les sitelinks et Breadcrumbs */}
+        {/* ✅ Données structurées JSON-LD */}
         <Script
           id="json-ld-global"
           type="application/ld+json"
@@ -109,40 +103,19 @@ export default function RootLayout({
             }),
           }}
         />
-
-        <Script
-          id="json-ld-breadcrumb"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "IA Générative",
-                  "item": "https://webcresson.com/ia-generative"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Data Engineering",
-                  "item": "https://webcresson.com/data-engineering"
-                },
-                {
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "Systèmes Prédictifs",
-                  "item": "https://webcresson.com/systemes-predictifs"
-                }
-              ]
-            }),
-          }}
-        />
       </head>
       <body className="bg-background text-text antialiased">
+        
+        {/* ✅ Ajout de l’image optimisée directement ici pour le LCP */}
+        <Image
+          src="/robot_humain_main.webp"
+          alt="Illustration robot humain"
+          width={300}
+          height={200}
+          priority // ✅ Chargement prioritaire pour optimiser le LCP
+          className="hidden" // ✅ Cache l’image si elle n'est pas censée être visible
+        />
+
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

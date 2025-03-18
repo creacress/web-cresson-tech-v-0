@@ -5,7 +5,6 @@ import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
 import styles from "@/styles/home.module.css";
 import ClientWrapper from "@/components/ClientWrapper/ClientWrapper";
 import Head from "next/head";
-import ProblemSolutionCard from "@/components/ProblemSolutionCard/ProblemSolutionCard";
 
 export const revalidate = 86400;
 
@@ -159,7 +158,7 @@ export default function Home() {
                   <p>"{testimonial.feedback}"</p>
                   <div className={styles.testimonialFooter}>
                     <h4>- {testimonial.name}</h4>
-                    <Image src={testimonial.logo} alt={`Logo ${testimonial.name}`} width={40} height={40} />
+                    <Image src={testimonial.logo} alt={`Logo ${testimonial.name}`} width={96} height={54} />
                   </div>
                 </div>
               ))}

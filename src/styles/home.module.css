@@ -283,7 +283,8 @@
 }
 
 .testimonialLogo {
-  border-radius: 4px; /* si tu veux arrondir le logo */
+  border-radius: 4px;
+  object-fit: contain; /* si tu veux arrondir le logo */
   /* Autres styles éventuels */
 }
 .problemSolutionGrid {
