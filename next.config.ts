@@ -1,16 +1,26 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false, // Désactive le mode strict pour éviter les erreurs
+  reactStrictMode: false, // Plus relax pour le dev
+
   images: {
-    domains: ['webcresson.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'webcresson.com',
+        pathname: '/**',
+      },
+    ],
     formats: ['image/avif', 'image/webp'],
   },
+
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true, // tolère les erreurs pour build sur Vercel
   },
+
   eslint: {
     ignoreDuringBuilds: true,
   },
+
   async headers() {
     return [
       {
@@ -23,11 +33,11 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: `
               default-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;
-              img-src 'self' data: https://webcresson.com;
-              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com;
+              img-src * data:;
+              script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
               style-src 'self' 'unsafe-inline';
-              connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
-              frame-src 'self' https://calendar.google.com;
+              connect-src *;
+              frame-src https://calendar.google.com;
               font-src 'self' data:;
             `.replace(/\n/g, ' ').trim(),
           },
@@ -35,6 +45,6 @@ const nextConfig = {
       },
     ];
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
