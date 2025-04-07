@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import Head from "next/head"
+import NeonTitle from "@/components/ui/NeonTitle"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 
 export const revalidate = 86400
@@ -71,9 +72,9 @@ export default function IntelligenceArtificiellePage() {
 
       <main className="max-w-5xl mx-auto px-6 py-24 text-white">
         <section className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-neon mb-4">
+          <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
             Transformez votre entreprise avec l’IA
-          </h1>
+          </NeonTitle>
           <p className="text-lg text-gray-300 mb-6">
             Maximisez votre efficacité avec nos solutions IA sur mesure : Deep Learning, Machine Learning, IA générative et traitement d’images.
           </p>

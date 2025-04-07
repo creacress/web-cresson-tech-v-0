@@ -1,15 +1,10 @@
-// src/app/services/ia-generative/page.tsx
-import React from "react";
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
-import Link from "next/link";
-import { Metadata } from "next";
-import Head from "next/head"; // Importation pour manipuler le head
+import { Metadata } from "next"
+import Link from "next/link"
+import NeonTitle from "@/components/ui/NeonTitle"
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 
-import styles from "@/styles/services.module.css";
+export const revalidate = 86400
 
-export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
-
-// Définition des métadonnées via l'API Metadata de Next.js 15
 export const metadata: Metadata = {
   title: "IA Générative - Créativité augmentée | Web Cresson Tech",
   description:
@@ -38,20 +33,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://webcresson.com/services/ia-generative",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+}
 
 export default function IAGenerativePage() {
   return (
-    <>
-      <Head>
-        {/* Balise canonique ajoutée manuellement dans le Head */}
-        <link rel="canonical" href="https://webcresson.com/services/ia-generative" />
-      </Head>
-
+    <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
       <ServiceSchema
         serviceName="IA Générative - Web Cresson Tech"
         serviceDescription="Libérez votre créativité avec l'IA Générative : génération de contenu, d'images et automatisation créative."
@@ -64,107 +50,92 @@ export default function IAGenerativePage() {
         faq={[
           {
             question: "Qu'est-ce que l'IA Générative ?",
-            answer: `L'IA Générative utilise des algorithmes avancés pour créer de nouveaux contenus originaux, tels que des images, du texte ou même des musiques, à partir de données existantes. Pour en savoir plus, consultez notre page sur l'IA Générative : https://www.webcresson.com/services/ia-generative`,
+            answer: `L'IA Générative utilise des algorithmes avancés pour créer de nouveaux contenus originaux, tels que des images, du texte ou même des musiques, à partir de données existantes.`,
           },
           {
             question: "Quand utiliser l'IA Générative dans mon entreprise ?",
-            answer: `L'IA Générative est idéale pour la création automatique de contenus marketing, la génération d'images ou la production rapide de prototypes visuels. Découvrez comment l'IA Générative peut vous aider sur notre page des services IA Générative : https://www.webcresson.com/services/ia-generative`,
+            answer: `Pour créer du contenu marketing, générer des visuels de qualité, ou automatiser la production de contenu SEO.`,
           },
           {
-            question: "Quelle est la différence entre IA Générative, Deep Learning et Machine Learning ?",
-            answer: `L'IA Générative produit du contenu original, le Deep Learning excelle dans l'analyse complexe des données visuelles et audio, tandis que le Machine Learning se concentre sur les prédictions et l'automatisation des processus basés sur des données structurées. Pour plus de détails, consultez notre page des services IA : https://www.webcresson.com/services/ia-generative`,
+            question: "Quelle est la différence avec le Machine Learning ?",
+            answer: `Le Machine Learning prédit et classe, l'IA Générative crée du contenu inédit.`,
           },
         ]}
       />
 
+      {/* Héro */}
+      <section className="text-center mb-12">
+        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+          Créez l’avenir avec l’IA Générative
+        </NeonTitle>
+        <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+          Génération de contenu, d’images ou de voix. Automatisez votre créativité avec les dernières avancées IA.
+        </p>
+        <Link href="/contact" className="mt-6 inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
+          Demander une démo gratuite
+        </Link>
+      </section>
 
-      <main className={styles.mainContent}>
-        <section className={styles.hero}>
-          <h1>IA Générative : Créez l'avenir avec Web Cresson Tech</h1>
-          <p>
-            Libérez votre créativité grâce à des solutions en IA Générative. De
-            la génération d'images à la création de contenu automatisée, notre
-            expertise vous accompagne vers l'innovation.
-          </p>
-        </section>
+      {/* Définition */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-bold mb-4 text-white">Qu’est-ce que l’IA Générative ?</h2>
+        <p className="text-gray-400">
+          L’IA Générative est un domaine de l’intelligence artificielle capable de produire du contenu original : texte, image,
+          son ou vidéo. Basée sur des modèles comme <strong>GPT</strong> ou <strong>DALL-E</strong>, elle ouvre un monde de possibilités.
+        </p>
+      </section>
 
-        <section className={styles.section} id="definition">
-          <h2>Qu'est-ce que l'IA Générative ?</h2>
-          <p>
-            L'<strong>IA Générative</strong> utilise des modèles d'intelligence
-            artificielle pour créer de nouveaux contenus originaux. Que ce soit
-            pour la génération d'images, la création de textes ou même la
-            production de musique, elle offre un potentiel infini pour
-            innover dans de nombreux secteurs d'activité.
-          </p>
-          <p>
-            Les technologies comme <strong>ChatGPT</strong> pour le texte ou{" "}
-            <strong>DALL-E</strong> pour les images en sont des exemples concrets.
-          </p>
-        </section>
+      {/* Tableau comparatif */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-bold text-white mb-4">Comparatif IA</h2>
+        <table className="table-auto w-full text-sm text-gray-400 border border-gray-700">
+          <thead className="bg-[#111] text-gray-200">
+            <tr>
+              <th className="p-2">Critère</th>
+              <th className="p-2">IA Générative</th>
+              <th className="p-2">Deep Learning</th>
+              <th className="p-2">Machine Learning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="p-2">Objectif</td>
+              <td className="p-2">Créer du contenu</td>
+              <td className="p-2">Analyser données complexes</td>
+              <td className="p-2">Prédire, classifier</td>
+            </tr>
+            <tr>
+              <td className="p-2">Utilisation</td>
+              <td className="p-2">Marketing, design, SEO</td>
+              <td className="p-2">Santé, industrie, vision</td>
+              <td className="p-2">Commerce, finance, automatisation</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-        <section className={styles.section} id="comparison-table">
-          <h2>Comparaison : IA Générative vs Deep Learning vs Machine Learning</h2>
-          <table className={styles.comparisonTable}>
-            <thead>
-              <tr>
-                <th>Critère</th>
-                <th>IA Générative</th>
-                <th>Deep Learning</th>
-                <th>Machine Learning</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Objectif principal</td>
-                <td>Créer du contenu original</td>
-                <td>Analyser et comprendre des données complexes</td>
-                <td>Prédire des résultats à partir de données structurées</td>
-              </tr>
-              <tr>
-                <td>Exemples d'utilisation</td>
-                <td>Génération d'images, ChatGPT</td>
-                <td>Reconnaissance faciale, analyse audio</td>
-                <td>Prédiction des ventes, automatisation des processus</td>
-              </tr>
-              <tr>
-                <td>Complexité des données</td>
-                <td>Données textuelles et visuelles</td>
-                <td>Données non structurées (images, vidéos)</td>
-                <td>Données structurées (tableaux, bases de données)</td>
-              </tr>
-              <tr>
-                <td>Utilisation courante</td>
-                <td>Créativité, marketing, design</td>
-                <td>Sécurité, santé, industrie</td>
-                <td>Finance, logistique, automatisation</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+      {/* Cas concrets */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-bold text-white mb-4">Exemples concrets</h2>
+        <ul className="list-disc pl-6 text-gray-400 space-y-2">
+          <li>Génération automatique de visuels produits ou mockups</li>
+          <li>Contenus SEO pour articles ou landing pages</li>
+          <li>Scripts vidéo pour campagnes YouTube ou réseaux sociaux</li>
+          <li>Chatbots intelligents à base de LLM (Large Language Models)</li>
+        </ul>
+      </section>
 
-        <section className={styles.section} id="case-studies">
-          <h2>Exemples concrets d'utilisation de l'IA Générative</h2>
-          <ul>
-            <li>Génération automatique de textes pour des campagnes marketing</li>
-            <li>Création d'images réalistes pour des prototypes de design</li>
-            <li>Automatisation de la rédaction de contenus SEO pour sites web</li>
-            <li>Développement de chatbots intelligents pour le service client</li>
-          </ul>
-        </section>
-
-        <section className={styles.ctaSection}>
-          <h2>Besoin d'une solution en IA Générative ?</h2>
-          <p>
-            Contactez-nous pour en savoir plus sur nos offres sur mesure en IA
-            Générative. Ensemble, donnons vie à vos projets créatifs grâce à
-            l'intelligence artificielle.
-          </p>
-          <Link href="/contact" className={styles.ctaButton}>
-            Demander une consultation gratuite
-          </Link>
-        </section>
-      </main>
-    </>
-  );
+      {/* CTA */}
+      <section className="text-center my-20 max-w-3xl mx-auto">
+        <h2 className="text-2xl font-bold text-white mb-4">Besoin d’un accompagnement ?</h2>
+        <p className="text-gray-400 mb-6">Nos experts IA vous aident à intégrer la Génération de contenu dans vos process.</p>
+        <Link
+          href="/services/audit-gratuit"
+          className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
+        >
+          Lancer mon audit gratuit
+        </Link>
+      </section>
+    </main>
+  )
 }

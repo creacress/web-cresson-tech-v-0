@@ -1,7 +1,6 @@
 import React from "react"
 import { Metadata } from "next"
 import Head from "next/head"
-import Link from "next/link"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import ContactForm from "@/components/ContactForm/ContactForm"
 import GoogleCalendar from "@/components/GoogleCalendar/GoogleCalendar"

@@ -1,8 +1,9 @@
-import { Metadata } from "next";
-import Head from "next/head";
-import styles from "@/styles/services.module.css";
+import { Metadata } from "next"
+import NeonTitle from "@/components/ui/NeonTitle"
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import Link from "next/link"
 
-export const revalidate = 86400; // Revalidation toutes les 24 heures
+export const revalidate = 86400
 
 export const metadata: Metadata = {
   title: "Développement Python - IA, Analyse, Automatisation | Web Cresson Tech",
@@ -36,112 +37,110 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+}
 
 export default function DeveloppementPythonPage() {
   return (
-    <>
-      <Head>
-        <link rel="canonical" href="https://webcresson.com/services/developpement-python" />
-      </Head>
-
-      {/* Données structurées JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "Développement Python",
-            "description":
-              "Solutions Python avancées pour l'automatisation, l'intelligence artificielle, l'analyse de données et le développement d'APIs.",
-            "provider": {
-              "@type": "Organization",
-              "name": "Web Cresson Tech",
-              "url": "https://webcresson.com",
-            },
-            "offers": {
-              "@type": "Offer",
-              "url": "https://webcresson.com/services/developpement-python",
-              "priceCurrency": "EUR",
-              "availability": "https://schema.org/InStock",
-            },
-          }),
-        }}
+    <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
+      {/* Structured Data */}
+      <ServiceSchema
+        serviceName="Développement Python"
+        serviceDescription="Solutions Python avancées pour l'automatisation, l'intelligence artificielle, l'analyse de données et le développement d'APIs."
+        serviceTypes={["Python", "IA", "RPA", "Data Science", "API REST"]}
+        faq={[
+          {
+            question: "Quels types de projets réalisez-vous en Python ?",
+            answer:
+              "Nous développons des projets d'IA, d'automatisation, d'analyse de données et d'APIs backend à forte scalabilité.",
+          },
+          {
+            question: "Utilisez-vous FastAPI ou Django ?",
+            answer:
+              "Selon le besoin : FastAPI pour la performance, Django REST pour des projets plus complets ou structurés.",
+          },
+          {
+            question: "Puis-je demander un audit Python gratuit ?",
+            answer:
+              "Oui ! Nous analysons gratuitement vos besoins techniques et proposons une approche sur mesure.",
+          },
+        ]}
       />
 
-      <main className={styles.mainContent}>
-        {/* Hero */}
-        <section className={styles.hero}>
-          <h1>Développement Python</h1>
-          <p>
-            Besoin d'une expertise Python ? Nous concevons des solutions performantes pour l'intelligence artificielle, l'analyse de données et l'automatisation.
-          </p>
-        </section>
+      {/* Hero */}
+      <section className="text-center mb-12">
+        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+          Développement Python sur mesure
+        </NeonTitle>
+        <h1 className="text-5xl font-extrabold text-neon mb-4">Développement Python sur mesure</h1>
+        <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+          De l’IA à l’automatisation en passant par les APIs, notre expertise Python couvre tous vos besoins.
+        </p>
+      </section>
 
-        {/* Python & Intelligence Artificielle */}
-        <section className={styles.section}>
-          <h2>Python et l'Intelligence Artificielle</h2>
-          <p>
-            Python est le langage phare pour l'Intelligence Artificielle et le Machine Learning. Grâce à des bibliothèques comme <strong>TensorFlow</strong>, <strong>PyTorch</strong> et <strong>Scikit-Learn</strong>, nous développons des solutions avancées en :
-          </p>
-          <ul>
-            <li>Deep Learning et réseaux de neurones</li>
-            <li>Traitement d'images et de vidéos</li>
-            <li>Analyse prédictive et recommandations</li>
-            <li>Automatisation de la prise de décision</li>
-          </ul>
-        </section>
+      {/* Python + IA */}
+      <section className="my-20">
+        <h2 className="text-2xl font-bold text-white mb-4">Python pour l’Intelligence Artificielle</h2>
+        <p className="text-gray-400 mb-4">
+          Nous concevons des modèles IA avec <strong>TensorFlow</strong>, <strong>PyTorch</strong>, <strong>Scikit-Learn</strong> pour :
+        </p>
+        <ul className="list-disc pl-6 text-gray-400 space-y-2">
+          <li>Deep Learning & réseaux de neurones</li>
+          <li>Analyse prédictive & recommandations intelligentes</li>
+          <li>Traitement d’images, sons et vidéos</li>
+          <li>Automatisation de prises de décision</li>
+        </ul>
+      </section>
 
-        {/* Python & Analyse de Données */}
-        <section className={styles.section}>
-          <h2>Python et l'Analyse de Données</h2>
-          <p>
-            Python est incontournable pour la data science et l'analyse de données. Nous exploitons <strong>Pandas</strong>, <strong>Polars</strong>, <strong>NumPy</strong> et <strong>Matplotlib</strong> pour :
-          </p>
-          <ul>
-            <li>Extraction, nettoyage et transformation de données</li>
-            <li>Analyse statistique et exploration des données</li>
-            <li>Visualisation avancée des tendances et insights</li>
-            <li>Développement de dashboards interactifs</li>
-          </ul>
-        </section>
+      {/* Python + Data Science */}
+      <section className="my-20">
+        <h2 className="text-2xl font-bold text-white mb-4">Python pour l’analyse de données</h2>
+        <p className="text-gray-400 mb-4">
+          Nous exploitons <strong>Pandas</strong>, <strong>Polars</strong>, <strong>NumPy</strong> et <strong>Matplotlib</strong> pour :
+        </p>
+        <ul className="list-disc pl-6 text-gray-400 space-y-2">
+          <li>Nettoyage et transformation de jeux de données</li>
+          <li>Analyses statistiques et data visualisation</li>
+          <li>Dashboards dynamiques & interactifs</li>
+        </ul>
+      </section>
 
-        {/* Python & Automatisation (RPA) */}
-        <section className={styles.section}>
-          <h2>Python et l'Automatisation (RPA)</h2>
-          <p>
-            Grâce aux frameworks <strong>Selenium</strong>, <strong>PyAutoGUI</strong> et <strong>Robocorp</strong>, nous développons des solutions RPA qui :
-          </p>
-          <ul>
-            <li>Automatisent des tâches répétitives</li>
-            <li>Gèrent des workflows et processus métier</li>
-            <li>Scrapent et extraient des données du web</li>
-            <li>Intègrent l'automatisation avec l'IA</li>
-          </ul>
-        </section>
+      {/* Python + RPA */}
+      <section className="my-20">
+        <h2 className="text-2xl font-bold text-white mb-4">Python pour l’automatisation (RPA)</h2>
+        <p className="text-gray-400 mb-4">
+          Grâce à <strong>Selenium</strong>, <strong>PyAutoGUI</strong> ou <strong>Robocorp</strong>, nous créons des robots pour :
+        </p>
+        <ul className="list-disc pl-6 text-gray-400 space-y-2">
+          <li>Automatiser des tâches métiers chronophages</li>
+          <li>Extraire & structurer des données (scraping)</li>
+          <li>Contrôler des applications ou navigateurs</li>
+        </ul>
+      </section>
 
-        {/* Python & Développement d'APIs */}
-        <section className={styles.section}>
-          <h2>Python et le Développement d'APIs</h2>
-          <p>
-            Nous créons des APIs performantes et scalables avec <strong>FastAPI</strong> et <strong>Django REST Framework</strong> :
-          </p>
-          <ul>
-            <li>Développement d'APIs REST et GraphQL</li>
-            <li>Connexion entre applications et bases de données</li>
-            <li>Optimisation des performances et sécurité</li>
-          </ul>
-        </section>
-        {/* Section CTA */}
-        <section className={styles.ctaSection}>
-          <h2>Besoin d'une solution Python sur mesure ?</h2>
-          <p>Contactez-nous dès aujourd'hui et bénéficiez d'un audit gratuit.</p>
-          <a href="/contact" className={styles.ctaButton}>
-            Nous contacter
-          </a>
-        </section>
-      </main>
-    </>
-  );
+      {/* Python + APIs */}
+      <section className="my-20">
+        <h2 className="text-2xl font-bold text-white mb-4">Développement d’APIs en Python</h2>
+        <p className="text-gray-400 mb-4">
+          Nous bâtissons des APIs robustes avec <strong>FastAPI</strong> ou <strong>Django REST Framework</strong> :
+        </p>
+        <ul className="list-disc pl-6 text-gray-400 space-y-2">
+          <li>APIs REST ou GraphQL sécurisées & performantes</li>
+          <li>Connexion aux bases de données & services tiers</li>
+          <li>Optimisation scalabilité, latence & sécurité</li>
+        </ul>
+      </section>
+
+      {/* CTA final */}
+      <section className="text-center my-20 max-w-2xl mx-auto">
+        <h2 className="text-2xl font-bold text-white mb-4">Besoin d’un dev Python expert ?</h2>
+        <p className="text-gray-400 mb-6">Discutons de votre projet et recevez un audit technique gratuit.</p>
+        <Link
+          href="/contact"
+          className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
+        >
+          Nous contacter
+        </Link>
+      </section>
+    </main>
+  )
 }

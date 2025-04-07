@@ -1,6 +1,7 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import NeonTitle from "@/components/ui/NeonTitle"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import ClientWrapper from "@/components/ClientWrapper/ClientWrapper"
 
@@ -41,146 +42,162 @@ export default function Home() {
 
       <main className="bg-black text-white px-4 md:px-12">
         {/* Hero */}
-        <section className="text-center py-20">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-[0_0_10px_#00e0ff]">
-            WebCressonTech :{" "}
-            <span className="text-neon">Votre partenaire IA & Python</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            Besoin d'intelligence artificielle et de développement Python sur
-            mesure ? Découvrez nos solutions.
+        <section className="text-center py-24">
+          <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+            WebCressonTech :{" "} Votre partenaire IA & Python
+          </NeonTitle>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+            WebCressonTech conçoit des solutions sur mesure pour les entreprises qui veulent passer à l’échelle.
           </p>
-          <Link href="/services/page-services">
-            <button className="bg-[#00e0ff] text-black font-semibold px-6 py-3 rounded-md hover:scale-105 transition">
-              Découvrir nos solutions
-            </button>
+          <Link
+            href="/services/audit-gratuit"
+            className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
+          >
+            Obtenir un audit IA gratuit
           </Link>
         </section>
 
-        {/* IA */}
-        <section className="text-center py-16 max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-neon mb-4">
-            Qu'est-ce que l'intelligence artificielle ?
+        {/* Problèmes fréquents */}
+        <section className="max-w-5xl mx-auto py-16">
+          <h2 className="text-3xl font-bold text-neon mb-6 text-center">
+            Est-ce que vous vous reconnaissez ?
           </h2>
-          <p className="text-gray-300 mb-6">
-            L'IA permet aux machines d'apprendre et d'automatiser des tâches
-            complexes. Grâce à des algorithmes avancés, elle optimise les
-            processus et améliore les performances des entreprises.
-          </p>
-          <Link href="/services/intelligence-artificielle">
-            <button className="bg-[#00e0ff] text-black font-semibold px-6 py-3 rounded-md hover:scale-105 transition">
-              En savoir plus
-            </button>
-          </Link>
+          <ul className="grid md:grid-cols-2 gap-6 text-gray-400 list-disc pl-5">
+            <li>Vous perdez du temps sur des tâches manuelles répétitives</li>
+            <li>Vous avez des données… mais pas d’insights exploitables</li>
+            <li>Vos équipes sont surchargées de traitements à faible valeur</li>
+            <li>Vos outils ne communiquent pas entre eux</li>
+          </ul>
         </section>
 
-        {/* Développement Python */}
-        <section className="py-16 max-w-6xl mx-auto">
+        {/* Étapes d'accompagnement */}
+        <section className="py-16 max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-neon mb-8 text-center">
-            Développement Python et Automatisation
+            Notre méthode en 3 étapes
           </h2>
-          <p className="text-gray-300 text-center mb-12">
-            Python est un langage incontournable pour l’IA, l’automatisation et
-            le data engineering. WebCressonTech vous accompagne dans
-            l’optimisation de vos processus avec Python.
-          </p>
+          <div className="grid sm:grid-cols-3 gap-6 text-center text-gray-300">
+            {[
+              {
+                step: "1. Audit gratuit",
+                desc: "On identifie les opportunités IA & automatisation dans vos process actuels.",
+              },
+              {
+                step: "2. Prototype rapide",
+                desc: "On conçoit une preuve de concept efficace et mesurable.",
+              },
+              {
+                step: "3. Déploiement & accompagnement",
+                desc: "On intègre la solution dans votre environnement de production.",
+              },
+            ].map(({ step, desc }, i) => (
+              <div
+                key={i}
+                className="bg-[#111] border border-[#00e0ff33] p-6 rounded"
+              >
+                <h3 className="text-xl font-bold text-white mb-2">{step}</h3>
+                <p>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
+        {/* Nos expertises */}
+        <section className="py-20 max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-neon text-center mb-10">
+            Ce que nous faisons avec Python & l’IA
+          </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {[
               {
-                title: "Automatisation & RPA",
-                text: "Scripts avec Selenium, Scrapy, PyAutoGUI.",
+                title: "Automatisation RPA",
+                text: "Déclenchement de tâches, saisies auto, scrapers web, mails intelligents.",
               },
               {
-                title: "Développement Web",
-                text: "Django, FastAPI et Flask.",
+                title: "Modèles IA personnalisés",
+                text: "Machine Learning, Deep Learning pour classer, prédire ou détecter.",
               },
               {
                 title: "Data Engineering",
-                text: "Manipulation de données avec Pandas, Polars, Spark.",
+                text: "Nettoyage, transformation, dashboards, pipelines automatisés.",
               },
               {
-                title: "Développement IA",
-                text: "Modélisation avec TensorFlow, PyTorch, Scikit-learn.",
+                title: "Développement API",
+                text: "Backends performants avec FastAPI & Django REST.",
               },
-            ].map((feature, index) => (
+            ].map(({ title, text }, i) => (
               <div
-                key={index}
-                className="border border-[#00e0ff33] p-6 rounded-md bg-[#111] hover:bg-[#1a1a1a] transition"
+                key={i}
+                className="bg-[#111] border border-[#00e0ff33] p-6 rounded hover:bg-[#1a1a1a] transition"
               >
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-400">{feature.text}</p>
+                <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
+                <p className="text-gray-400">{text}</p>
               </div>
             ))}
           </div>
-
-          <div className="text-center mt-10">
-            <Link href="/developpement-python">
-              <button className="bg-[#00e0ff] text-black font-semibold px-6 py-3 rounded-md hover:scale-105 transition">
-                En savoir plus
-              </button>
-            </Link>
-          </div>
         </section>
-
-        {/* Pourquoi nous choisir */}
-        <section className="py-16 max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-neon mb-8">
-            Pourquoi nous choisir ?
+        {/* Expertises IA */}
+        <section className="py-20 max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-neon text-center mb-10">
+            Des expertises IA complètes
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {[
               {
-                title: "Expertise certifiée",
-                text: "En IA, Python et technologies avancées.",
+                title: "Traitement du langage (NLP)",
+                text: "Analyse de sentiments, résumé automatique, extraction d’information, classification d’emails…",
               },
               {
-                title: "Accompagnement complet",
-                text: "De l'idée au déploiement.",
+                title: "Data Mining",
+                text: "Fouille de données, détection de patterns, segmentation intelligente et recommandations.",
               },
               {
-                title: "Solutions sur mesure",
-                text: "Adaptées à vos besoins.",
+                title: "Business Intelligence IA",
+                text: "Dashboards augmentés, visualisations intelligentes et prédiction d’indicateurs métier.",
               },
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="border border-[#00e0ff33] p-6 rounded-md bg-[#111] hover:bg-[#1a1a1a] transition"
-              >
-                <h3 className="text-xl font-bold text-white mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-400">{feature.text}</p>
+              {
+                title: "MLOps & Industrialisation",
+                text: "CI/CD pour modèles IA, monitoring, retraining automatique, cloud & Docker ready.",
+              },
+            ].map(({ title, text }, i) => (
+              <div key={i} className="bg-[#111] border border-[#00e0ff33] p-6 rounded hover:bg-[#1a1a1a] transition">
+                <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
+                <p className="text-gray-400">{text}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Témoignages */}
-        <section className="py-16 max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-neon mb-8">
-            Ils nous font confiance
-          </h2>
-          <div className="flex flex-col items-center gap-8">
-            <div className="border border-[#00e0ff33] p-6 rounded-md bg-[#111] max-w-2xl">
-              <p className="italic text-gray-300 mb-4">
-                "Grâce à WebCressonTech, nous avons mis en place un RPA et une
-                IA d’email permettant de réduire de 30% notre temps de
-                traitement et de réussir notre migration."
-              </p>
-              <div className="flex items-center justify-center gap-4">
-                <h4 className="text-white font-semibold">- La Poste</h4>
-                <Image
-                  src="/logo_la_poste.webp"
-                  alt="Logo La Poste"
-                  width={96}
-                  height={54}
-                />
-              </div>
+        {/* Témoignage */}
+        <section className="py-20 max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-neon mb-8">Ils nous font confiance</h2>
+          <div className="border border-[#00e0ff33] bg-[#111] p-6 rounded">
+            <p className="italic text-gray-300 mb-4">
+              “Grâce à WebCressonTech, nous avons automatisé 40% de nos tâches manuelles et gagné 12h par semaine sur la gestion des emails.”
+            </p>
+            <div className="flex justify-center items-center gap-4">
+              <span className="text-white font-semibold">— Responsable IT, Groupe Transport</span>
+              <Image
+                src="/logo_la_poste.webp"
+                alt="Logo La Poste"
+                width={96}
+                height={54}
+              />
             </div>
           </div>
+        </section>
+
+        {/* CTA final */}
+        <section className="text-center py-20">
+          <h2 className="text-3xl font-bold text-neon mb-6">Prêt à transformer vos process ?</h2>
+          <p className="text-gray-400 mb-6">
+            Profitez d’un audit IA gratuit pour faire le premier pas vers l’automatisation intelligente.
+          </p>
+          <Link
+            href="/contact"
+            className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
+          >
+            Discuter de mon projet IA
+          </Link>
         </section>
 
         <ClientWrapper />

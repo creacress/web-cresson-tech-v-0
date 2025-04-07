@@ -1,7 +1,8 @@
 import { Metadata } from "next"
+import NeonTitle from "@/components/ui/NeonTitle"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import ServiceLink from "@/components/ServiceLink/ServiceLink"
-import { FaRobot, FaMagic, FaCompass, FaBrain, FaChartLine } from "react-icons/fa"
+import { FaRobot, FaMagic, FaCompass, FaBrain, FaChartLine, FaLanguage } from "react-icons/fa"
 
 export const revalidate = 86400
 
@@ -72,9 +73,9 @@ export default function ServicesPage() {
 
       {/* Hero Section */}
       <section className="text-center mb-12">
-        <h1 className="text-5xl font-extrabold text-neon mb-4">
+        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
           Passez à la vitesse supérieure avec l’IA sur mesure
-        </h1>
+        </NeonTitle>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
           Vos données sont une mine d’or. Nous les transformons en leviers de croissance grâce à nos solutions IA & SaaS personnalisées.
         </p>
@@ -101,7 +102,13 @@ export default function ServicesPage() {
           </div>
         ))}
       </section>
-
+      {/* Séparation / Titre section */}
+      <div className="text-center my-20">
+        <h2 className="text-3xl font-bold text-neon mb-4">Nos domaines d’expertise</h2>
+        <p className="text-gray-400 max-w-xl mx-auto">
+          Découvrez nos services d’IA, automatisation, NLP, visualisation intelligente et plus encore.
+        </p>
+      </div>
       {/* Liste des services */}
       <section className="grid md:grid-cols-2 gap-6 mb-16">
         {servicesData.map((service, index) => (
@@ -170,35 +177,48 @@ export default function ServicesPage() {
   )
 }
 
-const servicesData = [
+export const servicesData = [
   {
     icon: <FaRobot className="text-3xl text-[#00e0ff]" />,
-    title: "Libérez vos équipes grâce à l'automatisation intelligente",
-    text: "Automatisez les tâches répétitives et boostez votre efficacité avec notre expertise RPA & IA.",
+    title: "Automatisation intelligente (RPA)",
+    text: "Libérez vos équipes des tâches manuelles. Nos robots logiciels automatisent vos processus répétitifs avec fiabilité.",
     link: "/services/rpa-automatisation",
   },
   {
     icon: <FaMagic className="text-3xl text-[#00e0ff]" />,
-    title: "Exploitez l’IA générative pour innover",
-    text: "Créez automatiquement des contenus, visuels, résumés ou aides à la rédaction grâce à l’IA générative.",
+    title: "IA Générative & Création de contenu",
+    text: "Générez des images, textes, scripts ou visuels marketing grâce à l’intelligence artificielle créative.",
     link: "/services/ia-generative",
   },
   {
     icon: <FaCompass className="text-3xl text-[#00e0ff]" />,
-    title: "IA pour l'exploration et la fouille de données",
-    text: "Analysez des données complexes, géospatiales ou historiques pour extraire des insights uniques.",
+    title: "Exploration de données avancée",
+    text: "Exploitez vos données métiers, géospatiales ou historiques pour révéler des insights et opportunités cachées.",
     link: "/services/ia-archeologie",
   },
   {
     icon: <FaBrain className="text-3xl text-[#00e0ff]" />,
-    title: "Analyse avancée avec le Deep Learning",
-    text: "Déployez des modèles profonds pour comprendre vos données massives ou complexes.",
-    link: "/services/deep-learning",
+    title: "Deep Learning & traitement complexe",
+    text: "Analyse d’images, vidéos ou signaux via des réseaux de neurones profonds. Idéal pour la reconnaissance visuelle.",
+    link: "/services/machine-learning-deep-learning",
   },
   {
     icon: <FaChartLine className="text-3xl text-[#00e0ff]" />,
-    title: "Boostez vos KPIs grâce au Machine Learning",
-    text: "Prédisez comportements, pannes ou ventes avec des modèles IA sur mesure.",
-    link: "/services/machine-learning",
+    title: "Machine Learning prédictif",
+    text: "Anticipez ventes, ruptures ou fraudes à partir de vos données. Nos modèles apprennent et s’adaptent à votre activité.",
+    link: "/services/machine-learning-deep-learning",
   },
+  {
+    icon: <FaLanguage className="text-3xl text-[#00e0ff]" />,
+    title: "Analyse sémantique & data intelligente",
+    text: "Exploitez vos données textuelles, classez automatiquement vos contenus, détectez les signaux faibles et optimisez vos décisions grâce à l'IA.",
+    link: "/services/analyse-semantique-nlp",
+  },
+  {
+    icon: <FaChartLine className="text-3xl text-[#00e0ff]" />,
+    title: "Business Intelligence augmentée",
+    text: "Des dashboards intelligents avec des prédictions intégrées pour une prise de décision immédiate.",
+    link: "/services/bi-ia",
+  }
 ]
+

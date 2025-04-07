@@ -1,15 +1,10 @@
-// src/app/services/ia-archeologie/page.tsx
-import React from "react";
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
-import Link from "next/link";
-import { Metadata } from "next";
-import Head from "next/head";
+import { Metadata } from "next"
+import NeonTitle from "@/components/ui/NeonTitle"
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import Link from "next/link"
 
-import styles from "@/styles/services.module.css";
+export const revalidate = 86400
 
-export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
-
-// Définition des métadonnées via l'API Metadata de Next.js 15
 export const metadata: Metadata = {
   title: "Intelligence Artificielle pour l'Archéologie | Web Cresson Tech",
   description:
@@ -24,7 +19,7 @@ export const metadata: Metadata = {
         url: "https://webcresson.com/images/ia-archeologie.webp",
         width: 1200,
         height: 630,
-        alt: "Web Cresson Tech",
+        alt: "IA pour l'Archéologie - Web Cresson Tech",
       },
     ],
   },
@@ -42,15 +37,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+}
 
 export default function ArcheologieIA() {
   return (
-    <>
-      <Head>
-        <link rel="canonical" href="https://webcresson.com/services/ia-archeologie" />
-      </Head>
-
+    <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
       <ServiceSchema
         serviceName="Intelligence Artificielle pour l'Archéologie"
         serviceDescription="Découvrez comment l'IA pourrait transformer l'archéologie avec des outils avancés pour la détection, l'analyse et la préservation des sites historiques."
@@ -58,54 +49,81 @@ export default function ArcheologieIA() {
         faq={[
           {
             question: "Quels sont les avantages potentiels de l'IA en archéologie ?",
-            answer: `L'IA pourrait faciliter la détection de sites archéologiques, automatiser l'analyse des données historiques et améliorer la préservation des artefacts grâce à des modèles prédictifs. Pour en savoir plus, consultez notre page sur l'IA en archéologie : https://www.webcresson.com/services/ia-archeologie`,
+            answer:
+              "L'IA pourrait faciliter la détection de sites archéologiques, automatiser l'analyse des données historiques et améliorer la préservation des artefacts grâce à des modèles prédictifs.",
           },
           {
             question: "Existe-t-il déjà des solutions IA concrètes pour l'archéologie ?",
-            answer: `Actuellement, il n'existe pas de solution complète et fonctionnelle dédiée spécifiquement à l'archéologie. Web Cresson Tech explore ce domaine pour développer des outils sur mesure. Découvrez nos solutions sur mesure : https://www.webcresson.com/services/ia-archeologie`,
+            answer:
+              "Actuellement, il n'existe pas de solution complète dédiée spécifiquement à l'archéologie. Web Cresson Tech explore ce domaine pour développer des outils sur mesure.",
           },
           {
             question: "Comment l'IA pourrait-elle aider dans la reconstitution historique ?",
-            answer: `Grâce au Deep Learning et à l'analyse d'images, l'IA peut aider à reconstruire virtuellement des artefacts ou des sites historiques en 3D avec une précision remarquable. Pour en savoir plus, consultez notre page des solutions de reconstitution 3D : https://www.webcresson.com/services/ia-archeologie`,
+            answer:
+              "Grâce au Deep Learning et à l'analyse d'images, l'IA peut aider à reconstruire virtuellement des artefacts ou des sites historiques en 3D avec une précision remarquable.",
           },
         ]}
       />
 
-      <main className={styles.mainContent}>
-        <section className={styles.hero}>
-          <h1>Révolutionner l'archéologie avec l'intelligence artificielle</h1>
-          <p>
-            Imaginez une intelligence artificielle capable de détecter des sites archéologiques enfouis, d'analyser des données historiques complexes ou de créer des reconstitutions 3D fidèles de sites anciens.
-            Bien que cela reste un concept, Web Cresson Tech se positionne pour développer des solutions sur mesure pour répondre aux besoins uniques des archéologues.
-          </p>
-        </section>
+      {/* Hero */}
+      <section className="text-center mb-12">
+      <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+      Révolutionner l'archéologie grâce à l’intelligence artificielle
+      </NeonTitle>
+        <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+          Détection de sites, reconstitution 3D, analyse d’artefacts… Web Cresson Tech explore l’usage de l’IA pour moderniser l’archéologie.
+        </p>
+      </section>
 
-        <section className={styles.section} id="situation-actuelle">
-          <h2>Les défis actuels de l'archéologie</h2>
-          <p>
-            L'archéologie repose encore largement sur des méthodes traditionnelles, souvent coûteuses et chronophages.
-            La détection de sites nécessite des fouilles manuelles intensives, l'analyse des artefacts est complexe et
-            la préservation des données historiques n'est pas toujours optimisée.
-            Face à ces défis, l'intelligence artificielle pourrait offrir des solutions innovantes.
-          </p>
-        </section>
+      {/* Pourquoi l’archéologie a besoin de l’IA ? */}
+      <section className="my-16">
+        <h2 className="text-2xl font-bold text-white mb-4">Les défis actuels de l’archéologie</h2>
+        <p className="text-gray-400">
+          L'archéologie s’appuie encore majoritairement sur des fouilles physiques, des interprétations manuelles, et une conservation de données peu digitalisée.
+          L’IA pourrait moderniser ces pratiques : réduction des coûts, gain de temps, meilleure préservation du patrimoine.
+        </p>
+      </section>
 
-        <section className={styles.section} id="potentiel-ia">
-          <h2>Le potentiel de l'IA pour l'archéologie</h2>
-          <ul>
-            <li>🔍 Détecter automatiquement des sites archéologiques grâce à l'analyse d'images satellites.</li>
-            <li>🏺 Automatiser l'identification et la classification des artefacts historiques.</li>
-            <li>🕰️ Prédire l'emplacement de découvertes potentielles grâce à l'analyse prédictive des données historiques.</li>
-            <li>🎨 Créer des reconstitutions 3D interactives de sites anciens, offrant ainsi de nouvelles perspectives pour la recherche et l'éducation.</li>
-          </ul>
-          <Link href="/contact" className={styles.ctaButton}>
-            Contactez-nous pour une consultation gratuite
-          </Link>
-          <Link href="/services/page-services" className={styles.linkButton}>
-            ← Revenir à tous les services
-          </Link>
-        </section>
-      </main>
-    </>
-  );
+      {/* Cas d’usages projetés */}
+      <section className="my-20">
+        <h2 className="text-2xl font-bold text-white mb-6">Ce que l’IA pourrait faire pour l’archéologie</h2>
+        <ul className="grid sm:grid-cols-2 gap-6 text-gray-400 list-disc pl-5">
+          <li>🔍 Détection de sites via l’analyse d’images satellite</li>
+          <li>🏺 Classification automatique des artefacts numérisés</li>
+          <li>🧠 Analyse prédictive des emplacements de fouilles</li>
+          <li>🎨 Reconstitutions 3D immersives de sites anciens</li>
+          <li>🧾 Numérisation & conservation intelligente des archives</li>
+        </ul>
+      </section>
+
+      {/* Vision de WebCressonTech */}
+      <section className="my-20 bg-[#0a0a0a] border border-[#00e0ff33] p-8 rounded">
+        <h2 className="text-2xl font-bold text-white mb-4">Notre vision IA pour l’archéologie</h2>
+        <p className="text-gray-400 mb-4">
+          Chez Web Cresson Tech, nous croyons que l’intelligence artificielle peut devenir un levier majeur pour préserver et explorer notre patrimoine historique.
+          Nous co-construisons des prototypes avec les acteurs du domaine pour tester et valider ces innovations.
+        </p>
+        <Link
+          href="/contact"
+          className="inline-block mt-4 bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
+        >
+          Discuter d’un projet IA archéologie
+        </Link>
+      </section>
+
+      {/* Témoignage fictif */}
+      <section className="text-center my-20 max-w-3xl mx-auto">
+        <blockquote className="italic text-gray-300 border-l-4 border-[#00e0ff] pl-4 mb-4">
+          “Les propositions de Web Cresson Tech sur l’IA appliquée à nos fouilles nous ouvrent des perspectives de recherche inédites.”
+        </blockquote>
+        <p className="text-sm text-gray-500 mb-6">— Responsable scientifique, Institut Archéo-France</p>
+        <Link
+          href="/services"
+          className="underline text-[#00e0ff] hover:text-white transition"
+        >
+          ← Revenir à tous les services
+        </Link>
+      </section>
+    </main>
+  )
 }
