@@ -1,46 +1,14 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
-import styles from "@/styles/home.module.css";
-import ClientWrapper from "@/components/ClientWrapper/ClientWrapper";
-import Head from "next/head";
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import ClientWrapper from "@/components/ClientWrapper/ClientWrapper"
 
-export const revalidate = 86400;
+export const revalidate = 86400
 
 export default function Home() {
   return (
     <>
-      <Head>
-        {/* Métadonnées SEO optimisées */}
-        <title>Entreprise Experte en IA | WebCressonTech</title>
-        <meta
-          name="description"
-          content="Développez votre entreprise avec des solutions d'intelligence artificielle sur mesure : automatisation, machine learning et deep learning avec WebCressonTech."
-        />
-        <link rel="canonical" href="https://webcresson.com/" />
-
-        {/* OpenGraph pour Facebook, LinkedIn, etc. */}
-        <meta property="og:title" content="Entreprise Experte en IA | WebCressonTech" />
-        <meta
-          property="og:description"
-          content="Découvrez nos solutions IA sur mesure : machine learning, deep learning et automatisation."
-        />
-        <meta property="og:url" content="https://webcresson.com/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://webcresson.com/images/og-image.jpg" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Entreprise Experte en IA | WebCressonTech" />
-        <meta
-          name="twitter:description"
-          content="Boostez votre entreprise avec nos solutions IA sur mesure."
-        />
-        <meta name="twitter:image" content="https://webcresson.com/images/og-image.jpg" />
-      </Head>
-
-      {/* JSON-LD pour le SEO structuré */}
       <ServiceSchema
         serviceName="Entreprise Experte en IA | WebCressonTech"
         serviceDescription="Développez votre entreprise avec des solutions d'intelligence artificielle sur mesure : automatisation, machine learning et deep learning."
@@ -71,103 +39,152 @@ export default function Home() {
         ]}
       />
 
-      <main className={styles.page}>
-        <div className={styles.mainContent}>
-          {/* Section Héro */}
-          <section className={styles.hero}>
-            <h1 className={styles.heroTitle}>
-              WebCressonTech : <span className={styles.highlight}>Votre partenaire IA & Python</span>
-            </h1>
-            <p className={styles.heroText}>
-              Besoin d'intelligence artificielle et de développement Python sur mesure ? Découvrez nos solutions.
-            </p>
-            <Link href="/services/page-services">
-              <button className={styles.ctaButton}>Découvrir nos solutions</button>
-            </Link>
-          </section>
+      <main className="bg-black text-white px-4 md:px-12">
+        {/* Hero */}
+        <section className="text-center py-20">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-[0_0_10px_#00e0ff]">
+            WebCressonTech :{" "}
+            <span className="text-neon">Votre partenaire IA & Python</span>
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+            Besoin d'intelligence artificielle et de développement Python sur
+            mesure ? Découvrez nos solutions.
+          </p>
+          <Link href="/services/page-services">
+            <button className="bg-[#00e0ff] text-black font-semibold px-6 py-3 rounded-md hover:scale-105 transition">
+              Découvrir nos solutions
+            </button>
+          </Link>
+        </section>
 
-          {/* Section Intelligence Artificielle */}
-          <section className={styles.hero} id="decouvrir-ia">
-            <h2 className={styles.heroTitle}>Qu'est-ce que l'intelligence artificielle ?</h2>
-            <p className={styles.heroText}>
-              L'IA permet aux machines d'apprendre et d'automatiser des tâches complexes. Grâce à des algorithmes
-              avancés, elle optimise les processus et améliore les performances des entreprises.
-            </p>
-            <Link href="/services/intelligence-artificielle" className={styles.ctaButton}>
+        {/* IA */}
+        <section className="text-center py-16 max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-neon mb-4">
+            Qu'est-ce que l'intelligence artificielle ?
+          </h2>
+          <p className="text-gray-300 mb-6">
+            L'IA permet aux machines d'apprendre et d'automatiser des tâches
+            complexes. Grâce à des algorithmes avancés, elle optimise les
+            processus et améliore les performances des entreprises.
+          </p>
+          <Link href="/services/intelligence-artificielle">
+            <button className="bg-[#00e0ff] text-black font-semibold px-6 py-3 rounded-md hover:scale-105 transition">
               En savoir plus
+            </button>
+          </Link>
+        </section>
+
+        {/* Développement Python */}
+        <section className="py-16 max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-neon mb-8 text-center">
+            Développement Python et Automatisation
+          </h2>
+          <p className="text-gray-300 text-center mb-12">
+            Python est un langage incontournable pour l’IA, l’automatisation et
+            le data engineering. WebCressonTech vous accompagne dans
+            l’optimisation de vos processus avec Python.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                title: "Automatisation & RPA",
+                text: "Scripts avec Selenium, Scrapy, PyAutoGUI.",
+              },
+              {
+                title: "Développement Web",
+                text: "Django, FastAPI et Flask.",
+              },
+              {
+                title: "Data Engineering",
+                text: "Manipulation de données avec Pandas, Polars, Spark.",
+              },
+              {
+                title: "Développement IA",
+                text: "Modélisation avec TensorFlow, PyTorch, Scikit-learn.",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="border border-[#00e0ff33] p-6 rounded-md bg-[#111] hover:bg-[#1a1a1a] transition"
+              >
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-400">{feature.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link href="/developpement-python">
+              <button className="bg-[#00e0ff] text-black font-semibold px-6 py-3 rounded-md hover:scale-105 transition">
+                En savoir plus
+              </button>
             </Link>
-          </section>
+          </div>
+        </section>
 
-          {/* Section Développement Python */}
-          <section className={styles.hero} id="developpeur-python">
-            <h2 className={styles.heroTitle}>Développement Python et Automatisation</h2>
-            <p className={styles.heroText}>
-              Python est un langage incontournable pour l’IA, l’automatisation et le data engineering. WebCressonTech
-              vous accompagne dans l’optimisation de vos processus avec Python.
-            </p>
+        {/* Pourquoi nous choisir */}
+        <section className="py-16 max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-neon mb-8">
+            Pourquoi nous choisir ?
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Expertise certifiée",
+                text: "En IA, Python et technologies avancées.",
+              },
+              {
+                title: "Accompagnement complet",
+                text: "De l'idée au déploiement.",
+              },
+              {
+                title: "Solutions sur mesure",
+                text: "Adaptées à vos besoins.",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="border border-[#00e0ff33] p-6 rounded-md bg-[#111] hover:bg-[#1a1a1a] transition"
+              >
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-400">{feature.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-            <div className={styles.featuresGrid}>
-              {[
-                { title: "Automatisation & RPA", text: "Scripts avec Selenium, Scrapy, PyAutoGUI." },
-                { title: "Développement Web", text: "Django, FastAPI et Flask." },
-                { title: "Data Engineering", text: "Manipulation de données avec Pandas, Polars, Spark." },
-                { title: "Développement IA", text: "Modélisation avec TensorFlow, PyTorch, Scikit-learn." },
-              ].map((feature, index) => (
-                <div key={index} className={`${styles.featureCard} animate-fadeIn`}>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.text}</p>
-                </div>
-              ))}
+        {/* Témoignages */}
+        <section className="py-16 max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-neon mb-8">
+            Ils nous font confiance
+          </h2>
+          <div className="flex flex-col items-center gap-8">
+            <div className="border border-[#00e0ff33] p-6 rounded-md bg-[#111] max-w-2xl">
+              <p className="italic text-gray-300 mb-4">
+                "Grâce à WebCressonTech, nous avons mis en place un RPA et une
+                IA d’email permettant de réduire de 30% notre temps de
+                traitement et de réussir notre migration."
+              </p>
+              <div className="flex items-center justify-center gap-4">
+                <h4 className="text-white font-semibold">- La Poste</h4>
+                <Image
+                  src="/logo_la_poste.webp"
+                  alt="Logo La Poste"
+                  width={96}
+                  height={54}
+                />
+              </div>
             </div>
+          </div>
+        </section>
 
-            <Link href="/developpement-python" className={styles.ctaButton}>
-              En savoir plus
-            </Link>
-          </section>
-
-          {/* Section Pourquoi nous choisir */}
-          <section className={styles.whyChooseUs}>
-            <h2 className={styles.sectionTitle}>Pourquoi nous choisir ?</h2>
-            <div className={styles.featuresGrid}>
-              {[
-                { title: "Expertise certifiée", text: "En IA, Python et technologies avancées." },
-                { title: "Accompagnement complet", text: "De l'idée au déploiement." },
-                { title: "Solutions sur mesure", text: "Adaptées à vos besoins." },
-              ].map((feature, index) => (
-                <div key={index} className={`${styles.featureCard} animate-fadeIn`}>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.text}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Témoignages Clients */}
-          <section className={styles.testimonials}>
-            <h2 className={styles.sectionTitle}>Ils nous font confiance</h2>
-            <div className={styles.testimonialsGrid}>
-              {[
-                {
-                  name: "La Poste",
-                  feedback:
-                    "Grâce à WebCressonTech, nous avons mis en place un RPA et une IA d’email permettant de réduire de 30% notre temps de traitement et de réussir notre migration.",
-                  logo: "/logo_la_poste.webp",
-                },
-              ].map((testimonial, index) => (
-                <div key={index} className={`${styles.testimonialCard} animate-fadeIn`}>
-                  <p>"{testimonial.feedback}"</p>
-                  <div className={styles.testimonialFooter}>
-                    <h4>- {testimonial.name}</h4>
-                    <Image src={testimonial.logo} alt={`Logo ${testimonial.name}`} width={96} height={54} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <ClientWrapper />
-        </div>
+        <ClientWrapper />
       </main>
     </>
-  );
+  )
 }

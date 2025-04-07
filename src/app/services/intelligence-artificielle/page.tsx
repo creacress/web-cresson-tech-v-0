@@ -1,24 +1,16 @@
-// src/app/services/intelligence-artificielle/page.tsx
-import React from "react";
-import Link from "next/link";
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
-import { Metadata } from "next";
-import Head from "next/head";
+import { Metadata } from "next"
+import Link from "next/link"
+import Head from "next/head"
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 
-import styles from "@/styles/services.module.css";
+export const revalidate = 86400
 
-export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
-
-// Définition des métadonnées via l'API Metadata de Next.js 15
 export const metadata: Metadata = {
-  title:
-    "Intelligence Artificielle - Deep Learning & Machine Learning | Web Cresson Tech",
-  description:
-    "Découvrez comment l'intelligence artificielle, le Deep Learning et le Machine Learning peuvent transformer vos processus métiers avec Web Cresson Tech.",
+  title: "Intelligence Artificielle - Deep Learning & Machine Learning | Web Cresson Tech",
+  description: "Découvrez comment l'intelligence artificielle, le Deep Learning et le Machine Learning peuvent transformer vos processus métiers avec Web Cresson Tech.",
   openGraph: {
     title: "Intelligence Artificielle - Solutions IA sur mesure",
-    description:
-      "Web Cresson Tech propose des solutions sur mesure en intelligence artificielle : Deep Learning, Machine Learning, IA générative et traitement d'images.",
+    description: "Web Cresson Tech propose des solutions sur mesure en intelligence artificielle : Deep Learning, Machine Learning, IA générative et traitement d'images.",
     url: "https://webcresson.com/services/intelligence-artificielle",
     images: [
       {
@@ -32,21 +24,17 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Intelligence Artificielle | Web Cresson Tech",
-    description:
-      "Solutions IA sur mesure en Deep Learning, Machine Learning, IA générative et traitement d'images avec Web Cresson Tech.",
-    images: [
-      "https://webcresson.com/images/intelligence-artificielle.webp",
-    ],
+    description: "Solutions IA sur mesure en Deep Learning, Machine Learning, IA générative et traitement d'images avec Web Cresson Tech.",
+    images: ["https://webcresson.com/images/intelligence-artificielle.webp"],
   },
   alternates: {
-    canonical:
-      "https://webcresson.com/services/intelligence-artificielle",
+    canonical: "https://webcresson.com/services/intelligence-artificielle",
   },
   robots: {
     index: true,
     follow: true,
   },
-};
+}
 
 export default function IntelligenceArtificiellePage() {
   return (
@@ -68,64 +56,59 @@ export default function IntelligenceArtificiellePage() {
         faq={[
           {
             question: "Quels services propose Web Cresson Tech ?",
-            answer: `Nous proposons des solutions sur mesure en intelligence artificielle, y compris l'automatisation (RPA), l'IA générative, le deep learning et le machine learning. Pour plus de détails, consultez notre page des services IA : https://www.webcresson.com/services`,
+            answer: `Nous proposons des solutions sur mesure en intelligence artificielle, y compris l'automatisation (RPA), l'IA générative, le deep learning et le machine learning.`,
           },
           {
             question: "Comment l'IA peut-elle aider mon entreprise ?",
-            answer: `L'IA permet d'automatiser des tâches répétitives, d'améliorer la prise de décision grâce aux données et d'innover avec des solutions personnalisées. Découvrez comment nous pouvons vous aider sur notre page des services : https://www.webcresson.com/services`,
+            answer: `L'IA permet d'automatiser des tâches répétitives, d'améliorer la prise de décision grâce aux données et d'innover avec des solutions personnalisées.`,
           },
           {
             question: "Proposez-vous des audits IA gratuits ?",
-            answer: `Oui, nous offrons un audit gratuit pour évaluer vos besoins et déterminer comment l'IA peut optimiser vos processus métiers. Pour plus d'informations, visitez notre page d'audit IA : https://www.webcresson.com/services/contact`,
+            answer: `Oui, nous offrons un audit gratuit pour évaluer vos besoins et déterminer comment l'IA peut optimiser vos processus métiers.`,
           },
         ]}
       />
 
-      <main className={styles.mainContent}>
-        <section className={styles.hero}>
-          <h1>Transformez votre entreprise avec l'Intelligence Artificielle !</h1>
-          <p>
-            Maximisez l'efficacité de vos processus métiers avec des solutions personnalisées en Intelligence
-            Artificielle : Deep Learning, Machine Learning, IA générative et traitement d'images.
+      <main className="max-w-5xl mx-auto px-6 py-24 text-white">
+        <section className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-neon mb-4">
+            Transformez votre entreprise avec l’IA
+          </h1>
+          <p className="text-lg text-gray-300 mb-6">
+            Maximisez votre efficacité avec nos solutions IA sur mesure : Deep Learning, Machine Learning, IA générative et traitement d’images.
           </p>
-          <Link href="/contact" className={styles.ctaButton}>
-            Obtenez une consultation gratuite dès maintenant
+          <Link href="/contact" className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
+            Obtenez une consultation gratuite
           </Link>
         </section>
 
-        <section className={styles.section} id="definition">
-          <h2>Qu'est-ce que l'intelligence artificielle ?</h2>
-          <p>
-            L'Intelligence Artificielle (IA) simule l'intelligence humaine pour automatiser des tâches complexes
-            comme la reconnaissance d'images, l'analyse prédictive et l'amélioration des processus métiers. Avec des
-            technologies avancées telles que le <strong>Deep Learning</strong> et le <strong>Machine Learning</strong>,
-            l'IA apprend et s'adapte pour offrir des solutions innovantes à tous les secteurs.
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-4">Qu’est-ce que l’intelligence artificielle ?</h2>
+          <p className="text-gray-400">
+            L’IA simule l’intelligence humaine pour exécuter des tâches complexes comme la reconnaissance d’images, l’analyse prédictive et l’automatisation. Elle apprend et s’adapte grâce au Deep Learning et au Machine Learning pour booster la performance de votre entreprise.
           </p>
         </section>
 
-        <section className={styles.section} id="deep-learning">
-          <h2>Le Deep Learning : Apprentissage profond pour des performances optimales</h2>
-          <p>
-            Le <strong>Deep Learning</strong> utilise des réseaux de neurones profonds pour traiter de vastes quantités
-            de données complexes. Idéal pour la reconnaissance faciale, la détection d'anomalies et la génération de contenu.
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-4">Deep Learning : performance maximale</h2>
+          <p className="text-gray-400 mb-4">
+            Le Deep Learning s’appuie sur des réseaux de neurones pour traiter de grandes quantités de données. C’est la technologie clé pour la vision par ordinateur, la détection d’anomalies ou la reconnaissance vocale.
           </p>
-          <Link href="/services/deep-learning" className={styles.linkButton}>
-            Découvrez nos solutions en Deep Learning
+          <Link href="/services/deep-learning" className="text-[#00e0ff] underline hover:text-white">
+            → Découvrez nos solutions Deep Learning
           </Link>
         </section>
 
-        <section className={styles.section} id="machine-learning">
-          <h2>Le Machine Learning : Automatisation intelligente pour votre entreprise</h2>
-          <p>
-            Le <strong>Machine Learning</strong> permet à vos systèmes d'apprendre automatiquement à partir de données
-            structurées et semi-structurées pour automatiser des tâches comme la prédiction des ventes, l'analyse des
-            comportements utilisateurs et l'optimisation des processus métiers.
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-4">Machine Learning : IA prédictive</h2>
+          <p className="text-gray-400 mb-4">
+            Le Machine Learning permet à vos systèmes d’apprendre automatiquement à partir de données. C’est l’idéal pour prédire les ventes, détecter les comportements clients ou analyser la rentabilité.
           </p>
-          <Link href="/services/machine-learning" className={styles.linkButton}>
-            En savoir plus sur le Machine Learning
+          <Link href="/services/machine-learning" className="text-[#00e0ff] underline hover:text-white">
+            → En savoir plus sur le Machine Learning
           </Link>
         </section>
       </main>
     </>
-  );
+  )
 }

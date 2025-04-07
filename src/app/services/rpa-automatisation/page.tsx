@@ -1,16 +1,10 @@
-// src/app/services/rpa-automatisation/page.tsx
-import React from "react";
-import Link from "next/link";
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
-import { Metadata } from "next";
+import { Metadata } from "next"
+import Link from "next/link"
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import LivreBlancComponent from "@/components/LivreBlanc/LivreBlanc"
 
+export const revalidate = 86400
 
-import styles from "@/styles/services.module.css";
-import LivreBlancComponent from "@/components/LivreBlanc/LivreBlanc";
-
-export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
-
-// Définition des métadonnées via l'API Metadata de Next.js 15
 export const metadata: Metadata = {
   title: "RPA Automatisation | Web Cresson Tech",
   description:
@@ -37,17 +31,17 @@ export const metadata: Metadata = {
     images: ["https://webcresson.com/images/rpa-automatisation.webp"],
   },
   alternates: {
-    canonical: "https://webcresson.com/services/rpa-automatisation", // Canonical URL dans metadata
+    canonical: "https://webcresson.com/services/rpa-automatisation",
   },
   robots: {
     index: true,
     follow: true,
   },
-};
+}
+
 export default function RPAAutomatisationPage() {
   return (
     <>
-
       <ServiceSchema
         serviceName="Services RPA Automatisation"
         serviceDescription="Optimisez vos processus métiers avec la RPA (Robotic Process Automation) pour améliorer l'efficacité et réduire les coûts."
@@ -59,114 +53,90 @@ export default function RPAAutomatisationPage() {
         faq={[
           {
             question: "Qu'est-ce que la RPA Automatisation ?",
-            answer: `La RPA Automatisation utilise des robots logiciels pour automatiser les tâches répétitives et améliorer l'efficacité des processus métiers. Pour en savoir plus, visitez notre page des services RPA Automatisation : https://www.webcresson.com/services/rpa-automatisation`,
+            answer: `La RPA utilise des robots logiciels pour automatiser les tâches répétitives et améliorer l'efficacité des processus métiers.`,
           },
           {
             question: "Quels sont les avantages de la RPA ?",
-            answer: `La RPA permet de réduire les coûts, d'améliorer la précision des tâches et de libérer du temps pour des activités à plus forte valeur ajoutée. Découvrez les avantages de la RPA sur notre page des services : https://www.webcresson.com/services/rpa-automatisation`,
+            answer: `Réduction des coûts, amélioration de la précision, rapidité d'exécution et gain de temps pour les équipes.`,
           },
         ]}
       />
 
-
-      <main className={styles.mainContent}>
-        {/* Section Hero */}
-        <section className={styles.hero}>
-          <h1>Libérez-vous des tâches répétitives avec la RPA Automatisation !</h1>
-          <p>
-            Vous en avez assez de perdre du temps sur des tâches manuelles et répétitives ?
-            La RPA (Robotic Process Automation) est la solution pour automatiser vos processus métiers,
-            gagner en efficacité et réduire vos coûts opérationnels.
+      <main className="max-w-6xl mx-auto px-6 pt-24 pb-16 text-white">
+        <section className="text-center mb-16">
+          <h1 className="text-5xl font-extrabold text-neon mb-4">
+            Libérez-vous des tâches répétitives avec la RPA
+          </h1>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            Automatisez vos processus métiers avec des robots logiciels. Gagnez en efficacité, réduisez vos erreurs et vos coûts.
           </p>
-          <button className={styles.ctaButton}>
-            Découvrir comment la RPA peut transformer votre business
-          </button>
+          <Link href="/contact" className="mt-6 inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
+            Discutons de votre automatisation
+          </Link>
         </section>
 
-        {/* Section de contenu */}
-        <section className={styles.section}>
-          <h2>Pourquoi adopter la RPA Automatisation ?</h2>
-          <p>
-            Imaginez un instant : plus de saisies de données fastidieuses, plus de copier-coller interminables.
-            Avec la RPA, vos tâches répétitives sont prises en charge par des robots logiciels qui imitent
-            les actions humaines. Vous pouvez ainsi vous concentrer sur ce qui compte vraiment :
-            développer votre entreprise et innover.
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-4">Pourquoi adopter la RPA ?</h2>
+          <p className="text-gray-400 mb-4">
+            Fini les copier-coller et les exports manuels ! Nos bots RPA imitent les actions humaines pour exécuter automatiquement des tâches répétitives.
           </p>
-        </section>
-
-        <section className={styles.section}>
-          <h2>Les avantages concrets de la RPA pour votre entreprise</h2>
-          <ul>
-            <li>💼 <strong>Libérez du temps :</strong> Automatisez les tâches répétitives pour vous concentrer sur vos priorités.</li>
-            <li>🎯 <strong>Boostez la précision :</strong> Réduisez les erreurs humaines et améliorez la qualité de vos données.</li>
-            <li>🚀 <strong>Accélérez vos processus :</strong> Gagnez du temps sur vos opérations quotidiennes.</li>
-            <li>🔗 <strong>Intégration simple :</strong> Connectez facilement la RPA à vos outils existants (ERP, CRM, etc.).</li>
-            <li>💰 <strong>Optimisez vos coûts :</strong> Jusqu'à 30 % de réduction des coûts opérationnels.</li>
+          <ul className="space-y-2 text-gray-300 list-disc list-inside">
+            <li>💼 <strong>Libérez vos équipes :</strong> plus de tâches ingrates</li>
+            <li>🎯 <strong>Zéro erreur :</strong> fiabilité et cohérence</li>
+            <li>⚡ <strong>Gain de temps :</strong> opérations accélérées</li>
+            <li>🔗 <strong>Compatibilité :</strong> fonctionne avec vos outils existants</li>
+            <li>💰 <strong>ROI rapide :</strong> réduction immédiate des coûts</li>
           </ul>
         </section>
 
-        <section className={styles.section}>
-          <h2>Comment la RPA peut transformer votre quotidien professionnel</h2>
-          <p>Voici quelques exemples d'applications concrètes :</p>
-          <ul>
-            <li>📊 Automatisation de la saisie de données dans vos systèmes (ERP, CRM).</li>
-            <li>🧾 Traitement automatisé des factures et des commandes clients.</li>
-            <li>🔄 Optimisation des flux de travail avec des intégrations intelligentes.</li>
-            <li>👥 Automatisation des processus RH, comme l'intégration des nouveaux employés.</li>
-            <li>📦 Suivi des stocks en temps réel et gestion automatisée des commandes.</li>
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-4">Cas d’usage concrets</h2>
+          <ul className="space-y-2 text-gray-300 list-disc list-inside">
+            <li>📊 Saisie de données dans ERP / CRM</li>
+            <li>🧾 Traitement de factures et commandes</li>
+            <li>🔄 Automatisation des emails & notifications</li>
+            <li>👥 Onboarding RH automatisé</li>
+            <li>📦 Suivi de stock intelligent</li>
           </ul>
         </section>
 
-        <section className={styles.section}>
-          <h2>Pourquoi choisir la RPA plutôt que l'automatisation traditionnelle ?</h2>
-          <p>
-            Contrairement aux solutions classiques, la RPA offre des avantages uniques pour simplifier
-            et accélérer vos projets d'automatisation :
-          </p>
-          <ul>
-            <li>⚙️ <strong>Sans code :</strong> Une configuration simple, même pour les non-techniciens.</li>
-            <li>📈 <strong>Adaptabilité :</strong> S'ajuste rapidement aux changements des interfaces utilisateurs.</li>
-            <li>⏱️ <strong>ROI rapide :</strong> Rentabilisez votre investissement en un temps record.</li>
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-4">Pourquoi choisir la RPA plutôt qu’une automatisation classique ?</h2>
+          <ul className="space-y-2 text-gray-300 list-disc list-inside">
+            <li>⚙️ <strong>No-code :</strong> facile à déployer</li>
+            <li>📈 <strong>Flexible :</strong> s’adapte à vos process</li>
+            <li>🚀 <strong>Déploiement rapide :</strong> résultats dès les premières semaines</li>
           </ul>
-          <button className={styles.ctaButton}>
-            <Link href="/contact">
-              Parlez-nous de vos besoins en automatisation
-            </Link>
-          </button>
+          <Link href="/contact" className="mt-6 inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
+            Lancer mon projet RPA
+          </Link>
         </section>
-        <section className={styles.section} id="case-studies-rpa">
-          <h2>Exemples concrets d'utilisation de l'automatisation RPA</h2>
-          <ul>
-            <li>Automatisation de la saisie de données dans les systèmes ERP</li>
-            <li>Traitement automatique des factures fournisseurs</li>
-            <li>Envoi de notifications et d'emails de suivi client automatisés</li>
-            <li>Intégration automatisée de données provenant de multiples sources</li>
-            <li>Gestion des tâches administratives répétitives sans intervention humaine</li>
-          </ul>
+
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-4">Livre blanc : la RPA appliquée</h2>
           <LivreBlancComponent
-                        title="Automatisation RPA"
-                        description="Gagnez du temps et réduisez les erreurs grâce à la Robotic Process Automation."
-                        downloadLink="/downloads/WebCressonTech - RPA.pdf"
-                        imageUrl="/rpa.webp"
-                    />
+            title="Automatisation RPA"
+            description="Gagnez du temps et réduisez les erreurs grâce à la Robotic Process Automation."
+            downloadLink="/downloads/WebCressonTech - RPA.pdf"
+            imageUrl="/rpa.webp"
+          />
         </section>
 
-
-        <section className={styles.section}>
-          <h2>Découvrez nos autres services en intelligence artificielle</h2>
-          <div className={styles.linkButtons}>
-            <Link href="/services/intelligence-artificielle">
-              <span className={styles.cardButton}>Solutions en Intelligence Artificielle</span>
+        <section>
+          <h2 className="text-2xl font-bold mb-6">Explorez nos autres expertises IA</h2>
+          <div className="flex flex-col md:flex-row gap-4">
+            <Link href="/services/intelligence-artificielle" className="bg-[#00e0ff22] border border-[#00e0ff44] rounded px-6 py-3 hover:bg-[#00e0ff33] transition">
+              Intelligence Artificielle
             </Link>
-            <Link href="/services/deep-learning">
-              <span className={styles.cardButton}>En savoir plus sur le Deep Learning</span>
+            <Link href="/services/deep-learning" className="bg-[#00e0ff22] border border-[#00e0ff44] rounded px-6 py-3 hover:bg-[#00e0ff33] transition">
+              Deep Learning
             </Link>
-            <Link href="/services/machine-learning">
-              <span className={styles.cardButton}>Découvrir le Machine Learning</span>
+            <Link href="/services/machine-learning" className="bg-[#00e0ff22] border border-[#00e0ff44] rounded px-6 py-3 hover:bg-[#00e0ff33] transition">
+              Machine Learning
             </Link>
           </div>
         </section>
       </main>
     </>
-  );
+  )
 }

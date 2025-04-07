@@ -1,15 +1,18 @@
-// src/app/about/page.tsx
-import React from "react";
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
-import Link from "next/link";
-import { Metadata } from "next";
-import { FaLightbulb, FaHandshake, FaAward, FaUsers, FaLeaf } from "react-icons/fa";
-import Head from "next/head"; // Importation pour manipuler le head
-import styles from "@/styles/about.module.css";
+import React from "react"
+import { Metadata } from "next"
+import Head from "next/head"
+import Link from "next/link"
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import {
+  FaLightbulb,
+  FaHandshake,
+  FaAward,
+  FaUsers,
+  FaLeaf,
+} from "react-icons/fa"
 
-export const revalidate = 86400; // SSG avec revalidation toutes les 24 heures
+export const revalidate = 86400
 
-// Utilisation de l'API Metadata pour Next.js 15
 export const metadata: Metadata = {
   title: "À propos de WebCressonTech - Expert en IA",
   description:
@@ -42,13 +45,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+}
 
 export default function About() {
   return (
     <>
       <Head>
-        {/* Balise canonique ajoutée manuellement dans le Head */}
         <link rel="canonical" href="https://webcresson.com/about" />
       </Head>
 
@@ -63,94 +65,95 @@ export default function About() {
         faq={[
           {
             question: "Quelle est la mission de WebCressonTech ?",
-            answer: `Notre mission est d'accompagner les entreprises dans leur transformation numérique grâce à des solutions innovantes en intelligence artificielle et en technologies avancées. Nous créons des outils sur mesure qui permettent à nos clients de rester compétitifs et d'innover dans leur domaine. Pour en savoir plus, consultez notre page sur nos services IA : https://www.webcresson.com/services`,
+            answer:
+              "Accompagner les entreprises avec des solutions d'IA et de tech avancées, sur mesure et performantes.",
           },
           {
-            question: "Quelles sont les valeurs fondamentales de WebCressonTech ?",
-            answer: `Les valeurs qui guident notre entreprise sont l'innovation continue, la collaboration avec nos clients, l'engagement envers l'excellence, et un profond respect pour l'environnement à travers des solutions durables. Ces principes nous permettent de bâtir des relations solides et de garantir des résultats de qualité. Découvrez nos valeurs ici : https://www.webcresson.com/about#values`,
+            question: "Quelles sont les valeurs fondamentales ?",
+            answer:
+              "Innovation, excellence, collaboration, engagement humain et responsabilité environnementale.",
           },
           {
-            question: "Comment puis-je contacter WebCressonTech ?",
-            answer: `Pour toute question ou demande de projet, vous pouvez nous contacter directement via notre page de contact en ligne ou par téléphone. Nous serons ravis de discuter de vos besoins et de vous proposer des solutions adaptées à vos enjeux technologiques. Contactez-nous ici : https://www.webcresson.com/contact`,
+            question: "Comment contacter WebCressonTech ?",
+            answer:
+              "Via notre page contact ou par email. Nous serons ravis d’échanger sur vos besoins.",
           },
           {
-            question: "Quels types de projets WebCressonTech accompagne-t-il ?",
-            answer: `Nous accompagnons des entreprises de toutes tailles dans la mise en place de solutions en intelligence artificielle, machine learning, deep learning, et automatisation des processus. Que vous soyez dans le secteur industriel, le commerce, ou la santé, nous vous aidons à intégrer des solutions sur mesure pour optimiser vos performances. Découvrez nos services en IA : https://www.webcresson.com/services`,
+            question: "Quels projets accompagnez-vous ?",
+            answer:
+              "Du POC IA au déploiement SaaS complet, pour PME ou grands groupes dans tous les secteurs.",
           },
           {
-            question: "Qu'est-ce qui distingue WebCressonTech des autres entreprises ?",
-            answer: `Ce qui nous distingue est notre approche sur mesure et notre capacité à allier innovation, expertise technique et respect des besoins spécifiques de chaque client. Nous mettons un point d'honneur à offrir des solutions personnalisées et à travailler en étroite collaboration avec nos clients pour garantir leur succès. Découvrez pourquoi nous choisir : https://www.webcresson.com/about#values`,
+            question: "Pourquoi vous choisir ?",
+            answer:
+              "Approche sur mesure, techno maîtrisée, proximité client et accompagnement durable.",
           },
         ]}
       />
 
-
-      <main className={styles.mainContent}>
-        <section className={styles.hero}>
-          <h1 className={styles.heroTitle}>À propos de WebCressonTech</h1>
-          <p className={styles.heroText}>
-            Chez WebCressonTech, nous sommes passionnés par l'innovation technologique.
-            Notre mission est d'aider nos clients à tirer parti de l'intelligence artificielle
-            et des technologies avancées pour transformer leurs entreprises.
+      <main className="max-w-6xl mx-auto px-6 pt-24 pb-16 text-white">
+        <section className="text-center mb-16">
+          <h1 className="text-5xl font-extrabold text-neon mb-4">À propos de WebCressonTech</h1>
+          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+            Nous aidons les entreprises à se transformer grâce à l’intelligence artificielle
+            et à des solutions technologiques sur mesure.
           </p>
         </section>
 
-        <section className={styles.values} aria-labelledby="values-title">
-          <h2 id="values-title" className={styles.sectionTitle}>Nos Valeurs</h2>
-          <div className={styles.valuesGrid}>
+        <section className="mb-20">
+          <h2 className="text-3xl font-bold text-white mb-6 text-center" id="values">Nos Valeurs</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                icon: <FaLightbulb />,
+                icon: <FaLightbulb className="text-3xl text-[#00e0ff]" />,
                 title: "Innovation",
-                text: "Proposer des solutions uniques et créatives qui répondent aux défis technologiques actuels.",
+                text: "Des solutions créatives qui répondent aux défis d’aujourd’hui et de demain.",
               },
               {
-                icon: <FaHandshake />,
+                icon: <FaHandshake className="text-3xl text-[#00e0ff]" />,
                 title: "Engagement",
-                text: "Mettre l'humain au cœur de nos actions, en nous engageant à fournir les meilleures solutions pour chaque client.",
+                text: "Un accompagnement humain, transparent, et réactif à chaque étape.",
               },
               {
-                icon: <FaAward />,
+                icon: <FaAward className="text-3xl text-[#00e0ff]" />,
                 title: "Excellence",
-                text: "S'appuyer sur les meilleures pratiques et technologies pour livrer des projets de qualité exceptionnelle.",
+                text: "Un haut niveau de qualité, de tests, de rigueur et d'expérience utilisateur.",
               },
               {
-                icon: <FaUsers />,
+                icon: <FaUsers className="text-3xl text-[#00e0ff]" />,
                 title: "Collaboration",
-                text: "Travailler ensemble pour réaliser des objectifs ambitieux et atteindre des résultats communs.",
+                text: "Vos besoins sont nos priorités. On construit ensemble.",
               },
               {
-                icon: <FaLeaf />,
+                icon: <FaLeaf className="text-3xl text-[#00e0ff]" />,
                 title: "Durabilité",
-                text: "Créer des solutions respectueuses de l'environnement, garantissant une performance durable pour les générations futures.",
+                text: "Des solutions éco-conçues, pensées pour durer et s’intégrer efficacement.",
               },
-            ].map((value, index) => (
-              <div key={index} className={styles.valueCard}>
-                <div className={styles.icon}>{value.icon}</div>
-                <h3 className={styles.valueTitle}>{value.title}</h3>
-                <p className={styles.valueText}>{value.text}</p>
+            ].map(({ icon, title, text }, index) => (
+              <div key={index} className="bg-[#111] p-6 rounded border border-[#00e0ff33]">
+                <div className="mb-2">{icon}</div>
+                <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
+                <p className="text-gray-400">{text}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className={styles.ctas}>
+        <section className="flex flex-col md:flex-row justify-center gap-4 text-center mt-16">
           <Link
             href="/contact"
-            className={styles.primaryCta}
-            aria-label="Contactez-nous pour discuter de vos projets"
+            className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
           >
             Contactez-nous
           </Link>
           <Link
             href="/services/page-services"
-            className={styles.secondaryCta}
-            aria-label="Découvrez nos services en IA"
+            className="border border-[#00e0ff] text-[#00e0ff] px-6 py-3 rounded hover:bg-[#00e0ff22] transition"
           >
             Nos services
           </Link>
         </section>
       </main>
     </>
-  );
+  )
 }

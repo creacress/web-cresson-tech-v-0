@@ -1,14 +1,13 @@
-import React from "react";
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema";
-import ContactForm from "@/components/ContactForm/ContactForm";
-import GoogleCalendar from "@/components/GoogleCalendar/GoogleCalendar";
-import styles from "@/styles/contact.module.css";
-import { Metadata } from "next";
-import Head from "next/head"; 
+import React from "react"
+import { Metadata } from "next"
+import Head from "next/head"
+import Link from "next/link"
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import ContactForm from "@/components/ContactForm/ContactForm"
+import GoogleCalendar from "@/components/GoogleCalendar/GoogleCalendar"
 
-export const revalidate = 86400; // Active le SSG avec revalidation toutes les 24 heures
+export const revalidate = 86400
 
-// Utilisation de l'API Metadata pour le SEO
 export const metadata: Metadata = {
   title: "Contactez-nous | WebCressonTech",
   description:
@@ -41,7 +40,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+}
 
 export default function ContactPage() {
   return (
@@ -57,28 +56,57 @@ export default function ContactPage() {
         faq={[
           {
             question: "Comment puis-je contacter WebCressonTech ?",
-            answer: `Vous pouvez nous contacter via ce formulaire ou par téléphone au +33-7-66-02-96-32. Cliquez sur le numéro pour passer un appel direct : tel:+33766029632`,
+            answer:
+              "Vous pouvez nous contacter via ce formulaire ou par téléphone au +33-7-66-02-96-32. Cliquez sur le numéro pour passer un appel direct : tel:+33766029632",
           },
           {
             question: "Quels services propose WebCressonTech ?",
-            answer: `Nous proposons des solutions en IA, en automatisation des processus (RPA), et des services technologiques sur mesure. Découvrez nos services sur les pages suivantes : IA : https://www.webcresson.com/services, RPA : https://www.webcresson.com/services/rpa-automatisation, Services technologiques : https://www.webcresson.com/services.`,
+            answer:
+              "Nous proposons des solutions en IA, en automatisation des processus (RPA), et des services technologiques sur mesure. Découvrez nos services sur : https://www.webcresson.com/services",
           },
         ]}
       />
 
-      <main className={styles.contactFormSection}>
-        <h1 className={styles.pageTitle}>Prenez Rendez-vous</h1>
-        <p className={styles.contactText}>
-          Vous pouvez réserver un rendez-vous directement via notre agenda Google ci-dessous :
-        </p>
-        <GoogleCalendar />
-        <h2 className={styles.pageTitle}>Contactez-nous</h2>
-        <p className={styles.contactText}>
-          Vous avez des questions ? Remplissez le formulaire ci-dessous.
-        </p>
-        <ContactForm />
+      <main className="max-w-4xl mx-auto px-6 py-24 text-white">
+        <section className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-neon mb-4">
+            Prenez Rendez-vous
+          </h1>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            Réservez un appel avec notre équipe via notre agenda en ligne ci-dessous.
+          </p>
+        </section>
 
+        <section className="mb-16">
+          <GoogleCalendar />
+        </section>
+
+        <section className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Contactez-nous
+          </h2>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            Une question ? Un besoin ? Laissez-nous un message et nous vous répondrons rapidement.
+          </p>
+        </section>
+
+        <section>
+          <ContactForm />
+        </section>
+
+        <section className="mt-16 text-center">
+          <p className="text-gray-400 text-sm">
+            Ou écrivez-nous à{" "}
+            <a
+              href="mailto:alexis@webcresson.com"
+              className="text-[#00e0ff] underline hover:text-white"
+            >
+              alexis@webcresson.com
+            </a>{" "}
+            – Nous répondons sous 24h.
+          </p>
+        </section>
       </main>
     </>
-  );
+  )
 }
