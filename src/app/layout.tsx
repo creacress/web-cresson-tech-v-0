@@ -7,7 +7,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 import { DefaultSeo } from 'next-seo'
-import { defaultSeo } from '../../next-seo.config'
+import { defaultSeo } from '../next-seo.config'
 
 
 const inter = Inter({ subsets: ['latin'] })
