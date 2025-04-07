@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 WebCressonTech — Plateforme IA & Automatisation
 
-## Getting Started
+Ce projet est une application web développée avec **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS**, et une intégration poussée de composants UI modernes, SEO, et JSON-LD.
 
-First, run the development server:
+> 🧠 Objectif : mettre en avant des services autour de l'IA (Machine Learning, NLP, RPA), du développement Python, et des dashboards intelligents.
+
+
+
+## 🛠 Stack technique
+
+- **Next.js 15** (App Router, Server Actions, Server Components)
+- **TypeScript**
+- **Tailwind CSS**
+- **Shadcn/ui + Radix UI**
+- **Framer Motion** (animations subtiles)
+- **React Hook Form + Zod**
+- **Lucide-react** (icônes modernes)
+- **next-seo + JSON-LD** (SEO technique + structuré)
+
+
+
+## 🚧 Démarrage du projet
+
+Installe les dépendances :
+
+```bash
+npm install
+# ou
+yarn install
+```
+
+Lance le serveur de développement :
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le projet sera dispo sur 👉 [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## 📁 Arborescence clé
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+│
+├── app/                # Pages Next.js 15 (App Router)
+│   ├── page.tsx        # Page d'accueil
+│   └── ...             # Pages /services, /contact, etc.
+│
+├── components/         # Composants UI (Header, Footer, Formulaires...)
+├── styles/             # Global CSS + variables
+├── lib/                # Fonctions utilitaires (SEO, mails, etc.)
+└── public/             # Images, livres blancs, favicon
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## ✅ Fonctionnalités SEO intégrées
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Metadonnées dynamiques (`metadata.ts`)
+- JSON-LD structuré : `Article`, `FAQ`, `Service`, `Breadcrumb`
+- Canonical tags + OpenGraph + Twitter Cards
+- Sitemaps dynamiques (`/sitemap.xml`, `/sitemap-pages.xml`, `/sitemap-images.xml`)
+- Robots.txt optimisé
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+## ✨ Déploiement
+
+Déployé automatiquement sur **Vercel** avec pré-rendu ISR (`revalidate = 86400`) et support du server-side only.
+
+🔗 [Vercel Deployment Guide](https://nextjs.org/docs/app/building-your-application/deploying)
+
+
+
+## 📦 À venir
+
+- 💬 Blog technique auto-généré (MDX + JSON-LD)
+- 🔐 Zone client avec authentification
+- 📊 Admin UI simple pour les contenus dynamiques
+
+
+
+## 👨‍💻 Auteur
+
+**Alexis Cresson**  
+> 📧 [alexis@webcresson.com](mailto:alexis@webcresson.com)  
+> 🌐 [webcresson.com](https://webcresson.com)
+
+
+
+## ⚖️ Mentions Légales & CGV
+
+- [`/legal-mentions`](https://webcresson.com/legal-mentions)
+- [`/terms-of-sale`](https://webcresson.com/terms-of-sale)
