@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next';
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -36,6 +37,7 @@ export default function RootLayout({
       <body className={`bg-black text-white min-h-screen antialiased ${inter.className}`}>
         <Header />
         <main>{children}</main>
+        <Analytics />
         <Footer />
       </body>
     </html>
