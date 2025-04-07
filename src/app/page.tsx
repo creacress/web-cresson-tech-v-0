@@ -1,3 +1,4 @@
+// app/page.tsx ou app/(home)/page.tsx
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -40,29 +41,29 @@ export default function Home() {
         ]}
       />
 
-      <main className="bg-black text-white px-4 md:px-12">
+      <main className="bg-black text-white px-4 sm:px-6 lg:px-12">
         {/* Hero */}
-        <section className="text-center py-24">
-          <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
-            WebCressonTech :{" "} Votre partenaire IA & Python
+        <section className="text-center py-20 sm:py-24">
+          <NeonTitle as="h1" className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+            WebCressonTech : Votre partenaire IA & Python
           </NeonTitle>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+          <p className="text-base sm:text-lg text-gray-300 max-w-xl mx-auto mb-6 sm:mb-8">
             WebCressonTech conçoit des solutions sur mesure pour les entreprises qui veulent passer à l’échelle.
           </p>
           <Link
             href="/services/audit-gratuit"
-            className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
+            className="inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
           >
             Obtenir un audit IA gratuit
           </Link>
         </section>
 
         {/* Problèmes fréquents */}
-        <section className="max-w-5xl mx-auto py-16">
-          <h2 className="text-3xl font-bold text-neon mb-6 text-center">
+        <section className="max-w-3xl mx-auto py-14 sm:py-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-6">
             Est-ce que vous vous reconnaissez ?
           </h2>
-          <ul className="grid md:grid-cols-2 gap-6 text-gray-400 list-disc pl-5">
+          <ul className="space-y-4 text-gray-400 list-disc list-inside sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0">
             <li>Vous perdez du temps sur des tâches manuelles répétitives</li>
             <li>Vous avez des données… mais pas d’insights exploitables</li>
             <li>Vos équipes sont surchargées de traitements à faible valeur</li>
@@ -71,11 +72,11 @@ export default function Home() {
         </section>
 
         {/* Étapes d'accompagnement */}
-        <section className="py-16 max-w-5xl mx-auto">
-          <h2 className="text-3xl font-bold text-neon mb-8 text-center">
+        <section className="py-14 sm:py-16 max-w-5xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-8">
             Notre méthode en 3 étapes
           </h2>
-          <div className="grid sm:grid-cols-3 gap-6 text-center text-gray-300">
+          <div className="grid gap-6 sm:grid-cols-3 text-center text-gray-300">
             {[
               {
                 step: "1. Audit gratuit",
@@ -90,11 +91,8 @@ export default function Home() {
                 desc: "On intègre la solution dans votre environnement de production.",
               },
             ].map(({ step, desc }, i) => (
-              <div
-                key={i}
-                className="bg-[#111] border border-[#00e0ff33] p-6 rounded"
-              >
-                <h3 className="text-xl font-bold text-white mb-2">{step}</h3>
+              <div key={i} className="bg-[#111] border border-[#00e0ff33] p-6 rounded">
+                <h3 className="text-lg font-bold text-white mb-2">{step}</h3>
                 <p>{desc}</p>
               </div>
             ))}
@@ -102,11 +100,11 @@ export default function Home() {
         </section>
 
         {/* Nos expertises */}
-        <section className="py-20 max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-neon text-center mb-10">
+        <section className="py-16 max-w-6xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-10">
             Ce que nous faisons avec Python & l’IA
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2">
             {[
               {
                 title: "Automatisation RPA",
@@ -125,22 +123,20 @@ export default function Home() {
                 text: "Backends performants avec FastAPI & Django REST.",
               },
             ].map(({ title, text }, i) => (
-              <div
-                key={i}
-                className="bg-[#111] border border-[#00e0ff33] p-6 rounded hover:bg-[#1a1a1a] transition"
-              >
-                <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
+              <div key={i} className="bg-[#111] border border-[#00e0ff33] p-6 rounded hover:bg-[#1a1a1a] transition">
+                <h3 className="text-lg font-bold mb-2 text-white">{title}</h3>
                 <p className="text-gray-400">{text}</p>
               </div>
             ))}
           </div>
         </section>
+
         {/* Expertises IA */}
-        <section className="py-20 max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-neon text-center mb-10">
+        <section className="py-16 max-w-6xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-10">
             Des expertises IA complètes
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2">
             {[
               {
                 title: "Traitement du langage (NLP)",
@@ -160,7 +156,7 @@ export default function Home() {
               },
             ].map(({ title, text }, i) => (
               <div key={i} className="bg-[#111] border border-[#00e0ff33] p-6 rounded hover:bg-[#1a1a1a] transition">
-                <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
+                <h3 className="text-lg font-bold mb-2 text-white">{title}</h3>
                 <p className="text-gray-400">{text}</p>
               </div>
             ))}
@@ -168,33 +164,28 @@ export default function Home() {
         </section>
 
         {/* Témoignage */}
-        <section className="py-20 max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-neon mb-8">Ils nous font confiance</h2>
-          <div className="border border-[#00e0ff33] bg-[#111] p-6 rounded">
+        <section className="py-16 max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-neon mb-8">Ils nous font confiance</h2>
+          <div className="bg-[#111] border border-[#00e0ff33] p-6 rounded">
             <p className="italic text-gray-300 mb-4">
               “Grâce à WebCressonTech, nous avons automatisé 40% de nos tâches manuelles et gagné 12h par semaine sur la gestion des emails.”
             </p>
-            <div className="flex justify-center items-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <span className="text-white font-semibold">— Responsable IT, Groupe Transport</span>
-              <Image
-                src="/logo_la_poste.webp"
-                alt="Logo La Poste"
-                width={96}
-                height={54}
-              />
+              <Image src="/logo_la_poste.webp" alt="Logo La Poste" width={96} height={54} />
             </div>
           </div>
         </section>
 
         {/* CTA final */}
-        <section className="text-center py-20">
-          <h2 className="text-3xl font-bold text-neon mb-6">Prêt à transformer vos process ?</h2>
+        <section className="text-center py-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-neon mb-6">Prêt à transformer vos process ?</h2>
           <p className="text-gray-400 mb-6">
             Profitez d’un audit IA gratuit pour faire le premier pas vers l’automatisation intelligente.
           </p>
           <Link
             href="/contact"
-            className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
+            className="inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
           >
             Discuter de mon projet IA
           </Link>
