@@ -1,0 +1,15 @@
+/* TEAM */
+Developer: Alexis Cresson
+Site: https://webcresson.com
+Twitter: @webcresson
+Email: alexis@webcresson.com
+From: Paris, France
+
+/* SITE */
+Built with: Next.js 15, TypeScript, Tailwind, Shadcn/ui, Vercel
+Hosted on: Vercel
+Tools: Framer Motion, React Hook Form, Nodemailer, JSON-LD, SEO++
+
+/* THANKS */
+Inspiration: Google, Vercel, OpenAI, GitHub Copilot
+Respect: HTML5 Boilerplate, humans.txt initiative

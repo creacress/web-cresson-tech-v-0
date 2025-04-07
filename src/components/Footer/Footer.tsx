@@ -137,7 +137,11 @@ export default function Footer() {
           <Link href="/legal-mentions" onClick={() => handleLinkClick("Mentions légales", "/legal-mentions")}>
             Mentions légales
           </Link>
+          <Link href="/bug-bounty" onClick={() => handleLinkClick("Bug Bounty", "/bug-bounty")}>
+            Bug Bounty
+          </Link>
         </nav>
+
         <p>© {currentYear} WebCressonTech. Tous droits réservés.</p>
       </div>
     </footer>
