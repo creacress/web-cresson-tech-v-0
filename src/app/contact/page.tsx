@@ -1,39 +1,38 @@
-import React from "react"
-import { Metadata } from "next"
-import Head from "next/head"
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
-import ContactForm from "@/components/ContactForm/ContactForm"
-import GoogleCalendar from "@/components/GoogleCalendar/GoogleCalendar"
+import React from 'react'
+import ServiceSchema from '@/components/ServiceShema/ServiceSchema'
+import ContactForm from '@/components/ContactForm/ContactForm'
+import GoogleCalendar from '@/components/GoogleCalendar/GoogleCalendar'
+import type { Metadata } from 'next'
 
 export const revalidate = 86400
 
 export const metadata: Metadata = {
-  title: "Contactez-nous | WebCressonTech",
+  title: 'Contactez-nous | WebCressonTech',
   description:
     "Contactez WebCressonTech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
+  alternates: {
+    canonical: 'https://webcresson.com/contact',
+  },
   openGraph: {
-    title: "Contactez-nous | WebCressonTech",
+    title: 'Contactez-nous | WebCressonTech',
     description:
       "Contactez WebCressonTech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
-    url: "https://webcresson.com/contact",
+    url: 'https://webcresson.com/contact',
     images: [
       {
-        url: "https://webcresson.com/Logo_webcressontech.webp",
+        url: 'https://webcresson.com/Logo_webcressontech.webp',
         width: 1200,
         height: 630,
-        alt: "WebCressonTech",
+        alt: 'WebCressonTech',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Contactez-nous | WebCressonTech",
+    card: 'summary_large_image',
+    title: 'Contactez-nous | WebCressonTech',
     description:
       "Contactez WebCressonTech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
-    images: ["https://webcresson.com/Logo_webcressontech.webp"],
-  },
-  alternates: {
-    canonical: "https://webcresson.com/contact",
+    images: ['https://webcresson.com/Logo_webcressontech.webp'],
   },
   robots: {
     index: true,
@@ -44,24 +43,20 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <Head>
-        <link rel="canonical" href="https://webcresson.com/contact" />
-      </Head>
-
       <ServiceSchema
         serviceName="Contactez-nous | WebCressonTech"
-        serviceDescription={metadata.description as string}
-        serviceTypes={["Contact", "Support Client", "Services Technologiques"]}
+        serviceDescription={metadata.description!}
+        serviceTypes={['Contact', 'Support Client', 'Services Technologiques']}
         faq={[
           {
-            question: "Comment puis-je contacter WebCressonTech ?",
+            question: 'Comment puis-je contacter WebCressonTech ?',
             answer:
-              "Vous pouvez nous contacter via ce formulaire ou par téléphone au +33-7-66-02-96-32. Cliquez sur le numéro pour passer un appel direct : tel:+33766029632",
+              'Vous pouvez nous contacter via ce formulaire ou par téléphone au +33-7-66-02-96-32. Cliquez sur le numéro pour passer un appel direct : tel:+33766029632',
           },
           {
-            question: "Quels services propose WebCressonTech ?",
+            question: 'Quels services propose WebCressonTech ?',
             answer:
-              "Nous proposons des solutions en IA, en automatisation des processus (RPA), et des services technologiques sur mesure. Découvrez nos services sur : https://www.webcresson.com/services",
+              'Nous proposons des solutions en IA, en automatisation des processus (RPA), et des services technologiques sur mesure. Découvrez nos services sur : https://www.webcresson.com/services',
           },
         ]}
       />
@@ -95,13 +90,13 @@ export default function ContactPage() {
 
         <section className="mt-16 text-center">
           <p className="text-gray-400 text-sm">
-            Ou écrivez-nous à{" "}
+            Ou écrivez-nous à{' '}
             <a
               href="mailto:alexis@webcresson.com"
               className="text-[#00e0ff] underline hover:text-white"
             >
               alexis@webcresson.com
-            </a>{" "}
+            </a>{' '}
             – Nous répondons sous 24h.
           </p>
         </section>

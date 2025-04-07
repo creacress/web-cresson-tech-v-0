@@ -9,6 +9,7 @@ export default function ContactForm() {
     phone: "",
     company: "",
     comments: "",
+    website: "", // <- HONEYPOT FIELD
   })
 
   const [status, setStatus] = useState<"success" | "error" | null>(null)
@@ -30,7 +31,7 @@ export default function ContactForm() {
 
       if (response.ok) {
         setStatus("success")
-        setFormData({ email: "", name: "", phone: "", company: "", comments: "" })
+        setFormData({ email: "", name: "", phone: "", company: "", comments: "", website: "" })
       } else {
         setStatus("error")
       }
@@ -45,9 +46,22 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       className="max-w-2xl mx-auto bg-[#111] border border-[#00e0ff33] p-6 sm:p-8 rounded-lg space-y-6 text-white"
     >
+      {/* HONEYPOT */}
+      <div className="absolute left-[-9999px]" aria-hidden="true">
+        <label htmlFor="website">Ne pas remplir ce champ</label>
+        <input
+          type="text"
+          name="website"
+          id="website"
+          value={formData.website}
+          onChange={handleChange}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className="grid sm:grid-cols-2 gap-6">
-        {[
-          { id: "email", label: "Email*", type: "email", required: true },
+        {[{ id: "email", label: "Email*", type: "email", required: true },
           { id: "name", label: "Nom Prénom*", type: "text", required: true },
           { id: "phone", label: "Téléphone*", type: "tel", required: true },
           { id: "company", label: "Entreprise", type: "text", required: false },

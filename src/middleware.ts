@@ -1,28 +1,54 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-export function middleware(request: NextRequest) {
-  const hostname = request.headers.get('host')
+const BLOCKED_IPS = ['139.59.136.184', '178.128.207.138']
+const BLOCKED_AGENTS = ['curl', 'python', 'nmap', 'sqlmap', 'bot', 'scanner']
+const ALLOWED_POST_ROUTES = ['/contact', '/api/send-email']
 
-  // Redirection www → root
-  if (hostname?.startsWith('www.')) {
-    const newURL = new URL(request.url)
-    newURL.host = hostname.replace('www.', '')
-    return NextResponse.redirect(newURL, 308)
+export function middleware(request: NextRequest) {
+  const url = new URL(request.url)
+  const hostname = request.headers.get('host') || ''
+  const userAgent = request.headers.get('user-agent')?.toLowerCase() || ''
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || '0.0.0.0'
+  const path = url.pathname
+  const method = request.method
+
+  // --- 1. Redirection www. vers root
+  if (hostname.startsWith('www.')) {
+    url.host = hostname.replace('www.', '')
+    return NextResponse.redirect(url, 308)
   }
 
-  // Maintenance mode activé (via .env)
+  // --- 2. Maintenance mode (via .env)
   const maintenanceEnabled = process.env.SITE_MAINTENANCE === 'true'
-  const isNotMaintenancePage = !request.nextUrl.pathname.startsWith('/maintenance')
+  if (maintenanceEnabled && !path.startsWith('/maintenance')) {
+    return NextResponse.redirect(new URL('/maintenance', request.url))
+  }
 
-  if (maintenanceEnabled && isNotMaintenancePage) {
-    const maintenanceUrl = new URL('/maintenance', request.url)
-    return NextResponse.redirect(maintenanceUrl)
+  // --- 3. Blocage IP blacklist
+  if (BLOCKED_IPS.includes(ip)) {
+    console.warn(`⛔ IP bloquée : ${ip} (${path})`)
+    return new NextResponse('Accès refusé', { status: 403 })
+  }
+
+  // --- 4. Blocage user-agent suspects
+  if (BLOCKED_AGENTS.some(agent => userAgent.includes(agent))) {
+    console.warn(`⛔ User-Agent suspect : ${userAgent} (${ip})`)
+    return new NextResponse('Bot interdit', { status: 403 })
+  }
+
+  // --- 5. Blocage des méthodes POST/PUT/DELETE sauf whitelist
+  const isUnsafeMethod = ['POST', 'PUT', 'DELETE'].includes(method)
+  const isAllowedPost = ALLOWED_POST_ROUTES.some(route => path.startsWith(route))
+
+  if (isUnsafeMethod && !isAllowedPost) {
+    console.warn(`🚫 Méthode ${method} interdite sur ${path}`)
+    return new NextResponse('Méthode non autorisée', { status: 403 })
   }
 
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/((?!api|_next|.*\\..*).*)'], // Ne redirige pas assets, api, favicon, etc.
+  matcher: ['/((?!api|_next|.*\\..*).*)'],
 }
