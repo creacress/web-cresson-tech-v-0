@@ -1,14 +1,10 @@
-// layout.tsx
+// src/app/layout.tsx
 import './globals.css'
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-
-import { DefaultSeo } from 'next-seo'
-import { defaultSeo } from '../next-seo.config'
-
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -35,9 +31,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className="scroll-smooth">
-      <head>
-        <DefaultSeo {...defaultSeo} />
-      </head>
       <body className={`bg-black text-white min-h-screen antialiased ${inter.className}`}>
         <Header />
         <main>{children}</main>
