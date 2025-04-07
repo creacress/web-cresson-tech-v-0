@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 import './globals.css'
 import type { Metadata } from 'next'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/next'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <Analytics />
+        <SpeedInsights />
         <Footer />
       </body>
     </html>
