@@ -35,7 +35,7 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth">
       <body className={`bg-black text-white min-h-screen antialiased ${inter.className}`}>
         <Header />
-        <main className="pt-[80px]">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
