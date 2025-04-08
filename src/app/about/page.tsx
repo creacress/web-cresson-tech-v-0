@@ -2,6 +2,7 @@ import React from "react"
 import { Metadata } from "next"
 import Head from "next/head"
 import Link from "next/link"
+import NeonTitle from "@/components/ui/NeonTitle"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import {
   FaLightbulb,
@@ -91,55 +92,62 @@ export default function About() {
         ]}
       />
 
-      <main className="max-w-6xl mx-auto px-6 pt-24 pb-16 text-white">
-        <section className="text-center mb-16">
-          <h1 className="text-5xl font-extrabold text-neon mb-4">À propos de WebCressonTech</h1>
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+      <main className="max-w-4xl mx-auto px-4 pt-20 pb-16 text-white">
+        {/* Header */}
+        <section className="text-center mb-14">
+          <NeonTitle as="h1" className="text-4xl sm:text-5xl font-extrabold mb-4">
+            À propos de WebCressonTech
+          </NeonTitle>
+          <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
             Nous aidons les entreprises à se transformer grâce à l’intelligence artificielle
             et à des solutions technologiques sur mesure.
           </p>
         </section>
 
+        {/* Valeurs */}
         <section className="mb-20">
-          <h2 className="text-3xl font-bold text-white mb-6 text-center" id="values">Nos Valeurs</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center" id="values">
+            Nos Valeurs
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                icon: <FaLightbulb className="text-3xl text-[#00e0ff]" />,
+                icon: <FaLightbulb className="text-2xl text-[#00e0ff]" />,
                 title: "Innovation",
                 text: "Des solutions créatives qui répondent aux défis d’aujourd’hui et de demain.",
               },
               {
-                icon: <FaHandshake className="text-3xl text-[#00e0ff]" />,
+                icon: <FaHandshake className="text-2xl text-[#00e0ff]" />,
                 title: "Engagement",
                 text: "Un accompagnement humain, transparent, et réactif à chaque étape.",
               },
               {
-                icon: <FaAward className="text-3xl text-[#00e0ff]" />,
+                icon: <FaAward className="text-2xl text-[#00e0ff]" />,
                 title: "Excellence",
                 text: "Un haut niveau de qualité, de tests, de rigueur et d'expérience utilisateur.",
               },
               {
-                icon: <FaUsers className="text-3xl text-[#00e0ff]" />,
+                icon: <FaUsers className="text-2xl text-[#00e0ff]" />,
                 title: "Collaboration",
                 text: "Vos besoins sont nos priorités. On construit ensemble.",
               },
               {
-                icon: <FaLeaf className="text-3xl text-[#00e0ff]" />,
+                icon: <FaLeaf className="text-2xl text-[#00e0ff]" />,
                 title: "Durabilité",
                 text: "Des solutions éco-conçues, pensées pour durer et s’intégrer efficacement.",
               },
             ].map(({ icon, title, text }, index) => (
-              <div key={index} className="bg-[#111] p-6 rounded border border-[#00e0ff33]">
+              <div key={index} className="bg-[#111] p-5 rounded border border-[#00e0ff33]">
                 <div className="mb-2">{icon}</div>
-                <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
-                <p className="text-gray-400">{text}</p>
+                <h3 className="text-lg font-semibold text-white mb-1">{title}</h3>
+                <p className="text-gray-400 text-sm">{text}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="flex flex-col md:flex-row justify-center gap-4 text-center mt-16">
+        {/* CTA */}
+        <section className="flex flex-col sm:flex-row justify-center items-center gap-4 text-center mt-12">
           <Link
             href="/contact"
             className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"

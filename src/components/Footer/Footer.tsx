@@ -38,7 +38,7 @@ export default function Footer() {
             ],
             "contactPoint": {
               "@type": "ContactPoint",
-              "email": "alexis@webcresson.com",
+              "email": "contact@webcresson.com",
               "contactType": "customer support",
               "availableLanguage": ["French", "English"],
             },
@@ -90,15 +90,15 @@ export default function Footer() {
         <address className="not-italic space-y-2">
           <p>
             <a
-              href="mailto:alexis@webcresson.com"
+              href="mailto:contact@webcresson.com"
               onClick={() =>
-                handleLinkClick("Email - Alexis Cresson", "mailto:alexis@webcresson.com", true)
+                handleLinkClick("Email - Alexis Cresson", "mailto:contact@webcresson.com", true)
               }
               className="text-gray-400 hover:text-[#00e0ff] transition"
-              aria-label="Envoyer un email à alexis@webcresson.com"
+              aria-label="Envoyer un email à contact@webcresson.com"
             >
               <FaEnvelope className="inline mr-2" />
-              alexis@webcresson.com
+              contact@webcresson.com
             </a>
           </p>
           <p>

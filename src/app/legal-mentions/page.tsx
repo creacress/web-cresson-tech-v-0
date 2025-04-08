@@ -23,8 +23,8 @@ export default function LegalMentions() {
           </p>
           <p className="text-gray-400">
             Tél : 07 66 02 96 32 – Email :{" "}
-            <a href="mailto:alexis@webcresson.com" className="text-[#00e0ff] underline">
-              alexis@webcresson.com
+            <a href="mailto:contact@webcresson.com" className="text-[#00e0ff] underline">
+              contact@webcresson.com
             </a>
           </p>
         </section>

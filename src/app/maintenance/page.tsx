@@ -22,7 +22,7 @@ export const metadata = {
         </p>
   
         <a
-          href="mailto:alexis@webcresson.com"
+          href="mailto:contact@webcresson.com"
           className="bg-[#00e0ff] text-black px-6 py-3 rounded-md font-semibold hover:scale-105 transition"
         >
           Contacter le support

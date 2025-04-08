@@ -87,7 +87,7 @@ Déployé automatiquement sur **Vercel** avec pré-rendu ISR (`revalidate = 8640
 ## 👨‍💻 Auteur
 
 **Alexis Cresson**  
-> 📧 [alexis@webcresson.com](mailto:alexis@webcresson.com)  
+> 📧 [contact@webcresson.com](mailto:contact@webcresson.com)  
 > 🌐 [webcresson.com](https://webcresson.com)
 
 

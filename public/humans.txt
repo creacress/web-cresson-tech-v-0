@@ -2,7 +2,7 @@
 Developer: Alexis Cresson
 Site: https://webcresson.com
 Twitter: @webcresson
-Email: alexis@webcresson.com
+Email: contact@webcresson.com
 From: Paris, France
 
 /* SITE */
