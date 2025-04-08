@@ -165,7 +165,7 @@ export default function Home() {
 
           {/* Bouton découvrir les services */}
           <div className="mt-10 text-center">
-            <Link href="/page-services">
+            <Link href="/services/page-services">
               <button className="inline-flex items-center gap-2 bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
                 Découvrir les services
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -218,7 +218,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <span className="text-white font-semibold">— Responsable IT, Groupe Transport</span>
-              <Image src="/logo_la_poste.webp" alt="Logo La Poste" width={96} height={54} />
+              <Image src="images/logo_la_poste.webp" alt="Logo La Poste" width={96} height={54} />
             </div>
           </div>
         </section>
