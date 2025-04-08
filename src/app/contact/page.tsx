@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import NeonTitle from '@/components/ui/NeonTitle'
 import ServiceSchema from '@/components/ServiceShema/ServiceSchema'
-import ContactForm from '@/components/ContactForm/ContactForm'
 import GoogleCalendar from '@/components/GoogleCalendar/GoogleCalendar'
 import type { Metadata } from 'next'
+import ContactForm from '@/components/ContactForm/ContactForm' // ← reste inchangé
 
 export const revalidate = 86400
 
@@ -77,16 +77,16 @@ export default function ContactPage() {
         </section>
 
         <section className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Contactez-nous
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Contactez-nous</h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
             Une question ? Un besoin ? Laissez-nous un message et nous vous répondrons rapidement.
           </p>
         </section>
 
         <section>
-          <ContactForm />
+          <Suspense fallback={<p className="text-gray-400 text-center">Chargement du formulaire...</p>}>
+            <ContactForm />
+          </Suspense>
         </section>
 
         <section className="mt-16 text-center">
