@@ -165,7 +165,7 @@ export default function Home() {
 
           {/* Bouton découvrir les services */}
           <div className="mt-10 text-center">
-            <Link href="/services">
+            <Link href="/page-services">
               <button className="inline-flex items-center gap-2 bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
                 Découvrir les services
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
