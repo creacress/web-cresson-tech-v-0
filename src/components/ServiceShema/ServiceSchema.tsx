@@ -27,7 +27,7 @@ const ServiceSchema: React.FC<ServiceSchemaProps> = ({
       '@type': 'Organization',
       name: 'Web Cresson Tech',
       url: 'https://webcresson.com',
-      logo: 'https://webcresson.com/Logo_webcressontech.webp',
+      logo: 'https://webcresson.com/images/Logo_webcressontech.webp',
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: '+33 7 66 02 96 32',

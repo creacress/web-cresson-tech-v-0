@@ -1,16 +1,52 @@
-// app/page.tsx ou app/(home)/page.tsx
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { Metadata } from "next"
+
 import NeonTitle from "@/components/ui/NeonTitle"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
+import PricingSection from "@/components/Pricing/PricingSection"
 import ClientWrapper from "@/components/ClientWrapper/ClientWrapper"
 
 export const revalidate = 86400
 
+export const metadata: Metadata = {
+  title: "WebCressonTech – IA sur mesure & Automatisation",
+  description: "WebCressonTech accompagne les entreprises avec des solutions IA, RPA, data et Python. Automatisation, machine learning, visualisation et plus.",
+  alternates: {
+    canonical: "https://webcresson.com",
+  },
+  openGraph: {
+    title: "WebCressonTech – IA, Automatisation, Python",
+    description: "Solutions sur mesure en intelligence artificielle et automatisation des processus métiers.",
+    url: "https://webcresson.com",
+    images: [
+      {
+        url: "https://webcresson.com/images/og-home.webp",
+        width: 1200,
+        height: 630,
+        alt: "WebCressonTech IA & Automatisation",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WebCressonTech",
+    description: "Experts IA & Python pour automatiser et scaler vos processus.",
+    images: ["https://webcresson.com/images/og-home.webp"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
+
 export default function Home() {
   return (
     <>
+      <BreadcrumbJsonLd overrides={{ home: "Accueil" }} />
+
       <ServiceSchema
         serviceName="Entreprise Experte en IA | WebCressonTech"
         serviceDescription="Développez votre entreprise avec des solutions d'intelligence artificielle sur mesure : automatisation, machine learning et deep learning."
@@ -25,18 +61,15 @@ export default function Home() {
         faq={[
           {
             question: "Quels services propose WebCressonTech ?",
-            answer:
-              "Solutions sur mesure en intelligence artificielle, machine learning, deep learning et automatisation des processus.",
+            answer: "Solutions sur mesure en intelligence artificielle, machine learning, deep learning et automatisation des processus.",
           },
           {
             question: "Pourquoi choisir WebCressonTech pour vos projets IA et Python ?",
-            answer:
-              "Nous offrons une expertise certifiée, un accompagnement complet et des solutions adaptées à vos besoins.",
+            answer: "Nous offrons une expertise certifiée, un accompagnement complet et des solutions adaptées à vos besoins.",
           },
           {
             question: "Comment contacter WebCressonTech ?",
-            answer:
-              "Contactez-nous via notre page de contact ou par téléphone pour discuter de vos projets IA et développement Python.",
+            answer: "Contactez-nous via notre page de contact ou par téléphone pour discuter de vos projets IA et développement Python.",
           },
         ]}
       />
@@ -129,7 +162,20 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          {/* Bouton découvrir les services */}
+          <div className="mt-10 text-center">
+            <Link href="/services">
+              <button className="inline-flex items-center gap-2 bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
+                Découvrir les services
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </button>
+            </Link>
+          </div>
         </section>
+
 
         {/* Expertises IA */}
         <section className="py-16 max-w-6xl mx-auto">
@@ -192,6 +238,9 @@ export default function Home() {
         </section>
 
         <ClientWrapper />
+
+        {/* Tarifs */}
+        <PricingSection />
       </main>
     </>
   )

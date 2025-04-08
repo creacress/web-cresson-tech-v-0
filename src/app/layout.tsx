@@ -1,6 +1,8 @@
 // src/app/layout.tsx
 import './globals.css'
 import type { Metadata } from 'next'
+import { Toaster } from 'sonner'
+
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/next'
 import { Inter } from 'next/font/google'
@@ -33,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className="scroll-smooth">
       <body className={`bg-black text-white min-h-screen antialiased ${inter.className}`}>
+      <Toaster position="top-center" theme="dark" richColors />
         <Header />
         <main>{children}</main>
         <Analytics />

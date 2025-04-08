@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Trop de requêtes. Réessayez plus tard.' }, { status: 429 })
   }
 
-  const { name, email, phone, company, comments, website } = await req.json()
+  const { name, email, phone, company, comments, plan, website } = await req.json()
 
   if (typeof website === 'string' && website.trim() !== '') {
     return NextResponse.json({ error: 'Requête non autorisée' }, { status: 400 })
@@ -42,6 +42,7 @@ export async function POST(req: Request) {
         <p><strong>Email :</strong> ${email}</p>
         <p><strong>Téléphone :</strong> ${phone || 'Non fourni'}</p>
         <p><strong>Entreprise :</strong> ${company || 'Non précisé'}</p>
+        <p><strong>Plan choisi :</strong> ${plan || 'Non précisé'}</p>
         <p><strong>Message :</strong><br/>${comments.replace(/\n/g, '<br/>')}</p>
       `,
     })

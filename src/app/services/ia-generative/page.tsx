@@ -2,6 +2,8 @@ import { Metadata } from "next"
 import Link from "next/link"
 import NeonTitle from "@/components/ui/NeonTitle"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
+import PricingSection from "@/components/Pricing/PricingSection"
 
 export const revalidate = 86400
 
@@ -38,6 +40,14 @@ export const metadata: Metadata = {
 export default function IAGenerativePage() {
   return (
     <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
+
+      {/* SEO Structuré */}
+      <BreadcrumbJsonLd
+        overrides={{
+          services: "Services",
+          "ia-generative": "IA Générative",
+        }}
+      />
       <ServiceSchema
         serviceName="IA Générative - Web Cresson Tech"
         serviceDescription="Libérez votre créativité avec l'IA Générative : génération de contenu, d'images et automatisation créative."
@@ -50,15 +60,15 @@ export default function IAGenerativePage() {
         faq={[
           {
             question: "Qu'est-ce que l'IA Générative ?",
-            answer: `L'IA Générative utilise des algorithmes avancés pour créer de nouveaux contenus originaux, tels que des images, du texte ou même des musiques, à partir de données existantes.`,
+            answer: "L'IA Générative utilise des algorithmes avancés pour créer de nouveaux contenus originaux, tels que des images, du texte ou même des musiques, à partir de données existantes.",
           },
           {
             question: "Quand utiliser l'IA Générative dans mon entreprise ?",
-            answer: `Pour créer du contenu marketing, générer des visuels de qualité, ou automatiser la production de contenu SEO.`,
+            answer: "Pour créer du contenu marketing, générer des visuels de qualité, ou automatiser la production de contenu SEO.",
           },
           {
             question: "Quelle est la différence avec le Machine Learning ?",
-            answer: `Le Machine Learning prédit et classe, l'IA Générative crée du contenu inédit.`,
+            answer: "Le Machine Learning prédit et classe, l'IA Générative crée du contenu inédit.",
           },
         ]}
       />
@@ -136,6 +146,9 @@ export default function IAGenerativePage() {
           Lancer mon audit gratuit
         </Link>
       </section>
+
+      {/* Section Tarifs */}
+      <PricingSection />
     </main>
   )
 }

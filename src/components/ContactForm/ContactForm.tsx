@@ -1,43 +1,70 @@
-"use client"
+'use client'
 
-import React, { useState, FormEvent } from "react"
+import React, { useState, useEffect, FormEvent } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { toast } from 'sonner'
 
 export default function ContactForm() {
+  const searchParams = useSearchParams()
+  const selectedPlan = searchParams.get('plan')
+
   const [formData, setFormData] = useState({
-    email: "",
-    name: "",
-    phone: "",
-    company: "",
-    comments: "",
-    website: "", // <- HONEYPOT FIELD
+    email: '',
+    name: '',
+    phone: '',
+    company: '',
+    plan: '',
+    comments: '',
+    website: '', // honeypot
   })
 
-  const [status, setStatus] = useState<"success" | "error" | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  useEffect(() => {
+    if (selectedPlan) {
+      setFormData((prev) => ({
+        ...prev,
+        plan: selectedPlan,
+        comments: `Je suis intéressé par le plan ${selectedPlan}.`,
+      }))
+    }
+  }, [selectedPlan])
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    setStatus(null)
+    setIsSubmitting(true)
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
 
-      if (response.ok) {
-        setStatus("success")
-        setFormData({ email: "", name: "", phone: "", company: "", comments: "", website: "" })
-      } else {
-        setStatus("error")
+      if (!res.ok) {
+        const json = await res.json()
+        throw new Error(json.error || 'Erreur inconnue')
       }
-    } catch (error) {
-      console.error("Erreur lors de l'envoi :", error)
-      setStatus("error")
+
+      toast.success('Message envoyé avec succès ✨')
+      setFormData({
+        email: '',
+        name: '',
+        phone: '',
+        company: '',
+        plan: '',
+        comments: '',
+        website: '',
+      })
+    } catch (err: any) {
+      console.error('Erreur contact :', err)
+      toast.error(err.message || 'Erreur lors de l’envoi.')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -60,16 +87,16 @@ export default function ContactForm() {
         />
       </div>
 
+      {/* Champs principaux */}
       <div className="grid sm:grid-cols-2 gap-6">
-        {[{ id: "email", label: "Email*", type: "email", required: true },
-          { id: "name", label: "Nom Prénom*", type: "text", required: true },
-          { id: "phone", label: "Téléphone*", type: "tel", required: true },
-          { id: "company", label: "Entreprise", type: "text", required: false },
+        {[
+          { id: 'email', label: 'Email*', type: 'email', required: true },
+          { id: 'name', label: 'Nom Prénom*', type: 'text', required: true },
+          { id: 'phone', label: 'Téléphone*', type: 'tel', required: true },
+          { id: 'company', label: 'Entreprise', type: 'text', required: false },
         ].map(({ id, label, type, required }) => (
           <div key={id} className="flex flex-col">
-            <label htmlFor={id} className="mb-1 font-medium text-gray-300">
-              {label}
-            </label>
+            <label htmlFor={id} className="mb-1 font-medium text-gray-300">{label}</label>
             <input
               type={type}
               id={id}
@@ -84,10 +111,28 @@ export default function ContactForm() {
         ))}
       </div>
 
+      {/* Sélection de plan */}
       <div className="flex flex-col">
-        <label htmlFor="comments" className="mb-1 font-medium text-gray-300">
-          Commentaires
-        </label>
+        <label htmlFor="plan" className="mb-1 font-medium text-gray-300">Plan souhaité</label>
+        <select
+          name="plan"
+          id="plan"
+          value={formData.plan}
+          onChange={handleChange}
+          className="bg-[#1a1a1a] text-white border border-gray-600 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#00e0ff]"
+        >
+          <option value="">Sélectionnez un plan</option>
+          <option value="Starter">Starter</option>
+          <option value="Pro">Pro</option>
+          <option value="Entreprise">Entreprise</option>
+          <option value="Personnalisé">Personnalisé</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </div>
+
+      {/* Commentaires */}
+      <div className="flex flex-col">
+        <label htmlFor="comments" className="mb-1 font-medium text-gray-300">Commentaires</label>
         <textarea
           id="comments"
           name="comments"
@@ -101,17 +146,11 @@ export default function ContactForm() {
 
       <button
         type="submit"
+        disabled={isSubmitting}
         className="bg-[#00e0ff] text-black font-semibold px-6 py-3 rounded hover:scale-105 transition"
       >
-        ENVOYER LA DEMANDE
+        {isSubmitting ? 'Envoi...' : 'ENVOYER LA DEMANDE'}
       </button>
-
-      {status === "success" && (
-        <p className="text-green-400 font-medium">✅ Merci ! Votre message a bien été envoyé.</p>
-      )}
-      {status === "error" && (
-        <p className="text-red-500 font-medium">❌ Une erreur est survenue. Veuillez réessayer.</p>
-      )}
     </form>
   )
 }

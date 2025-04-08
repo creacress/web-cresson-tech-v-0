@@ -1,6 +1,8 @@
 import { Metadata } from "next"
 import Link from "next/link"
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import PricingSection from "@/components/Pricing/PricingSection"
 
 export const revalidate = 86400
 
@@ -37,11 +39,24 @@ export const metadata: Metadata = {
 export default function BIAugmenteePage() {
   return (
     <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
-      {/* JSON-LD */}
+      {/* JSON-LD SEO */}
+      <BreadcrumbJsonLd
+        overrides={{
+          services: "Services",
+          "bi-ia": "Business Intelligence augmentée",
+        }}
+      />
+
       <ServiceSchema
         serviceName="Business Intelligence augmentée"
         serviceDescription="Des dashboards IA avec prédictions intégrées, alertes automatiques et visualisation augmentée."
-        serviceTypes={["BI augmentée", "Visualisation IA", "Dashboard intelligent", "Prédiction KPI", "Automatisation analytique"]}
+        serviceTypes={[
+          "BI augmentée",
+          "Visualisation IA",
+          "Dashboard intelligent",
+          "Prédiction KPI",
+          "Automatisation analytique",
+        ]}
         faq={[
           {
             question: "Qu’est-ce que la BI augmentée ?",
@@ -134,6 +149,9 @@ export default function BIAugmenteePage() {
           Discuter de mon projet BI
         </Link>
       </section>
+
+      {/* Section Tarification */}
+      <PricingSection />
     </main>
   )
 }

@@ -1,6 +1,8 @@
 import { Metadata } from "next"
 import Link from "next/link"
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import PricingSection from "@/components/Pricing/PricingSection"
 
 export const revalidate = 86400
 
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
     title: "Analyse Sémantique, NLP, MLOps & BI | Web Cresson Tech",
     description:
       "Automatisez l'analyse de texte, la segmentation client et le monitoring de vos modèles IA grâce à nos solutions NLP et MLOps.",
-    url: "https://webcresson.com/services/nlp-et-analytique-avancee",
+    url: "https://webcresson.com/services/analyse-semantique-nlp",
     images: [
       {
         url: "https://webcresson.com/images/nlp.webp",
@@ -30,14 +32,23 @@ export const metadata: Metadata = {
     images: ["https://webcresson.com/images/nlp.webp"],
   },
   alternates: {
-    canonical: "https://webcresson.com/services/nlp-et-analytique-avancee",
+    canonical: "https://webcresson.com/services/analyse-semantique-nlp",
   },
 }
 
 export default function NlpPage() {
   return (
     <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
-      {/* Structured Data */}
+
+      {/* Breadcrumb SEO */}
+      <BreadcrumbJsonLd
+        overrides={{
+          services: "Services",
+          "analyse-semantique-nlp": "Analyse Sémantique & NLP",
+        }}
+      />
+
+      {/* Données structurées + FAQ */}
       <ServiceSchema
         serviceName="Analyse Sémantique, NLP & MLOps"
         serviceDescription="Solutions IA sur mesure pour l'analyse de texte (NLP), la segmentation via data mining, la BI augmentée et l’industrialisation IA via MLOps."
@@ -77,11 +88,9 @@ export default function NlpPage() {
         </p>
       </section>
 
-      {/* NLP use cases */}
+      {/* NLP */}
       <section className="my-20">
-        <h2 className="text-2xl font-bold text-white mb-6">
-          Traitement du langage naturel (NLP)
-        </h2>
+        <h2 className="text-2xl font-bold text-white mb-6">Traitement du langage naturel (NLP)</h2>
         <ul className="grid sm:grid-cols-2 gap-6 text-gray-400 list-disc pl-5">
           <li>Analyse de sentiment & ton des messages</li>
           <li>Classification d’emails, tickets, documents</li>
@@ -105,7 +114,7 @@ export default function NlpPage() {
         </ul>
       </section>
 
-      {/* BI & Dashboards IA */}
+      {/* BI */}
       <section className="my-20">
         <h2 className="text-2xl font-bold text-white mb-4">Business Intelligence augmentée</h2>
         <p className="text-gray-400 mb-4">
@@ -151,6 +160,9 @@ export default function NlpPage() {
           Discuter de mon projet IA
         </Link>
       </section>
+
+      {/* Section Tarifs */}
+      <PricingSection />
     </main>
   )
 }

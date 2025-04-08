@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     url: "https://www.webcresson.com/about",
     images: [
       {
-        url: "https://www.webcresson.com/Logo_webcressontech.webp",
+        url: "https://www.webcresson.com/images/Logo_webcressontech.webp",
         width: 1200,
         height: 630,
         alt: "Web Cresson Tech",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "À propos de WebCressonTech - Expert en IA",
     description:
       "Entreprise spécialisée dans l'IA et les solutions technologiques avancées.",
-    images: ["https://www.webcresson.com/Logo_webcressontech.webp"],
+    images: ["https://www.webcresson.com/images/Logo_webcressontech.webp"],
   },
   alternates: {
     canonical: "https://www.webcresson.com/about",

@@ -16,22 +16,31 @@ export async function GET() {
   const baseUrl = "https://webcresson.com";
 
   const staticPaths: SitemapEntry[] = [
-    { path: "/", changefreq: "daily", priority: "1.0", lastmod: "2025-04-07" },
-    { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-07" },
-    { path: "/about", changefreq: "monthly", priority: "0.7", lastmod: "2025-04-07" },
-    { path: "/etude-de-cas", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/services/audit-gratuit", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/services/deep-learning", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/services/ia-archeologie", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/services/ia-generative", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/services/bi-ia", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/services/machine-learning-deep-learning", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/services/intelligence-artificielle", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/services/machine-learning", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/services/page-services", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/services/rpa-automatisation", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/terms-of-sale", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" },
-    { path: "/legal-mentions", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-07" }
+    { path: "/", changefreq: "daily", priority: "1.0", lastmod: "2025-04-08" },
+    { path: "/solutions/ia-finance", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
+    { path: "/solutions/ia-ressources-humaines", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
+    { path: "/solutions/ia-sante", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
+    { path: "/solutions/logistique-ia", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
+    { path: "/pricing", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
+    { path: "/pricing/custom", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
+    { path: "/scraping-intelligent", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
+    { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
+    { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
+    { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
+    { path: "/about", changefreq: "monthly", priority: "0.7", lastmod: "2025-04-08" },
+    { path: "/etude-de-cas", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/services/audit-gratuit", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/services/deep-learning", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/services/ia-archeologie", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/services/ia-generative", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/services/bi-ia", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/services/machine-learning-deep-learning", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/services/intelligence-artificielle", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/services/machine-learning", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/services/page-services", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/services/rpa-automatisation", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/terms-of-sale", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
+    { path: "/legal-mentions", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" }
   ];
 
   const dynamicPaths = await getDynamicPaths();

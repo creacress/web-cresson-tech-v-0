@@ -1,6 +1,8 @@
 import { Metadata } from "next"
 import NeonTitle from "@/components/ui/NeonTitle"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
+import PricingSection from "@/components/Pricing/PricingSection"
 import Link from "next/link"
 
 export const revalidate = 86400
@@ -42,6 +44,15 @@ export const metadata: Metadata = {
 export default function ArcheologieIA() {
   return (
     <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
+
+      {/* JSON-LD SEO */}
+      <BreadcrumbJsonLd
+        overrides={{
+          services: "Services",
+          "ia-archeologie": "IA & Archéologie",
+        }}
+      />
+
       <ServiceSchema
         serviceName="Intelligence Artificielle pour l'Archéologie"
         serviceDescription="Découvrez comment l'IA pourrait transformer l'archéologie avec des outils avancés pour la détection, l'analyse et la préservation des sites historiques."
@@ -67,9 +78,9 @@ export default function ArcheologieIA() {
 
       {/* Hero */}
       <section className="text-center mb-12">
-      <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
-      Révolutionner l'archéologie grâce à l’intelligence artificielle
-      </NeonTitle>
+        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+          Révolutionner l'archéologie grâce à l’intelligence artificielle
+        </NeonTitle>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
           Détection de sites, reconstitution 3D, analyse d’artefacts… Web Cresson Tech explore l’usage de l’IA pour moderniser l’archéologie.
         </p>
@@ -124,6 +135,9 @@ export default function ArcheologieIA() {
           ← Revenir à tous les services
         </Link>
       </section>
+
+      {/* Section Tarifs */}
+      <PricingSection />
     </main>
   )
 }

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     url: 'https://webcresson.com/contact',
     images: [
       {
-        url: 'https://webcresson.com/Logo_webcressontech.webp',
+        url: 'https://webcresson.com/images/Logo_webcressontech.webp',
         width: 1200,
         height: 630,
         alt: 'WebCressonTech',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: 'Contactez-nous | WebCressonTech',
     description:
       "Contactez WebCressonTech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
-    images: ['https://webcresson.com/Logo_webcressontech.webp'],
+    images: ['https://webcresson.com/images/Logo_webcressontech.webp'],
   },
   robots: {
     index: true,

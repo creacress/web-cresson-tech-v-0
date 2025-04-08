@@ -28,7 +28,7 @@ export default function Header() {
         <div>
           <Link href="/" aria-label="Retour à l'accueil">
             <Image
-              src="/Logo_webcressontech.webp"
+              src="/images/Logo_webcressontech.webp"
               alt="Logo WebCressonTech"
               width={48}
               height={48}

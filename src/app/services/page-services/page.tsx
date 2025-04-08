@@ -1,8 +1,10 @@
 import { Metadata } from "next"
 import NeonTitle from "@/components/ui/NeonTitle"
+import PricingSection from "@/components/Pricing/PricingSection"
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import ServiceLink from "@/components/ServiceLink/ServiceLink"
-import { FaRobot, FaMagic, FaCompass, FaBrain, FaChartLine, FaLanguage } from "react-icons/fa"
+import { FaRobot, FaSearch, FaDatabase, FaCode, FaMagic, FaCompass, FaBrain, FaChartLine, FaLanguage } from "react-icons/fa"
 
 export const revalidate = 86400
 
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
     url: "https://webcresson.com/services",
     images: [
       {
-        url: "/images/services.webp",
+        url: "/images/Logo_webcressontech.webp",
         width: 1200,
         height: 630,
         alt: "Web Cresson Tech",
@@ -27,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nos Services en Intelligence Artificielle",
     description: "Web Cresson Tech propose des solutions sur mesure en intelligence artificielle et automatisation des processus.",
-    images: ["/images/services.webp"],
+    images: ["/images/Logo_webcressontech.webp"],
   },
   alternates: {
     canonical: "https://webcresson.com/services",
@@ -41,6 +43,12 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
+      <BreadcrumbJsonLd
+        overrides={{
+          services: 'Services',
+        }}
+      />
+
       {/* Structured Data */}
       <ServiceSchema
         serviceName="Services en Intelligence Artificielle"
@@ -173,6 +181,8 @@ export default function ServicesPage() {
           Lancer mon audit gratuit
         </a>
       </section>
+      {/* Tarifs intégrés */}
+      <PricingSection />
     </main>
   )
 }
@@ -219,6 +229,27 @@ export const servicesData = [
     title: "Business Intelligence augmentée",
     text: "Des dashboards intelligents avec des prédictions intégrées pour une prise de décision immédiate.",
     link: "/services/bi-ia",
+  },
+  {
+    icon: <FaCode className="text-3xl text-[#00e0ff]" />,
+    title: "Développement API performant",
+    text: "Backends robustes et scalables avec FastAPI ou Django REST. Idéal pour vos apps métiers, SaaS ou automatisations.",
+    link: "/services/developpement-api",
+  },
+  {
+    icon: <FaDatabase className="text-3xl text-[#00e0ff]" />,
+    title: "Data Engineering & Dashboards",
+    text: "Nettoyez, structurez et exploitez vos données métiers. Pipelines automatisés et dashboards prêts pour l'IA.",
+    link: "/services/data-engineering",
+  },
+  {
+    icon: <FaSearch className="text-3xl text-[#00e0ff]" />,
+    title: "Scraping intelligent (Rust + Selenium)",
+    text: "Collecte de données rapide, fiable et légale. Extraction avancée sur sites dynamiques avec Rust & Selenium.",
+    link: "/services/scraping-intelligent",
   }
+  
+  
+  
 ]
 

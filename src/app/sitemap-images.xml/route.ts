@@ -4,15 +4,15 @@ import { NextResponse } from 'next/server';
 export async function GET() {
   const baseUrl = "https://webcresson.com";
   const images = [
-    { url: "/Logo_webcressontech.webp", title: "Logo WebCressonTech" },
-    { url: "/logo_la_poste.webp", title: "Logo La Poste" },
-    { url: "/Logo_webcressontech.ico", title: "Favicon WebCressonTech" },
-    { url: "/deep-learning.webp", title: "Illustration Deep Learning" },
-    { url: "/Machine_Learning.webp", title: "Illustration Machine Learning" },
-    { url: "/Développement_IA.webp", title: "Développement en Intelligence Artificielle" },
-    { url: "/rpa.webp", title: "Automatisation RPA" },
-    { url: "/robot_humain_main.webp", title: "Interaction Humain-Robot" },
-    { url: "/favicon.ico", title: "Favicon du site" }
+    { url: "/images/Logo_webcressontech.webp", title: "Logo WebCressonTech" },
+    { url: "/images/logo_la_poste.webp", title: "Logo La Poste" },
+    { url: "/images/Logo_webcressontech.ico", title: "Favicon WebCressonTech" },
+    { url: "/images/deep-learning.webp", title: "Illustration Deep Learning" },
+    { url: "/images/Machine_Learning.webp", title: "Illustration Machine Learning" },
+    { url: "/images/Développement_IA.webp", title: "Développement en Intelligence Artificielle" },
+    { url: "/images/rpa.webp", title: "Automatisation RPA" },
+    { url: "/images/robot_humain_main.webp", title: "Interaction Humain-Robot" },
+    { url: "/images/Logo_webcressontech.ico", title: "Favicon du site" }
   ];
 
   const sitemapImages = `<?xml version="1.0" encoding="UTF-8"?>
