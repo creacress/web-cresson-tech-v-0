@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "NEXT_PUBLIC_DISABLE_ESLINT=true next build",
+    "build": "prisma generate && NEXT_PUBLIC_DISABLE_ESLINT=true next build",
     "start": "next start",
     "lint": "echo 'Skipping lint step' && exit 0"
   },
