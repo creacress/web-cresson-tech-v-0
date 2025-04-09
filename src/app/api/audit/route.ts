@@ -7,7 +7,7 @@ const { EMAIL_USER, EMAIL_PASS, EMAIL_RECIPIENT } = process.env
 export async function POST(req: Request) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0] || "0.0.0.0"
 
-  // 🛡 Rate limit
+  // 🛡 Rate limiting
   if (!checkRateLimit(ip)) {
     console.warn(`🚫 Rate limit dépassé | IP: ${ip}`)
     return NextResponse.json(
@@ -25,16 +25,16 @@ export async function POST(req: Request) {
       solutions,
       needs,
       consent,
-      website, // 🕵️‍♂️ Honeypot
+      website,
     } = await req.json()
 
-    // 🚨 Honeypot check
+    // 🕵️‍♂️ Honeypot
     if (typeof website === "string" && website.trim() !== "") {
       console.warn("🤖 Bot détecté - requête bloquée")
       return NextResponse.json({ error: "Requête non autorisée" }, { status: 400 })
     }
 
-    // 📋 Champs obligatoires
+    // 📝 Validation minimale
     if (!name || !email || !sector || !needs || !consent) {
       return NextResponse.json(
         { error: "Tous les champs obligatoires doivent être remplis." },
@@ -42,6 +42,7 @@ export async function POST(req: Request) {
       )
     }
 
+    // 📦 Setup du transport SMTP
     const transporter = nodemailer.createTransport({
       host: "smtp.hostinger.com",
       port: 465,
@@ -53,9 +54,11 @@ export async function POST(req: Request) {
     })
 
     const solutionList =
-      solutions && solutions.length > 0 ? solutions.join(", ") : "Non spécifiées"
+      Array.isArray(solutions) && solutions.length > 0
+        ? solutions.join(", ")
+        : "Non spécifiées"
 
-    // ✉️ Mail vers admin
+    // ✉️ Envoi à l’équipe
     await transporter.sendMail({
       from: `"WebCressonTech" <${EMAIL_USER}>`,
       to: EMAIL_RECIPIENT,
@@ -71,7 +74,7 @@ export async function POST(req: Request) {
       `,
     })
 
-    // ✅ Auto-reply
+    // ✅ Confirmation client
     await transporter.sendMail({
       from: `"WebCressonTech" <${EMAIL_USER}>`,
       to: email,
