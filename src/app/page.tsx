@@ -93,7 +93,7 @@ export default function Home() {
         {/* Problèmes fréquents */}
         <section className="max-w-3xl mx-auto py-14 sm:py-16">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-6">
-            Est-ce que vous vous reconnaissez ?
+            Vous reconnaissez-vous ?
           </h2>
           <ul className="space-y-4 text-gray-400 list-disc list-inside sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0">
             <li>Vous perdez du temps sur des tâches manuelles répétitives</li>
