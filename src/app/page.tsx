@@ -2,7 +2,6 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Metadata } from "next"
-
 import NeonTitle from "@/components/ui/NeonTitle"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
@@ -218,7 +217,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <span className="text-white font-semibold">— Responsable IT, Groupe Transport</span>
-              <Image src="images/logo_la_poste.webp" alt="Logo La Poste" width={96} height={54} />
+              <Image src="/images/logo_la_poste.webp" alt="Logo La Poste" width={96} height={54} />
             </div>
           </div>
         </section>
@@ -236,7 +235,6 @@ export default function Home() {
             Discuter de mon projet IA
           </Link>
         </section>
-
         <ClientWrapper />
 
         {/* Tarifs */}

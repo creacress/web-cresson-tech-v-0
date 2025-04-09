@@ -24,7 +24,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: '/(.*)', // global pour toutes les routes
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
@@ -32,11 +32,12 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value: `
-              default-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;
+              default-src 'self';
               img-src * data:;
-              script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
+             script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com;
+
               style-src 'self' 'unsafe-inline';
-              connect-src *;
+              connect-src 'self' http://localhost:3000 http://localhost:11434 *;
               frame-src https://calendar.google.com;
               font-src 'self' data:;
             `.replace(/\n/g, ' ').trim(),
@@ -45,6 +46,6 @@ const nextConfig = {
       },
     ];
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
