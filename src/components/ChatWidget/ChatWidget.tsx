@@ -63,7 +63,15 @@ export default function ChatWidget() {
                 <X className="text-gray-300 hover:text-white" size={18} />
               </button>
             </div>
-
+            {/* Alerte de maintenance */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="bg-yellow-400 text-black text-sm px-4 py-2 text-center font-medium"
+            >
+              🤖 Le bot est temporairement en maintenance.
+            </motion.div>
             {/* Formulaire */}
             <form onSubmit={handleSubmit} className="flex flex-col px-4 py-3 gap-3">
               <textarea
