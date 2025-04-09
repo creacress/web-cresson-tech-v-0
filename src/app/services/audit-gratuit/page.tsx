@@ -100,16 +100,26 @@ export default function AuditGratuitPage() {
       </section>
 
       {/* Process */}
-      <section className="my-20">
-        <h2 className="text-2xl font-bold text-white text-center mb-8">
+      <section className="my-24">
+        <h2 className="text-2xl font-bold text-white text-center mb-10">
           Comment se déroule l’audit ?
         </h2>
-        <ol className="list-decimal pl-6 text-gray-400 space-y-3 max-w-2xl mx-auto">
-          <li>Vous remplissez le formulaire avec vos enjeux métiers</li>
-          <li>Nous analysons vos données et cas d’usage</li>
-          <li>Nous vous envoyons un rapport personnalisé sous 48h</li>
-        </ol>
+
+        <div className="flex flex-col items-center gap-6 text-left max-w-xl mx-auto">
+          {[
+            "Vous remplissez le formulaire avec vos enjeux métiers",
+            "Nous analysons vos données et cas d’usage",
+            "Nous vous envoyons un rapport personnalisé sous 48h",
+          ].map((step, index) => (
+            <div key={index} className="flex items-start gap-4">
+              <div className="text-[#00e0ff] font-bold text-lg">{index + 1}.</div>
+              <p className="text-gray-300">{step}</p>
+            </div>
+          ))}
+        </div>
       </section>
+
+
 
       {/* Formulaire */}
       <AuditForm />
@@ -123,17 +133,18 @@ export default function AuditGratuitPage() {
       </section>
 
       {/* CTA alternatif */}
-      <div className="text-center">
-        <p className="text-gray-400 mb-4">
+      <section className="bg-black border-t border-[#222] py-16 text-center">
+        <p className="text-gray-400 mb-6">
           Vous préférez échanger directement avec nous ?
         </p>
         <Link
           href="/contact"
-          className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
+          className="inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
         >
           Prendre contact maintenant
         </Link>
-      </div>
+      </section>
+
 
       {/* Tarification (même gratuite, pour cohérence) */}
       <PricingSection />

@@ -10,7 +10,7 @@ type FormDataType = {
   solutions: string[]
   needs: string
   consent: boolean
-  website: string // 🕵️ Honeypot
+  website: string
 }
 
 export default function AuditPage() {
@@ -22,16 +22,16 @@ export default function AuditPage() {
     solutions: [],
     needs: "",
     consent: false,
-    website: "", // Init honeypot
+    website: "",
   })
 
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("")
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value, type } = e.target as HTMLInputElement
+    const { name, value, type } = e.target
 
     if (type === "checkbox") {
       if (name === "consent") {
@@ -91,7 +91,7 @@ export default function AuditPage() {
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* HONEYPOT */}
+        {/* Honeypot */}
         <div className="absolute left-[-9999px]" aria-hidden="true">
           <label htmlFor="website">Ne pas remplir</label>
           <input
@@ -105,28 +105,133 @@ export default function AuditPage() {
           />
         </div>
 
-        {/* Rest of form unchanged, just as before... */}
-        {/* Nom, Email, Phone, Sector, Solutions, Needs, Consent, Submit */}
+        {/* Nom */}
+        <div>
+          <label className="block mb-1 font-semibold" htmlFor="name">Nom complet</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded bg-[#111] border border-[#333] focus:outline-none focus:ring-2 focus:ring-[#00e0ff]"
+          />
+        </div>
 
-        {/* ...[Ton formulaire existant]... */}
+        {/* Email */}
+        <div>
+          <label className="block mb-1 font-semibold" htmlFor="email">Email professionnel</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded bg-[#111] border border-[#333] focus:outline-none focus:ring-2 focus:ring-[#00e0ff]"
+          />
+        </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-[#00e0ff] text-black font-semibold px-6 py-3 rounded-md hover:scale-105 transition"
-        >
-          {loading ? "Envoi en cours..." : "Envoyer ma demande"}
-        </button>
+        {/* Téléphone */}
+        <div>
+          <label className="block mb-1 font-semibold" htmlFor="phone">Téléphone</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded bg-[#111] border border-[#333] focus:outline-none focus:ring-2 focus:ring-[#00e0ff]"
+          />
+        </div>
 
-        {message && (
-          <p
-            className={`mt-4 ${
-              message.startsWith("✅") ? "text-green-400" : "text-red-400"
-            }`}
+        {/* Secteur */}
+        <div>
+          <label className="block mb-1 font-semibold" htmlFor="sector">Secteur d’activité</label>
+          <select
+            id="sector"
+            name="sector"
+            value={formData.sector}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 rounded bg-[#111] border border-[#333] focus:outline-none focus:ring-2 focus:ring-[#00e0ff]"
           >
-            {message}
-          </p>
-        )}
+            <option value="">-- Choisissez un secteur --</option>
+            <option value="retail">Retail</option>
+            <option value="industrie">Industrie</option>
+            <option value="services">Services</option>
+            <option value="santé">Santé</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+
+        {/* Solutions */}
+        <div>
+          <label className="block mb-2 font-semibold">Solutions souhaitées</label>
+          <div className="flex flex-wrap gap-4">
+            {["Automatisation", "IA générative", "Analyse prédictive", "Autre"].map((sol) => (
+              <label key={sol} className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  name="solutions"
+                  value={sol}
+                  checked={formData.solutions.includes(sol)}
+                  onChange={handleChange}
+                  className="accent-[#00e0ff]"
+                />
+                <span>{sol}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Besoins */}
+        <div>
+          <label className="block mb-1 font-semibold" htmlFor="needs">Décrivez vos enjeux ou besoins</label>
+          <textarea
+            id="needs"
+            name="needs"
+            required
+            rows={5}
+            value={formData.needs}
+            onChange={handleChange}
+            className="w-full px-4 py-2 rounded bg-[#111] border border-[#333] focus:outline-none focus:ring-2 focus:ring-[#00e0ff]"
+          />
+        </div>
+
+        {/* Consentement */}
+        <div className="flex items-start gap-2">
+          <input
+            type="checkbox"
+            name="consent"
+            id="consent"
+            checked={formData.consent}
+            onChange={handleChange}
+            required
+            className="mt-1 accent-[#00e0ff]"
+          />
+          <label htmlFor="consent" className="text-sm">
+            J’accepte que mes données soient utilisées pour me recontacter dans le cadre de cet audit.
+          </label>
+        </div>
+
+        {/* Submit */}
+        <div className="text-center">
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-[#00e0ff] text-black font-semibold px-8 py-3 rounded-md hover:scale-105 transition"
+          >
+            {loading ? "Envoi en cours..." : "Envoyer ma demande"}
+          </button>
+
+          {message && (
+            <p className={`mt-4 ${message.startsWith("✅") ? "text-green-400" : "text-red-400"}`}>
+              {message}
+            </p>
+          )}
+        </div>
       </form>
     </section>
   )

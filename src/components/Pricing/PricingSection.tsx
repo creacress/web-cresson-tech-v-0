@@ -97,7 +97,7 @@ export default function PricingSection() {
               className={`relative rounded border p-6 flex flex-col items-center text-center bg-[#1a1a1a] transition-transform duration-300 hover:scale-[1.02] ${plan.highlight
                 ? 'border-[#00e0ff] shadow-xl shadow-cyan-500/10'
                 : 'border-[#00e0ff33]'
-              }`}
+                }`}
             >
               {plan.highlight && (
                 <span className="absolute top-4 right-4 bg-[#00e0ff] text-black text-xs font-semibold px-2 py-1 rounded uppercase">
@@ -127,7 +127,7 @@ export default function PricingSection() {
                 className={`mt-auto px-6 py-2 rounded font-semibold transition w-full max-w-[200px] text-center ${plan.highlight
                   ? 'bg-[#00e0ff] text-black hover:scale-105'
                   : 'border border-[#00e0ff] text-[#00e0ff] hover:bg-[#00e0ff22]'
-                }`}
+                  }`}
               >
                 {plan.ctaLabel}
               </Link>

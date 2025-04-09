@@ -236,9 +236,6 @@ export default function Home() {
           </Link>
         </section>
         <ClientWrapper />
-
-        {/* Tarifs */}
-        <PricingSection />
       </main>
     </>
   )

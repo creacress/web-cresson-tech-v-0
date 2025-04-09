@@ -56,6 +56,7 @@ export default function Header() {
           {[
             { label: "Accueil", href: "/" },
             { label: "Audit Gratuit", href: "/services/audit-gratuit" },
+            { label: "Tarification", href: "/pricing" },
             { label: "Services", href: "/services/page-services" },
             { label: "À propos", href: "/about" },
             { label: "Contact", href: "/contact" },
