@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle } from 'lucide-react'
 import NeonTitle from '@/components/ui/NeonTitle'
-import ContactForm from '@/components/ContactForm/ContactForm'
+import LandingClientWrapper from '@/components/ContactForm/LandingClient'
 import ServiceSchema from '@/components/ServiceShema/ServiceSchema'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema/BreadcrumbSchema'
 
@@ -135,7 +135,7 @@ export default function LandingIAPageClient() {
           <p className="text-gray-400 text-center mb-6">
             L’équipe WebCressonTech vous accompagne dès aujourd’hui.
           </p>
-          <ContactForm />
+          <LandingClientWrapper />
         </motion.section>
 
         {/* Témoignage */}

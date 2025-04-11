@@ -1,13 +1,13 @@
 'use client'
 
 import React, { useState, useEffect, FormEvent } from 'react'
-import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 
-export default function ContactForm() {
-  const searchParams = useSearchParams()
-  const selectedPlan = searchParams.get('plan')
+type ContactFormProps = {
+  selectedPlan?: string | null
+}
 
+export default function ContactForm({ selectedPlan }: ContactFormProps) {
   const [formData, setFormData] = useState({
     email: '',
     name: '',
@@ -15,7 +15,7 @@ export default function ContactForm() {
     company: '',
     plan: '',
     comments: '',
-    website: '', // honeypot
+    website: '',
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -30,7 +30,9 @@ export default function ContactForm() {
     }
   }, [selectedPlan])
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 

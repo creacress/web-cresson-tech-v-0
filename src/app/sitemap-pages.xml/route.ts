@@ -1,4 +1,3 @@
-// src/app/sitemap-pages.xml/route.ts
 import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -14,7 +13,6 @@ type SitemapEntry = {
 
 export async function GET() {
   const baseUrl = "https://webcresson.com";
-
   const today = new Date().toISOString().split('T')[0];
 
   const staticPaths: SitemapEntry[] = [
@@ -41,9 +39,7 @@ export async function GET() {
     { path: "/solutions/logistique-ia", changefreq: "weekly", priority: "0.8", lastmod: today },
     { path: "/legal-mentions", changefreq: "monthly", priority: "0.6", lastmod: today },
     { path: "/terms-of-sale", changefreq: "monthly", priority: "0.6", lastmod: today },
-
-    // Pages landing exclues du SEO → exclues aussi du sitemap
-     { path: "/ads/landing-ia", changefreq: "never", priority: "0.1", lastmod: today },
+    { path: "/ads/landing-ia", changefreq: "never", priority: "0.1", lastmod: today }
   ];
 
   const dynamicPaths = await getDynamicPaths();
@@ -69,16 +65,17 @@ async function getDynamicPaths(): Promise<SitemapEntry[]> {
   const dynamicPagesDir = path.resolve(process.cwd(), "src/app/services");
 
   try {
-    const serviceDirs = await fs.readdir(dynamicPagesDir);
+    const entries = await fs.readdir(dynamicPagesDir, { withFileTypes: true });
+    const serviceDirs = entries.filter(dirent => dirent.isDirectory());
 
     const paths = await Promise.all(
       serviceDirs.map(async (dir): Promise<SitemapEntry | null> => {
-        const servicePath = path.resolve(dynamicPagesDir, dir);
+        const servicePath = path.resolve(dynamicPagesDir, dir.name);
         const files = await fs.readdir(servicePath);
         if (files.includes('page.tsx')) {
           const stats = await fs.stat(path.resolve(servicePath, 'page.tsx'));
           return {
-            path: `/services/${dir}`,
+            path: `/services/${dir.name}`,
             changefreq: "weekly",
             priority: "0.8",
             lastmod: stats.mtime.toISOString().split('T')[0],
