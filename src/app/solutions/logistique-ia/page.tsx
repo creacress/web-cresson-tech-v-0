@@ -1,63 +1,69 @@
-import { Metadata } from "next"
-import Link from "next/link"
-import NeonTitle from "@/components/ui/NeonTitle"
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
-import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
-import PricingSection from "@/components/Pricing/PricingSection"
+import { Metadata } from 'next';
+import Link from 'next/link';
+import NeonTitle from '@/components/ui/NeonTitle';
+import ServiceSchema from '@/components/ServiceShema/ServiceSchema';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema/BreadcrumbSchema';
+import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav';
+import PricingSection from '@/components/Pricing/PricingSection';
 
 export const metadata: Metadata = {
-  title: "IA pour la Logistique & Supply Chain | WebCressonTech",
+  title: 'IA pour la Logistique & Supply Chain | WebCressonTech',
   description:
     "Optimisez vos flux logistiques avec l'intelligence artificielle : prévision de demande, automatisation, réduction des erreurs, et pilotage intelligent des stocks.",
   alternates: {
-    canonical: "https://webcresson.com/solutions/logistique-ia",
+    canonical: 'https://webcresson.com/solutions/logistique-ia',
   },
   openGraph: {
-    title: "IA pour la Logistique | WebCressonTech",
+    title: 'IA pour la Logistique | WebCressonTech',
     description:
       "Boostez la performance de votre chaîne logistique avec l’IA : RPA, machine learning, prédiction de flux, automatisation des tâches répétitives.",
-    url: "https://webcresson.com/solutions/logistique-ia",
+    url: 'https://webcresson.com/solutions/logistique-ia',
     images: [
       {
-        url: "https://webcresson.com/images/ia-logistique.webp",
+        url: 'https://webcresson.com/images/ia-logistique.webp',
         width: 1200,
         height: 630,
-        alt: "IA logistique par WebCressonTech",
+        alt: 'IA logistique par WebCressonTech',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "IA logistique | WebCressonTech",
-    description: "Prévision, automatisation, OCR, KPI : l’IA pour la supply chain.",
-    images: ["https://webcresson.com/images/ia-logistique.webp"],
+    card: 'summary_large_image',
+    title: 'IA logistique | WebCressonTech',
+    description: 'Prévision, automatisation, OCR, KPI : l’IA pour la supply chain.',
+    images: ['https://webcresson.com/images/ia-logistique.webp'],
   },
-}
+};
 
 export default function LogistiqueIA() {
   return (
     <main className="max-w-6xl mx-auto px-6 pt-24 pb-16 text-white">
-      <BreadcrumbJsonLd overrides={{ solutions: "Solutions", "logistique-ia": "IA pour la logistique" }} />
+      <BreadcrumbSchema />
 
       <ServiceSchema
         serviceName="Solutions IA pour la Logistique"
         serviceDescription="Optimisez votre chaîne logistique avec la RPA, le Machine Learning et la prédiction IA. Automatisation, saisie intelligente, OCR et KPI en temps réel."
-        serviceTypes={["IA logistique", "RPA", "Machine Learning", "OCR", "Prévision de flux", "Supply Chain"]}
+        serviceTypes={['IA logistique', 'RPA', 'Machine Learning', 'OCR', 'Prévision de flux', 'Supply Chain']}
         faq={[
           {
             question: "Quels sont les bénéfices de l’IA dans la logistique ?",
-            answer: "Réduction des délais, automatisation des tâches, anticipation des flux, réduction des erreurs humaines et meilleure planification.",
+            answer:
+              "Réduction des délais, automatisation des tâches, anticipation des flux, réduction des erreurs humaines et meilleure planification.",
           },
           {
             question: "Quels outils sont utilisés ?",
-            answer: "Python, FastAPI, Scikit-learn, Tesseract OCR, Airflow, RPA no-code, bases SQL et API ERP.",
+            answer:
+              "Python, FastAPI, Scikit-learn, Tesseract OCR, Airflow, RPA no-code, bases SQL et API ERP.",
           },
           {
             question: "Est-ce compatible avec mon ERP existant ?",
-            answer: "Oui, nos solutions s’intègrent via API ou scripts RPA pour SAP, Odoo, Salesforce, etc.",
+            answer:
+              "Oui, nos solutions s’intègrent via API ou scripts RPA pour SAP, Odoo, Salesforce, etc.",
           },
         ]}
       />
+
+      <BreadcrumbNav />
 
       {/* Hero */}
       <section className="text-center mb-16">
@@ -86,26 +92,26 @@ export default function LogistiqueIA() {
         </ul>
       </section>
 
-      {/* Cas d’usages IA */}
+      {/* Cas concrets */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-white mb-6">Cas d’usage IA pour la supply chain</h2>
         <div className="grid md:grid-cols-2 gap-6 text-gray-300">
           {[
             {
-              title: "📦 Saisie automatique de commandes",
-              desc: "Grâce à la RPA, les bons de commande sont extraits et intégrés à l’ERP sans saisie manuelle.",
+              title: '📦 Saisie automatique de commandes',
+              desc: 'Grâce à la RPA, les bons de commande sont extraits et intégrés à l’ERP sans saisie manuelle.',
             },
             {
-              title: "📈 Prédiction de flux logistique",
-              desc: "Nos modèles ML anticipent les volumes par jour et par site pour mieux planifier.",
+              title: '📈 Prédiction de flux logistique',
+              desc: 'Nos modèles ML anticipent les volumes par jour et par site pour mieux planifier.',
             },
             {
-              title: "🧾 Lecture automatique de bons de livraison",
-              desc: "L’OCR + NLP permet d’extraire et valider automatiquement les infos critiques (quantité, SKU, date).",
+              title: '🧾 Lecture automatique de bons de livraison',
+              desc: 'L’OCR + NLP permet d’extraire et valider automatiquement les infos critiques (quantité, SKU, date).',
             },
             {
-              title: "🚚 Planification dynamique des tournées",
-              desc: "Optimisation des itinéraires avec prise en compte des volumes, clients, horaires et zones géographiques.",
+              title: '🚚 Planification dynamique des tournées',
+              desc: 'Optimisation des itinéraires avec prise en compte des volumes, clients, horaires et zones géographiques.',
             },
           ].map(({ title, desc }, i) => (
             <div key={i} className="bg-[#111] border border-[#00e0ff33] p-6 rounded">
@@ -116,7 +122,7 @@ export default function LogistiqueIA() {
         </div>
       </section>
 
-      {/* Stack technique */}
+      {/* Stack IA */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-white mb-4">Notre stack IA pour la logistique</h2>
         <ul className="list-disc pl-6 text-gray-400 space-y-2">
@@ -148,7 +154,7 @@ export default function LogistiqueIA() {
         </Link>
       </section>
 
-      {/* Tarifs + crosslink */}
+      {/* Tarifs + cross-selling */}
       <PricingSection />
 
       <section className="mt-20">
@@ -166,5 +172,5 @@ export default function LogistiqueIA() {
         </div>
       </section>
     </main>
-  )
+  );
 }

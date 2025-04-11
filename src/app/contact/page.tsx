@@ -1,11 +1,14 @@
-import React, { Suspense } from 'react'
-import NeonTitle from '@/components/ui/NeonTitle'
-import ServiceSchema from '@/components/ServiceShema/ServiceSchema'
-import GoogleCalendar from '@/components/GoogleCalendar/GoogleCalendar'
-import type { Metadata } from 'next'
-import ContactForm from '@/components/ContactForm/ContactForm' // ← reste inchangé
+import React, { Suspense } from 'react';
+import NeonTitle from '@/components/ui/NeonTitle';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema/BreadcrumbSchema';
+import ServiceSchema from '@/components/ServiceShema/ServiceSchema';
+import GoogleCalendar from '@/components/GoogleCalendar/GoogleCalendar';
+import type { Metadata } from 'next';
+import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav';
 
-export const revalidate = 86400
+import ContactForm from '@/components/ContactForm/ContactForm';
+
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: 'Contactez-nous | WebCressonTech',
@@ -39,11 +42,13 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-}
+};
 
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbSchema />
+
       <ServiceSchema
         serviceName="Contactez-nous | WebCressonTech"
         serviceDescription={metadata.description!}
@@ -51,18 +56,39 @@ export default function ContactPage() {
         faq={[
           {
             question: 'Comment puis-je contacter WebCressonTech ?',
-            answer:
-              'Vous pouvez nous contacter via ce formulaire ou par téléphone au +33-7-66-02-96-32. Cliquez sur le numéro pour passer un appel direct : tel:+33766029632',
+            answer: (
+              <>
+                Vous pouvez nous contacter via ce formulaire ou par téléphone au{' '}
+                <a
+                  href="tel:+33766029632"
+                  className="text-[#00e0ff] underline hover:text-white"
+                >
+                  +33 7 66 02 96 32
+                </a>
+                .
+              </>
+            ),
           },
           {
             question: 'Quels services propose WebCressonTech ?',
-            answer:
-              'Nous proposons des solutions en IA, en automatisation des processus (RPA), et des services technologiques sur mesure. Découvrez nos services sur : https://www.webcresson.com/services',
+            answer: (
+              <>
+                Nous proposons des solutions en IA, RPA, automatisation et technologies sur mesure. 
+                Découvrez nos services sur{' '}
+                <a
+                  href="https://www.webcresson.com/services"
+                  className="text-[#00e0ff] underline hover:text-white"
+                >
+                  cette page.
+                </a>
+              </>
+            ),
           },
         ]}
       />
 
       <main className="max-w-4xl mx-auto px-6 py-24 text-white">
+      <BreadcrumbNav />
         <section className="text-center mb-12">
           <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
             Prenez Rendez-vous
@@ -103,5 +129,5 @@ export default function ContactPage() {
         </section>
       </main>
     </>
-  )
+  );
 }

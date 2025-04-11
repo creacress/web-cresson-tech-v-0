@@ -5,6 +5,7 @@ import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import ServiceLink from "@/components/ServiceLink/ServiceLink"
 import { FaRobot, FaSearch, FaDatabase, FaCode, FaMagic, FaCompass, FaBrain, FaChartLine, FaLanguage } from "react-icons/fa"
+import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
 
 export const revalidate = 86400
 
@@ -81,6 +82,8 @@ export default function ServicesPage() {
 
       {/* Hero Section */}
       <section className="text-center mb-12">
+        {/* 🧭 Breadcrumb UX */}
+        <BreadcrumbNav />
         <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
           Passez à la vitesse supérieure avec l’IA sur mesure
         </NeonTitle>

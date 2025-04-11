@@ -1,73 +1,80 @@
-import { Metadata } from "next"
-import Link from "next/link"
-import NeonTitle from "@/components/ui/NeonTitle"
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
-import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
-import PricingSection from "@/components/Pricing/PricingSection"
+import { Metadata } from 'next';
+import Link from 'next/link';
+import NeonTitle from '@/components/ui/NeonTitle';
+import ServiceSchema from '@/components/ServiceShema/ServiceSchema';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema/BreadcrumbSchema';
+import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav';
+import PricingSection from '@/components/Pricing/PricingSection';
 
 export const metadata: Metadata = {
-  title: "IA pour les Ressources Humaines | WebCressonTech",
+  title: 'IA pour les Ressources Humaines | WebCressonTech',
   description:
     "Automatisez le recrutement, la gestion des talents et la formation avec l’intelligence artificielle. IA RH sur mesure pour gagner en efficacité et anticiper les besoins.",
   alternates: {
-    canonical: "https://webcresson.com/solutions/ia-ressources-humaines",
+    canonical: 'https://webcresson.com/solutions/ia-ressources-humaines',
   },
   openGraph: {
-    title: "Solutions IA pour les RH | WebCressonTech",
+    title: 'Solutions IA pour les RH | WebCressonTech',
     description:
       "Découvrez comment l'IA transforme les Ressources Humaines : tri de CV, prédiction de turnover, chatbots candidats et formation personnalisée.",
-    url: "https://webcresson.com/solutions/ia-ressources-humaines",
+    url: 'https://webcresson.com/solutions/ia-ressources-humaines',
     images: [
       {
-        url: "https://webcresson.com/images/ia-rh.webp",
+        url: 'https://webcresson.com/images/ia-rh.webp',
         width: 1200,
         height: 630,
-        alt: "IA RH WebCressonTech",
+        alt: 'IA RH WebCressonTech',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "IA & RH : Automatiser et prédire | WebCressonTech",
+    card: 'summary_large_image',
+    title: 'IA & RH : Automatiser et prédire | WebCressonTech',
     description:
       "Boostez votre service RH avec l’IA : automatisation, matching de talents, analyse prédictive et coaching personnalisé.",
-    images: ["https://webcresson.com/images/ia-rh.webp"],
+    images: ['https://webcresson.com/images/ia-rh.webp'],
   },
-}
+};
 
 export default function IARHPage() {
   return (
     <main className="max-w-6xl mx-auto px-6 pt-24 pb-16 text-white">
-      <BreadcrumbJsonLd overrides={{ solutions: "Solutions", "ia-ressources-humaines": "IA RH" }} />
+      <BreadcrumbSchema />
 
       <ServiceSchema
         serviceName="Solutions IA pour les Ressources Humaines"
         serviceDescription="Boostez votre service RH avec l’intelligence artificielle : matching de CV, automatisation des entretiens, prédiction de départ, formation sur mesure."
         serviceTypes={[
-          "IA RH",
-          "Matching de CV",
-          "Prédiction de turnover",
-          "Formation intelligente",
-          "Chatbots candidats",
+          'IA RH',
+          'Matching de CV',
+          'Prédiction de turnover',
+          'Formation intelligente',
+          'Chatbots candidats',
         ]}
         faq={[
           {
-            question: "L’IA peut-elle améliorer le recrutement ?",
+            question: 'L’IA peut-elle améliorer le recrutement ?',
             answer:
-              "Oui, avec un tri de CV intelligent, du matching sur-mesure et l’analyse automatisée des candidatures, vos recruteurs gagnent en efficacité.",
+              'Oui, avec un tri de CV intelligent, du matching sur-mesure et l’analyse automatisée des candidatures, vos recruteurs gagnent en efficacité.',
           },
           {
-            question: "Comment l’IA prévient-elle le turnover ?",
+            question: 'Comment l’IA prévient-elle le turnover ?',
             answer:
-              "Grâce à l’analyse de données internes (entretiens, performances, absences), elle identifie les signaux faibles et propose des plans d’action.",
+              'Grâce à l’analyse de données internes (entretiens, performances, absences), elle identifie les signaux faibles et propose des plans d’action.',
           },
           {
-            question: "L’IA est-elle compatible avec nos outils SIRH ?",
-            answer:
-              "Oui. Nos solutions s’intègrent via API ou scripts dans des outils comme SAP SuccessFactors, Workday, Lucca, ou Talensoft.",
+            question: 'L’IA est-elle compatible avec nos outils SIRH ?',
+            answer: (
+              <>
+                Oui. Nos solutions s’intègrent via API ou scripts dans des outils comme{' '}
+                SAP SuccessFactors, Workday, Lucca, ou Talensoft.
+              </>
+            ),
           },
         ]}
       />
+
+      <BreadcrumbNav />
 
       {/* Hero */}
       <section className="text-center mb-16">
@@ -96,26 +103,26 @@ export default function IARHPage() {
         </ul>
       </section>
 
-      {/* Cas IA RH */}
+      {/* Cas concrets */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-white mb-6">Cas d’usage concrets</h2>
         <div className="grid md:grid-cols-2 gap-6 text-gray-300">
           {[
             {
-              title: "📄 Tri de CV automatisé",
-              desc: "Matching intelligent selon soft skills, expérience, compatibilité culturelle.",
+              title: '📄 Tri de CV automatisé',
+              desc: 'Matching intelligent selon soft skills, expérience, compatibilité culturelle.',
             },
             {
-              title: "🗣️ Chatbots pour candidats",
-              desc: "Disponibles 24/7 pour répondre aux questions, collecter des infos et planifier des entretiens.",
+              title: '🗣️ Chatbots pour candidats',
+              desc: 'Disponibles 24/7 pour répondre aux questions, collecter des infos et planifier des entretiens.',
             },
             {
-              title: "📉 Prédiction de départ",
-              desc: "Analyse du turnover avec signaux faibles pour rétention proactive.",
+              title: '📉 Prédiction de départ',
+              desc: 'Analyse du turnover avec signaux faibles pour rétention proactive.',
             },
             {
-              title: "🎯 Formation personnalisée",
-              desc: "Recommandation de modules e-learning IA en fonction des objectifs métiers et lacunes identifiées.",
+              title: '🎯 Formation personnalisée',
+              desc: 'Recommandation de modules e-learning IA en fonction des objectifs métiers et lacunes identifiées.',
             },
           ].map(({ title, desc }, i) => (
             <div key={i} className="bg-[#111] border border-[#00e0ff33] p-6 rounded">
@@ -146,10 +153,12 @@ export default function IARHPage() {
         <p className="text-sm text-gray-500 mb-6">— DRH, Groupe Tech RH</p>
       </section>
 
-      {/* CTA final */}
+      {/* CTA */}
       <section className="text-center my-20">
         <h2 className="text-2xl font-bold text-white mb-4">En route vers des RH intelligentes ?</h2>
-        <p className="text-gray-400 mb-6">Discutons de vos besoins en automatisation RH, matching de talents ou IA formation.</p>
+        <p className="text-gray-400 mb-6">
+          Discutons de vos besoins en automatisation RH, matching de talents ou IA formation.
+        </p>
         <Link
           href="/contact"
           className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
@@ -158,7 +167,7 @@ export default function IARHPage() {
         </Link>
       </section>
 
-      {/* Tarification + cross-links */}
+      {/* Tarification + liens */}
       <PricingSection />
 
       <section className="mt-20">
@@ -176,5 +185,5 @@ export default function IARHPage() {
         </div>
       </section>
     </main>
-  )
+  );
 }

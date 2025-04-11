@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Service, WithContext, FAQPage, ContactPoint } from 'schema-dts';
 import { JsonLd } from 'react-schemaorg';
@@ -34,6 +36,7 @@ const ServiceSchema: React.FC<ServiceSchemaProps> = ({
         contactType: 'Service Client',
         areaServed: 'FR',
         availableLanguage: ['Français', 'Anglais', 'Portugais'],
+        url: 'https://webcresson.com/contact',
       } as ContactPoint,
     },
     serviceType: serviceTypes,
@@ -48,7 +51,10 @@ const ServiceSchema: React.FC<ServiceSchemaProps> = ({
       name: question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: answer ? answer.toString() : 'Réponse non disponible',
+        text:
+          typeof answer === 'string'
+            ? answer
+            : answer?.toString().replace(/<[^>]*>/g, '') || 'Réponse non disponible',
       },
     })),
   };

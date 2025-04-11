@@ -4,6 +4,8 @@ import Image from "next/image"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import PricingSection from "@/components/Pricing/PricingSection"
+import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
+import NeonTitle from "@/components/ui/NeonTitle"
 
 export const revalidate = 86400
 
@@ -73,9 +75,12 @@ export default function ScrapingIntelligentPage() {
 
       {/* Hero */}
       <section className="text-center mb-12">
-        <h1 className="text-5xl font-extrabold text-neon drop-shadow mb-4">
+        {/* 🧭 Breadcrumb UX */}
+        <BreadcrumbNav />
+        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+
           Scraping Web Intelligent avec Rust et Selenium
-        </h1>
+        </NeonTitle>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
           Exploitez la puissance de Rust et Selenium pour extraire des données de sites web complexes avec une efficacité et une sécurité inégalées.
         </p>

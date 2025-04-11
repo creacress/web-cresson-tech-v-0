@@ -4,6 +4,7 @@ import NeonTitle from "@/components/ui/NeonTitle"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import PricingSection from "@/components/Pricing/PricingSection"
+import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
 
 export const revalidate = 86400
 
@@ -77,6 +78,8 @@ export default function IntelligenceArtificiellePage() {
 
       {/* Hero */}
       <section className="text-center mb-16">
+        {/* 🧭 Breadcrumb UX */}
+        <BreadcrumbNav />
         <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
           Transformez votre entreprise avec l’IA
         </NeonTitle>

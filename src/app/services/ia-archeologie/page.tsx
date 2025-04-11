@@ -4,6 +4,7 @@ import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import PricingSection from "@/components/Pricing/PricingSection"
 import Link from "next/link"
+import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
 
 export const revalidate = 86400
 
@@ -78,6 +79,8 @@ export default function ArcheologieIA() {
 
       {/* Hero */}
       <section className="text-center mb-12">
+        {/* 🧭 Breadcrumb UX */}
+        <BreadcrumbNav />
         <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
           Révolutionner l'archéologie grâce à l’intelligence artificielle
         </NeonTitle>

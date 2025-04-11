@@ -1,67 +1,77 @@
-import { Metadata } from "next"
-import Link from "next/link"
-import NeonTitle from "@/components/ui/NeonTitle"
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
-import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
-import PricingSection from "@/components/Pricing/PricingSection"
+import { Metadata } from 'next';
+import Link from 'next/link';
+import NeonTitle from '@/components/ui/NeonTitle';
+import ServiceSchema from '@/components/ServiceShema/ServiceSchema';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema/BreadcrumbSchema';
+import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav';
+import PricingSection from '@/components/Pricing/PricingSection';
 
 export const metadata: Metadata = {
-  title: "IA pour la Finance & Assurance | WebCressonTech",
-  description: "Automatisez vos processus financiers avec l’IA : détection de fraude, prévision de trésorerie, OCR comptable et conformité intelligente.",
+  title: 'IA pour la Finance & Assurance | WebCressonTech',
+  description:
+    "Automatisez vos processus financiers avec l’IA : détection de fraude, prévision de trésorerie, OCR comptable et conformité intelligente.",
   alternates: {
-    canonical: "https://webcresson.com/solutions/ia-finance",
+    canonical: 'https://webcresson.com/solutions/ia-finance',
   },
   openGraph: {
-    title: "Solutions IA pour la Finance | WebCressonTech",
-    description: "Boostez votre pilotage financier grâce à l’IA : automatisation, prédiction, détection d’anomalies et conformité réglementaire.",
-    url: "https://webcresson.com/solutions/ia-finance",
+    title: 'Solutions IA pour la Finance | WebCressonTech',
+    description: 'Boostez votre pilotage financier grâce à l’IA : automatisation, prédiction, détection d’anomalies et conformité réglementaire.',
+    url: 'https://webcresson.com/solutions/ia-finance',
     images: [
       {
-        url: "https://webcresson.com/images/Logo_webcressontech.webp",
+        url: 'https://webcresson.com/images/Logo_webcressontech.webp',
         width: 1200,
         height: 630,
-        alt: "IA Finance par WebCressonTech",
+        alt: 'IA Finance par WebCressonTech',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "IA & Finance | WebCressonTech",
+    card: 'summary_large_image',
+    title: 'IA & Finance | WebCressonTech',
     description: "Détection de fraude, conformité automatisée, prédiction comptable : passez à la finance augmentée avec l’IA.",
-    images: ["https://webcresson.com/images/ia-finance.webp"],
+    images: ['https://webcresson.com/images/ia-finance.webp'],
   },
-}
+};
 
 export default function FinanceIA() {
   return (
     <main className="max-w-6xl mx-auto px-6 pt-24 pb-16 text-white">
-      <BreadcrumbJsonLd overrides={{ solutions: "Solutions", "ia-finance": "IA pour la finance" }} />
+      {/* SEO schemas */}
+      <BreadcrumbSchema />
 
       <ServiceSchema
         serviceName="Solutions IA pour la Finance"
         serviceDescription="L’IA appliquée à la finance permet de prédire les flux, automatiser la comptabilité, détecter la fraude et assurer la conformité réglementaire."
         serviceTypes={[
-          "IA pour la finance",
-          "Prédiction financière",
-          "Conformité réglementaire automatisée",
+          'IA pour la finance',
+          'Prédiction financière',
+          'Conformité réglementaire automatisée',
           "Détection d'anomalies comptables",
-          "Extraction OCR de factures",
+          'Extraction OCR de factures',
         ]}
         faq={[
           {
-            question: "Quels bénéfices l’IA apporte-t-elle en finance ?",
-            answer: "Réduction du temps de clôture, fiabilisation des données, automatisation des tâches et détection proactive d’anomalies.",
+            question: 'Quels bénéfices l’IA apporte-t-elle en finance ?',
+            answer: 'Réduction du temps de clôture, fiabilisation des données, automatisation des tâches et détection proactive d’anomalies.',
           },
           {
-            question: "Quels formats de documents sont pris en charge ?",
-            answer: "PDF, scans, Excel, emails : nous traitons tous les formats via OCR + NLP.",
+            question: 'Quels formats de documents sont pris en charge ?',
+            answer: 'PDF, scans, Excel, emails : nous traitons tous les formats via OCR + NLP.',
           },
           {
-            question: "L’IA est-elle RGPD et compatible avec mes outils actuels ?",
-            answer: "Oui, nos solutions sont hébergées en Europe, chiffrées, et s’intègrent à votre ERP, CRM, SIRH ou outil BI.",
+            question: 'L’IA est-elle RGPD et compatible avec mes outils actuels ?',
+            answer: (
+              <>
+                Oui, nos solutions sont hébergées en Europe, chiffrées, et s’intègrent à vos outils existants (ERP, SIRH, CRM).
+              </>
+            ),
           },
         ]}
       />
+
+      {/* 🧭 UX breadcrumb */}
+      <BreadcrumbNav />
 
       {/* Hero */}
       <section className="text-center mb-16">
@@ -79,7 +89,7 @@ export default function FinanceIA() {
         </Link>
       </section>
 
-      {/* Enjeux métiers */}
+      {/* Enjeux */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-white mb-4">Vos enjeux financiers au quotidien</h2>
         <ul className="list-disc pl-6 text-gray-400 space-y-2">
@@ -90,25 +100,25 @@ export default function FinanceIA() {
         </ul>
       </section>
 
-      {/* Cas d’usages IA */}
+      {/* Cas concrets */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-white mb-6">Cas concrets d’IA en finance</h2>
         <div className="grid md:grid-cols-2 gap-6 text-gray-300">
           {[
             {
-              title: "📄 Lecture automatique de factures",
+              title: '📄 Lecture automatique de factures',
               desc: "OCR + NLP pour extraire et rapprocher automatiquement les données comptables des documents fournisseurs.",
             },
             {
-              title: "📉 Prédiction de trésorerie",
+              title: '📉 Prédiction de trésorerie',
               desc: "Modèles ML pour anticiper les entrées/sorties de trésorerie et prévenir les tensions.",
             },
             {
-              title: "🚨 Détection d’anomalies",
+              title: '🚨 Détection d’anomalies',
               desc: "Analyse automatique de vos écritures et flux pour détecter les fraudes ou doublons.",
             },
             {
-              title: "🛡️ Contrôle de conformité réglementaire",
+              title: '🛡️ Contrôle de conformité réglementaire',
               desc: "Automatisation KYC, vérifications LCB-FT, export pistes d’audit conforme RGPD.",
             },
           ].map(({ title, desc }, i) => (
@@ -120,7 +130,7 @@ export default function FinanceIA() {
         </div>
       </section>
 
-      {/* Stack technique */}
+      {/* Stack IA */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-white mb-4">Stack IA pour la finance</h2>
         <ul className="list-disc pl-6 text-gray-400 space-y-2">
@@ -140,10 +150,12 @@ export default function FinanceIA() {
         <p className="text-sm text-gray-500 mb-6">— Directeur Financier, Cabinet Fiduciaire</p>
       </section>
 
-      {/* CTA final */}
+      {/* CTA */}
       <section className="text-center my-20">
         <h2 className="text-2xl font-bold text-white mb-4">Et si vos finances passaient à l’ère de l’IA ?</h2>
-        <p className="text-gray-400 mb-6">Nous vous aidons à automatiser, prédire et fiabiliser vos données financières.</p>
+        <p className="text-gray-400 mb-6">
+          Nous vous aidons à automatiser, prédire et fiabiliser vos données financières.
+        </p>
         <Link
           href="/contact"
           className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
@@ -152,7 +164,7 @@ export default function FinanceIA() {
         </Link>
       </section>
 
-      {/* Tarifs + cross-links */}
+      {/* Cross services */}
       <PricingSection />
 
       <section className="mt-20">
@@ -170,5 +182,5 @@ export default function FinanceIA() {
         </div>
       </section>
     </main>
-  )
+  );
 }

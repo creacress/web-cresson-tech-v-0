@@ -1,10 +1,10 @@
-import { Metadata } from 'next'
-import Head from 'next/head'
-import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
-import ServiceSchema from '@/components/ServiceShema/ServiceSchema'
-import PricingSection from '@/components/Pricing/PricingSection'
-import NeonTitle from '@/components/ui/NeonTitle'
-import Link from 'next/link'
+import { Metadata } from 'next';
+import ServiceSchema from '@/components/ServiceShema/ServiceSchema';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema/BreadcrumbSchema';
+import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav';
+import PricingSection from '@/components/Pricing/PricingSection';
+import NeonTitle from '@/components/ui/NeonTitle';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Tarifs WebCressonTech - Solutions IA',
@@ -27,13 +27,14 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-}
+};
 
 export default function PricingPage() {
   return (
     <>
-      {/* SEO + JSON-LD */}
-      <BreadcrumbJsonLd overrides={{ pricing: 'Tarification' }} />
+      {/* Données structurées SEO */}
+      <BreadcrumbSchema />
+
       <ServiceSchema
         serviceName="Tarification des solutions IA - WebCressonTech"
         serviceDescription="Découvrez nos offres IA flexibles : Starter, Pro ou sur-mesure. Accompagnement de qualité pour chaque niveau de projet."
@@ -45,11 +46,20 @@ export default function PricingPage() {
         faq={[
           {
             question: 'Puis-je modifier mon plan plus tard ?',
-            answer: 'Oui, vous pouvez passer à un plan supérieur à tout moment en nous contactant.',
+            answer:
+              'Oui, vous pouvez passer à un plan supérieur à tout moment en nous contactant.',
           },
           {
             question: 'Proposez-vous des essais gratuits ?',
-            answer: 'Nous offrons des démonstrations personnalisées sur demande.',
+            answer: (
+              <>
+                Nous offrons des{' '}
+                <Link href="/contact" className="underline text-[#00e0ff] hover:text-white">
+                  démonstrations personnalisées
+                </Link>{' '}
+                sur demande.
+              </>
+            ),
           },
           {
             question: 'Le plan Entreprise est-il adapté à mon secteur ?',
@@ -59,12 +69,10 @@ export default function PricingPage() {
         ]}
       />
 
-      {/* Canonical fallback */}
-      <Head>
-        <link rel="canonical" href="https://webcresson.com/pricing" />
-      </Head>
-
       <main className="max-w-6xl mx-auto px-6 pt-24 pb-16 text-white">
+        {/* 🧭 Breadcrumb UX */}
+        <BreadcrumbNav />
+
         {/* Héro */}
         <section className="text-center mb-12">
           <NeonTitle as="h1" className="text-4xl sm:text-5xl font-extrabold mb-4">
@@ -78,7 +86,7 @@ export default function PricingPage() {
         {/* Grille de plans */}
         <PricingSection />
 
-        {/* Explication des plans */}
+        {/* Détails des offres */}
         <section className="my-20">
           <h2 className="text-2xl font-bold text-white mb-6 text-center">
             Ce que comprend chaque plan
@@ -119,5 +127,5 @@ export default function PricingPage() {
         </section>
       </main>
     </>
-  )
+  );
 }

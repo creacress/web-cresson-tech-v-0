@@ -3,6 +3,8 @@ import Link from "next/link"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import PricingSection from "@/components/Pricing/PricingSection"
+import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
+import NeonTitle from "@/components/ui/NeonTitle"
 
 export const revalidate = 86400
 
@@ -80,9 +82,11 @@ export default function NlpPage() {
 
       {/* Hero */}
       <section className="text-center mb-12">
-        <h1 className="text-5xl font-extrabold text-neon drop-shadow mb-4">
+        {/* 🧭 Breadcrumb UX */}
+        <BreadcrumbNav />
+          <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
           Comprenez, segmentez, prédisez.
-        </h1>
+        </NeonTitle>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
           Grâce à nos solutions NLP, BI augmentée et MLOps, exploitez tout le potentiel caché de vos données textuelles et analytiques.
         </p>

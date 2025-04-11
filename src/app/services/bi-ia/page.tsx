@@ -3,6 +3,8 @@ import Link from "next/link"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import PricingSection from "@/components/Pricing/PricingSection"
+import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
+import NeonTitle from "@/components/ui/NeonTitle"
 
 export const revalidate = 86400
 
@@ -78,9 +80,12 @@ export default function BIAugmenteePage() {
 
       {/* Hero */}
       <section className="text-center mb-16">
-        <h1 className="text-5xl font-extrabold text-neon mb-4">
+        {/* 🧭 Breadcrumb UX */}
+        <BreadcrumbNav />
+        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+
           Business Intelligence augmentée par l'IA
-        </h1>
+        </NeonTitle>
         <p className="text-gray-300 text-lg max-w-2xl mx-auto">
           Des dashboards intelligents avec prédictions intégrées, alertes automatiques et visualisations adaptatives pour mieux décider, plus vite.
         </p>

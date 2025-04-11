@@ -2,6 +2,8 @@ import { Metadata } from "next"
 import NeonTitle from "@/components/ui/NeonTitle"
 import AuditForm from "@/components/AuditForm/AuditForm"
 import Link from "next/link"
+import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav';
+
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import PricingSection from "@/components/Pricing/PricingSection"
@@ -68,6 +70,8 @@ export default function AuditGratuitPage() {
 
       {/* Hero */}
       <section className="text-center mb-12">
+        {/* 🧭 Breadcrumb UX */}
+        <BreadcrumbNav />
         <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
           Audit Gratuit en Intelligence Artificielle
         </NeonTitle>

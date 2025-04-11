@@ -1,73 +1,79 @@
-import { Metadata } from "next"
-import Link from "next/link"
-import NeonTitle from "@/components/ui/NeonTitle"
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
-import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
-import PricingSection from "@/components/Pricing/PricingSection"
+import { Metadata } from 'next';
+import Link from 'next/link';
+import NeonTitle from '@/components/ui/NeonTitle';
+import ServiceSchema from '@/components/ServiceShema/ServiceSchema';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema/BreadcrumbSchema';
+import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav';
+import PricingSection from '@/components/Pricing/PricingSection';
 
 export const metadata: Metadata = {
-  title: "IA pour la Santé & Médical | WebCressonTech",
+  title: 'IA pour la Santé & Médical | WebCressonTech',
   description:
     "Exploitez l’IA dans le secteur de la santé : automatisation, diagnostic assisté, OCR de dossiers médicaux et analyse prédictive de pathologies.",
   alternates: {
-    canonical: "https://webcresson.com/solutions/ia-sante",
+    canonical: 'https://webcresson.com/solutions/ia-sante',
   },
   openGraph: {
-    title: "Intelligence Artificielle pour la Santé | WebCressonTech",
+    title: 'Intelligence Artificielle pour la Santé | WebCressonTech',
     description:
       "Découvrez comment l’IA optimise la santé : automatisation, prédiction de consultations, traitement d’imagerie, détection d’anomalies médicales.",
-    url: "https://webcresson.com/solutions/ia-sante",
+    url: 'https://webcresson.com/solutions/ia-sante',
     images: [
       {
-        url: "https://webcresson.com/images/ia-sante.webp",
+        url: 'https://webcresson.com/images/ia-sante.webp',
         width: 1200,
         height: 630,
-        alt: "IA Santé - WebCressonTech",
+        alt: 'IA Santé - WebCressonTech',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "IA en Santé & Médical | WebCressonTech",
+    card: 'summary_large_image',
+    title: 'IA en Santé & Médical | WebCressonTech',
     description:
       "Automatisation des tâches médicales, analyse d’images, NLP sur comptes rendus : passez à la santé augmentée avec l’IA.",
-    images: ["https://webcresson.com/images/ia-sante.webp"],
+    images: ['https://webcresson.com/images/ia-sante.webp'],
   },
-}
+};
 
 export default function IASantePage() {
   return (
     <main className="max-w-6xl mx-auto px-6 pt-24 pb-16 text-white">
-      <BreadcrumbJsonLd overrides={{ solutions: "Solutions", "ia-sante": "IA pour la santé" }} />
+      <BreadcrumbSchema />
 
       <ServiceSchema
         serviceName="Solutions IA pour la Santé"
         serviceDescription="L'intelligence artificielle appliquée à la santé permet d'automatiser les tâches administratives, d’analyser les images médicales, de traiter les comptes rendus et de prédire les besoins patients."
         serviceTypes={[
-          "IA santé",
-          "OCR médical",
-          "Détection d’anomalies",
-          "Prédiction rendez-vous",
-          "Analyse NLP comptes rendus",
+          'IA santé',
+          'OCR médical',
+          'Détection d’anomalies',
+          'Prédiction rendez-vous',
+          'Analyse NLP comptes rendus',
         ]}
         faq={[
           {
-            question: "Quels sont les bénéfices de l’IA en santé ?",
+            question: 'Quels sont les bénéfices de l’IA en santé ?',
             answer:
-              "Réduction de la charge administrative, diagnostic assisté, analyse automatique d’images et meilleure anticipation des besoins médicaux.",
+              'Réduction de la charge administrative, diagnostic assisté, analyse automatique d’images et meilleure anticipation des besoins médicaux.',
           },
           {
-            question: "Respecte-t-elle le RGPD et le secret médical ?",
+            question: 'Respecte-t-elle le RGPD et le secret médical ?',
             answer:
-              "Oui, nos traitements sont hébergés en France/UE, chiffrés de bout en bout, et pensés pour la confidentialité des données de santé.",
+              'Oui, nos traitements sont hébergés en France/UE, chiffrés de bout en bout, et pensés pour la confidentialité des données de santé.',
           },
           {
-            question: "Peut-on intégrer l’IA à mon logiciel médical existant ?",
-            answer:
-              "Oui, via API REST sécurisée ou modules embarqués compatibles avec les principaux logiciels métiers (Hopital Manager, Axigate, etc.).",
+            question: 'Peut-on intégrer l’IA à mon logiciel médical existant ?',
+            answer: (
+              <>
+                Oui, via API REST sécurisée ou modules compatibles avec Hopital Manager, Axigate, etc.
+              </>
+            ),
           },
         ]}
       />
+
+      <BreadcrumbNav />
 
       {/* Hero */}
       <section className="text-center mb-16">
@@ -85,7 +91,7 @@ export default function IASantePage() {
         </Link>
       </section>
 
-      {/* Enjeux santé */}
+      {/* Enjeux */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-white mb-4">Les défis du secteur médical</h2>
         <ul className="list-disc pl-6 text-gray-400 space-y-2">
@@ -102,20 +108,20 @@ export default function IASantePage() {
         <div className="grid md:grid-cols-2 gap-6 text-gray-300">
           {[
             {
-              title: "📄 OCR sur dossiers patients",
-              desc: "Lecture automatique de documents médicaux scannés, extraction structurée des infos (nom, antécédents, traitements).",
+              title: '📄 OCR sur dossiers patients',
+              desc: 'Lecture automatique de documents médicaux scannés, extraction structurée des infos (nom, antécédents, traitements).',
             },
             {
-              title: "🧠 Analyse d’imagerie médicale",
-              desc: "Détection de tumeurs, fractures ou pathologies à partir de radios, scanners ou IRM avec deep learning.",
+              title: '🧠 Analyse d’imagerie médicale',
+              desc: 'Détection de tumeurs, fractures ou pathologies à partir de radios, scanners ou IRM avec deep learning.',
             },
             {
-              title: "🗣️ NLP sur comptes rendus",
-              desc: "Classification, résumé, extraction automatique des diagnostics ou codes CIM10 à partir de texte libre.",
+              title: '🗣️ NLP sur comptes rendus',
+              desc: 'Classification, résumé, extraction automatique des diagnostics ou codes CIM10 à partir de texte libre.',
             },
             {
-              title: "📅 Prédiction d’affluence & organisation",
-              desc: "Machine learning pour anticiper le volume de RDV, urgences ou hospitalisations à venir.",
+              title: '📅 Prédiction d’affluence & organisation',
+              desc: 'Machine learning pour anticiper le volume de RDV, urgences ou hospitalisations à venir.',
             },
           ].map(({ title, desc }, i) => (
             <div key={i} className="bg-[#111] border border-[#00e0ff33] p-6 rounded">
@@ -126,7 +132,7 @@ export default function IASantePage() {
         </div>
       </section>
 
-      {/* Stack santé */}
+      {/* Stack technique */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-white mb-4">Stack technique dédiée santé</h2>
         <ul className="list-disc pl-6 text-gray-400 space-y-2">
@@ -146,12 +152,14 @@ export default function IASantePage() {
         <p className="text-sm text-gray-500 mb-6">— DSI, Centre Hospitalier Régional</p>
       </section>
 
-      {/* CTA */}
+      {/* CTA final */}
       <section className="text-center my-20">
         <h2 className="text-2xl font-bold text-white mb-4">
           Envie de passer à la santé augmentée par l’IA ?
         </h2>
-        <p className="text-gray-400 mb-6">Nous construisons des solutions IA médicales respectueuses, performantes et personnalisées.</p>
+        <p className="text-gray-400 mb-6">
+          Nous construisons des solutions IA médicales respectueuses, performantes et personnalisées.
+        </p>
         <Link
           href="/contact"
           className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
@@ -160,7 +168,7 @@ export default function IASantePage() {
         </Link>
       </section>
 
-      {/* Tarifs + liens */}
+      {/* Tarifs + crosslinks */}
       <PricingSection />
 
       <section className="mt-20">
@@ -178,5 +186,5 @@ export default function IASantePage() {
         </div>
       </section>
     </main>
-  )
+  );
 }

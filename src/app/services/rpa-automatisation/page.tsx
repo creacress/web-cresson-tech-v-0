@@ -4,6 +4,8 @@ import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import LivreBlancComponent from "@/components/LivreBlanc/LivreBlanc"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import PricingSection from "@/components/Pricing/PricingSection"
+import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
+import NeonTitle from "@/components/ui/NeonTitle"
 
 export const revalidate = 86400
 
@@ -75,9 +77,12 @@ export default function RPAAutomatisationPage() {
 
       {/* Hero */}
       <section className="text-center mb-16">
-        <h1 className="text-5xl font-extrabold text-neon mb-4">
+        {/* 🧭 Breadcrumb UX */}
+        <BreadcrumbNav />
+        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+
           Libérez-vous des tâches répétitives avec la RPA
-        </h1>
+        </NeonTitle>
         <p className="text-gray-300 max-w-2xl mx-auto">
           Automatisez vos processus métiers avec des robots logiciels. Gagnez en efficacité, réduisez vos erreurs et vos coûts.
         </p>

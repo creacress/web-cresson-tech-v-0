@@ -15,32 +15,35 @@ type SitemapEntry = {
 export async function GET() {
   const baseUrl = "https://webcresson.com";
 
+  const today = new Date().toISOString().split('T')[0];
+
   const staticPaths: SitemapEntry[] = [
-    { path: "/", changefreq: "daily", priority: "1.0", lastmod: "2025-04-08" },
-    { path: "/solutions/ia-finance", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
-    { path: "/solutions/ia-ressources-humaines", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
-    { path: "/solutions/ia-sante", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
-    { path: "/solutions/logistique-ia", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
-    { path: "/pricing", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
-    { path: "/pricing/custom", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
-    { path: "/scraping-intelligent", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
-    { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
-    { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
-    { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: "2025-04-08" },
-    { path: "/about", changefreq: "monthly", priority: "0.7", lastmod: "2025-04-08" },
-    { path: "/etude-de-cas", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/services/audit-gratuit", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/services/deep-learning", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/services/ia-archeologie", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/services/ia-generative", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/services/bi-ia", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/services/machine-learning-deep-learning", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/services/intelligence-artificielle", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/services/machine-learning", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/services/page-services", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/services/rpa-automatisation", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/terms-of-sale", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" },
-    { path: "/legal-mentions", changefreq: "weekly", priority: "0.9", lastmod: "2025-04-08" }
+    { path: "/", changefreq: "daily", priority: "1.0", lastmod: today },
+    { path: "/about", changefreq: "monthly", priority: "0.7", lastmod: today },
+    { path: "/contact", changefreq: "weekly", priority: "0.8", lastmod: today },
+    { path: "/pricing", changefreq: "weekly", priority: "0.8", lastmod: today },
+    { path: "/pricing/custom", changefreq: "weekly", priority: "0.8", lastmod: today },
+    { path: "/etude-de-cas", changefreq: "weekly", priority: "0.9", lastmod: today },
+    { path: "/scraping-intelligent", changefreq: "weekly", priority: "0.8", lastmod: today },
+    { path: "/services/audit-gratuit", changefreq: "weekly", priority: "0.9", lastmod: today },
+    { path: "/services/page-services", changefreq: "weekly", priority: "0.9", lastmod: today },
+    { path: "/services/deep-learning", changefreq: "weekly", priority: "0.9", lastmod: today },
+    { path: "/services/ia-archeologie", changefreq: "weekly", priority: "0.9", lastmod: today },
+    { path: "/services/ia-generative", changefreq: "weekly", priority: "0.9", lastmod: today },
+    { path: "/services/bi-ia", changefreq: "weekly", priority: "0.9", lastmod: today },
+    { path: "/services/machine-learning-deep-learning", changefreq: "weekly", priority: "0.9", lastmod: today },
+    { path: "/services/intelligence-artificielle", changefreq: "weekly", priority: "0.9", lastmod: today },
+    { path: "/services/machine-learning", changefreq: "weekly", priority: "0.9", lastmod: today },
+    { path: "/services/rpa-automatisation", changefreq: "weekly", priority: "0.9", lastmod: today },
+    { path: "/solutions/ia-finance", changefreq: "weekly", priority: "0.8", lastmod: today },
+    { path: "/solutions/ia-ressources-humaines", changefreq: "weekly", priority: "0.8", lastmod: today },
+    { path: "/solutions/ia-sante", changefreq: "weekly", priority: "0.8", lastmod: today },
+    { path: "/solutions/logistique-ia", changefreq: "weekly", priority: "0.8", lastmod: today },
+    { path: "/legal-mentions", changefreq: "monthly", priority: "0.6", lastmod: today },
+    { path: "/terms-of-sale", changefreq: "monthly", priority: "0.6", lastmod: today },
+
+    // Pages landing exclues du SEO → exclues aussi du sitemap
+     { path: "/ads/landing-ia", changefreq: "never", priority: "0.1", lastmod: today },
   ];
 
   const dynamicPaths = await getDynamicPaths();
@@ -66,28 +69,20 @@ async function getDynamicPaths(): Promise<SitemapEntry[]> {
   const dynamicPagesDir = path.resolve(process.cwd(), "src/app/services");
 
   try {
-    if (!(await fs.stat(dynamicPagesDir)).isDirectory()) {
-      return [];
-    }
-
     const serviceDirs = await fs.readdir(dynamicPagesDir);
 
     const paths = await Promise.all(
       serviceDirs.map(async (dir): Promise<SitemapEntry | null> => {
         const servicePath = path.resolve(dynamicPagesDir, dir);
-        try {
-          const files = await fs.readdir(servicePath);
-          if (files.includes('page.tsx')) {
-            const stats = await fs.stat(path.resolve(servicePath, 'page.tsx'));
-            return {
-              path: `/services/${dir}`,
-              changefreq: "weekly",
-              priority: "0.8",
-              lastmod: stats.mtime.toISOString(),
-            };
-          }
-        } catch (err) {
-          console.error(`Erreur dans ${servicePath}:`, err);
+        const files = await fs.readdir(servicePath);
+        if (files.includes('page.tsx')) {
+          const stats = await fs.stat(path.resolve(servicePath, 'page.tsx'));
+          return {
+            path: `/services/${dir}`,
+            changefreq: "weekly",
+            priority: "0.8",
+            lastmod: stats.mtime.toISOString().split('T')[0],
+          };
         }
         return null;
       })
@@ -95,7 +90,7 @@ async function getDynamicPaths(): Promise<SitemapEntry[]> {
 
     return paths.filter((p): p is SitemapEntry => p !== null);
   } catch (error) {
-    console.error("Erreur lors de la lecture du dossier services:", error);
+    console.error("Erreur sitemap dynamique:", error);
     return [];
   }
 }
