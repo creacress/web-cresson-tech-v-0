@@ -1,6 +1,8 @@
 "use client"
 
 import React, { useState } from "react"
+import { useRouter } from 'next/navigation'
+
 
 type FormDataType = {
   name: string
@@ -14,6 +16,7 @@ type FormDataType = {
 }
 
 export default function AuditPage() {
+  const router = useRouter()
   const [formData, setFormData] = useState<FormDataType>({
     name: "",
     email: "",
@@ -53,36 +56,29 @@ export default function AuditPage() {
     e.preventDefault()
     setLoading(true)
     setMessage("")
-
+  
     try {
       const res = await fetch("/api/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
-
-      const data = await res.json()
+  
       if (res.ok) {
-        setMessage("✅ Votre demande a bien été envoyée !")
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          sector: "",
-          solutions: [],
-          needs: "",
-          consent: false,
-          website: "",
-        })
+        // ✅ Redirection vers la page de remerciement
+        router.push("/merci")
+        return
       } else {
+        const data = await res.json()
         setMessage(`❌ Erreur : ${data.error}`)
       }
     } catch (error) {
       setMessage("❌ Une erreur s'est produite, veuillez réessayer.")
+    } finally {
+      setLoading(false)
     }
-
-    setLoading(false)
   }
+  
 
   return (
     <section className="max-w-3xl mx-auto py-16 px-4 text-white">
