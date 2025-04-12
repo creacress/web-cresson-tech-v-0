@@ -6,6 +6,7 @@ import Script from 'next/script'
 
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/next'
+import { GoogleTagManager, GTMNoScript } from '@/components/GoogleTagManager/GoogleTagManager'
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -38,6 +39,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className="scroll-smooth">
       <head>
+        { /*Google Tag Manager */}
+        <GoogleTagManager />
+
         {/* Google Analytics (gtag.js) */}
         <Script
           async
@@ -60,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={`bg-black text-white min-h-screen antialiased ${inter.className}`}>
+        <GTMNoScript />
         <Toaster position="top-center" theme="dark" richColors />
         <Header />
         <AnalyticsProvider />
