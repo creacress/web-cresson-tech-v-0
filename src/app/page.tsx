@@ -2,10 +2,11 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Metadata } from "next"
+import { gtagEvent } from '@/lib/gtag'
+import CTAButton from "@/components/CTAButton/CTAButton"
 import NeonTitle from "@/components/ui/NeonTitle"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
-import PricingSection from "@/components/Pricing/PricingSection"
 import ClientWrapper from "@/components/ClientWrapper/ClientWrapper"
 
 export const revalidate = 86400
@@ -42,6 +43,13 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
+  const handleClick = () => {
+    gtagEvent({
+      action: 'cta_click',
+      category: 'CTA',
+      label: 'Hero Section',
+    })
+  }
   return (
     <>
       <BreadcrumbJsonLd overrides={{ home: "Accueil" }} />
@@ -82,12 +90,7 @@ export default function Home() {
           <p className="text-base sm:text-lg text-gray-300 max-w-xl mx-auto mb-6 sm:mb-8">
             WebCressonTech conçoit des solutions sur mesure pour les entreprises qui veulent passer à l’échelle.
           </p>
-          <Link
-            href="/services/audit-gratuit"
-            className="inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
-          >
-            Obtenir un audit IA gratuit
-          </Link>
+          <CTAButton />
         </section>
 
         {/* Problèmes fréquents */}
