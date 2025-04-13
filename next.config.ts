@@ -24,20 +24,21 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)', // global pour toutes les routes
+        source: '/(.*)', // Appliqué à toutes les routes
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'X-Robots-Tag', value: 'all' }, // Aide Googlebot
+
           {
             key: 'Content-Security-Policy',
             value: `
-              default-src 'self';
-              img-src * data:;
-             script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com;
-
+              default-src 'self' https: data:;
+              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com;
               style-src 'self' 'unsafe-inline';
-              connect-src 'self' http://localhost:3000 http://localhost:11434 *;
+              img-src * data:;
+              connect-src *;
               frame-src https://calendar.google.com;
               font-src 'self' data:;
             `.replace(/\n/g, ' ').trim(),
