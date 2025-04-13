@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: 'https://webcresson.com/solutions/ia-sante',
     images: [
       {
-        url: 'https://webcresson.com/images/ia-sante.webp',
+        url: 'https://webcresson.com/images/IA-sante.webp',
         width: 1200,
         height: 630,
         alt: 'IA Santé - WebCressonTech',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: 'IA en Santé & Médical | WebCressonTech',
     description:
       "Automatisation des tâches médicales, analyse d’images, NLP sur comptes rendus : passez à la santé augmentée avec l’IA.",
-    images: ['https://webcresson.com/images/ia-sante.webp'],
+    images: ['https://webcresson.com/images/IA-sante.webp'],
   },
 };
 

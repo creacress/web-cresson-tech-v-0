@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://webcresson.com/services/ia-archeologie",
     images: [
       {
-        url: "https://webcresson.com/images/ia-archeologie.webp",
+        url: "https://webcresson.com/images/Ia-archeologie.webp",
         width: 1200,
         height: 630,
         alt: "IA pour l'Archéologie - Web Cresson Tech",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "IA pour l'Archéologie | Web Cresson Tech",
     description:
       "Solutions en IA pour détecter des sites archéologiques, automatiser l'analyse des données historiques et créer des reconstitutions 3D.",
-    images: ["https://webcresson.com/images/ia-archeologie.webp"],
+    images: ["https://webcresson.com/images/Ia-archeologie.webp"],
   },
   alternates: {
     canonical: "https://webcresson.com/services/ia-archeologie",

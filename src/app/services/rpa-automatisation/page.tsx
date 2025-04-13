@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://webcresson.com/services/rpa-automatisation",
     images: [
       {
-        url: "https://webcresson.com/images/rpa-automatisation.webp",
+        url: "https://webcresson.com/images/rpa.webp",
         width: 1200,
         height: 630,
         alt: "RPA Automatisation",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "RPA Automatisation : Définition, Avantages, Utilisations | Web Cresson Tech",
     description:
       "Découvrez comment la RPA Automatisation peut transformer vos processus métiers avec Web Cresson Tech.",
-    images: ["https://webcresson.com/images/rpa-automatisation.webp"],
+    images: ["https://webcresson.com/images/rpa.webp"],
   },
   alternates: {
     canonical: "https://webcresson.com/services/rpa-automatisation",

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://webcresson.com/services/ia-generative",
     images: [
       {
-        url: "https://webcresson.com/images/ia-generative.webp",
+        url: "https://webcresson.com/images/deep-learning.webp",
         width: 1200,
         height: 630,
         alt: "Web Cresson Tech",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "IA Générative | Web Cresson Tech",
     description:
       "Découvrez comment l'IA Générative améliore la créativité avec des outils comme ChatGPT, DALL-E pour la génération de contenu et d'images.",
-    images: ["https://webcresson.com/images/ia-generative.webp"],
+    images: ["https://webcresson.com/images/deep-learning.webp"],
   },
   alternates: {
     canonical: "https://webcresson.com/services/ia-generative",
