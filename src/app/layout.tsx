@@ -48,6 +48,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://www.googletagmanager.com/gtag/js?id=G-H206EG4TH7"
           strategy="afterInteractive"
         />
+        {/* Google Ads Conversion Tracking (AW-11024728642) */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-11024728642"
+          strategy="afterInteractive"
+        />
+
+        <Script
+          id="google-ads-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-11024728642');
+    `,
+          }}
+        />
+
         <Script
           id="gtag-init"
           strategy="afterInteractive"
