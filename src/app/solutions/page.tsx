@@ -5,7 +5,7 @@ import NeonTitle from '@/components/ui/NeonTitle';
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 import ServiceSchema from '@/components/ServiceShema/ServiceSchema';
 import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav';
-import SchemaIA from '@/components/SolutionsIAPage/SolutionsIAPage';
+import SolutionsIA from '@/components/SolutionsIAPage/SolutionsIAPage';
 import CTA from '@/components/CTAButton/CTAButton';
 
 export const revalidate = 86400;
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ServicesPage() {
+export default function ServicesSolutions() {
   return (
     <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
       <BreadcrumbJsonLd
@@ -95,7 +95,9 @@ export default function ServicesPage() {
       </section>
 
       {/* Composants Client */}
-      <SchemaIA />
+        <SolutionsIA />
+    
+        {/* CTA */}
       <CTA />
     </main>
   );
