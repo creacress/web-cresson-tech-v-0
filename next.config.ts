@@ -35,14 +35,20 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: `
               default-src 'self' https: data:;
-              script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com;
+              script-src 'self' 'unsafe-inline' 'unsafe-eval'
+                https://www.googletagmanager.com
+                https://va.vercel-scripts.com
+                https://apis.google.com
+                https://www.google.com
+                https://www.gstatic.com;
               style-src 'self' 'unsafe-inline';
               img-src * data:;
               connect-src *;
-              frame-src https://calendar.google.com;
+              frame-src https://calendar.google.com https://www.googletagmanager.com https://www.google.com;
               font-src 'self' data:;
             `.replace(/\n/g, ' ').trim(),
-          },
+          }
+
         ],
       },
     ];
