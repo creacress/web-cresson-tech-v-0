@@ -1,9 +1,10 @@
 "use client"
 
-import Link from "next/link"
 import { useState } from "react"
-import { FaLinkedin } from "react-icons/fa"
+import Link from "next/link"
 import Image from "next/image"
+import { FaLinkedin } from "react-icons/fa"
+import NavLink from "@/components/NavLink/NavLink"
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -20,6 +21,16 @@ export default function Header() {
     }
     setMenuOpen(false)
   }
+
+  const links = [
+    { label: "Accueil", href: "/" },
+    { label: "Audit Gratuit", href: "/services/audit-gratuit" },
+    { label: "Solutions IA", href: "/solutions" },
+    { label: "Tarification", href: "/pricing" },
+    { label: "Services", href: "/services/page-services" },
+    { label: "À propos", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ]
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur bg-black/70 text-white transition-colors duration-300 relative header-glow">
@@ -53,24 +64,15 @@ export default function Header() {
 
         {/* Menu desktop */}
         <div className="hidden md:flex gap-6 items-center">
-          {[
-            { label: "Accueil", href: "/" },
-            { label: "Audit Gratuit", href: "/services/audit-gratuit" },
-            { label: "Solutions IA", href: "/solutions" },
-            { label: "Tarification", href: "/pricing" },
-            { label: "Services", href: "/services/page-services" },
-            { label: "À propos", href: "/about" },
-            { label: "Contact", href: "/contact" },
-          ].map((link) => (
-            <Link
+          {links.map((link) => (
+            <NavLink
               key={link.href}
               href={link.href}
               onClick={() => handleLinkClick(link.label, link.href)}
-              className="hover:text-[#00e0ff] transition"
-              aria-label={`Lien vers la page ${link.label}`}
+              exact={link.href === "/"}
             >
               {link.label}
-            </Link>
+            </NavLink>
           ))}
           <a
             href="https://www.linkedin.com/in/alexis-cresson/"
@@ -99,24 +101,16 @@ export default function Header() {
           className="md:hidden bg-[#111] border-t border-[#00e0ff33] px-6 py-4 space-y-4"
           aria-hidden={!menuOpen}
         >
-          {[
-            { label: "Accueil", href: "/" },
-            { label: "Audit Gratuit", href: "/services/audit-gratuit" },
-            { label: "Solutions IA", href: "/solutions" },
-            { label: "Tarification", href: "/pricing" },
-            { label: "Services", href: "/services/page-services" },
-            { label: "À propos", href: "/about" },
-            { label: "Contact", href: "/contact" },
-          ].map((link) => (
-            <Link
+          {links.map((link) => (
+            <NavLink
               key={link.href}
               href={link.href}
               onClick={() => handleLinkClick(link.label, link.href)}
-              className="block text-white hover:text-[#00e0ff] transition"
-              aria-label={`Lien vers la page ${link.label}`}
+              exact={link.href === "/"}
+              className="block"
             >
               {link.label}
-            </Link>
+            </NavLink>
           ))}
         </div>
       )}

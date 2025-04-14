@@ -3,6 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { Metadata } from "next"
 import { gtagEvent } from '@/lib/gtag'
+import NeonDivider from "@/components/ui/NeonDivider"
+
 import { AlertCircle, BarChart, Timer, Link2 } from "lucide-react";
 import CTAButton from "@/components/CTAButton/CTAButton"
 import NeonTitle from "@/components/ui/NeonTitle"
@@ -113,7 +115,9 @@ export default function Home() {
           </p>
           <CTAButton />
         </section>
-
+        {/* Divider */}
+        <NeonDivider />
+        
         {/* Problèmes fréquents */}
         <section className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-10">
@@ -131,6 +135,8 @@ export default function Home() {
             ))}
           </ul>
         </section>
+        {/* Divider */}
+        <NeonDivider />
         {/* Étapes d'accompagnement */}
         <section className="py-14 sm:py-16 max-w-5xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-8">
@@ -158,7 +164,8 @@ export default function Home() {
             ))}
           </div>
         </section>
-
+            {/* Divider */}
+        <NeonDivider />
         {/* Nos expertises */}
         <section className="py-16 max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-10">
@@ -202,7 +209,8 @@ export default function Home() {
             </Link>
           </div>
         </section>
-
+            {/* Divider */}
+        <NeonDivider />
 
         {/* Expertises IA */}
         <section className="py-16 max-w-6xl mx-auto">
@@ -235,7 +243,8 @@ export default function Home() {
             ))}
           </div>
         </section>
-
+            {/* Divider */}
+        <NeonDivider />
         {/* Témoignage */}
         <section className="py-16 max-w-3xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon mb-8">Ils nous font confiance</h2>
@@ -249,7 +258,8 @@ export default function Home() {
             </div>
           </div>
         </section>
-
+            {/* Divider */}
+        <NeonDivider />
         {/* CTA final */}
         <section className="text-center py-16">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon mb-6">Prêt à transformer vos process ?</h2>
