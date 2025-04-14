@@ -102,6 +102,8 @@ export default function Header() {
           {[
             { label: "Accueil", href: "/" },
             { label: "Audit Gratuit", href: "/services/audit-gratuit" },
+            { label: "Solutions IA", href: "/solutions" },
+            { label: "Tarification", href: "/pricing" },
             { label: "Services", href: "/services/page-services" },
             { label: "À propos", href: "/about" },
             { label: "Contact", href: "/contact" },
