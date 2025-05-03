@@ -1,6 +1,5 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: false, // Plus relax pour le dev
+const nextConfig: import('next').NextConfig = {
+  reactStrictMode: false,
 
   images: {
     remotePatterns: [
@@ -12,25 +11,15 @@ const nextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
   },
-
-  typescript: {
-    ignoreBuildErrors: true, // tolère les erreurs pour build sur Vercel
-  },
-
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-
   async headers() {
     return [
       {
-        source: '/(.*)', // Appliqué à toutes les routes
+        source: '/(.*)',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'X-Robots-Tag', value: 'all' }, // Aide Googlebot
-
+          { key: 'X-Robots-Tag', value: 'all' },
           {
             key: 'Content-Security-Policy',
             value: `
@@ -48,11 +37,10 @@ const nextConfig = {
               font-src 'self' data:;
             `.replace(/\n/g, ' ').trim(),
           }
-
         ],
       },
-    ];
+    ]
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
