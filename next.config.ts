@@ -1,4 +1,6 @@
-const nextConfig: import('next').NextConfig = {
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
   reactStrictMode: false,
 
   images: {
@@ -11,6 +13,7 @@ const nextConfig: import('next').NextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
   },
+
   async headers() {
     return [
       {
@@ -36,11 +39,11 @@ const nextConfig: import('next').NextConfig = {
               frame-src https://calendar.google.com https://www.googletagmanager.com https://www.google.com;
               font-src 'self' data:;
             `.replace(/\n/g, ' ').trim(),
-          }
+          },
         ],
       },
     ]
   },
 }
 
-module.exports = nextConfig
+export default nextConfig
