@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server'
 
+export const runtime = 'edge' // optimal pour ce type de fichier
+
 export async function GET() {
   const isProd = process.env.NODE_ENV === 'production'
   const baseUrl = 'https://webcresson.com'
 
-  const robots = isProd
+  const content = isProd
     ? `
 User-agent: *
 Allow: /
@@ -18,18 +20,14 @@ Disallow: /404
 Disallow: /500
 
 Sitemap: ${baseUrl}/sitemap.xml
-Sitemap: ${baseUrl}/sitemap-static.xml
-Sitemap: ${baseUrl}/sitemap-services.xml
-Sitemap: ${baseUrl}/sitemap-solutions.xml
-Sitemap: ${baseUrl}/sitemap-images.xml
 `.trim()
     : `
 User-agent: *
 Disallow: /
-# Blocage complet sur non-prod
+# Environnement non prod : tout bloqué
 `.trim()
 
-  return new NextResponse(robots, {
+  return new NextResponse(content, {
     headers: { 'Content-Type': 'text/plain' },
   })
 }

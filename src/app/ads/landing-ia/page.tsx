@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Automatisation IA pour TPE & PME | WebCressonTech",
     description: "IA, automatisation et gain de productivité : boostez votre entreprise avec WebCressonTech.",
     url: 'https://webcresson.com/ads/landing-ia',
-    images: ['https://webcresson.com/images/og-home.webp'],
+    images: ['https://webcresson.com/images/Logo_webcressontech.webp'],
   },
   twitter: {
     card: 'summary_large_image',

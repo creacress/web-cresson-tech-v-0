@@ -1,48 +1,39 @@
-import React from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Metadata } from "next"
+import { Metadata } from 'next'
 import { gtagEvent } from '@/lib/gtag'
-import NeonDivider from "@/components/ui/NeonDivider"
+import { seoByLocale } from '@/lib/next-seo.config'
+import { isValidLocale } from '@/lib/i18n-config'
 
-import { AlertCircle, BarChart, Timer, Link2 } from "lucide-react";
-import CTAButton from "@/components/CTAButton/CTAButton"
-import NeonTitle from "@/components/ui/NeonTitle"
-import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
-import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
-import ClientWrapper from "@/components/ClientWrapper/ClientWrapper"
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import { AlertCircle, BarChart, Timer, Link2 } from 'lucide-react'
+import NeonDivider from '@/components/ui/NeonDivider'
+import NeonTitle from '@/components/ui/NeonTitle'
+import CTAButton from '@/components/CTAButton/CTAButton'
+import ServiceSchema from '@/components/ServiceShema/ServiceSchema'
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
+import ClientWrapper from '@/components/ClientWrapper/ClientWrapper'
 
 export const revalidate = 86400
 
-export const metadata: Metadata = {
-  title: "WebCressonTech – IA sur mesure & Automatisation",
-  description: "WebCressonTech accompagne les entreprises avec des solutions IA, RPA, data et Python. Automatisation, machine learning, visualisation et plus.",
-  alternates: {
-    canonical: "https://webcresson.com",
-  },
-  openGraph: {
-    title: "WebCressonTech – IA, Automatisation, Python",
-    description: "Solutions sur mesure en intelligence artificielle et automatisation des processus métiers.",
-    url: "https://webcresson.com",
-    images: [
-      {
-        url: "https://webcresson.com/images/og-home.webp",
-        width: 1200,
-        height: 630,
-        alt: "WebCressonTech IA & Automatisation",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "WebCressonTech",
-    description: "Experts IA & Python pour automatiser et scaler vos processus.",
-    images: ["https://webcresson.com/images/og-home.webp"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = isValidLocale(params.locale) ? params.locale : 'fr'
+  const seo = seoByLocale[locale]
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    alternates: {
+      canonical: seo.canonical,
+    },
+    openGraph: seo.openGraph,
+    twitter: seo.twitter,
+    robots: {
+      index: true,
+      follow: true,
+    },
+  }
 }
 
 export default function Home() {
