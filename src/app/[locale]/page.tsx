@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { gtagEvent } from '@/lib/gtag'
+import { headers } from 'next/headers'
 import { seoByLocale } from '@/lib/next-seo.config'
 import { isValidLocale } from '@/lib/i18n-config'
 
@@ -17,8 +18,16 @@ import ClientWrapper from '@/components/ClientWrapper/ClientWrapper'
 
 export const revalidate = 86400
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = isValidLocale(params.locale) ? params.locale : 'fr'
+
+// ✅ Ajout requis par Next.js pour les segments dynamiques
+export function generateStaticParams() {
+  return [{ locale: 'fr' }, { locale: 'pt' }]
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers()
+  const pathname = headersList.get('x-invoke-path') || '/'
+  const locale = pathname.startsWith('/pt') ? 'pt' : 'fr'
   const seo = seoByLocale[locale]
 
   return {
@@ -26,6 +35,10 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     description: seo.description,
     alternates: {
       canonical: seo.canonical,
+      languages: {
+        'fr-FR': 'https://webcresson.com/fr',
+        'pt-PT': 'https://webcresson.com/pt',
+      },
     },
     openGraph: seo.openGraph,
     twitter: seo.twitter,

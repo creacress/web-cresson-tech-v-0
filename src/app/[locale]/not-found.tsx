@@ -1,7 +1,13 @@
-import Link from 'next/link'
+'use client'
 
-export default function NotFound({ params }: { params: { locale: string } }) {
-  const isPT = params.locale === 'pt'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+export default function NotFound() {
+  const pathname = usePathname()
+  const isPT = pathname?.startsWith('/pt')
+  const locale = isPT ? 'pt' : 'fr'
+
   const t = {
     title: isPT ? '404 - Página não encontrada' : '404 - Page introuvable',
     message: isPT
@@ -15,7 +21,7 @@ export default function NotFound({ params }: { params: { locale: string } }) {
       <h1 className="text-4xl font-bold mb-4">{t.title}</h1>
       <p className="text-gray-400 mb-6">{t.message}</p>
       <Link
-        href={`/${params.locale}`}
+        href={`/${locale}`}
         className="inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
       >
         {t.back}

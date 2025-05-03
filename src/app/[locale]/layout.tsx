@@ -14,24 +14,33 @@ import ChatWidget from '@/components/ChatWidget/ChatWidget'
 import { AnalyticsProvider } from '@/components/AnalyticsProvider/AnalyticsProvider'
 import { Toaster } from 'sonner'
 
-import { isValidLocale } from '@/lib/i18n-config'
-
+// ✅ Font
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
+// ✅ Viewport
 export const viewport: Viewport = {
   themeColor: '#000000',
   width: 'device-width',
   initialScale: 1,
 }
 
+// ✅ Pour les routes dynamiques
+export const dynamicParams = true
+
+// ✅ Indique les locales possibles à Next.js
+export function generateStaticParams() {
+  return [{ locale: 'fr' }, { locale: 'pt' }]
+}
+
+// ✅ Layout principal
 export default function LocaleLayout({
   children,
-  params,
 }: {
   children: React.ReactNode
-  params: { locale: string }
 }) {
-  const lang = isValidLocale(params.locale) ? params.locale : 'fr'
+  // ✅ On lit l’URL pour détecter la langue
+  const pathname = require('next/navigation').usePathname?.() || '/'
+  const lang = pathname.startsWith('/pt') ? 'pt' : 'fr'
   const baseUrl = 'https://webcresson.com'
 
   return (
@@ -39,12 +48,12 @@ export default function LocaleLayout({
       <head>
         <OrganizationSchema />
 
-        {/* Hreflang for SEO multilingue */}
+        {/* Hreflang pour SEO multilingue */}
         <link rel="alternate" hrefLang="fr" href={`${baseUrl}/fr`} />
         <link rel="alternate" hrefLang="pt" href={`${baseUrl}/pt`} />
         <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/fr`} />
 
-        {/* GTM */}
+        {/* Google Tag Manager */}
         <GoogleTagManager />
 
         {/* Google Analytics (gtag) */}
