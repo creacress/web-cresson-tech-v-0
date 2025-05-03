@@ -18,10 +18,11 @@ import ClientWrapper from '@/components/ClientWrapper/ClientWrapper'
 export const revalidate = 86400
 
 type Props = {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   const { locale } = await Promise.resolve(params) // ✅ simule await sans casser le typage
 
   const validLocale = isValidLocale(locale) ? locale : 'fr'
@@ -49,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 
 
-export default function Home({ params }: Props) {
+export default async function Home({ params }: Props) {
   const handleClick = () => {
     gtagEvent({
       action: 'cta_click',
