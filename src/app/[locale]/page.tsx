@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import type { ResolvingMetadata } from 'next'
 import { gtagEvent } from '@/lib/gtag'
 import { seoByLocale } from '@/lib/next-seo.config'
 import { isValidLocale } from '@/lib/i18n-config'
@@ -19,11 +18,12 @@ import ClientWrapper from '@/components/ClientWrapper/ClientWrapper'
 export const revalidate = 86400
 
 type Props = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params
+  const { locale } = await Promise.resolve(params) // ✅ simule await sans casser le typage
+
   const validLocale = isValidLocale(locale) ? locale : 'fr'
   const seo = seoByLocale[validLocale]
 
@@ -46,7 +46,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default function Home({ params }: { params: { locale: string } }) {
+
+
+
+export default function Home({ params }: Props) {
   const handleClick = () => {
     gtagEvent({
       action: 'cta_click',

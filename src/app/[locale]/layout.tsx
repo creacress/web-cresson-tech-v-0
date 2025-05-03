@@ -1,4 +1,3 @@
-// src/app/[locale]/layout.tsx
 import '../../globals.css'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
@@ -13,6 +12,7 @@ import OrganizationSchema from '@/components/seo/OrganizationSchema'
 import ChatWidget from '@/components/ChatWidget/ChatWidget'
 import { AnalyticsProvider } from '@/components/AnalyticsProvider/AnalyticsProvider'
 import { Toaster } from 'sonner'
+import { isValidLocale } from '@/lib/i18n-config'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
@@ -22,12 +22,19 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
-// pas besoin de params ici
-export default function LocaleLayout({ children }: { children: React.ReactNode }) {
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: { locale: string }
+}) {
+  const { locale } = await Promise.resolve(params)
+  const validLocale = isValidLocale(locale) ? locale : 'fr'
   const baseUrl = 'https://webcresson.com'
 
   return (
-    <html lang="fr" className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth">
       <head>
         <OrganizationSchema />
 
