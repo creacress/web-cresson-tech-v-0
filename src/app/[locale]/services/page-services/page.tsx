@@ -1,11 +1,11 @@
 import { Metadata } from "next"
 import NeonTitle from "@/components/ui/NeonTitle"
 import PricingSection from "@/components/Pricing/PricingSection"
-import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import ServiceLink from "@/components/ServiceLink/ServiceLink"
-import { FaRobot, FaSearch, FaDatabase, FaCode, FaMagic, FaCompass, FaBrain, FaChartLine, FaLanguage } from "react-icons/fa"
 import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
+import { servicesData } from "@/data/servicesData"
 
 export const revalidate = 86400
 
@@ -29,7 +29,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Nos Services en Intelligence Artificielle",
-    description: "Web Cresson Tech propose des solutions sur mesure en intelligence artificielle et automatisation des processus.",
+    description:
+      "Web Cresson Tech propose des solutions sur mesure en intelligence artificielle et automatisation des processus.",
     images: ["/images/Logo_webcressontech.webp"],
   },
   alternates: {
@@ -44,23 +45,12 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
-      <BreadcrumbJsonLd
-        overrides={{
-          services: 'Services',
-        }}
-      />
+      <BreadcrumbJsonLd overrides={{ services: "Services" }} />
 
-      {/* Structured Data */}
       <ServiceSchema
         serviceName="Services en Intelligence Artificielle"
         serviceDescription="Découvrez une large gamme de services en IA par Web Cresson Tech : automatisation, maintenance prédictive, IA générative, deep learning, machine learning et bien plus."
-        serviceTypes={[
-          "Automatisation",
-          "IA Générative",
-          "Deep Learning",
-          "Machine Learning",
-          "RPA",
-        ]}
+        serviceTypes={["Automatisation", "IA Générative", "Deep Learning", "Machine Learning", "RPA"]}
         faq={[
           {
             question: "Quels services propose Web Cresson Tech ?",
@@ -80,15 +70,14 @@ export default function ServicesPage() {
         ]}
       />
 
-      {/* Hero Section */}
       <section className="text-center mb-12">
-        {/* 🧭 Breadcrumb UX */}
         <BreadcrumbNav />
         <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
           Passez à la vitesse supérieure avec l’IA sur mesure
         </NeonTitle>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-          Vos données sont une mine d’or. Nous les transformons en leviers de croissance grâce à nos solutions IA & SaaS personnalisées.
+          Vos données sont une mine d’or. Nous les transformons en leviers de croissance grâce à nos solutions IA & SaaS
+          personnalisées.
         </p>
         <a
           href="/services/audit-gratuit"
@@ -98,7 +87,6 @@ export default function ServicesPage() {
         </a>
       </section>
 
-      {/* Bénéfices Métier */}
       <section className="grid md:grid-cols-2 gap-6 my-16">
         {[
           { icon: "⏱️", title: "Gagnez du temps", text: "Libérez vos équipes des tâches répétitives avec l’automatisation." },
@@ -113,14 +101,14 @@ export default function ServicesPage() {
           </div>
         ))}
       </section>
-      {/* Séparation / Titre section */}
+
       <div className="text-center my-20">
         <h2 className="text-3xl font-bold text-neon mb-4">Nos domaines d’expertise</h2>
         <p className="text-gray-400 max-w-xl mx-auto">
           Découvrez nos services d’IA, automatisation, NLP, visualisation intelligente et plus encore.
         </p>
       </div>
-      {/* Liste des services */}
+
       <section className="grid md:grid-cols-2 gap-6 mb-16">
         {servicesData.map((service, index) => (
           <ServiceLink
@@ -133,7 +121,6 @@ export default function ServicesPage() {
         ))}
       </section>
 
-      {/* Méthodologie */}
       <section className="my-20 text-center">
         <h2 className="text-3xl font-bold mb-6 text-white">Une méthode simple et efficace</h2>
         <div className="grid md:grid-cols-3 gap-6 text-gray-300">
@@ -152,7 +139,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Tableau traitement IA */}
       <section className="my-20">
         <h2 className="text-2xl font-bold text-white mb-4">IA appliquée à vos données</h2>
         <table className="table-auto w-full text-left text-sm text-gray-400 border border-gray-700">
@@ -171,7 +157,6 @@ export default function ServicesPage() {
         </table>
       </section>
 
-      {/* Témoignage + CTA */}
       <section className="text-center my-20 max-w-3xl mx-auto">
         <blockquote className="italic text-gray-300 border-l-4 border-[#00e0ff] pl-4 mb-4">
           “Grâce à Web Cresson Tech, nous avons automatisé 70% de notre traitement de données. +32% de productivité en 3 mois.”
@@ -184,75 +169,8 @@ export default function ServicesPage() {
           Lancer mon audit gratuit
         </a>
       </section>
-      {/* Tarifs intégrés */}
+
       <PricingSection />
     </main>
   )
 }
-
-export const servicesData = [
-  {
-    icon: <FaRobot className="text-3xl text-[#00e0ff]" />,
-    title: "Automatisation intelligente (RPA)",
-    text: "Libérez vos équipes des tâches manuelles. Nos robots logiciels automatisent vos processus répétitifs avec fiabilité.",
-    link: "/services/rpa-automatisation",
-  },
-  {
-    icon: <FaMagic className="text-3xl text-[#00e0ff]" />,
-    title: "IA Générative & Création de contenu",
-    text: "Générez des images, textes, scripts ou visuels marketing grâce à l’intelligence artificielle créative.",
-    link: "/services/ia-generative",
-  },
-  {
-    icon: <FaCompass className="text-3xl text-[#00e0ff]" />,
-    title: "Exploration de données avancée",
-    text: "Exploitez vos données métiers, géospatiales ou historiques pour révéler des insights et opportunités cachées.",
-    link: "/services/ia-archeologie",
-  },
-  {
-    icon: <FaBrain className="text-3xl text-[#00e0ff]" />,
-    title: "Deep Learning & traitement complexe",
-    text: "Analyse d’images, vidéos ou signaux via des réseaux de neurones profonds. Idéal pour la reconnaissance visuelle.",
-    link: "/services/machine-learning-deep-learning",
-  },
-  {
-    icon: <FaChartLine className="text-3xl text-[#00e0ff]" />,
-    title: "Machine Learning prédictif",
-    text: "Anticipez ventes, ruptures ou fraudes à partir de vos données. Nos modèles apprennent et s’adaptent à votre activité.",
-    link: "/services/machine-learning-deep-learning",
-  },
-  {
-    icon: <FaLanguage className="text-3xl text-[#00e0ff]" />,
-    title: "Analyse sémantique & data intelligente",
-    text: "Exploitez vos données textuelles, classez automatiquement vos contenus, détectez les signaux faibles et optimisez vos décisions grâce à l'IA.",
-    link: "/services/analyse-semantique-nlp",
-  },
-  {
-    icon: <FaChartLine className="text-3xl text-[#00e0ff]" />,
-    title: "Business Intelligence augmentée",
-    text: "Des dashboards intelligents avec des prédictions intégrées pour une prise de décision immédiate.",
-    link: "/services/bi-ia",
-  },
-  {
-    icon: <FaCode className="text-3xl text-[#00e0ff]" />,
-    title: "Développement API performant",
-    text: "Backends robustes et scalables avec FastAPI ou Django REST. Idéal pour vos apps métiers, SaaS ou automatisations.",
-    link: "/services/developpement-api",
-  },
-  {
-    icon: <FaDatabase className="text-3xl text-[#00e0ff]" />,
-    title: "Data Engineering & Dashboards",
-    text: "Nettoyez, structurez et exploitez vos données métiers. Pipelines automatisés et dashboards prêts pour l'IA.",
-    link: "/services/data-engineering",
-  },
-  {
-    icon: <FaSearch className="text-3xl text-[#00e0ff]" />,
-    title: "Scraping intelligent (Rust + Selenium)",
-    text: "Collecte de données rapide, fiable et légale. Extraction avancée sur sites dynamiques avec Rust & Selenium.",
-    link: "/services/scraping-intelligent",
-  }
-  
-  
-  
-]
-
