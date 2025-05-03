@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
+import type { ResolvingMetadata } from 'next'
 import { gtagEvent } from '@/lib/gtag'
-import { headers } from 'next/headers'
 import { seoByLocale } from '@/lib/next-seo.config'
 import { isValidLocale } from '@/lib/i18n-config'
 
@@ -18,17 +18,14 @@ import ClientWrapper from '@/components/ClientWrapper/ClientWrapper'
 
 export const revalidate = 86400
 
-
-// ✅ Ajout requis par Next.js pour les segments dynamiques
-export function generateStaticParams() {
-  return [{ locale: 'fr' }, { locale: 'pt' }]
+type Props = {
+  params: Promise<{ locale: string }>
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const headersList = await headers()
-  const pathname = headersList.get('x-invoke-path') || '/'
-  const locale = pathname.startsWith('/pt') ? 'pt' : 'fr'
-  const seo = seoByLocale[locale]
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const validLocale = isValidLocale(locale) ? locale : 'fr'
+  const seo = seoByLocale[validLocale]
 
   return {
     title: seo.title,
@@ -49,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function Home() {
+export default function Home({ params }: { params: { locale: string } }) {
   const handleClick = () => {
     gtagEvent({
       action: 'cta_click',
@@ -109,7 +106,6 @@ export default function Home() {
       />
 
       <main className="bg-black text-white px-4 sm:px-6 lg:px-12">
-        {/* Hero */}
         <section className="text-center py-20 sm:py-24">
           <NeonTitle as="h1" className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
             WebCressonTech : Votre partenaire IA & Python
@@ -119,29 +115,25 @@ export default function Home() {
           </p>
           <CTAButton />
         </section>
-        {/* Divider */}
+
         <NeonDivider />
-        
-        {/* Problèmes fréquents */}
+
         <section className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-10">
             Vous reconnaissez-vous ?
           </h2>
           <ul className="grid sm:grid-cols-2 gap-6 text-gray-300">
             {problèmes.map((item, index) => (
-              <li
-                key={index}
-                className="flex items-start gap-3 p-4 rounded-lg hover:bg-neutral-800 transition"
-              >
+              <li key={index} className="flex items-start gap-3 p-4 rounded-lg hover:bg-neutral-800 transition">
                 <div className="mt-1">{item.icon}</div>
                 <p className="leading-relaxed">{item.texte}</p>
               </li>
             ))}
           </ul>
         </section>
-        {/* Divider */}
+
         <NeonDivider />
-        {/* Étapes d'accompagnement */}
+
         <section className="py-14 sm:py-16 max-w-5xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-8">
             Notre méthode en 3 étapes
@@ -168,9 +160,9 @@ export default function Home() {
             ))}
           </div>
         </section>
-            {/* Divider */}
+
         <NeonDivider />
-        {/* Nos expertises */}
+
         <section className="py-16 max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-10">
             Ce que nous faisons avec Python & l’IA
@@ -201,7 +193,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Bouton découvrir les services */}
           <div className="mt-10 text-center">
             <Link href="/services/page-services">
               <button className="inline-flex items-center gap-2 bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
@@ -213,10 +204,9 @@ export default function Home() {
             </Link>
           </div>
         </section>
-            {/* Divider */}
+
         <NeonDivider />
 
-        {/* Expertises IA */}
         <section className="py-16 max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-10">
             Des expertises IA complètes
@@ -247,9 +237,9 @@ export default function Home() {
             ))}
           </div>
         </section>
-            {/* Divider */}
+
         <NeonDivider />
-        {/* Témoignage */}
+
         <section className="py-16 max-w-3xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon mb-8">Ils nous font confiance</h2>
           <div className="bg-[#111] border border-[#00e0ff33] p-6 rounded">
@@ -262,9 +252,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-            {/* Divider */}
+
         <NeonDivider />
-        {/* CTA final */}
+
         <section className="text-center py-16">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon mb-6">Prêt à transformer vos process ?</h2>
           <p className="text-gray-400 mb-6">
