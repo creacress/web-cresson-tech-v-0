@@ -27,14 +27,14 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }) {
-  const { locale } = await Promise.resolve(params)
+  const { locale } = await params
   const validLocale = isValidLocale(locale) ? locale : 'fr'
   const baseUrl = 'https://webcresson.com'
 
   return (
-    <html lang={locale} className="scroll-smooth">
+    <html lang={validLocale} className="scroll-smooth">
       <head>
         <OrganizationSchema />
 
