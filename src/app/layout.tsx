@@ -16,9 +16,8 @@ import { AnalyticsProvider } from '@/components/AnalyticsProvider/AnalyticsProvi
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Solutions IA & RPA sur-mesure | Votre booster d’automatisation',
-  description:
-    'Automatisez les tâches, collectez vos données et prédisez l’avenir avec nos solutions sur-mesure en IA, RPA et scraping web.',
+  title: 'Solutions IA & RPA sur-mesure | Web Cresson Tech',
+  description: 'Automatisez les tâches, collectez vos données et prédisez l’avenir avec nos solutions sur-mesure en IA, RPA et scraping web.',
   metadataBase: new URL('https://webcresson.com'),
   openGraph: {
     title: 'Solutions IA & RPA sur-mesure',
@@ -26,63 +25,59 @@ export const metadata: Metadata = {
     type: 'website',
     url: 'https://webcresson.com',
     images: ['/og-image.png'],
+    siteName: 'Web Cresson Tech',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Solutions IA & RPA sur-mesure',
     description: 'Automatisation, IA prédictive et scraping web intelligent.',
     images: ['/og-image.png'],
+    creator: '@WebCresson',
   },
+  robots: {
+    index: true,
+    follow: true,
+  }
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className="scroll-smooth">
       <head>
-        { /*Google Tag Manager */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Web Cresson Tech" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="canonical" href="https://webcresson.com/" />
+
+        {/* Google Tag Manager */}
         <GoogleTagManager />
 
-        {/* Google Analytics (gtag.js) */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-H206EG4TH7"
-          strategy="afterInteractive"
-        />
-        {/* Google Ads Conversion Tracking (AW-11024728642) */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-11024728642"
-          strategy="afterInteractive"
-        />
+        {/* Google Analytics */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-H206EG4TH7" strategy="afterInteractive" />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-11024728642" strategy="afterInteractive" />
 
-        <Script
-          id="google-ads-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-11024728642');
-    `,
-          }}
-        />
+        <Script id="google-ads-init" strategy="afterInteractive" dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-11024728642');
+          `
+        }} />
 
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-H206EG4TH7', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
+        <Script id="gtag-init" strategy="afterInteractive" dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-H206EG4TH7', {
+              page_path: window.location.pathname,
+            });
+          `
+        }} />
       </head>
+
       <body className={`bg-black text-white min-h-screen antialiased ${inter.className}`}>
         <GTMNoScript />
         <Toaster position="top-center" theme="dark" richColors />

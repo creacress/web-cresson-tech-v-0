@@ -17,6 +17,7 @@ export const revalidate = 86400
 export const metadata: Metadata = {
   title: "WebCressonTech – IA sur mesure & Automatisation",
   description: "WebCressonTech accompagne les entreprises avec des solutions IA, RPA, data et Python. Automatisation, machine learning, visualisation et plus.",
+  keywords: ["IA", "intelligence artificielle", "RPA", "automatisation", "Python", "data", "machine learning", "WebCressonTech"],
   alternates: {
     canonical: "https://webcresson.com",
   },
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
     title: "WebCressonTech – IA, Automatisation, Python",
     description: "Solutions sur mesure en intelligence artificielle et automatisation des processus métiers.",
     url: "https://webcresson.com",
+    siteName: "WebCresson Tech",
     images: [
       {
         url: "https://webcresson.com/images/og-home.webp",
@@ -38,12 +40,14 @@ export const metadata: Metadata = {
     title: "WebCressonTech",
     description: "Experts IA & Python pour automatiser et scaler vos processus.",
     images: ["https://webcresson.com/images/og-home.webp"],
+    creator: "@WebCresson",
   },
   robots: {
     index: true,
     follow: true,
   },
 }
+
 
 export default function Home() {
   const handleClick = () => {
@@ -254,7 +258,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
               <span className="text-white font-semibold">— Responsable IT, Groupe Transport</span>
-              <Image src="/images/logo_la_poste.webp" alt="Logo La Poste" width={96} height={54} />
+              <Image src="/images/logo_la_poste.webp" alt="Logo La Poste partenaire WebCressonTech" width={96} height={54} />
             </div>
           </div>
         </section>
