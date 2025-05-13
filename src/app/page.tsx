@@ -15,38 +15,39 @@ import ClientWrapper from "@/components/ClientWrapper/ClientWrapper"
 export const revalidate = 86400
 
 export const metadata: Metadata = {
-  title: "WebCressonTech – IA sur mesure & Automatisation",
-  description: "WebCressonTech accompagne les entreprises avec des solutions IA, RPA, data et Python. Automatisation, machine learning, visualisation et plus.",
-  keywords: ["IA", "intelligence artificielle", "RPA", "automatisation", "Python", "data", "machine learning", "WebCressonTech"],
+  title: 'Contactez-nous | WebCressonTech',
+  description:
+    "Contactez WebCressonTech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
+  keywords: ['contact IA', 'support automatisation', 'prise de contact', 'WebCressonTech', 'expert IA', 'Python'],
   alternates: {
-    canonical: "https://webcresson.com",
+    canonical: 'https://webcresson.com/contact',
   },
   openGraph: {
-    title: "WebCressonTech – IA, Automatisation, Python",
-    description: "Solutions sur mesure en intelligence artificielle et automatisation des processus métiers.",
-    url: "https://webcresson.com",
-    siteName: "WebCresson Tech",
+    title: 'Contactez WebCressonTech',
+    description: "Prenez contact avec notre équipe d'experts IA & RPA.",
+    url: 'https://webcresson.com/contact',
+    siteName: 'WebCresson Tech',
     images: [
       {
-        url: "https://webcresson.com/images/og-home.webp",
+        url: 'https://webcresson.com/images/Logo_webcressontech.webp',
         width: 1200,
         height: 630,
-        alt: "WebCressonTech IA & Automatisation",
+        alt: 'WebCressonTech',
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "WebCressonTech",
-    description: "Experts IA & Python pour automatiser et scaler vos processus.",
-    images: ["https://webcresson.com/images/og-home.webp"],
-    creator: "@WebCresson",
+    card: 'summary_large_image',
+    title: 'Contact WebCressonTech',
+    description: "Discutons de vos projets IA & automatisation.",
+    images: ['https://webcresson.com/images/Logo_webcressontech.webp'],
+    creator: '@WebCresson',
   },
   robots: {
     index: true,
     follow: true,
   },
-}
+};
 
 
 export default function Home() {

@@ -16,38 +16,39 @@ import {
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: 'À propos de WebCressonTech - Expert en IA',
-  description:
-    "Découvrez WebCressonTech, entreprise dédiée à l'innovation technologique avec des solutions d'intelligence artificielle sur mesure.",
+  title: "À propos de WebCressonTech | Experts IA & Automatisation",
+  description: "Découvrez WebCressonTech : notre mission, notre équipe et notre expertise en intelligence artificielle, RPA et automatisation Python.",
+  keywords: ["à propos", "WebCressonTech", "équipe IA", "RPA", "automatisation", "data", "Python", "intelligence artificielle"],
+  alternates: {
+    canonical: "https://webcresson.com/about",
+  },
   openGraph: {
-    title: 'À propos de WebCressonTech - Expert en IA',
-    description:
-      'WebCressonTech aide les entreprises à innover avec des solutions sur mesure en intelligence artificielle et technologies avancées.',
-    url: 'https://www.webcresson.com/about',
+    title: "WebCressonTech – Notre histoire & notre mission",
+    description: "Une équipe d'experts passionnés par l'IA, la RPA et l'automatisation au service de votre croissance.",
+    url: "https://webcresson.com/about",
+    siteName: "WebCresson Tech",
     images: [
       {
-        url: 'https://www.webcresson.com/images/Logo_webcressontech.webp',
+        url: "https://webcresson.com/images/og-about.webp",
         width: 1200,
         height: 630,
-        alt: 'Web Cresson Tech',
+        alt: "Équipe WebCressonTech",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'À propos de WebCressonTech - Expert en IA',
-    description:
-      "Entreprise spécialisée dans l'IA et les solutions technologiques avancées.",
-    images: ['https://www.webcresson.com/images/Logo_webcressontech.webp'],
-  },
-  alternates: {
-    canonical: 'https://www.webcresson.com/about',
+    card: "summary_large_image",
+    title: "À propos de WebCressonTech",
+    description: "Une équipe experte en IA et automatisation, à votre écoute.",
+    images: ["https://webcresson.com/images/og-about.webp"],
+    creator: "@WebCresson",
   },
   robots: {
     index: true,
     follow: true,
   },
-};
+}
+
 
 export default function About() {
   return (
@@ -104,10 +105,10 @@ export default function About() {
           <NeonTitle as="h1" className="text-4xl sm:text-5xl font-extrabold mb-4">
             À propos de WebCressonTech
           </NeonTitle>
-          <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
-            Nous aidons les entreprises à se transformer grâce à l’intelligence artificielle
-            et à des solutions technologiques sur mesure.
+          <p className="text-gray-300 max-w-3xl">
+            WebCressonTech, c’est une équipe d’experts en intelligence artificielle, automatisation RPA et data engineering. Depuis 2024, on aide les entreprises à passer à l’échelle grâce aux technologies intelligentes.
           </p>
+
         </section>
 
         {/* Valeurs */}

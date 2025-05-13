@@ -10,16 +10,30 @@ import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
 export const revalidate = 86400
 
 export const metadata: Metadata = {
-  title: "Nos Services en Intelligence Artificielle | Web Cresson Tech",
+  title: "Nos Services IA & Automatisation | Web Cresson Tech",
   description:
-    "Découvrez les solutions innovantes de Web Cresson Tech en intelligence artificielle : maintenance prédictive, RPA, IA générative, audit IA et bien plus.",
+    "Découvrez les solutions IA, RPA, Machine Learning, NLP et data engineering de Web Cresson Tech. Audit gratuit pour identifier vos leviers d’automatisation.",
+  keywords: [
+    "services IA",
+    "automatisation RPA",
+    "machine learning",
+    "deep learning",
+    "data engineering",
+    "Web Cresson Tech",
+    "audit IA",
+  ],
+  alternates: {
+    canonical: "https://webcresson.com/services",
+  },
   openGraph: {
-    title: "Nos Services - Expertise en IA",
-    description: "Solutions et expertises avancées en intelligence artificielle par Web Cresson Tech.",
+    title: "Nos Services en Intelligence Artificielle",
+    description:
+      "Web Cresson Tech vous accompagne avec des solutions IA sur mesure : automatisation, prédiction, analyse sémantique, scraping intelligent.",
     url: "https://webcresson.com/services",
+    siteName: "Web Cresson Tech",
     images: [
       {
-        url: "/images/Logo_webcressontech.webp",
+        url: "https://webcresson.com/images/Logo_webcressontech.webp",
         width: 1200,
         height: 630,
         alt: "Web Cresson Tech",
@@ -28,18 +42,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nos Services en Intelligence Artificielle",
-    description: "Web Cresson Tech propose des solutions sur mesure en intelligence artificielle et automatisation des processus.",
-    images: ["/images/Logo_webcressontech.webp"],
-  },
-  alternates: {
-    canonical: "https://webcresson.com/services",
+    title: "Nos Services IA sur mesure | Web Cresson Tech",
+    description:
+      "Automatisation, NLP, machine learning… Découvrez tout notre savoir-faire IA.",
+    images: ["https://webcresson.com/images/Logo_webcressontech.webp"],
+    creator: "@WebCresson",
   },
   robots: {
     index: true,
     follow: true,
   },
-}
+};
 
 export default function ServicesPage() {
   return (
