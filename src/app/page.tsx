@@ -1,56 +1,51 @@
-import { Metadata } from 'next'
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { Metadata } from "next"
 import { gtagEvent } from '@/lib/gtag'
-import { seoByLocale } from '@/lib/next-seo.config'
-import { isValidLocale } from '@/lib/i18n-config'
+import NeonDivider from "@/components/ui/NeonDivider"
 
-import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-
-import { AlertCircle, BarChart, Timer, Link2 } from 'lucide-react'
-import NeonDivider from '@/components/ui/NeonDivider'
-import NeonTitle from '@/components/ui/NeonTitle'
-import CTAButton from '@/components/CTAButton/CTAButton'
-import ServiceSchema from '@/components/ServiceShema/ServiceSchema'
-import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
-import ClientWrapper from '@/components/ClientWrapper/ClientWrapper'
+import { AlertCircle, BarChart, Timer, Link2 } from "lucide-react";
+import CTAButton from "@/components/CTAButton/CTAButton"
+import NeonTitle from "@/components/ui/NeonTitle"
+import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
+import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
+import ClientWrapper from "@/components/ClientWrapper/ClientWrapper"
 
 export const revalidate = 86400
 
-type Props = {
-  params: Promise<{ locale: string }>
-}
-
-export async function generateMetadata(props: Props): Promise<Metadata> {
-  const params = await props.params;
-  const { locale } = await Promise.resolve(params) // ✅ simule await sans casser le typage
-
-  const validLocale = isValidLocale(locale) ? locale : 'fr'
-  const seo = seoByLocale[validLocale]
-
-  return {
-    title: seo.title,
-    description: seo.description,
-    alternates: {
-      canonical: seo.canonical,
-      languages: {
-        'fr-FR': 'https://webcresson.com/fr',
-        'pt-PT': 'https://webcresson.com/pt',
+export const metadata: Metadata = {
+  title: "WebCressonTech – IA sur mesure & Automatisation",
+  description: "WebCressonTech accompagne les entreprises avec des solutions IA, RPA, data et Python. Automatisation, machine learning, visualisation et plus.",
+  alternates: {
+    canonical: "https://webcresson.com",
+  },
+  openGraph: {
+    title: "WebCressonTech – IA, Automatisation, Python",
+    description: "Solutions sur mesure en intelligence artificielle et automatisation des processus métiers.",
+    url: "https://webcresson.com",
+    images: [
+      {
+        url: "https://webcresson.com/images/og-home.webp",
+        width: 1200,
+        height: 630,
+        alt: "WebCressonTech IA & Automatisation",
       },
-    },
-    openGraph: seo.openGraph,
-    twitter: seo.twitter,
-    robots: {
-      index: true,
-      follow: true,
-    },
-  }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WebCressonTech",
+    description: "Experts IA & Python pour automatiser et scaler vos processus.",
+    images: ["https://webcresson.com/images/og-home.webp"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
-
-
-
-export default async function Home({ params }: Props) {
+export default function Home() {
   const handleClick = () => {
     gtagEvent({
       action: 'cta_click',
@@ -110,6 +105,7 @@ export default async function Home({ params }: Props) {
       />
 
       <main className="bg-black text-white px-4 sm:px-6 lg:px-12">
+        {/* Hero */}
         <section className="text-center py-20 sm:py-24">
           <NeonTitle as="h1" className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
             WebCressonTech : Votre partenaire IA & Python
@@ -119,25 +115,29 @@ export default async function Home({ params }: Props) {
           </p>
           <CTAButton />
         </section>
-
+        {/* Divider */}
         <NeonDivider />
-
+        
+        {/* Problèmes fréquents */}
         <section className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-10">
             Vous reconnaissez-vous ?
           </h2>
           <ul className="grid sm:grid-cols-2 gap-6 text-gray-300">
             {problèmes.map((item, index) => (
-              <li key={index} className="flex items-start gap-3 p-4 rounded-lg hover:bg-neutral-800 transition">
+              <li
+                key={index}
+                className="flex items-start gap-3 p-4 rounded-lg hover:bg-neutral-800 transition"
+              >
                 <div className="mt-1">{item.icon}</div>
                 <p className="leading-relaxed">{item.texte}</p>
               </li>
             ))}
           </ul>
         </section>
-
+        {/* Divider */}
         <NeonDivider />
-
+        {/* Étapes d'accompagnement */}
         <section className="py-14 sm:py-16 max-w-5xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-8">
             Notre méthode en 3 étapes
@@ -164,9 +164,9 @@ export default async function Home({ params }: Props) {
             ))}
           </div>
         </section>
-
+            {/* Divider */}
         <NeonDivider />
-
+        {/* Nos expertises */}
         <section className="py-16 max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-10">
             Ce que nous faisons avec Python & l’IA
@@ -197,6 +197,7 @@ export default async function Home({ params }: Props) {
             ))}
           </div>
 
+          {/* Bouton découvrir les services */}
           <div className="mt-10 text-center">
             <Link href="/services/page-services">
               <button className="inline-flex items-center gap-2 bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
@@ -208,9 +209,10 @@ export default async function Home({ params }: Props) {
             </Link>
           </div>
         </section>
-
+            {/* Divider */}
         <NeonDivider />
 
+        {/* Expertises IA */}
         <section className="py-16 max-w-6xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon text-center mb-10">
             Des expertises IA complètes
@@ -241,9 +243,9 @@ export default async function Home({ params }: Props) {
             ))}
           </div>
         </section>
-
+            {/* Divider */}
         <NeonDivider />
-
+        {/* Témoignage */}
         <section className="py-16 max-w-3xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon mb-8">Ils nous font confiance</h2>
           <div className="bg-[#111] border border-[#00e0ff33] p-6 rounded">
@@ -256,9 +258,9 @@ export default async function Home({ params }: Props) {
             </div>
           </div>
         </section>
-
+            {/* Divider */}
         <NeonDivider />
-
+        {/* CTA final */}
         <section className="text-center py-16">
           <h2 className="text-2xl sm:text-3xl font-bold text-neon mb-6">Prêt à transformer vos process ?</h2>
           <p className="text-gray-400 mb-6">

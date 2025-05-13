@@ -33,7 +33,7 @@ export default function Header() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur bg-black/70 text-white transition-colors duration-300 header-glow">
+    <header className="sticky top-0 z-50 backdrop-blur bg-black/70 text-white transition-colors duration-300 relative header-glow">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <div>
