@@ -30,6 +30,7 @@ export default function Header() {
     { label: "Services", href: "/services/page-services" },
     { label: "À propos", href: "/about" },
     { label: "Contact", href: "/contact" },
+    { label: "Réflexion IA", href: "/blog" },
   ]
 
   return (

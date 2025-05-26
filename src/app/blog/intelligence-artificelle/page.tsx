@@ -1,16 +1,41 @@
 
 
-import Head from "next/head"
+import { Metadata } from "next"
 import NeonTitle from "@/components/ui/NeonTitle"
 import NeonDivider from "@/components/ui/NeonDivider"
+
+export const metadata: Metadata = {
+  title: "Coût de développement de l’IA en 2025 : ce qu’il faut savoir | WebCressonTech",
+  description: "Explorez les facteurs clés influençant le coût de développement d'une solution d'intelligence artificielle en 2025. Guide complet, FAQ, ROI, et plus.",
+  keywords: [
+    "coût développement IA",
+    "prix intelligence artificielle 2025",
+    "budget IA entreprise",
+    "développement IA",
+    "intelligence artificielle",
+    "WebCressonTech blog"
+  ],
+  authors: [{ name: "WebCressonTech", url: "https://webcressontech.com" }],
+  creator: "WebCressonTech",
+  openGraph: {
+    title: "Coût de développement de l’IA en 2025 : ce qu’il faut savoir | WebCressonTech",
+    description: "Tous les éléments à connaître sur le budget à prévoir pour développer une solution d’IA en 2025.",
+    url: "https://webcressontech.com/blog/intelligence-artificelle",
+    siteName: "WebCressonTech",
+    locale: "fr_FR",
+    type: "article"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Coût de développement de l’IA en 2025",
+    description: "Combien coûte une IA ? Découvrez-le dans notre guide détaillé.",
+    creator: "@webcressontech"
+  }
+}
 
 export default function IntelligenceArtificiellePage() {
   return (
     <>
-      <Head>
-        <title>Comprendre l'intelligence artificielle | Blog WebCressonTech</title>
-        <meta name="description" content="Explorez les bases de l'IA, ses usages, et comment elle transforme les entreprises modernes." />
-      </Head>
 
       <main className="bg-black text-white px-4 sm:px-6 lg:px-12">
         <section className="max-w-3xl mx-auto py-20">
@@ -88,21 +113,66 @@ export default function IntelligenceArtificiellePage() {
           <p className="text-gray-300 mb-6 leading-relaxed text-lg max-w-prose">
           Le coût du développement de l’IA peut être divisé en plusieurs éléments critiques, chacun ayant ses propres implications pour les entreprises 
           </p>
-          <div style={{ position: "relative", width: "100%", height: 0, paddingTop: "56.25%", paddingBottom: 0, boxShadow: "0 2px 8px 0 rgba(63,69,81,0.16)", marginTop: "1.6em", marginBottom: "0.9em", overflow: "hidden", borderRadius: "8px", willChange: "transform" }}>
-            <iframe
-              loading="lazy"
-              style={{ position: "absolute", width: "100%", height: "100%", top: 0, left: 0, border: "none", padding: 0, margin: 0 }}
-              src="https://www.canva.com/design/DAGohx7e0tM/JSdkmvO98DlgSObt2aMvYQ/view?embed"
-              allowFullScreen
-            ></iframe>
+
+          <div className="my-8 text-center">
+            <img
+              src="/images/cout-dev-ia.svg"
+              alt="Illustration des coûts IA"
+              className="mx-auto rounded-lg shadow-lg"
+              style={{ maxWidth: "1000px", width: "100%" }}
+            />
+            <p className="text-sm text-gray-400 mt-2">
+              <a
+                href="https://www.canva.com/design/DAGohx7e0tM/JSdkmvO98DlgSObt2aMvYQ/view?utm_content=DAGohx7e0tM&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neon underline"
+              >
+                Voir le design interactif
+              </a>{" "}
+              par WebCressonTech
+            </p>
           </div>
-          <a
-            href="https://www.canva.com/design/DAGohx7e0tM/JSdkmvO98DlgSObt2aMvYQ/view?utm_content=DAGohx7e0tM&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
-            target="_blank"
-            rel="noopener"
-            className="text-neon underline"
-          >
-          </a> 
+          
+          <NeonDivider />
+
+          <h2 className="text-2xl font-bold text-neon mt-12 mb-4">9. FAQ sur les coûts de développement de l’IA</h2>
+
+          <div className="space-y-6 text-gray-300 leading-relaxed text-lg max-w-prose">
+            {[
+              {
+                question: "Q1 : Quels sont les principaux facteurs qui rendent le développement de l’IA si coûteux ?",
+                answer:
+                  "Le développement de l’IA implique des algorithmes très complexes, des quantités énormes de données de haute qualité et de puissantes ressources informatiques. Pensez à l'entraînement d'un coureur de marathon : cela demande du temps, des efforts et des ressources. De même, l'IA a besoin d'une formation robuste avec des outils de pointe. Le nombre croissant de développeurs et de data scientists augmente encore les prix, notamment dans les régions où les salaires sont élevés. À cela s'ajoutent les équipements comme les GPU et les services cloud qui font grimper les coûts.",
+              },
+              {
+                question: "Q2 : Existe-t-il des coûts cachés dans le développement de l’IA dont les entreprises devraient être conscientes ?",
+                answer:
+                  "Oui. Au-delà des coûts évidents de développement, il existe des dépenses « surprises ». Par exemple, vous pourriez dépenser plus que prévu pour nettoyer et organiser vos données ou acheter des licences pour des outils spécialisés. L’intégration avec des systèmes existants peut également se faufiler dans le budget. Et n'oublions pas les coûts permanents : surveillance, débogage et recyclage des modèles pour les maintenir à jour. Ces éléments cachés peuvent surprendre les entreprises non préparées.",
+              },
+              {
+                question: "Q3 : Combien cela coûte-t-il de maintenir et mettre à jour une solution d'IA après le déploiement ?",
+                answer:
+                  "L'entretien est comme la mise au point régulière de votre voiture. Après le déploiement, les solutions d'IA ont besoin d'attention pour continuer à fonctionner correctement. Le recyclage du modèle avec de nouvelles données, la correction des bugs et la mise à l'échelle de l'infrastructure peuvent coûter environ 15 à 20 % du coût initial du projet chaque année. Ainsi, si votre projet d'IA coûtait 100 000 €, prévoyez de dépenser environ 15 000 à 20 000 € par an pour l'entretien.",
+              },
+              {
+                question: "Q4 : Quelle est la différence de coût entre l’IA et le développement de logiciels traditionnels ?",
+                answer:
+                  "L’IA est un jeu différent du développement de logiciels traditionnels. Alors qu’un logiciel standard peut coûter entre 50 000 et 200 000 €, l’IA peut commencer à 100 000 € et aller bien au-delà de 1 million. La raison ? L’IA implique des besoins informatiques plus avancés, une formation continue et des compétences spécialisées. Les logiciels traditionnels ressemblent davantage à la construction d’une maison, tandis que l’IA ressemble à la création d’une ville intelligente autonome.",
+              },
+              {
+                question: "Q5 : Les petites entreprises peuvent-elles se permettre de mettre en œuvre des solutions d’IA ?",
+                answer:
+                  "Bien sûr ! L’IA devient de plus en plus accessible aux petites entreprises grâce aux modèles pré-entraînés, aux plateformes sans code et aux services basés sur le cloud. Ces options réduisent considérablement les coûts initiaux. Les projets à petite échelle peuvent démarrer à partir de 5 000 à 20 000 €, ce qui rend la mise en œuvre de l’IA réalisable pour les entreprises aux budgets limités. Avec une bonne planification, même les plus petits acteurs peuvent exploiter la puissance de l’IA.",
+              },
+            ].map(({ question, answer }, index) => (
+              <details key={index} className="bg-gray-900/50 rounded-md p-4 transition-all duration-300 hover:shadow-lg">
+                <summary className="cursor-pointer font-semibold text-neon mb-2">{question}</summary>
+                <p className="mt-2 text-gray-300">{answer}</p>
+              </details>
+            ))}
+          </div>
+
         </section>
       </main>
     </>
