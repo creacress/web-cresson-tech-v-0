@@ -29,7 +29,7 @@ export default function IntelligenceArtificiellePage() {
             Le développement de l’IA implique la création et la mise en œuvre d’algorithmes, de modèles d’apprentissage automatique et de systèmes de données qui permettent aux machines d’effectuer des tâches qui nécessitent généralement une intelligence humaine. Ces tâches comprennent le traitement du langage, la prise de décision, la résolution de problèmes et l’analyse prédictive. L’objectif du développement de l’IA n’est pas seulement d’automatiser les processus, mais aussi d’améliorer la capacité des entreprises à évoluer, à innover et à fournir des produits et services de qualité supérieure.
           </p>
           <p className="text-gray-300 mb-6 leading-relaxed text-lg max-w-prose">
-            À l'approche de 2025, l'importance de l'IA continue de croître. Des entreprises comme Google Les entreprises intègrent déjà l'IA dans leurs produits phares, de Google Search à Google Assistant, pour améliorer l'expérience utilisateur et rationaliser les processus métier. L'investissement continu de Google dans les technologies d'IA, notamment ses puissants modèles d'apprentissage automatique, démontre comment l'IA peut révolutionner les opérations commerciales et l'engagement des consommateurs. PwC (2020)L’IA devrait contribuer à hauteur de 15,7 billions de dollars à l’économie mondiale d’ici 2030, démontrant ainsi son immense potentiel économique dans tous les secteurs.
+            À l'approche de 2030, l'importance de l'IA continue de croître. Des entreprises comme Google Les entreprises intègrent déjà l'IA dans leurs produits phares, de Google Search à Google Assistant, pour améliorer l'expérience utilisateur et rationaliser les processus métier. L'investissement continu de Google dans les technologies d'IA, notamment ses puissants modèles d'apprentissage automatique, démontre comment l'IA peut révolutionner les opérations commerciales et l'engagement des consommateurs. PwC (2020)L’IA devrait contribuer à hauteur de 15,7 billions de dollars à l’économie mondiale d’ici 2030, démontrant ainsi son immense potentiel économique dans tous les secteurs.
           </p>
           <NeonDivider />
 
@@ -88,6 +88,21 @@ export default function IntelligenceArtificiellePage() {
           <p className="text-gray-300 mb-6 leading-relaxed text-lg max-w-prose">
           Le coût du développement de l’IA peut être divisé en plusieurs éléments critiques, chacun ayant ses propres implications pour les entreprises 
           </p>
+          <div style={{ position: "relative", width: "100%", height: 0, paddingTop: "56.25%", paddingBottom: 0, boxShadow: "0 2px 8px 0 rgba(63,69,81,0.16)", marginTop: "1.6em", marginBottom: "0.9em", overflow: "hidden", borderRadius: "8px", willChange: "transform" }}>
+            <iframe
+              loading="lazy"
+              style={{ position: "absolute", width: "100%", height: "100%", top: 0, left: 0, border: "none", padding: 0, margin: 0 }}
+              src="https://www.canva.com/design/DAGohx7e0tM/JSdkmvO98DlgSObt2aMvYQ/view?embed"
+              allowFullScreen
+            ></iframe>
+          </div>
+          <a
+            href="https://www.canva.com/design/DAGohx7e0tM/JSdkmvO98DlgSObt2aMvYQ/view?utm_content=DAGohx7e0tM&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+            target="_blank"
+            rel="noopener"
+            className="text-neon underline"
+          >
+          </a> 
         </section>
       </main>
     </>
