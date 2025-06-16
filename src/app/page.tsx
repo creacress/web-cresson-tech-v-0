@@ -17,15 +17,15 @@ export const revalidate = 86400
 export const metadata: Metadata = {
   title: 'Contactez-nous | WebCressonTech',
   description:
-    "Contactez WebCressonTech pour toute demande d'information sur nos solutions d'intelligence artificielle et nos services technologiques.",
-  keywords: ['contact IA', 'support automatisation', 'prise de contact', 'WebCressonTech', 'expert IA', 'Python'],
+    "Agence spécialisée en IA et automatisation, WebCressonTech vous accompagne dans vos projets d'optimisation et d'innovation.",
+  keywords: ['Agence IA', 'support automatisation', 'WebCressonTech', 'expert IA', 'Python'],
   alternates: {
-    canonical: 'https://webcresson.com/contact',
+    canonical: 'https://webcresson.com',
   },
   openGraph: {
-    title: 'Contactez WebCressonTech',
-    description: "Prenez contact avec notre équipe d'experts IA & RPA.",
-    url: 'https://webcresson.com/contact',
+    title: 'Agence IA & RPA | WebCressonTech',
+    description: "WebCressonTech, votre partenaire pour l'IA et l'automatisation.",
+    url: 'https://webcresson.com',
     siteName: 'WebCresson Tech',
     images: [
       {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact WebCressonTech',
+    title: "WebCressonTech, votre partenaire pour l'IA et l'automatisation",
     description: "Discutons de vos projets IA & automatisation.",
     images: ['https://webcresson.com/images/Logo_webcressontech.webp'],
     creator: '@WebCresson',

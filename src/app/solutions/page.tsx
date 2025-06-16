@@ -11,14 +11,14 @@ import CTA from '@/components/CTAButton/CTAButton';
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: 'Nos Services en Intelligence Artificielle | Web Cresson Tech',
+  title: 'Nos Solutions en Intelligence Artificielle | Web Cresson Tech',
   description:
     'Découvrez les solutions innovantes de Web Cresson Tech en intelligence artificielle : maintenance prédictive, RPA, IA générative, audit IA et bien plus.',
   openGraph: {
     title: 'Nos Services - Expertise en IA',
     description:
       'Solutions et expertises avancées en intelligence artificielle par Web Cresson Tech.',
-    url: 'https://webcresson.com/services',
+    url: 'https://webcresson.com/solutions',
     images: [
       {
         url: '/images/Logo_webcressontech.webp',
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nos Services en Intelligence Artificielle',
+    title: 'Nos Solutions en Intelligence Artificielle',
     description:
       'Web Cresson Tech propose des solutions sur mesure en intelligence artificielle et automatisation des processus.',
     images: ['/images/Logo_webcressontech.webp'],
   },
   alternates: {
-    canonical: 'https://webcresson.com/services',
+    canonical: 'https://webcresson.com/solutions',
   },
   robots: {
     index: true,
@@ -95,9 +95,36 @@ export default function ServicesSolutions() {
       </section>
 
       {/* Composants Client */}
-        <SolutionsIA />
-    
-        {/* CTA */}
+      <SolutionsIA />
+
+      {/* Cas d’usage concrets */}
+      <section className="mt-20">
+        <h2 className="text-3xl font-bold mb-6">Cas d’usage concrets</h2>
+        <ul className="grid md:grid-cols-2 gap-6 text-lg text-gray-300">
+          <li>🔧 Maintenance prédictive pour limiter les pannes en production</li>
+          <li>📈 Prédiction des ventes dans le retail grâce au machine learning</li>
+          <li>🤖 Automatisation des réponses email via NLP & RPA</li>
+          <li>🧠 Génération de contenus marketing par IA générative</li>
+        </ul>
+      </section>
+
+      {/* Témoignages clients */}
+      <section className="mt-20">
+        <h2 className="text-3xl font-bold mb-6">Témoignages clients</h2>
+        <div className="space-y-4 text-gray-300">
+          <blockquote className="border-l-4 border-pink-500 pl-4 italic">
+            “Grâce à Web Cresson Tech, nous avons automatisé 80% de notre back-office. Un gain de temps incroyable.”
+          </blockquote>
+          <p className="text-right text-sm text-gray-400">— Julie M., Responsable RH</p>
+
+          <blockquote className="border-l-4 border-blue-500 pl-4 italic">
+            “L’IA générative intégrée par l’équipe a boosté notre production de contenus de 3x.”
+          </blockquote>
+          <p className="text-right text-sm text-gray-400">— Damien L., Directeur Marketing</p>
+        </div>
+      </section>
+
+      {/* CTA */}
       <CTA />
     </main>
   );
