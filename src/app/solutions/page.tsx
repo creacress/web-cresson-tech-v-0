@@ -13,7 +13,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: 'Nos Solutions en Intelligence Artificielle | Web Cresson Tech',
   description:
-    'Découvrez les solutions innovantes de Web Cresson Tech en intelligence artificielle : maintenance prédictive, RPA, IA générative, audit IA et bien plus.',
+    'Solutions IA Web Cresson Tech : des services personnalisés en intelligence artificielle pour PME, grandes entreprises et ETI. Audit gratuit, automatisation, IA générative, agents intelligents, NLP et plus.',
   openGraph: {
     title: 'Nos Services - Expertise en IA',
     description:
@@ -56,13 +56,13 @@ export default function ServicesSolutions() {
       {/* Données structurées */}
       <ServiceSchema
         serviceName="Services en Intelligence Artificielle"
-        serviceDescription="Découvrez une large gamme de services en IA par Web Cresson Tech : automatisation, maintenance prédictive, IA générative, deep learning, machine learning et bien plus."
+        serviceDescription="Solutions IA sur mesure pour PME, TPE, ETI et grands groupes : automatisation, maintenance prédictive, IA générative, stratégie IA et plus encore."
         serviceTypes={[
-          'Automatisation',
+          'Automatisation intelligente',
           'IA Générative',
-          'Deep Learning',
+          'Agent IA autonome',
           'Machine Learning',
-          'RPA',
+          'RPA / NLP',
         ]}
         faq={[
           {
@@ -90,21 +90,39 @@ export default function ServicesSolutions() {
           Passez à la vitesse supérieure avec l’IA sur mesure
         </NeonTitle>
         <p className="text-gray-400 max-w-2xl mx-auto mt-4 mb-20 text-lg">
-          Nous transformons vos données en décisions automatisées grâce à l'intelligence artificielle.
+          Pour les PME, ETI et grandes entreprises : passez à l’IA sur mesure pour automatiser, prédire et innover.
         </p>
       </section>
 
       {/* Composants Client */}
       <SolutionsIA />
 
+      <section className="mt-20">
+        <h2 className="text-3xl font-bold mb-6 text-center">Solutions adaptées par typologie d'entreprise</h2>
+        <ul className="grid md:grid-cols-3 gap-6 text-lg text-gray-300">
+          <li>
+            <h3 className="text-xl font-semibold mb-2">👩‍💼 Micro-entreprises & TPE</h3>
+            <p>Outils simples : automatisation des tâches, génération de contenu, CRM intelligent.</p>
+          </li>
+          <li>
+            <h3 className="text-xl font-semibold mb-2">🏢 PME & ETI</h3>
+            <p>Optimisation des process, maintenance prédictive, marketing IA et prédiction des ventes.</p>
+          </li>
+          <li>
+            <h3 className="text-xl font-semibold mb-2">🏛️ Grandes entreprises</h3>
+            <p>Stratégie IA, agents autonomes, intégration systèmes, gouvernance et conformité IA.</p>
+          </li>
+        </ul>
+      </section>
+
       {/* Cas d’usage concrets */}
       <section className="mt-20">
         <h2 className="text-3xl font-bold mb-6">Cas d’usage concrets</h2>
         <ul className="grid md:grid-cols-2 gap-6 text-lg text-gray-300">
-          <li>🔧 Maintenance prédictive pour limiter les pannes en production</li>
-          <li>📈 Prédiction des ventes dans le retail grâce au machine learning</li>
-          <li>🤖 Automatisation des réponses email via NLP & RPA</li>
-          <li>🧠 Génération de contenus marketing par IA générative</li>
+          <li>🔧 Maintenance prédictive avec IA pour anticiper les défaillances</li>
+          <li>📊 Analyse automatique de documents via NLP pour le juridique et le RH</li>
+          <li>🤖 Chatbot & agent IA pour support client autonome</li>
+          <li>✍️ Génération de contenu personnalisé pour newsletters et réseaux sociaux</li>
         </ul>
       </section>
 
@@ -112,10 +130,10 @@ export default function ServicesSolutions() {
       <section className="mt-20">
         <h2 className="text-3xl font-bold mb-6">Témoignages clients</h2>
         <div className="space-y-4 text-gray-300">
-          <blockquote className="border-l-4 border-pink-500 pl-4 italic">
-            “Grâce à Web Cresson Tech, nous avons automatisé 80% de notre back-office. Un gain de temps incroyable.”
+          <blockquote className="border-l-4 border-green-500 pl-4 italic">
+            “En tant que PME, nous avons pu accéder à l’IA sans expertise technique. Résultat : 2h économisées par jour sur nos mails.”
           </blockquote>
-          <p className="text-right text-sm text-gray-400">— Julie M., Responsable RH</p>
+          <p className="text-right text-sm text-gray-400">— Karim B., Gérant TPE</p>
 
           <blockquote className="border-l-4 border-blue-500 pl-4 italic">
             “L’IA générative intégrée par l’équipe a boosté notre production de contenus de 3x.”
