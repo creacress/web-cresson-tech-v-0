@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { Suspense } from 'react'
 
 import { useSearchParams } from 'next/navigation'
 
@@ -8,6 +8,12 @@ import ServiceSchema from '@/components/ServiceShema/ServiceSchema'
 import GoogleCalendar from '@/components/GoogleCalendar/GoogleCalendar'
 import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav'
 import ContactForm from '@/components/ContactForm/ContactForm'
+
+function ContactWithParams() {
+  const searchParams = useSearchParams()
+  const plan = searchParams.get('plan')
+  return <ContactForm plan={plan || undefined} />
+}
 
 export default function ContactPage() {
   const searchParams = useSearchParams()
@@ -67,7 +73,9 @@ export default function ContactPage() {
         </section>
 
         <section>
-          <ContactForm plan={plan || undefined} />
+          <Suspense fallback={null}>
+            <ContactWithParams />
+          </Suspense>
         </section>
 
         <section className="mt-16 text-center">
