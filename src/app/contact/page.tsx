@@ -1,24 +1,10 @@
-"use client"
-import React, { Suspense } from 'react'
-
-import { useSearchParams } from 'next/navigation'
-
+export const dynamic = 'force-dynamic'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema/BreadcrumbSchema'
 import ServiceSchema from '@/components/ServiceShema/ServiceSchema'
-import GoogleCalendar from '@/components/GoogleCalendar/GoogleCalendar'
 import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav'
-import ContactForm from '@/components/ContactForm/ContactForm'
-
-function ContactWithParams() {
-  const searchParams = useSearchParams()
-  const plan = searchParams.get('plan')
-  return <ContactForm plan={plan || undefined} />
-}
+import ContactSection from '@/components/ContactSection/ContactSection'
 
 export default function ContactPage() {
-  const searchParams = useSearchParams()
-  const plan = searchParams.get('plan')
-
   return (
     <>
       <BreadcrumbSchema />
@@ -61,9 +47,7 @@ export default function ContactPage() {
           </p>
         </section>
 
-        <section className="mb-16">
-          <GoogleCalendar />
-        </section>
+
 
         <section className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Contactez-nous</h2>
@@ -73,9 +57,7 @@ export default function ContactPage() {
         </section>
 
         <section>
-          <Suspense fallback={null}>
-            <ContactWithParams />
-          </Suspense>
+          <ContactSection />
         </section>
 
         <section className="mt-16 text-center">

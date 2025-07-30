@@ -45,7 +45,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "types/global.d.ts"
-  ],
+, "src/components/ContactSection"  ],
   "exclude": [
     "node_modules"
   ]
