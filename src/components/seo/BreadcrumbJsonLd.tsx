@@ -10,6 +10,14 @@ type Props = {
   overrides?: OverrideMap
 }
 
+const fallbackMap: OverrideMap = {
+  ia: 'Intelligence Artificielle',
+  rpa: 'Automatisation (RPA)',
+  python: 'Développement Python',
+  services: 'Nos Services',
+  contact: 'Contact',
+  blog: 'Blog',
+}
 export default function BreadcrumbJsonLd({
   baseUrl = 'https://www.webcresson.com',
   overrides = {},
@@ -20,7 +28,8 @@ export default function BreadcrumbJsonLd({
     .split('/')
     .filter(Boolean)
     .map((segment, i, arr) => {
-      const name = overrides[segment] || decodeURIComponent(segment)
+      const cleanSegment = segment.replace(/[-_]/g, ' ')
+const name = overrides[segment] || fallbackMap[segment] || decodeURIComponent(cleanSegment)
       const url = `${baseUrl}/${arr.slice(0, i + 1).join('/')}`
       return { name, url }
     })

@@ -77,9 +77,9 @@ export default function IASantePage() {
 
       {/* Hero */}
       <section className="text-center mb-16">
-        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
           L’IA au service des professionnels de santé
-        </NeonTitle>
+        </h1>
         <p className="text-gray-300 text-lg max-w-2xl mx-auto">
           Optimisez votre temps, vos diagnostics et vos processus médicaux avec des solutions d’intelligence artificielle sur mesure.
         </p>

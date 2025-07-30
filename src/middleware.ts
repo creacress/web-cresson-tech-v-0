@@ -3,13 +3,12 @@ import type { NextRequest } from 'next/server'
 
 const ALLOWED_IPS = ['91.167.54.242']
 const BLOCKED_IPS = ['139.59.136.184', '178.128.207.138']
-const BLOCKED_AGENTS = ['curl', 'python', 'nmap', 'sqlmap', 'scanner']
 const ALLOWED_POST_ROUTES = ['/contact', '/api/send-email']
 
 export function middleware(request: NextRequest) {
   const url = new URL(request.url)
   const hostname = request.headers.get('host') || ''
-  const userAgent = request.headers.get('user-agent')?.toLowerCase() || ''
+  const userAgent = (request.headers.get('user-agent') || '').toLowerCase()
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '0.0.0.0'
   const path = url.pathname
   const method = request.method
@@ -36,7 +35,8 @@ export function middleware(request: NextRequest) {
   }
 
   // --- 5. Blocage user-agents suspects
-  if (BLOCKED_AGENTS.some(agent => userAgent.includes(agent))) {
+  const blockedPattern = /curl|python|nmap|sqlmap|scanner/i
+  if (blockedPattern.test(userAgent)) {
     console.warn(`⛔ User-Agent suspect : ${userAgent} (${ip})`)
     return new NextResponse('Bot interdit', { status: 403 })
   }

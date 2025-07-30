@@ -102,19 +102,29 @@ export default function About() {
 
         {/* Header */}
         <section className="text-center mb-14">
-          <NeonTitle as="h1" className="text-4xl sm:text-5xl font-extrabold mb-4">
-            À propos de WebCressonTech
-          </NeonTitle>
-          <p className="text-gray-300 max-w-3xl">
-            WebCressonTech, c’est une équipe d’experts en intelligence artificielle, automatisation RPA et data engineering. Depuis 2024, on aide les entreprises à passer à l’échelle grâce aux technologies intelligentes.
-          </p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">L'humain derrière WebCressonTech</h1>
 
+          <div className="flex flex-col md:flex-row items-center gap-8 justify-center max-w-4xl mx-auto text-left animate-slide-up delay-200">
+            <img
+              src="/images/portrait-cresson-alexis.jpeg"
+              alt="Portrait Alexis Cresson – Fondateur de WebCressonTech"
+              className="w-40 h-40 rounded-full object-cover border-2 border-cyan-400"
+            />
+            <div>
+              <h2 className="text-2xl font-semibold text-white mb-2">👋 Moi c’est Alexis Cresson</h2>
+              <p className="text-gray-300 text-sm sm:text-base">
+                Ingénieur de données passionné, j’ai fondé WebCressonTech en 2024 avec une idée simple :
+                rendre l’IA et l’automatisation accessibles à toutes les entreprises, même les plus petites.
+                Mon parcours m’a amené à travailler sur des projets variés, mêlant data, IA, OSINT et productivité.
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* Valeurs */}
         <section className="mb-20">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center" id="values">
-            Nos Valeurs
+            Mes Valeurs
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -144,7 +154,7 @@ export default function About() {
                 text: 'Des solutions éco-conçues, pensées pour durer et s’intégrer efficacement.',
               },
             ].map(({ icon, title, text }, index) => (
-              <div key={index} className="bg-[#111] p-5 rounded border border-[#00e0ff33]">
+              <div key={index} className={`bg-[#111] p-5 rounded border border-[#00e0ff33] animate-fade-in-up delay-[${index * 100}]`}>
                 <div className="mb-2">{icon}</div>
                 <h3 className="text-lg font-semibold text-white mb-1">{title}</h3>
                 <p className="text-gray-400 text-sm">{text}</p>
@@ -153,8 +163,17 @@ export default function About() {
           </div>
         </section>
 
+        <section className="mb-20">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8 text-center">📖 Mon parcours</h2>
+          <p className="text-gray-300 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed text-center animate-fade-in delay-300">
+            Après plusieurs années à manipuler des données et à développer des projets IA pour d'autres,
+            j’ai ressenti le besoin de créer une structure à mon image. WebCressonTech est née pour répondre à un double besoin :
+            démocratiser l’intelligence artificielle et accompagner les entreprises avec des outils vraiment utiles, bien conçus et humains.
+          </p>
+        </section>
+
         {/* CTA */}
-        <section className="flex flex-col sm:flex-row justify-center items-center gap-4 text-center mt-12">
+        <section className="flex flex-col sm:flex-row justify-center items-center gap-4 text-center mt-12 animate-fade-in-up delay-500">
           <Link
             href="/contact"
             className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"

@@ -4,7 +4,8 @@ import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import PricingSection from "@/components/Pricing/PricingSection"
 import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
-import NeonTitle from "@/components/ui/NeonTitle"
+import FinalCTA from "@/components/Pricing/FinalCTA"
+
 
 export const revalidate = 86400
 
@@ -81,89 +82,116 @@ export default function NlpPage() {
       />
 
       {/* Hero */}
-      <section className="text-center mb-12">
+      <section className="text-center py-20 px-6 sm:px-12 md:px-24 bg-gradient-to-br from-zinc-900 to-black text-white">
+      <BreadcrumbNav />
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">NLP, BI augmentée & MLOps sur mesure</h1>
         {/* 🧭 Breadcrumb UX */}
-        <BreadcrumbNav />
-          <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
-          Comprenez, segmentez, prédisez.
-        </NeonTitle>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-          Grâce à nos solutions NLP, BI augmentée et MLOps, exploitez tout le potentiel caché de vos données textuelles et analytiques.
+          Libérez le potentiel de vos données textuelles et analytiques grâce à nos solutions de NLP, BI augmentée et MLOps industrialisé.
         </p>
       </section>
 
+      {/* Problèmes résolus */}
+      <section className="my-24 text-center animate-fade-in">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Quels problèmes résolvons-nous ?</h2>
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Tâches répétitives</h3>
+            <p className="text-gray-400 text-sm">Vous perdez du temps sur des actions manuelles ? L’IA les automatise.</p>
+          </div>
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Manque de données</h3>
+            <p className="text-gray-400 text-sm">Difficile de prendre des décisions sans info ? On structure vos données.</p>
+          </div>
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Temps perdu</h3>
+            <p className="text-gray-400 text-sm">Vos équipes perdent en productivité ? On crée des agents IA dédiés.</p>
+          </div>
+        </div>
+      </section>
       {/* NLP */}
-      <section className="my-20">
-        <h2 className="text-2xl font-bold text-white mb-6">Traitement du langage naturel (NLP)</h2>
-        <ul className="grid sm:grid-cols-2 gap-6 text-gray-400 list-disc pl-5">
-          <li>Analyse de sentiment & ton des messages</li>
-          <li>Classification d’emails, tickets, documents</li>
-          <li>Résumé automatique de texte</li>
-          <li>Extraction d’informations clés (NER, RE)</li>
-          <li>Chatbot sur base documentaire interne</li>
-        </ul>
+      <section aria-labelledby="nlp" className="my-20 animate-fade-in">
+        <h2 id="nlp" className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 scroll-mt-24">Traitement du langage naturel (NLP)</h2>
+        <div className="flex justify-center">
+          <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 max-w-xl w-full shadow-xl transition-all hover:shadow-[0_0_30px_#00e0ff]">
+            <h3 className="text-xl font-bold mb-4 text-cyan-400 flex items-center gap-2">Applications NLP</h3>
+            <ul className="list-disc pl-5 text-gray-300 text-sm space-y-2">
+              <li>Analyse de sentiment & ton des messages</li>
+              <li>Classification d’emails, tickets, documents</li>
+              <li>Résumé automatique de texte</li>
+              <li>Extraction d’informations clés (NER, RE)</li>
+              <li>Chatbot sur base documentaire interne</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       {/* Data Mining */}
-      <section className="my-20">
-        <h2 className="text-2xl font-bold text-white mb-4">Segmentation & Data Mining</h2>
-        <p className="text-gray-400 mb-4">
-          Nous exploitons vos données historiques pour identifier des clusters clients, des anomalies ou comportements d’achat.
-        </p>
-        <ul className="list-disc pl-6 text-gray-400 space-y-2">
-          <li>Segmentation comportementale</li>
-          <li>Détection de churn ou d’opportunités</li>
-          <li>Association rules (recommandation produits)</li>
-          <li>Clustering non supervisé</li>
-        </ul>
+      <section aria-labelledby="datamining" className="my-20 animate-fade-in">
+        <h2 id="datamining" className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 scroll-mt-24">Segmentation & Data Mining</h2>
+        <div className="flex justify-center">
+          <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 max-w-xl w-full shadow-xl transition-all hover:shadow-[0_0_30px_#00e0ff]">
+            <h3 className="text-xl font-bold mb-4 text-cyan-400 flex items-center gap-2">Segmentation & Analyse</h3>
+            <p className="text-gray-400 text-sm mb-4 text-justify">
+              Nous exploitons vos données historiques pour identifier des clusters clients, des anomalies ou comportements d’achat.
+            </p>
+            <ul className="list-disc pl-5 text-gray-300 text-sm space-y-2">
+              <li>Segmentation comportementale</li>
+              <li>Détection de churn ou d’opportunités</li>
+              <li>Association rules (recommandation produits)</li>
+              <li>Clustering non supervisé</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       {/* BI */}
-      <section className="my-20">
-        <h2 className="text-2xl font-bold text-white mb-4">Business Intelligence augmentée</h2>
-        <p className="text-gray-400 mb-4">
-          Nous créons des dashboards intelligents avec des prédictions intégrées pour une prise de décision immédiate.
-        </p>
-        <ul className="list-disc pl-6 text-gray-400 space-y-2">
-          <li>Visualisation de tendances IA</li>
-          <li>KPIs prédictifs & automatiques</li>
-          <li>Exploration guidée des données</li>
-        </ul>
+      <section aria-labelledby="bi" className="my-20 animate-fade-in">
+        <h2 id="bi" className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 scroll-mt-24">Business Intelligence augmentée</h2>
+        <div className="flex justify-center">
+          <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 max-w-xl w-full shadow-xl transition-all hover:shadow-[0_0_30px_#00e0ff]">
+            <h3 className="text-xl font-bold mb-4 text-cyan-400 flex items-center gap-2">Dashboards & Prédictions</h3>
+            <p className="text-gray-400 text-sm mb-4 text-justify">
+              Nous créons des dashboards intelligents avec des prédictions intégrées pour une prise de décision immédiate.
+            </p>
+            <ul className="list-disc pl-5 text-gray-300 text-sm space-y-2">
+              <li>Visualisation de tendances IA</li>
+              <li>KPIs prédictifs & automatiques</li>
+              <li>Exploration guidée des données</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       {/* MLOps */}
-      <section className="my-20">
-        <h2 className="text-2xl font-bold text-white mb-4">Industrialisation IA & MLOps</h2>
-        <p className="text-gray-400 mb-4">
-          Déployez vos modèles IA en production avec nos pipelines robustes et automatisés :
-        </p>
-        <ul className="list-disc pl-6 text-gray-400 space-y-2">
-          <li>CI/CD IA avec GitHub Actions</li>
-          <li>Monitoring & alerting des modèles</li>
-          <li>Retraining automatique</li>
-          <li>Dockerisation & déploiement cloud</li>
-        </ul>
+      <section aria-labelledby="mlops" className="my-20 animate-fade-in">
+        <h2 id="mlops" className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 scroll-mt-24">Industrialisation IA & MLOps</h2>
+        <div className="flex justify-center">
+          <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 max-w-xl w-full shadow-xl transition-all hover:shadow-[0_0_30px_#00e0ff]">
+            <h3 className="text-xl font-bold mb-4 text-cyan-400 flex items-center gap-2">Déploiement & Monitoring</h3>
+            <p className="text-gray-400 text-sm mb-4 text-justify">
+              Déployez vos modèles IA en production avec nos pipelines robustes et automatisés :
+            </p>
+            <ul className="list-disc pl-5 text-gray-300 text-sm space-y-2">
+              <li>CI/CD IA avec GitHub Actions</li>
+              <li>Monitoring & alerting des modèles</li>
+              <li>Retraining automatique</li>
+              <li>Dockerisation & déploiement cloud</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       {/* Témoignage */}
-      <section className="text-center my-20 max-w-3xl mx-auto">
+      <section aria-labelledby="temoignage" className="text-center my-20 max-w-3xl mx-auto animate-fade-in">
         <blockquote className="italic text-gray-300 border-l-4 border-[#00e0ff] pl-4 mb-4">
           “Avec le NLP mis en place par WebCressonTech, nous avons automatisé la lecture de nos tickets clients avec 93% de précision.”
         </blockquote>
-        <p className="text-sm text-gray-500 mb-6">— Responsable Support, Éditeur SaaS</p>
+        <p id="temoignage" className="text-sm text-gray-500 mb-6 scroll-mt-24">— Responsable Support, Éditeur SaaS</p>
       </section>
 
-      {/* CTA final */}
-      <section className="text-center my-20">
-        <h2 className="text-2xl font-bold text-white mb-4">Prêt à tirer le maximum de vos données ?</h2>
-        <p className="text-gray-400 mb-6">Parlons de vos cas d’usage textuels, analytiques ou IA !</p>
-        <Link
-          href="/contact"
-          className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
-        >
-          Discuter de mon projet IA
-        </Link>
-      </section>
+      {/* CTA final unifié */}
+      <FinalCTA />
 
       {/* Section Tarifs */}
       <PricingSection />

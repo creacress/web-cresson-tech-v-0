@@ -3,7 +3,11 @@
 import Link from 'next/link'
 import { gtagEvent } from '@/lib/gtag'
 
-export default function CTAButton() {
+type CTAButtonProps = {
+  label: string;
+};
+
+export default function CTAButton({ label }: CTAButtonProps) {
   const handleClick = () => {
     console.log('CTAButton clicked')
     gtagEvent({
@@ -19,7 +23,7 @@ export default function CTAButton() {
       onClick={handleClick}
       className="inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
     >
-      Obtenir un audit IA gratuit
+      {label}
     </Link>
   )
 }

@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  productionBrowserSourceMaps: true,
   reactStrictMode: false, // Plus relax pour le dev
+
+  experimental: {
+    esmExternals: true,
+  },
 
   images: {
     remotePatterns: [
@@ -30,29 +35,18 @@ const nextConfig = {
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'X-Robots-Tag', value: 'all' }, // Aide Googlebot
-
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
           {
             key: 'Content-Security-Policy',
-            value: `
-              default-src 'self' https: data:;
-              script-src 'self' 'unsafe-inline' 'unsafe-eval'
-                https://www.googletagmanager.com
-                https://va.vercel-scripts.com
-                https://apis.google.com
-                https://www.google.com
-                https://www.gstatic.com;
-              style-src 'self' 'unsafe-inline';
-              img-src * data:;
-              connect-src *;
-              frame-src https://calendar.google.com https://www.googletagmanager.com https://www.google.com;
-              font-src 'self' data:;
-            `.replace(/\n/g, ' ').trim(),
-          }
-
+            value: `default-src 'self' https: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com https://apis.google.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline'; img-src * data:; connect-src *; frame-src https://calendar.google.com https://www.googletagmanager.com https://www.google.com; font-src 'self' data:;`.replace(/\n/g, ' ').trim(),
+          },
         ],
       },
     ];
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

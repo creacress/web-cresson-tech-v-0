@@ -34,7 +34,7 @@ export default function Header() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur bg-black/70 text-white transition-colors duration-300 relative header-glow">
+    <header className="sticky top-0 z-50 backdrop-blur bg-black/70 text-white transition-colors duration-300 header-glow">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <div>
@@ -42,9 +42,10 @@ export default function Header() {
             <Image
               src="/images/Logo_webcressontech.webp"
               alt="Logo WebCressonTech"
-              width={48}
+              width={160}
               height={48}
               priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="h-12 w-auto object-contain"
             />
           </Link>

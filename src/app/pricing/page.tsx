@@ -3,8 +3,10 @@ import ServiceSchema from '@/components/ServiceShema/ServiceSchema';
 import BreadcrumbSchema from '@/components/BreadcrumbSchema/BreadcrumbSchema';
 import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav';
 import PricingSection from '@/components/Pricing/PricingSection';
-import NeonTitle from '@/components/ui/NeonTitle';
 import Link from 'next/link';
+import HeroSection from '@/components/Pricing/HeroSection';
+import PlanDetails from '@/components/Pricing/PlanDetails';
+import FinalCTA from '@/components/Pricing/FinalCTA';
 
 export const metadata: Metadata = {
   title: 'Tarifs WebCressonTech - Solutions IA',
@@ -66,6 +68,14 @@ export default function PricingPage() {
             answer:
               'Oui, il est entièrement personnalisable selon votre domaine (santé, finance, retail, etc).',
           },
+          {
+            question: "Avez-vous des offres adaptées au secteur médical ou bancaire ?",
+            answer: "Oui, nos plans Pro et Entreprise sont entièrement personnalisés selon les contraintes du secteur (ex : RGPD, sécurité, confidentialité…)."
+          },
+          {
+            question: "Puis-je voir des cas clients concrets ?",
+            answer: "Bien sûr, nous partageons sur demande des études de cas ou résultats obtenus sur des projets similaires."
+          }
         ]}
       />
 
@@ -73,58 +83,13 @@ export default function PricingPage() {
         {/* 🧭 Breadcrumb UX */}
         <BreadcrumbNav />
 
-        {/* Héro */}
-        <section className="text-center mb-12">
-          <NeonTitle as="h1" className="text-4xl sm:text-5xl font-extrabold mb-4">
-            Tarifs des solutions IA sur mesure
-          </NeonTitle>
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
-            De l’audit rapide à l’accompagnement complet, nos formules s’adaptent à votre projet et votre maturité IA.
-          </p>
-        </section>
+        <HeroSection />
 
-        {/* Grille de plans */}
         <PricingSection />
 
-        {/* Détails des offres */}
-        <section className="my-20">
-          <h2 className="text-2xl font-bold text-white mb-6 text-center">
-            Ce que comprend chaque plan
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-6 text-gray-300">
-            {[
-              {
-                title: 'Starter',
-                desc: 'Lancez un projet pilote ou un audit avec un minimum d’engagement. Idéal pour les TPE, PME ou première expérimentation IA.',
-              },
-              {
-                title: 'Pro',
-                desc: 'Approche modulaire avec plus de projets et de services IA. Idéal pour entreprises en croissance ou DSI innovantes.',
-              },
-              {
-                title: 'Entreprise',
-                desc: 'Approche sur-mesure, pilotage projet, CI/CD, stack privée, expert IA dédié, ateliers personnalisés…',
-              },
-            ].map(({ title, desc }, i) => (
-              <div key={i} className="bg-[#111] p-6 rounded border border-[#00e0ff33]">
-                <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-                <p>{desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <PlanDetails />
 
-        {/* CTA final */}
-        <section className="text-center my-20">
-          <h2 className="text-2xl font-bold text-white mb-4">Vous hésitez sur le bon plan ?</h2>
-          <p className="text-gray-400 mb-6">Discutons de vos enjeux IA, on vous oriente rapidement.</p>
-          <Link
-            href="/contact"
-            className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
-          >
-            Discuter avec un expert IA
-          </Link>
-        </section>
+        <FinalCTA />
       </main>
     </>
   );

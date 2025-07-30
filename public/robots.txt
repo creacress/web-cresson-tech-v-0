@@ -1,26 +1,9 @@
-import { NextResponse } from 'next/server';
-
-export async function GET() {
-  const content = `
+# *
 User-agent: *
 Allow: /
 
-# 🔒 Répertoires sensibles
-Disallow: /admin/
-Disallow: /api/
-Disallow: /private/
-Disallow: /temp/
-Disallow: /scripts/
+# Host
+Host: https://webcresson.com
 
-# 🚫 Pages d’erreur
-Disallow: /404
-Disallow: /500
-
-# 🔍 Sitemaps
+# Sitemaps
 Sitemap: https://webcresson.com/sitemap.xml
-  `.trim();
-
-  return new NextResponse(content, {
-    headers: { 'Content-Type': 'text/plain' },
-  });
-}

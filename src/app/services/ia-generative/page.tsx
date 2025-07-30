@@ -5,6 +5,7 @@ import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import PricingSection from "@/components/Pricing/PricingSection"
 import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
+import FinalCTA from "@/components/Pricing/FinalCTA"
 
 export const revalidate = 86400
 
@@ -75,12 +76,11 @@ export default function IAGenerativePage() {
       />
 
       {/* Héro */}
-      <section className="text-center mb-12">
-        {/* 🧭 Breadcrumb UX */}
+      <section className="text-center py-20 px-6 sm:px-12 md:px-24 bg-gradient-to-br from-zinc-900 to-black text-white">
         <BreadcrumbNav />
-        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
           Créez l’avenir avec l’IA Générative
-        </NeonTitle>
+        </h1>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
           Génération de contenu, d’images ou de voix. Automatisez votre créativité avec les dernières avancées IA.
         </p>
@@ -89,13 +89,39 @@ export default function IAGenerativePage() {
         </Link>
       </section>
 
+      <section className="my-24 text-center animate-fade-in">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+          Quels problèmes résolvons-nous ?
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Création lente</h3>
+            <p className="text-gray-400 text-sm">Produire du contenu prend trop de temps ? L’IA l’automatise pour vous.</p>
+          </div>
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Manque d’inspiration</h3>
+            <p className="text-gray-400 text-sm">L’IA vous suggère et génère des idées créatives en continu.</p>
+          </div>
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Ressources limitées</h3>
+            <p className="text-gray-400 text-sm">Pas besoin d’une équipe de production : l’IA fait le boulot 24/7.</p>
+          </div>
+        </div>
+      </section>
+
       {/* Définition */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-4 text-white">Qu’est-ce que l’IA Générative ?</h2>
-        <p className="text-gray-400">
-          L’IA Générative est un domaine de l’intelligence artificielle capable de produire du contenu original : texte, image,
-          son ou vidéo. Basée sur des modèles comme <strong>GPT</strong> ou <strong>DALL-E</strong>, elle ouvre un monde de possibilités.
-        </p>
+      <section className="my-20 animate-fade-in">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+          Qu’est-ce que l’IA Générative ?
+        </h2>
+        <div className="flex justify-center">
+          <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 max-w-xl w-full shadow-xl transition-all hover:shadow-[0_0_30px_#00e0ff]">
+            <p className="text-gray-400 text-sm mb-4 text-justify">
+              L’IA Générative est un domaine de l’intelligence artificielle capable de produire du contenu original : texte, image,
+              son ou vidéo. Basée sur des modèles comme <strong>GPT</strong> ou <strong>DALL-E</strong>, elle ouvre un monde de possibilités.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Tableau comparatif */}
@@ -152,6 +178,8 @@ export default function IAGenerativePage() {
 
       {/* Section Tarifs */}
       <PricingSection />
+
+      <FinalCTA />
     </main>
   )
 }

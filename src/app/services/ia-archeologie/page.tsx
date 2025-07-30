@@ -81,9 +81,9 @@ export default function ArcheologieIA() {
       <section className="text-center mb-12">
         {/* 🧭 Breadcrumb UX */}
         <BreadcrumbNav />
-        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
           Révolutionner l'archéologie grâce à l’intelligence artificielle
-        </NeonTitle>
+        </h1>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
           Détection de sites, reconstitution 3D, analyse d’artefacts… Web Cresson Tech explore l’usage de l’IA pour moderniser l’archéologie.
         </p>

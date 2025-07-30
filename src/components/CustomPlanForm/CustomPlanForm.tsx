@@ -7,7 +7,6 @@ import { toast } from 'sonner'
 
 import { Info } from 'lucide-react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { motion } from 'framer-motion'
 
 const formSchema = z.object({
     companyName: z.string().min(1, 'Le nom de l’entreprise est requis'),
@@ -88,13 +87,9 @@ export default function CustomPlanForm() {
 
     if (submitted) {
         return (
-            <motion.div
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="text-center text-[#00e0ff] text-xl font-semibold mt-12"
-            >
+            <div className="text-center text-[#00e0ff] text-xl font-semibold mt-12">
                 Merci pour votre demande 🙏<br />Un expert IA vous répondra sous peu.
-            </motion.div>
+            </div>
         )
     }
 
@@ -201,14 +196,13 @@ export default function CustomPlanForm() {
                     {error && <p className="text-red-500 text-sm">{error}</p>}
 
                     {/* Bouton */}
-                    <motion.button
+                    <button
                         type="submit"
                         disabled={isSubmitting}
-                        whileTap={{ scale: 0.97 }}
                         className="bg-[#00e0ff] text-black px-6 py-2 rounded font-semibold hover:scale-105 transition w-full"
                     >
                         {isSubmitting ? 'Envoi...' : 'Envoyer ma demande'}
-                    </motion.button>
+                    </button>
                 </div>
             </form>
 

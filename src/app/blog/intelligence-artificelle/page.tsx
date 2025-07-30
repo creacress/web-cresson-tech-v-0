@@ -39,9 +39,9 @@ export default function IntelligenceArtificiellePage() {
 
       <main className="bg-black text-white px-4 sm:px-6 lg:px-12">
         <section className="max-w-3xl mx-auto py-20">
-          <NeonTitle as="h1" className="text-3xl sm:text-4xl font-bold mb-6 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
             Coût de développement d’une IA en 2025 : ce qu’il faut savoir
-          </NeonTitle>
+          </h1>
 
           <p className="text-gray-300 mb-6">
             Développer une solution basée sur l’intelligence artificielle (IA) peut transformer votre business. Mais combien ça coûte réellement ? Voyons ensemble les éléments clés qui influencent le budget.
@@ -76,21 +76,21 @@ export default function IntelligenceArtificiellePage() {
 
           </p>
           <p className="text-gray-300 mb-6 leading-relaxed text-lg max-w-prose">
-          <ul className="list-disc list-inside text-gray-300 space-y-2">
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
 
-            <li><strong>Complexité du modèle d'IA : </strong> Les modèles plus complexes, tels que ceux impliquant l’apprentissage profond ou l’apprentissage automatique à grande échelle, nécessitent une expertise et des ressources plus spécialisées, augmentant ainsi les coûts.</li>
-            <li><strong>Exigences en matière de données : </strong> Pour s'entraîner efficacement, les modèles d'IA ont besoin de volumes importants de données étiquetées de haute qualité. La collecte et le traitement de ces données peuvent être longs et coûteux.</li>
-            <li><strong>Acquisition de talents :</strong> Les professionnels qualifiés, tels que les scientifiques des données, les ingénieurs en apprentissage automatique et les chercheurs en IA, sont très demandés, et l’embauche de tels talents est coûteuse.</li>
-            <li><strong>Infrastructure technologique :</strong> Des ressources de calcul haute performance, qu'elles soient sur site ou dans le cloud, sont nécessaires pour traiter les grands ensembles de données requis par les modèles d'IA. Ces ressources peuvent s'avérer coûteuses, notamment en cas de mise à l'échelle.</li>
-            <li><strong>Intégration et maintenance :</strong> L’intégration de l’IA dans les systèmes commerciaux existants et la maintenance continue des modèles pour garantir leur évolution en fonction des données changeantes augmentent également les coûts.</li>
-            <li><strong>Infrastructure technologique :</strong> Des ressources de calcul haute performance, qu'elles soient sur site ou dans le cloud, sont nécessaires pour traiter les grands ensembles de données requis par les modèles d'IA. Ces ressources peuvent s'avérer coûteuses, notamment en cas de mise à l'échelle.</li>
-          </ul>
+              <li><strong>Complexité du modèle d'IA : </strong> Les modèles plus complexes, tels que ceux impliquant l’apprentissage profond ou l’apprentissage automatique à grande échelle, nécessitent une expertise et des ressources plus spécialisées, augmentant ainsi les coûts.</li>
+              <li><strong>Exigences en matière de données : </strong> Pour s'entraîner efficacement, les modèles d'IA ont besoin de volumes importants de données étiquetées de haute qualité. La collecte et le traitement de ces données peuvent être longs et coûteux.</li>
+              <li><strong>Acquisition de talents :</strong> Les professionnels qualifiés, tels que les scientifiques des données, les ingénieurs en apprentissage automatique et les chercheurs en IA, sont très demandés, et l’embauche de tels talents est coûteuse.</li>
+              <li><strong>Infrastructure technologique :</strong> Des ressources de calcul haute performance, qu'elles soient sur site ou dans le cloud, sont nécessaires pour traiter les grands ensembles de données requis par les modèles d'IA. Ces ressources peuvent s'avérer coûteuses, notamment en cas de mise à l'échelle.</li>
+              <li><strong>Intégration et maintenance :</strong> L’intégration de l’IA dans les systèmes commerciaux existants et la maintenance continue des modèles pour garantir leur évolution en fonction des données changeantes augmentent également les coûts.</li>
+              <li><strong>Infrastructure technologique :</strong> Des ressources de calcul haute performance, qu'elles soient sur site ou dans le cloud, sont nécessaires pour traiter les grands ensembles de données requis par les modèles d'IA. Ces ressources peuvent s'avérer coûteuses, notamment en cas de mise à l'échelle.</li>
+            </ul>
           </p>
           <p className="text-gray-300 mb-6 leading-relaxed text-lg max-w-prose">
-          En comprenant ces influences, les entreprises peuvent mieux estimer les coûts de développement de l’IA et prendre des décisions stratégiques concernant leurs initiatives en la matière. La reconnaissance de ces variables en amont peut aider les entreprises à allouer les ressources plus efficacement et à gérer les attentes tout au long du processus de développement.
+            En comprenant ces influences, les entreprises peuvent mieux estimer les coûts de développement de l’IA et prendre des décisions stratégiques concernant leurs initiatives en la matière. La reconnaissance de ces variables en amont peut aider les entreprises à allouer les ressources plus efficacement et à gérer les attentes tout au long du processus de développement.
           </p>
           <p className="text-gray-300 mb-6 leading-relaxed text-lg max-w-prose">
-          Dans l’ensemble, on ne saurait trop insister sur l’importance de bien comprendre les coûts de développement de l’IA. L’IA étant appelée à devenir un moteur de la transformation des entreprises d’ici 2025, les entreprises bien préparées aux engagements financiers impliqués seront mieux placées pour réussir dans un paysage numérique en évolution rapide.
+            Dans l’ensemble, on ne saurait trop insister sur l’importance de bien comprendre les coûts de développement de l’IA. L’IA étant appelée à devenir un moteur de la transformation des entreprises d’ici 2025, les entreprises bien préparées aux engagements financiers impliqués seront mieux placées pour réussir dans un paysage numérique en évolution rapide.
           </p>
 
           <NeonDivider />
@@ -107,11 +107,11 @@ export default function IntelligenceArtificiellePage() {
           </p>
           <h2 className="text-2xl font-bold text-neon mt-12 mb-4">2. Les bases des coûts de développement de l'IA</h2>
           <p className="text-gray-300 mb-6 leading-relaxed text-lg max-w-prose">
-          Il est essentiel pour les entreprises qui envisagent d’adopter l’IA de comprendre la structure des coûts du développement de l’IA. Plusieurs éléments contribuent au coût global, et chacun a un impact différent en fonction de la taille et de la portée du projet. Les coûts liés au développement de l’IA ne se limitent pas uniquement au développement phase; ils s'étendent tout au long du cycle de vie du projet, de la planification et de la construction au déploiement et à la maintenance continue. 
+            Il est essentiel pour les entreprises qui envisagent d’adopter l’IA de comprendre la structure des coûts du développement de l’IA. Plusieurs éléments contribuent au coût global, et chacun a un impact différent en fonction de la taille et de la portée du projet. Les coûts liés au développement de l’IA ne se limitent pas uniquement au développement phase; ils s'étendent tout au long du cycle de vie du projet, de la planification et de la construction au déploiement et à la maintenance continue.
           </p>
           <h2 className="text-2xl font-bold text-neon mt-12 mb-4">2.1. Quels sont les coûts de développement de l’IA ? </h2>
           <p className="text-gray-300 mb-6 leading-relaxed text-lg max-w-prose">
-          Le coût du développement de l’IA peut être divisé en plusieurs éléments critiques, chacun ayant ses propres implications pour les entreprises 
+            Le coût du développement de l’IA peut être divisé en plusieurs éléments critiques, chacun ayant ses propres implications pour les entreprises
           </p>
 
           <div className="my-8 text-center">
@@ -133,7 +133,7 @@ export default function IntelligenceArtificiellePage() {
               par WebCressonTech
             </p>
           </div>
-          
+
           <NeonDivider />
 
           <h2 className="text-2xl font-bold text-neon mt-12 mb-4">9. FAQ sur les coûts de développement de l’IA</h2>

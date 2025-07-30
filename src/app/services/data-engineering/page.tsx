@@ -80,10 +80,10 @@ export default function DataEngineeringPage() {
       <section className="text-center mb-12">
         {/* 🧭 Breadcrumb UX */}
         <BreadcrumbNav />
-        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
 
           Donnez du sens à vos données
-        </NeonTitle>
+        </h1>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
           Automatisez vos pipelines, nettoyez vos données et créez des dashboards intelligents pour piloter votre activité.
         </p>

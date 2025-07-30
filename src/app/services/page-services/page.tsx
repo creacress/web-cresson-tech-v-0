@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import NeonTitle from "@/components/ui/NeonTitle"
 import PricingSection from "@/components/Pricing/PricingSection"
+import FinalCTA from "@/components/Pricing/FinalCTA"
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import ServiceLink from "@/components/ServiceLink/ServiceLink"
@@ -12,7 +13,7 @@ export const revalidate = 86400
 export const metadata: Metadata = {
   title: "Nos Services IA & Automatisation | Web Cresson Tech",
   description:
-    "Découvrez les solutions IA, RPA, Machine Learning, NLP et data engineering de Web Cresson Tech. Audit gratuit pour identifier vos leviers d’automatisation.",
+    "Découvrez les solutions IA, RPA, Machine Learning, NLP et data engineering de Web Cresson Tech. Audit gratuit pour identifier vos leviers d’automatisation. Nouveau : service IA en 24h – testez gratuitement nos capacités d'automatisation rapide.",
   keywords: [
     "services IA",
     "automatisation RPA",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Nos Services en Intelligence Artificielle",
     description:
-      "Web Cresson Tech vous accompagne avec des solutions IA sur mesure : automatisation, prédiction, analyse sémantique, scraping intelligent.",
+      "Web Cresson Tech vous accompagne avec des solutions IA sur mesure : automatisation, prédiction, analyse sémantique, scraping intelligent. Nouveau : service IA en 24h – testez gratuitement nos capacités d'automatisation rapide.",
     url: "https://webcresson.com/services",
     siteName: "Web Cresson Tech",
     images: [
@@ -97,9 +98,9 @@ export default function ServicesPage() {
       <section className="text-center mb-12">
         {/* 🧭 Breadcrumb UX */}
         <BreadcrumbNav />
-        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
           Passez à la vitesse supérieure avec l’IA sur mesure
-        </NeonTitle>
+        </h1>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
           Vos données sont une mine d’or. Nous les transformons en leviers de croissance grâce à nos solutions IA & SaaS personnalisées.
         </p>
@@ -134,7 +135,7 @@ export default function ServicesPage() {
         </p>
       </div>
       {/* Liste des services */}
-      <section className="grid md:grid-cols-2 gap-6 mb-16">
+      <section className="grid md:grid-cols-2 gap-6 mb-16 animate-fade-in">
         {servicesData.map((service, index) => (
           <ServiceLink
             key={index}
@@ -156,7 +157,7 @@ export default function ServicesPage() {
           </div>
           <div>
             <h3 className="font-semibold text-xl mb-2">2. Prototype rapide</h3>
-            <p>Un POC opérationnel en quelques jours pour tester une solution IA ciblée.</p>
+            <p>Un POC opérationnel en quelques jours… ou même en 24h avec notre service express !</p>
           </div>
           <div>
             <h3 className="font-semibold text-xl mb-2">3. Déploiement</h3>
@@ -199,6 +200,8 @@ export default function ServicesPage() {
       </section>
       {/* Tarifs intégrés */}
       <PricingSection />
+      {/* CTA final */}
+      <FinalCTA />
     </main>
   )
 }
@@ -263,9 +266,14 @@ export const servicesData = [
     title: "Scraping intelligent (Rust + Selenium)",
     text: "Collecte de données rapide, fiable et légale. Extraction avancée sur sites dynamiques avec Rust & Selenium.",
     link: "/services/scraping-intelligent",
+  },
+  {
+    icon: <FaCode className="text-3xl text-[#00e0ff]" />,
+    title: "Création de site web moderne",
+    text: "Conception de sites vitrines, e-commerce ou institutionnels. Design responsive, SEO optimisé, animations modernes.",
+    link: "/website",
   }
   
   
   
 ]
-

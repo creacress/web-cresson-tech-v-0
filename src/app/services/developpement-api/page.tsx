@@ -76,10 +76,9 @@ export default function DeveloppementApiPage() {
       <section className="text-center mb-12">
         {/* 🧭 Breadcrumb UX */}
         <BreadcrumbNav />
-        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
-
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
           Des APIs robustes, rapides et sécurisées
-        </NeonTitle>
+        </h1>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
           Créez un backend scalable avec FastAPI ou Django REST. Pour vos applications métier, SaaS ou automatisations avancées.
         </p>

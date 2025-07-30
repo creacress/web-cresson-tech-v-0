@@ -1,62 +1,60 @@
-"use client"
-import NeonTitle from "@/components/ui/NeonTitle"
-import { useEffect, useState } from "react"
+"use client";
 
-export default function CookieModal() {
-  const [isVisible, setIsVisible] = useState(false)
+import { useEffect, useState } from "react";
+
+export default function CookieConsent() {
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookies_consent")
-    if (!consent) {
-      setIsVisible(true)
+    const consent = localStorage.getItem("cookie-consent");
+    if (!consent) setVisible(true);
+  }, []);
 
-      // Fermeture automatique après 10 secondes
-      const timer = setTimeout(() => {
-        setIsVisible(false)
-      }, 10000)
+  const accept = () => {
+    localStorage.setItem("cookie-consent", "true");
+    setVisible(false);
 
-      return () => clearTimeout(timer)
+    if (!window.dataLayer) window.dataLayer = [];
+    function gtag(...args: any[]) {
+      window.dataLayer.push(args);
     }
-  }, [])
+    gtag("js", new Date());
+    gtag("config", "G-H206EG4TH7");
+    gtag("config", "AW-11024728642");
 
-  const handleAccept = () => {
-    localStorage.setItem("cookies_consent", "true")
-    setIsVisible(false)
+    // 🎯 Tracking événement personnalisé
+    gtag("event", "cookie_accept", {
+      event_category: "consent",
+      event_label: "Utilisateur a accepté les cookies",
+    });
+  };
 
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "cookies_accept", {
-        event_category: "User Consent",
-        event_label: "Cookies strictement analytiques",
-      })
-    }
-  }
+  const decline = () => {
+    localStorage.setItem("cookie-consent", "true");
+    setVisible(false);
+  };
 
-  if (!isVisible) return null
+  if (!visible) return null;
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="cookie-title"
-      aria-describedby="cookie-desc"
-      className="fixed bottom-4 left-4 right-4 sm:left-8 sm:right-8 z-50 bg-[#111] border border-[#00e0ff33] text-white p-4 sm:p-5 rounded-lg shadow-lg max-w-3xl mx-auto animate-fade-in-up"
-    >
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div>
-          <NeonTitle as="h3" className="text-5xl font-extrabold mb-4">
-            Cookies analytiques
-          </NeonTitle>
-          <p id="cookie-desc" className="text-sm text-gray-400">
-            Ce site utilise uniquement des cookies analytiques. Aucune donnée personnelle n’est collectée.
-          </p>
-        </div>
+    <div className="fixed bottom-4 left-4 right-4 bg-zinc-900 text-white px-5 py-4 rounded-xl shadow-lg z-50 flex flex-col sm:flex-row items-center justify-between gap-4 animate-fade-in">
+      <p className="text-sm text-center sm:text-left">
+        Ce site utilise des cookies pour améliorer votre expérience (Analytics, publicités...). Autorisez-vous ?
+      </p>
+      <div className="flex gap-2">
         <button
-          onClick={handleAccept}
-          className="self-end sm:self-auto bg-[#00e0ff] text-black font-semibold px-5 py-2 rounded hover:scale-105 transition"
+          onClick={decline}
+          className="bg-zinc-600 hover:bg-zinc-700 text-sm px-4 py-1.5 rounded"
         >
-          J’accepte
+          Refuser
+        </button>
+        <button
+          onClick={accept}
+          className="bg-cyan-600 hover:bg-cyan-500 text-sm px-4 py-1.5 rounded font-medium"
+        >
+          Accepter
         </button>
       </div>
     </div>
-  )
+  );
 }

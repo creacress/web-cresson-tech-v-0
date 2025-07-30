@@ -6,6 +6,8 @@ import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import PricingSection from "@/components/Pricing/PricingSection"
 import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
 import NeonTitle from "@/components/ui/NeonTitle"
+import FinalCTA from "@/components/Pricing/FinalCTA"
+
 
 export const revalidate = 86400
 
@@ -76,88 +78,109 @@ export default function RPAAutomatisationPage() {
       />
 
       {/* Hero */}
-      <section className="text-center mb-16">
-        {/* 🧭 Breadcrumb UX */}
-        <BreadcrumbNav />
-        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
-
-          Libérez-vous des tâches répétitives avec la RPA
-        </NeonTitle>
-        <p className="text-gray-300 max-w-2xl mx-auto">
-          Automatisez vos processus métiers avec des robots logiciels. Gagnez en efficacité, réduisez vos erreurs et vos coûts.
+      <section className="text-center py-20 px-6 sm:px-12 md:px-24 bg-gradient-to-br from-zinc-900 to-black text-white">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">Automatisez vos tâches avec la RPA</h1>
+        <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+          Libérez vos équipes des tâches répétitives grâce à nos bots RPA sur mesure.
         </p>
-        <Link href="/contact" className="mt-6 inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
-          Discutons de votre automatisation
-        </Link>
+      </section>
+
+      {/* Problèmes résolus */}
+      <section className="my-24 text-center animate-fade-in">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+          Quels problèmes résolvons-nous ?
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Tâches répétitives</h3>
+            <p className="text-gray-400 text-sm">Vous perdez du temps sur des actions manuelles ? L’IA les automatise.</p>
+          </div>
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Manque de fiabilité</h3>
+            <p className="text-gray-400 text-sm">Vos processus manuels génèrent des erreurs ? Nos bots garantissent la précision.</p>
+          </div>
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Perte de productivité</h3>
+            <p className="text-gray-400 text-sm">Vos équipes passent trop de temps sur des tâches sans valeur ? Automatisez-les.</p>
+          </div>
+        </div>
       </section>
 
       {/* Pourquoi la RPA */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-4">Pourquoi adopter la RPA ?</h2>
-        <p className="text-gray-400 mb-4">
-          Fini les copier-coller et les exports manuels ! Nos bots RPA imitent les actions humaines pour exécuter automatiquement des tâches répétitives.
-        </p>
-        <ul className="space-y-2 text-gray-300 list-disc list-inside">
-          <li>💼 <strong>Libérez vos équipes :</strong> plus de tâches ingrates</li>
-          <li>🎯 <strong>Zéro erreur :</strong> fiabilité et cohérence</li>
-          <li>⚡ <strong>Gain de temps :</strong> opérations accélérées</li>
-          <li>🔗 <strong>Compatibilité :</strong> fonctionne avec vos outils existants</li>
-          <li>💰 <strong>ROI rapide :</strong> réduction immédiate des coûts</li>
-        </ul>
+      <section className="my-20 animate-fade-in text-center">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+          Pourquoi adopter la RPA ?
+        </h2>
+        <div className="flex justify-center">
+          <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 max-w-xl w-full shadow-xl transition-all hover:shadow-[0_0_30px_#00e0ff]">
+            <p className="text-gray-400 text-sm mb-4 text-justify">
+              Fini les copier-coller et les exports manuels ! Nos bots RPA imitent les actions humaines pour exécuter automatiquement des tâches répétitives.
+            </p>
+            <ul className="list-disc pl-5 text-gray-300 text-sm space-y-2 text-left">
+              <li>💼 <strong>Libérez vos équipes :</strong> plus de tâches ingrates</li>
+              <li>🎯 <strong>Zéro erreur :</strong> fiabilité et cohérence</li>
+              <li>⚡ <strong>Gain de temps :</strong> opérations accélérées</li>
+              <li>🔗 <strong>Compatibilité :</strong> fonctionne avec vos outils existants</li>
+              <li>💰 <strong>ROI rapide :</strong> réduction immédiate des coûts</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       {/* Cas d’usage */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-4">Cas d’usage concrets</h2>
-        <ul className="space-y-2 text-gray-300 list-disc list-inside">
-          <li>📊 Saisie de données dans ERP / CRM</li>
-          <li>🧾 Traitement de factures et commandes</li>
-          <li>🔄 Automatisation des emails & notifications</li>
-          <li>👥 Onboarding RH automatisé</li>
-          <li>📦 Suivi de stock intelligent</li>
-        </ul>
+      <section className="my-20 animate-fade-in text-center">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+          Cas d’usage concrets
+        </h2>
+        <div className="flex justify-center">
+          <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 max-w-xl w-full shadow-xl transition-all hover:shadow-[0_0_30px_#00e0ff]">
+            <ul className="list-disc pl-5 text-gray-300 text-sm space-y-2 text-left">
+              <li>📊 Saisie de données dans ERP / CRM</li>
+              <li>🧾 Traitement de factures et commandes</li>
+              <li>🔄 Automatisation des emails & notifications</li>
+              <li>👥 Onboarding RH automatisé</li>
+              <li>📦 Suivi de stock intelligent</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       {/* RPA vs automatisation classique */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-4">Pourquoi choisir la RPA plutôt qu’une automatisation classique ?</h2>
-        <ul className="space-y-2 text-gray-300 list-disc list-inside">
-          <li>⚙️ <strong>No-code :</strong> facile à déployer</li>
-          <li>📈 <strong>Flexible :</strong> s’adapte à vos process</li>
-          <li>🚀 <strong>Déploiement rapide :</strong> résultats dès les premières semaines</li>
-        </ul>
-        <Link href="/contact" className="mt-6 inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
-          Lancer mon projet RPA
-        </Link>
+      <section className="my-20 animate-fade-in text-center">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+          Pourquoi choisir la RPA plutôt qu’une automatisation classique ?
+        </h2>
+        <div className="flex justify-center">
+          <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 max-w-xl w-full shadow-xl transition-all hover:shadow-[0_0_30px_#00e0ff]">
+            <ul className="list-disc pl-5 text-gray-300 text-sm space-y-2 text-left">
+              <li>⚙️ <strong>No-code :</strong> facile à déployer</li>
+              <li>📈 <strong>Flexible :</strong> s’adapte à vos process</li>
+              <li>🚀 <strong>Déploiement rapide :</strong> résultats dès les premières semaines</li>
+            </ul>
+            <Link href="/contact" className="mt-6 inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
+              Lancer mon projet RPA
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* Livre blanc */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-4">Livre blanc : la RPA appliquée</h2>
-        <LivreBlancComponent
-          title="Automatisation RPA"
-          description="Gagnez du temps et réduisez les erreurs grâce à la Robotic Process Automation."
-          downloadLink="/downloads/WebCressonTech - RPA.pdf"
-          imageUrl="/images/rpa.webp"
-        />
-      </section>
-
-
-      {/* CTA transversal */}
-      <section>
-        <h2 className="text-2xl font-bold mb-6">Explorez nos autres expertises IA</h2>
-        <div className="flex flex-col md:flex-row gap-4">
-          <Link href="/services/intelligence-artificielle" className="bg-[#00e0ff22] border border-[#00e0ff44] rounded px-6 py-3 hover:bg-[#00e0ff33] transition">
-            Intelligence Artificielle
-          </Link>
-          <Link href="/services/deep-learning" className="bg-[#00e0ff22] border border-[#00e0ff44] rounded px-6 py-3 hover:bg-[#00e0ff33] transition">
-            Deep Learning
-          </Link>
-          <Link href="/services/machine-learning" className="bg-[#00e0ff22] border border-[#00e0ff44] rounded px-6 py-3 hover:bg-[#00e0ff33] transition">
-            Machine Learning
-          </Link>
+      <section className="my-20 animate-fade-in text-center">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+          📘 Livre blanc : la RPA appliquée
+        </h2>
+        <div className="flex justify-center">
+          <LivreBlancComponent
+            title="Automatisation RPA"
+            description="Gagnez du temps et réduisez les erreurs grâce à la Robotic Process Automation."
+            downloadLink="/downloads/WebCressonTech - RPA.pdf"
+            imageUrl="/images/rpa.webp"
+          />
         </div>
       </section>
+
+      {/* CTA transversal */}
+      <FinalCTA />
 
       {/* Section Tarifs */}
       <PricingSection />

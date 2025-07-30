@@ -5,6 +5,8 @@ import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import PricingSection from "@/components/Pricing/PricingSection"
 import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
+import FinalCTA from "@/components/Pricing/FinalCTA"
+
 
 export const revalidate = 86400
 
@@ -40,7 +42,7 @@ export const metadata: Metadata = {
 
 export default function MachineLearningPage() {
   return (
-    <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
+    <main className="text-white max-w-6xl mx-auto">
       <BreadcrumbJsonLd
         overrides={{
           services: "Services",
@@ -78,81 +80,82 @@ export default function MachineLearningPage() {
       />
 
       {/* Hero */}
-      <section className="text-center mb-12">
-        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
-          {/* 🧭 Breadcrumb UX */}
-        <BreadcrumbNav />
+      <section className="text-center py-20 px-6 sm:px-12 md:px-24 bg-gradient-to-br from-zinc-900 to-black text-white">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
           Boostez vos performances avec le Machine Learning & Deep Learning
-        </NeonTitle>
+        </h1>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
           Analyse prédictive, détection d’anomalies, vision par ordinateur… Donnez vie à vos données avec des modèles IA puissants.
         </p>
-        <Link
-          href="/services/audit-gratuit"
-          className="mt-6 inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
-        >
-          Obtenir un audit IA gratuit
-        </Link>
+      </section>
+
+      {/* Problèmes résolus */}
+      <section className="my-24 text-center animate-fade-in">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+          Quels problèmes résolvons-nous ?
+        </h2>
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Données inexploitées</h3>
+            <p className="text-gray-400 text-sm">Vos données dorment ? Transformez-les en valeur avec le ML & DL.</p>
+          </div>
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Décisions peu fiables</h3>
+            <p className="text-gray-400 text-sm">Prédisez l’avenir plutôt que de le subir, grâce à l’IA.</p>
+          </div>
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
+            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Tâches manuelles lourdes</h3>
+            <p className="text-gray-400 text-sm">Laissez vos modèles IA automatiser l’analyse et la décision.</p>
+          </div>
+        </div>
       </section>
 
       {/* Avantages */}
-      <section className="grid md:grid-cols-2 gap-6 my-16">
-        {[
-          {
-            emoji: "📊",
-            title: "Analyse Prédictive",
-            text: "Anticipez les ventes, comportements clients, pannes ou ruptures de stock grâce à vos données historiques.",
-          },
-          {
-            emoji: "🧠",
-            title: "Apprentissage Automatique",
-            text: "Nos modèles apprennent à partir de vos données métiers pour automatiser des tâches à forte valeur ajoutée.",
-          },
-          {
-            emoji: "📷",
-            title: "Reconnaissance Visuelle",
-            text: "Détection d’objets, OCR, analyse d’images médicales ou industrielles avec le Deep Learning.",
-          },
-          {
-            emoji: "🔎",
-            title: "Détection d’Anomalies",
-            text: "Surveillez vos systèmes et détectez des comportements inhabituels en temps réel.",
-          },
-        ].map(({ emoji, title, text }, i) => (
-          <div key={i} className="bg-[#111] p-6 rounded border border-[#00e0ff33]">
-            <div className="text-4xl mb-2">{emoji}</div>
-            <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
-            <p className="text-gray-400">{text}</p>
-          </div>
-        ))}
-      </section>
+      <div className="flex justify-center">
+        <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 max-w-xl w-full shadow-xl transition-all hover:shadow-[0_0_30px_#00e0ff]">
+          <ul className="list-disc pl-5 text-gray-300 text-sm space-y-2 text-left">
+            <li>📊 Analyse prédictive</li>
+            <li>🧠 Apprentissage automatique sur vos données</li>
+            <li>📷 Vision par ordinateur</li>
+            <li>🔎 Détection d’anomalies en temps réel</li>
+          </ul>
+        </div>
+      </div>
 
       {/* Cas d’usages */}
-      <section className="my-20">
-        <h2 className="text-2xl font-bold text-white mb-4">Cas d’usage concrets du Deep Learning</h2>
-        <ul className="list-disc pl-6 text-gray-400 space-y-2">
-          <li>Prédiction des ventes ou des flux logistiques</li>
-          <li>Classification automatique d’e-mails, documents ou produits</li>
-          <li>Vision par ordinateur pour le contrôle qualité</li>
-          <li>Optimisation de la chaîne de production industrielle</li>
-          <li>Détection de fraude en temps réel</li>
-        </ul>
+      <section className="my-20 text-center max-w-4xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+          Cas d’usage concrets du Deep Learning
+        </h2>
+        <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 shadow-xl">
+          <ul className="list-disc pl-6 text-gray-400 space-y-3 text-left text-sm">
+            <li>Prédiction des ventes ou des flux logistiques</li>
+            <li>Classification automatique d’e-mails, documents ou produits</li>
+            <li>Vision par ordinateur pour le contrôle qualité</li>
+            <li>Optimisation de la chaîne de production industrielle</li>
+            <li>Détection de fraude en temps réel</li>
+          </ul>
+        </div>
       </section>
 
       {/* Expertises techniques */}
-      <section className="my-20">
-        <h2 className="text-2xl font-bold text-white mb-4">Nos expertises techniques en IA</h2>
-        <ul className="grid sm:grid-cols-2 gap-4 text-gray-400 list-disc pl-5">
-          <li>Python, Scikit-learn, TensorFlow, PyTorch</li>
-          <li>API REST/GraphQL pour déploiement IA</li>
-          <li>Intégration MLOps avec CI/CD</li>
-          <li>Monitoring & retraining automatique</li>
-          <li>Infrastructure scalable (Docker, Cloud, GPU)</li>
-        </ul>
+      <section className="my-20 text-center max-w-4xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+          Nos expertises techniques en IA
+        </h2>
+        <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 shadow-xl">
+          <ul className="list-disc pl-6 text-gray-400 space-y-3 text-left text-sm grid sm:grid-cols-2 gap-4">
+            <li>Python, Scikit-learn, TensorFlow, PyTorch</li>
+            <li>API REST/GraphQL pour déploiement IA</li>
+            <li>Intégration MLOps avec CI/CD</li>
+            <li>Monitoring & retraining automatique</li>
+            <li>Infrastructure scalable (Docker, Cloud, GPU)</li>
+          </ul>
+        </div>
       </section>
 
       {/* Livres blancs */}
-      <section className="bg-[#0a0a0a] border border-[#00e0ff33] rounded p-8 my-20 text-center">
+      <section className="bg-[#0a0a0a] border border-[#00e0ff33] rounded p-8 my-20 text-center scroll-mt-24 max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold text-white mb-4">📘 Livres blancs à télécharger</h2>
         <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
           Découvrez nos retours d’expérience sur l’application de l’intelligence artificielle dans l’industrie, la finance ou encore le e-commerce.
@@ -176,18 +179,7 @@ export default function MachineLearningPage() {
       </section>
 
       {/* CTA final */}
-      <section className="text-center my-20 max-w-3xl mx-auto">
-        <blockquote className="italic text-gray-300 border-l-4 border-[#00e0ff] pl-4 mb-4">
-          “Grâce aux modèles ML déployés par WebCressonTech, nous avons augmenté la précision de nos prédictions de 89%.”
-        </blockquote>
-        <p className="text-sm text-gray-500 mb-6">— Direction Data, Groupe Industriel</p>
-        <Link
-          href="/contact"
-          className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
-        >
-          Discuter de mon projet IA
-        </Link>
-      </section>
+      <FinalCTA />
 
       {/* Section Tarifs */}
       <PricingSection />

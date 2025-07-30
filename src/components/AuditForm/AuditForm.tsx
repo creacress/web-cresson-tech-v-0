@@ -81,13 +81,15 @@ export default function AuditPage() {
   
 
   return (
-    <section className="max-w-3xl mx-auto py-16 px-4 text-white">
-      <h2 className="text-3xl font-bold text-center mb-10 text-neon drop-shadow">
-        Demandez votre audit gratuit
-      </h2>
+    <section id="audit-form" className="max-w-3xl mx-auto py-16 px-4 text-white">
+      <header className="text-center mb-10">
+        <h2 className="text-3xl font-bold text-neon drop-shadow">Demandez votre audit gratuit</h2>
+        <p className="text-sm text-gray-400 mt-2">Remplissez ce formulaire et recevez un diagnostic IA personnalisé sous 48h.</p>
+      </header>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Honeypot */}
+        <input type="hidden" name="source" value="audit-page" />
         <div className="absolute left-[-9999px]" aria-hidden="true">
           <label htmlFor="website">Ne pas remplir</label>
           <input
@@ -109,6 +111,7 @@ export default function AuditPage() {
             id="name"
             name="name"
             required
+            autoComplete="name"
             value={formData.name}
             onChange={handleChange}
             className="w-full px-4 py-2 rounded bg-[#111] border border-[#333] focus:outline-none focus:ring-2 focus:ring-[#00e0ff]"
@@ -123,6 +126,7 @@ export default function AuditPage() {
             id="email"
             name="email"
             required
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
             className="w-full px-4 py-2 rounded bg-[#111] border border-[#333] focus:outline-none focus:ring-2 focus:ring-[#00e0ff]"
@@ -136,6 +140,7 @@ export default function AuditPage() {
             type="tel"
             id="phone"
             name="phone"
+            autoComplete="tel"
             value={formData.phone}
             onChange={handleChange}
             className="w-full px-4 py-2 rounded bg-[#111] border border-[#333] focus:outline-none focus:ring-2 focus:ring-[#00e0ff]"
@@ -163,8 +168,8 @@ export default function AuditPage() {
         </div>
 
         {/* Solutions */}
-        <div>
-          <label className="block mb-2 font-semibold">Solutions souhaitées</label>
+        <fieldset>
+          <legend className="block mb-2 font-semibold">Solutions souhaitées</legend>
           <div className="flex flex-wrap gap-4">
             {["Automatisation", "IA générative", "Analyse prédictive", "Autre"].map((sol) => (
               <label key={sol} className="flex items-center space-x-2">
@@ -180,7 +185,7 @@ export default function AuditPage() {
               </label>
             ))}
           </div>
-        </div>
+        </fieldset>
 
         {/* Besoins */}
         <div>
@@ -189,6 +194,7 @@ export default function AuditPage() {
             id="needs"
             name="needs"
             required
+            aria-label="Décrivez vos besoins en IA"
             rows={5}
             value={formData.needs}
             onChange={handleChange}
@@ -205,6 +211,7 @@ export default function AuditPage() {
             checked={formData.consent}
             onChange={handleChange}
             required
+            aria-required="true"
             className="mt-1 accent-[#00e0ff]"
           />
           <label htmlFor="consent" className="text-sm">
@@ -217,7 +224,7 @@ export default function AuditPage() {
           <button
             type="submit"
             disabled={loading}
-            className="bg-[#00e0ff] text-black font-semibold px-8 py-3 rounded-md hover:scale-105 transition"
+            className={`bg-[#00e0ff] text-black font-semibold px-8 py-3 rounded-md hover:scale-105 transition ${loading ? "animate-pulse" : ""}`}
           >
             {loading ? "Envoi en cours..." : "Envoyer ma demande"}
           </button>

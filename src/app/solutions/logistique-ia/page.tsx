@@ -67,9 +67,9 @@ export default function LogistiqueIA() {
 
       {/* Hero */}
       <section className="text-center mb-16">
-        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
           Optimisez votre logistique grâce à l’IA
-        </NeonTitle>
+        </h1>
         <p className="text-gray-300 text-lg max-w-2xl mx-auto">
           Gagnez en efficacité avec des flux automatisés, des prévisions fiables et des process intelligents pilotés par vos données.
         </p>

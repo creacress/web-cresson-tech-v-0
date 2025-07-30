@@ -1,8 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { FileText, Filter, Brain, Lightbulb, Zap } from 'lucide-react';
 import ServiceSchema from '../ServiceShema/ServiceSchema';
+import NeonDivider from '../ui/NeonDivider';
 
 const étapes = [
     {
@@ -115,18 +115,21 @@ export default function SolutionsIAPage() {
                     },
                 ]}
             />
-            <section className="py-24 px-6 max-w-6xl mx-auto overflow-hidden">
+            <NeonDivider />
+            <section className="py-5 px-6 max-w-4xl mx-auto overflow-hidden">
                 <h1 className="text-4xl sm:text-5xl font-bold text-center text-white mb-6">
                     Nos solutions IA sur-mesure
                 </h1>
                 <p className="text-center text-gray-400 max-w-2xl mx-auto mt-4 mb-20 text-lg">
                     Nous transformons vos données en décisions automatisées grâce à l'intelligence artificielle.
                 </p>
-                <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-6">
-                    Pipeline d’automatisation IA
+            <NeonDivider />
+
+                <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-2">
+                    🧠 Solution IA 1/3 — Intelligence Artificielle sur-mesure
                 </h2>
-                <p className="text-center text-gray-400 max-w-2xl mx-auto mt-4 mb-20 text-lg">
-                    Voici comment nous déployons nos IA pour automatiser et prédire vos tâches métiers.
+                <p className="text-center text-gray-400 mb-12 text-base italic">
+                    LLM, NLP, vision, IA générative... pour automatiser l’analyse de vos données.
                 </p>
                 <div className="relative flex flex-col sm:flex-row items-center justify-between gap-10">
                     <div className="hidden sm:block absolute top-[52px] left-0 right-0 h-px z-0 overflow-hidden">
@@ -135,12 +138,8 @@ export default function SolutionsIAPage() {
                     {étapes.map((etape, i) => {
                         const Icone = etape.icone;
                         return (
-                            <motion.div
+                            <div
                                 key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: i * 0.15 }}
-                                viewport={{ once: true }}
                                 className="z-10 bg-[#111] border border-neutral-700 rounded-xl p-5 w-[200px] shadow-lg flex flex-col items-center text-center relative hover:shadow-[0_0_20px_#00f9ff33] transition-all duration-300"
                             >
                                 <div className="bg-neutral-900 p-3 rounded-full mb-3 border border-neutral-600">
@@ -148,19 +147,16 @@ export default function SolutionsIAPage() {
                                 </div>
                                 <h3 className="text-white font-semibold text-lg">{etape.titre}</h3>
                                 <p className="text-gray-400 text-sm mt-1">{etape.desc}</p>
-                            </motion.div>
+                            </div>
                         );
                     })}
                 </div>
+                <hr className="my-20 border-t border-neutral-700" />
             </section>
 
-
-            
-
-
-            <section className="py-24 px-6 max-w-6xl mx-auto">
+            <section className="py-2,5 px-6 max-w-4xl mx-auto">
                 <h2 className="text-3xl font-bold text-center text-white mb-12">
-                    Cas d’usage concrets
+                    Cas d’usage — Intelligence Artificielle
                 </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
@@ -177,21 +173,16 @@ export default function SolutionsIAPage() {
                             desc: 'Compréhension du ressenti clients à partir de textes libres ou commentaires.',
                         },
                     ].map((item, i) => (
-                        <motion.div
+                        <div
                             key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.2 }}
-                            viewport={{ once: true }}
                             className="bg-neutral-900 border border-neutral-700 p-6 rounded-xl text-white shadow-md hover:shadow-[0_0_20px_#00f9ff33] transition-all"
                         >
                             <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                             <p className="text-gray-400 text-sm">{item.desc}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </section>
-
             {/* --- RPA --- */}
             <ServiceSchema
                 serviceName="Solutions RPA (Automatisation Robotique)"
@@ -208,28 +199,23 @@ export default function SolutionsIAPage() {
                     },
                 ]}
             />
-            <section className="py-24 px-6 max-w-6xl mx-auto overflow-hidden">
-                <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-6">
-                    Pipeline d’automatisation RPA
+            <NeonDivider />
+            <section className="py-5 px-6 max-w-4xl mx-auto overflow-hidden">
+                <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-2">
+                    ⚙️ Solution IA 2/3 — Automatisation RPA
                 </h2>
-                <p className="text-center text-gray-400 max-w-2xl mx-auto mt-4 mb-20 text-lg">
-                    Voici comment nous déployons des robots logiciels pour automatiser vos tâches métiers.
+                <p className="text-center text-gray-400 mb-12 text-base italic">
+                    Des robots logiciels pour automatiser vos tâches chronophages et répétitives.
                 </p>
-
                 <div className="relative flex flex-col sm:flex-row items-center justify-between gap-10">
                     <div className="hidden sm:block absolute top-[52px] left-0 right-0 h-px z-0 overflow-hidden">
                         <div className="w-full h-full bg-gradient-to-r from-transparent via-[#00F9FF] to-transparent animate-[pulseFlow_4s_linear_infinite]" />
                     </div>
-
                     {étapesRPA.map((etape, i) => {
                         const Icone = etape.icone;
                         return (
-                            <motion.div
+                            <div
                                 key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: i * 0.15 }}
-                                viewport={{ once: true }}
                                 className="z-10 bg-[#111] border border-neutral-700 rounded-xl p-5 w-[200px] shadow-lg flex flex-col items-center text-center relative hover:shadow-[0_0_20px_#00f9ff33] transition-all duration-300"
                             >
                                 <div className="bg-neutral-900 p-3 rounded-full mb-3 border border-neutral-600">
@@ -237,14 +223,15 @@ export default function SolutionsIAPage() {
                                 </div>
                                 <h3 className="text-white font-semibold text-lg">{etape.titre}</h3>
                                 <p className="text-gray-400 text-sm mt-1">{etape.desc}</p>
-                            </motion.div>
+                            </div>
                         );
                     })}
                 </div>
+                <hr className="my-20 border-t border-neutral-700" />
             </section>
-            <section className="py-24 px-6 max-w-6xl mx-auto">
+            <section className="py-5 px-6 max-w-4xl mx-auto">
                 <h2 className="text-3xl font-bold text-center text-white mb-12">
-                    Cas d’usage RPA
+                    Cas d’usage — Automatisation RPA
                 </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
@@ -261,17 +248,13 @@ export default function SolutionsIAPage() {
                             desc: 'Mettez à jour des outils internes ou envoyez des rappels automatiquement.',
                         },
                     ].map((item, i) => (
-                        <motion.div
+                        <div
                             key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.2 }}
-                            viewport={{ once: true }}
                             className="bg-neutral-900 border border-neutral-700 p-6 rounded-xl text-white shadow-md hover:shadow-[0_0_20px_#00f9ff33] transition-all"
                         >
                             <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                             <p className="text-gray-400 text-sm">{item.desc}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </section>
@@ -292,28 +275,23 @@ export default function SolutionsIAPage() {
                     },
                 ]}
             />
-            <section className="py-24 px-6 max-w-6xl mx-auto overflow-hidden">
-                <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-6">
-                    Pipeline scraping intelligent
+            <NeonDivider />
+            <section className="py-5 px-6 max-w-4xl mx-auto overflow-hidden">
+                <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-2">
+                    🌐 Solution IA 3/3 — Scraping intelligent
                 </h2>
-                <p className="text-center text-gray-400 max-w-2xl mx-auto mt-4 mb-20 text-lg">
-                    De la donnée brute à l’information structurée et exploitable.
+                <p className="text-center text-gray-400 mb-12 text-base italic">
+                    Récupération, nettoyage et structuration automatisée de données web ciblées.
                 </p>
-
                 <div className="relative flex flex-col sm:flex-row items-center justify-between gap-10">
                     <div className="hidden sm:block absolute top-[52px] left-0 right-0 h-px z-0 overflow-hidden">
                         <div className="w-full h-full bg-gradient-to-r from-transparent via-[#00F9FF] to-transparent animate-[pulseFlow_4s_linear_infinite]" />
                     </div>
-
                     {étapesScraping.map((etape, i) => {
                         const Icone = etape.icone;
                         return (
-                            <motion.div
+                            <div
                                 key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: i * 0.15 }}
-                                viewport={{ once: true }}
                                 className="z-10 bg-[#111] border border-neutral-700 rounded-xl p-5 w-[200px] shadow-lg flex flex-col items-center text-center relative hover:shadow-[0_0_20px_#00f9ff33] transition-all duration-300"
                             >
                                 <div className="bg-neutral-900 p-3 rounded-full mb-3 border border-neutral-600">
@@ -321,14 +299,15 @@ export default function SolutionsIAPage() {
                                 </div>
                                 <h3 className="text-white font-semibold text-lg">{etape.titre}</h3>
                                 <p className="text-gray-400 text-sm mt-1">{etape.desc}</p>
-                            </motion.div>
+                            </div>
                         );
                     })}
                 </div>
+                <hr className="my-20 border-t border-neutral-700" />
             </section>
-            <section className="py-24 px-6 max-w-6xl mx-auto">
+            <section className="py-5 px-6 max-w-4xl mx-auto">
                 <h2 className="text-3xl font-bold text-center text-white mb-12">
-                    Cas d’usage scraping intelligent
+                    Cas d’usage — Scraping intelligent
                 </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
@@ -345,34 +324,18 @@ export default function SolutionsIAPage() {
                             desc: 'Mise à jour automatique de vos fiches à partir de sources fiables.',
                         },
                     ].map((item, i) => (
-                        <motion.div
+                        <div
                             key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.2 }}
-                            viewport={{ once: true }}
                             className="bg-neutral-900 border border-neutral-700 p-6 rounded-xl text-white shadow-md hover:shadow-[0_0_20px_#00f9ff33] transition-all"
                         >
                             <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                             <p className="text-gray-400 text-sm">{item.desc}</p>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </section>
 
-            {/* CTA final */}
-            <section className="py-24 px-6 max-w-4xl mx-auto text-center">
-                <h3 className="text-3xl text-white font-bold mb-4">Prêt à automatiser votre business ?</h3>
-                <p className="text-gray-400 mb-6">
-                    Parlons de votre projet et construisons une solution IA, RPA ou scraping adaptée à vos besoins.
-                </p>
-                <a
-                    href="/contact"
-                    className="inline-block px-6 py-3 bg-[#00F9FF] text-black font-semibold rounded-full hover:opacity-90 transition"
-                >
-                    Contacter un expert
-                </a>
-            </section>
+            <NeonDivider />
         </>
     );
 }

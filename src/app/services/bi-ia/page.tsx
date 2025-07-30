@@ -82,10 +82,10 @@ export default function BIAugmenteePage() {
       <section className="text-center mb-16">
         {/* 🧭 Breadcrumb UX */}
         <BreadcrumbNav />
-        <NeonTitle as="h1" className="text-5xl font-extrabold mb-4">
-
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
           Business Intelligence augmentée par l'IA
-        </NeonTitle>
+        </h1>
+
         <p className="text-gray-300 text-lg max-w-2xl mx-auto">
           Des dashboards intelligents avec prédictions intégrées, alertes automatiques et visualisations adaptatives pour mieux décider, plus vite.
         </p>

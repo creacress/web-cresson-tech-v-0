@@ -1,0 +1,220 @@
+.
+├── ecosystem.config.js
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public
+│   ├── avatars
+│   │   ├── julie.png
+│   │   ├── lisa.png
+│   │   └── marc.png
+│   ├── blog
+│   │   ├── ia-education.png
+│   │   ├── ia-entreprise.png
+│   │   ├── ia-finance.png
+│   │   ├── ia-industrie.png
+│   │   └── ia-operations.png
+│   ├── downloads
+│   │   ├── WebCressonTech - Deep Learning.pdf
+│   │   ├── WebCressonTech - IA & Santé.pdf
+│   │   ├── WebCressonTech - IA archéologie.pdf
+│   │   ├── WebCressonTech - Machine Learning.pdf
+│   │   └── WebCressonTech - RPA.pdf
+│   ├── humans.txt
+│   ├── images
+│   │   ├── cout-dev-ia.svg
+│   │   ├── Création_IA_sur_mesure.webp
+│   │   ├── deep-learning.webp
+│   │   ├── Développement_IA.webp
+│   │   ├── google-deepmind-tikhtH3QRSQ-unsplash.webp
+│   │   ├── hero-ia.jpg
+│   │   ├── Ia-archeologie.webp
+│   │   ├── IA-humain.webp
+│   │   ├── IA-sante.webp
+│   │   ├── logo_la_poste.webp
+│   │   ├── Logo_webcressontech.ico
+│   │   ├── Logo_webcressontech.webp
+│   │   ├── Machine_Learning.webp
+│   │   ├── pexels-fauxels-3183150.webp
+│   │   ├── pexels-kevin-ku-92347-577585.webp
+│   │   ├── portrait-cresson-alexis.jpeg
+│   │   ├── robot_humain_main.webp
+│   │   ├── rpa.webp
+│   │   └── templates
+│   │       ├── association.png
+│   │       ├── entreprise.png
+│   │       ├── particulier.png
+│   │       ├── PME.png
+│   │       └── tpe.png
+│   ├── pgp-key.txt
+│   ├── robots.txt
+│   └── test.txt
+├── README.md
+├── src
+│   ├── app
+│   │   ├── about
+│   │   │   └── page.tsx
+│   │   ├── ads
+│   │   │   └── landing-ia
+│   │   ├── api
+│   │   │   ├── audit
+│   │   │   ├── contact
+│   │   │   └── custom-plan
+│   │   ├── blog
+│   │   │   ├── ia-education
+│   │   │   ├── ia-entreprise
+│   │   │   ├── ia-finance
+│   │   │   ├── ia-industrie
+│   │   │   ├── ia-operations
+│   │   │   ├── ia-services
+│   │   │   ├── intelligence-artificelle
+│   │   │   └── page.tsx
+│   │   ├── bug-bounty
+│   │   │   └── page.tsx
+│   │   ├── chat
+│   │   │   └── page.tsx
+│   │   ├── ClientLayout.tsx
+│   │   ├── contact
+│   │   │   └── page.tsx
+│   │   ├── developpement-python
+│   │   │   └── page.tsx
+│   │   ├── error.tsx
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── legal-mentions
+│   │   │   └── page.tsx
+│   │   ├── maintenance
+│   │   │   └── page.tsx
+│   │   ├── merci
+│   │   │   └── page.tsx
+│   │   ├── not-found.tsx
+│   │   ├── page.tsx
+│   │   ├── pricing
+│   │   │   ├── custom
+│   │   │   └── page.tsx
+│   │   ├── robots.txt
+│   │   │   └── route.ts
+│   │   ├── services
+│   │   │   ├── analyse-semantique-nlp
+│   │   │   ├── audit-gratuit
+│   │   │   ├── bi-ia
+│   │   │   ├── data-engineering
+│   │   │   ├── developpement-api
+│   │   │   ├── ia-archeologie
+│   │   │   ├── ia-generative
+│   │   │   ├── intelligence-artificielle
+│   │   │   ├── layout.tsx
+│   │   │   ├── machine-learning-deep-learning
+│   │   │   ├── page-services
+│   │   │   ├── rpa-automatisation
+│   │   │   └── scraping-intelligent
+│   │   ├── sitemap-images.xml
+│   │   │   └── route.ts
+│   │   ├── sitemap-pages.xml
+│   │   │   └── route.ts
+│   │   ├── sitemap-services.xml
+│   │   │   └── route.ts
+│   │   ├── sitemap-solutions.xml
+│   │   │   └── route.ts
+│   │   ├── sitemap-static.xml
+│   │   │   └── route.ts
+│   │   ├── sitemap.xml
+│   │   │   └── route.ts
+│   │   ├── solutions
+│   │   │   ├── ia-finance
+│   │   │   ├── ia-ressources-humaines
+│   │   │   ├── ia-sante
+│   │   │   ├── julie
+│   │   │   ├── lisa
+│   │   │   ├── logistique-ia
+│   │   │   ├── marc
+│   │   │   └── page.tsx
+│   │   ├── terms-of-sale
+│   │   │   └── page.tsx
+│   │   ├── viewport.ts
+│   │   └── website
+│   │       └── page.tsx
+│   ├── components
+│   │   ├── AnalyticsProvider
+│   │   │   ├── AnalyticsProvider.tsx
+│   │   │   └── AnalyticsScripts.tsx
+│   │   ├── AuditForm
+│   │   │   └── AuditForm.tsx
+│   │   ├── BreadcrumbNav
+│   │   │   └── BreadcrumbNav.tsx
+│   │   ├── BreadcrumbSchema
+│   │   │   └── BreadcrumbSchema.tsx
+│   │   ├── ContactForm
+│   │   │   └── ContactForm.tsx
+│   │   ├── CookieModal
+│   │   │   ├── CookieModal.tsx
+│   │   │   └── index.ts
+│   │   ├── CTAButton
+│   │   │   └── CTAButton.tsx
+│   │   ├── CustomPlanForm
+│   │   │   └── CustomPlanForm.tsx
+│   │   ├── Footer
+│   │   │   ├── Footer.tsx
+│   │   │   └── index.ts
+│   │   ├── GoogleCalendar
+│   │   │   └── GoogleCalendar.tsx
+│   │   ├── GoogleTagManager
+│   │   │   └── GoogleTagManager.tsx
+│   │   ├── Header
+│   │   │   ├── Header.tsx
+│   │   │   └── index.ts
+│   │   ├── Home
+│   │   │   ├── CiblesSection.tsx
+│   │   │   ├── DynamicHomeSections.tsx
+│   │   │   ├── ExpertiseSection.tsx
+│   │   │   ├── FAQSection.tsx
+│   │   │   ├── FinalCTASection.tsx
+│   │   │   ├── GlossaireSection.tsx
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── MethodologieSection.tsx
+│   │   │   ├── PersonasSection.tsx
+│   │   │   ├── ProblemesSection.tsx
+│   │   │   ├── solutionsData.ts
+│   │   │   └── TemoignageSection.tsx
+│   │   ├── LandingClient
+│   │   │   └── LandingClient.tsx
+│   │   ├── LivreBlanc
+│   │   │   └── LivreBlanc.tsx
+│   │   ├── MessageText
+│   │   │   └── MessageText.tsx
+│   │   ├── NavLink
+│   │   │   └── NavLink.tsx
+│   │   ├── Page-IA-Entreprise
+│   │   │   └── PageIaEntreprise.tsx
+│   │   ├── Pricing
+│   │   │   ├── FinalCTA.tsx
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── PlanDetails.tsx
+│   │   │   └── PricingSection.tsx
+│   │   ├── seo
+│   │   │   └── BreadcrumbJsonLd.tsx
+│   │   ├── ServiceLink
+│   │   │   └── ServiceLink.tsx
+│   │   ├── ServiceShema
+│   │   │   └── ServiceSchema.tsx
+│   │   ├── SolutionsIAPage
+│   │   │   └── SolutionsIAPage.tsx
+│   │   └── ui
+│   │       ├── NeonDivider.tsx
+│   │       └── NeonTitle.tsx
+│   ├── lib
+│   │   ├── askOllama.ts
+│   │   ├── context.ts
+│   │   ├── gtag.ts
+│   │   ├── rate-limit.ts
+│   │   └── useScrollSpy.ts
+│   ├── middleware.ts
+│   └── types
+│       └── global.d.ts
+├── structure.txt
+└── tsconfig.json
+
+90 directories, 128 files
