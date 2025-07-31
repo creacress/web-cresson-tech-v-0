@@ -1,5 +1,7 @@
 'use client'
 import React, { useState } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 type ContactFormProps = {
   plan?: string
@@ -8,20 +10,28 @@ type ContactFormProps = {
 const ContactForm: React.FC<ContactFormProps> = ({ plan }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
+  const [comments, setComments] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log({ name, email, message, plan })
-    alert('Message envoyé !')
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, comments, plan }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('Erreur')
+        toast.success('✅ Message envoyé avec succès !')
+      })
+      .catch(() => toast.error('❌ Une erreur est survenue. Réessaie plus tard.'))
   }
 
   return (
     <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-6">
       {plan && (
         <>
-          <div className="text-sm text-gray-400">
-            Offre sélectionnée : <span className="font-semibold text-white">{plan}</span>
+          <div className="rounded border border-indigo-500 bg-indigo-950/50 text-indigo-300 text-sm px-4 py-2 flex items-center gap-2 shadow-md">
+            <span className="font-semibold text-white">🎯 Offre sélectionnée :</span> {plan}
           </div>
           <input type="hidden" name="plan" value={plan} />
         </>
@@ -49,8 +59,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ plan }) => {
       <div>
         <label className="block text-sm font-medium mb-1">Message</label>
         <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={comments}
+          onChange={(e) => setComments(e.target.value)}
           className="w-full px-4 py-2 rounded bg-zinc-800 border border-zinc-600 text-white"
           rows={5}
           required
@@ -62,6 +72,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ plan }) => {
       >
         Envoyer
       </button>
+      <ToastContainer position="bottom-center" autoClose={4000} hideProgressBar newestOnTop closeOnClick theme="dark" />
     </form>
   )
 }
