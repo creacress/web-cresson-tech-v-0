@@ -11,19 +11,22 @@ const ContactForm: React.FC<ContactFormProps> = ({ plan }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [comments, setComments] = useState('')
+  const [phone, setPhone] = useState('')
+  const [company, setCompany] = useState('')
+  const [website, setWebsite] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, comments, plan }),
+      body: JSON.stringify({ name, email, phone, company, comments, plan, website }),
     })
       .then((res) => {
         if (!res.ok) throw new Error('Erreur')
-        toast.success('✅ Message envoyé avec succès !')
+        toast.success('Message envoyé avec succès !')
       })
-      .catch(() => toast.error('❌ Une erreur est survenue. Réessaie plus tard.'))
+      .catch(() => toast.error('Une erreur est survenue. Réessaie plus tard.'))
   }
 
   return (
@@ -66,6 +69,30 @@ const ContactForm: React.FC<ContactFormProps> = ({ plan }) => {
           required
         />
       </div>
+      <div>
+        <label className="block text-sm font-medium mb-1">Téléphone (optionnel)</label>
+        <input
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="w-full px-4 py-2 rounded bg-zinc-800 border border-zinc-600 text-white"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium mb-1">Entreprise (optionnel)</label>
+        <input
+          type="text"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+          className="w-full px-4 py-2 rounded bg-zinc-800 border border-zinc-600 text-white"
+        />
+      </div>
+      <input
+        type="text"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        className="hidden"
+      />
       <button
         type="submit"
         className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded"
