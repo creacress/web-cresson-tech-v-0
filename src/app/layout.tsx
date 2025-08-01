@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Web Cresson Tech" />
         <meta name="description" content="Découvrez comment WebCressonTech transforme vos process grâce à l'IA, la RPA et Python. Audit gratuit & solutions personnalisées." />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/Logo_webcressontech.ico" />
         <link rel="canonical" href="https://webcresson.com/" />
 
         {/* Google Tag Manager */}
