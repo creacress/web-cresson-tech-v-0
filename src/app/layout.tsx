@@ -10,6 +10,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CookieConsent from "@/components/CookieModal/CookieModal";
 import AnalyticsScripts from '@/components/AnalyticsProvider/AnalyticsScripts';
+import PageTransition from '@/components/ui/PageTransition'
 
 const play = Play({ subsets: ['latin'], display: 'swap', weight: ['400', '700'] })
 
@@ -67,7 +68,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GTMNoScript />
         <Toaster position="top-center" theme="dark" richColors />
         <Header />
-        <main>{children}</main>
+        <PageTransition>
+          <main>{children}</main>
+        </PageTransition>
         <Analytics />
         <SpeedInsights />
         <Footer />
