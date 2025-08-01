@@ -72,6 +72,36 @@ export default function ContactPage() {
             – Nous répondons sous 24h.
           </p>
         </section>
+        {/* Google tag (gtag.js) event */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              gtag('event', 'conversion_event_submit_lead_form', {
+                // event_parameters
+              });
+            `,
+          }}
+        />
+
+        {/* Google tag (gtag.js) event - delayed navigation helper */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              function gtagSendEvent(url) {
+                var callback = function () {
+                  if (typeof url === 'string') {
+                    window.location = url;
+                  }
+                };
+                gtag('event', 'conversion_event_submit_lead_form', {
+                  'event_callback': callback,
+                  'event_timeout': 2000
+                });
+                return false;
+              }
+            `,
+          }}
+        />
       </main>
     </>
   )

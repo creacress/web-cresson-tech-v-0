@@ -187,6 +187,7 @@ export default function About() {
             Nos services
           </Link>
         </section>
+
       </main>
     </>
   );

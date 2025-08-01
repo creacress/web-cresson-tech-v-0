@@ -1,4 +1,9 @@
 'use client'
+declare global {
+  interface Window {
+    gtagSendEvent: (url: string) => void;
+  }
+}
 import React, { useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -25,6 +30,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ plan }) => {
       .then((res) => {
         if (!res.ok) throw new Error('Erreur')
         toast.success('Message envoyé avec succès !')
+        window.gtagSendEvent('/merci')
       })
       .catch(() => toast.error('Une erreur est survenue. Réessaie plus tard.'))
   }

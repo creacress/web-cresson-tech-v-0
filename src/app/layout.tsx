@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Toaster } from 'sonner'
-import { Inter } from 'next/font/google'
+import { Play } from 'next/font/google'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/next'
 import { GoogleTagManager, GTMNoScript } from '../components/GoogleTagManager/GoogleTagManager'
@@ -11,7 +11,7 @@ import Footer from '@/components/Footer'
 import CookieConsent from "@/components/CookieModal/CookieModal";
 import AnalyticsScripts from '@/components/AnalyticsProvider/AnalyticsScripts';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' })
+const play = Play({ subsets: ['latin'], display: 'swap', weight: ['400', '700'] })
 
 export const metadata: Metadata = {
   title: 'Agence IA & Automatisation | WebCressonTech – Solutions Python & RPA sur mesure',
@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GoogleTagManager />
       </head>
 
-      <body className={`bg-black text-white min-h-screen antialiased ${inter.className}`}>
+      <body className={`bg-black text-white min-h-screen antialiased ${play.className}`}>
         <GTMNoScript />
         <Toaster position="top-center" theme="dark" richColors />
         <Header />
