@@ -11,6 +11,7 @@ import Footer from '@/components/Footer'
 import CookieConsent from "@/components/CookieModal/CookieModal";
 import AnalyticsScripts from '@/components/AnalyticsProvider/AnalyticsScripts';
 import PageTransition from '@/components/ui/PageTransition'
+import VoiceAgent from '@/components/VoiceAgent'
 
 const play = Play({ subsets: ['latin'], display: 'swap', weight: ['400', '700'] })
 
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`bg-black text-white min-h-screen antialiased ${play.className}`}>
         <GTMNoScript />
         <Toaster position="top-center" theme="dark" richColors />
+        
         <Header />
         <PageTransition>
           <main>{children}</main>

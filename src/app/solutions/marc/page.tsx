@@ -10,8 +10,7 @@ export default function MarcDemoPage() {
         🤖 Démo IA personnalisée – Marc, PME digitale
       </h1>
       <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-        Marc gère une PME avec plusieurs outils métiers. Il veut gagner du temps en automatisant ses exports, son reporting et son suivi client.
-        Voici une démo adaptée à ses besoins.
+        Marc dirige une PME moderne. Il veut améliorer sa productivité et suivre son activité sans perdre de temps : dashboards, automatisation, suivi intelligent. Voici une démo de notre Pack IA PME – pensé pour lui.
       </p>
 
       <img
@@ -25,9 +24,9 @@ export default function MarcDemoPage() {
 
         <div className="relative flex flex-col items-center gap-16 w-full">
           <div className="bg-[#1a1a1a] border border-cyan-700/20 rounded-xl p-6 text-center max-w-sm w-full shadow-lg animate-fade-in">
-            <h3 className="text-xl font-bold text-white mb-2">📤 Étape 1 – Automatisation des exports</h3>
+            <h3 className="text-xl font-bold text-white mb-2">⚙️ Étape 1 – Automatisations personnalisées</h3>
             <p className="text-gray-400 text-sm">
-              Marc n’a plus à extraire ses fichiers : un robot RPA s’en charge quotidiennement.
+              Marc n’a plus besoin d’extraire ses fichiers ni de relancer manuellement. L’IA le fait à sa place.
             </p>
           </div>
 
@@ -37,9 +36,9 @@ export default function MarcDemoPage() {
           </svg>
 
           <div className="bg-[#1a1a1a] border border-cyan-700/20 rounded-xl p-6 text-center max-w-sm w-full shadow-lg animate-fade-in delay-200">
-            <h3 className="text-xl font-bold text-white mb-2">📊 Étape 2 – Reporting automatisé</h3>
+            <h3 className="text-xl font-bold text-white mb-2">📊 Étape 2 – Dashboard IA en temps réel</h3>
             <p className="text-gray-400 text-sm">
-              Un tableau de bord généré à partir des données permet à Marc de suivre ses KPIs sans effort.
+              Un tableau de bord regroupe automatiquement les données clés et détecte les anomalies.
             </p>
           </div>
 
@@ -49,9 +48,9 @@ export default function MarcDemoPage() {
           </svg>
 
           <div className="bg-[#1a1a1a] border border-cyan-700/20 rounded-xl p-6 text-center max-w-sm w-full shadow-lg animate-fade-in delay-400">
-            <h3 className="text-xl font-bold text-white mb-2">🤝 Étape 3 – Suivi client intelligent</h3>
+            <h3 className="text-xl font-bold text-white mb-2">📬 Étape 3 – Suivi client automatisé</h3>
             <p className="text-gray-400 text-sm">
-              Des alertes sont envoyées automatiquement quand une interaction client est requise.
+              L’IA détecte les clients à risque et alerte Marc avec des actions proposées.
             </p>
           </div>
         </div>
@@ -109,6 +108,22 @@ export default function MarcDemoPage() {
         </div>
       </section>
 
+      {/* Section: Best IA Models Hugging Face pour TPE */}
+      <section className="mt-24 max-w-7xl mx-auto text-center">
+        <h2 className="text-3xl font-extrabold text-white mb-4">
+          ✨ Vous pouvez découvrir ici mon petit Hub d'IA
+        </h2>
+        <p className="text-gray-400 mb-6 max-w-xl mx-auto">
+          Explorez notre sélection des meilleurs modèles d’IA pour les TPE. Vous serez redirigé vers la bonne catégorie automatiquement.
+        </p>
+        <a
+          href="/IA?sector=TPE#sector-selector"
+          className="inline-block px-6 py-3 bg-cyan-600 text-white font-semibold rounded-full hover:bg-cyan-500 transition"
+        >
+          Voir les modèles IA pour PME
+        </a>
+      </section>
+
       {/* Autres cas d’usage IA utiles pour Marc */}
       <section className="mt-24 space-y-10">
         <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">🏢 Autres cas d’usage IA utiles pour Marc</h2>
@@ -130,9 +145,9 @@ export default function MarcDemoPage() {
               desc: "Un agent IA répond aux questions internes (ex : « Quel est le CA du mois ? »)."
             },
             {
-              icon: "📤",
-              title: "Tri de CV automatisé",
-              desc: "L’IA sélectionne les profils pertinents et classe automatiquement les candidatures."
+              icon: "📂",
+              title: "Organisation automatique des fichiers",
+              desc: "L’IA trie les documents reçus et les classe dans les bons dossiers selon leur contenu."
             }
           ].map((item, i) => (
             <div key={i} className="bg-[#111] border border-[#00e0ff33] p-5 rounded-lg">
@@ -145,7 +160,7 @@ export default function MarcDemoPage() {
       </section>
 
       <div className="text-center mt-16">
-        <CTA label="Essayer cette solution pour ma PME" />
+        <CTA label="Demander ce Pack IA pour ma PME" />
       </div>
       {/* Section: Navigation vers autres personas */}
       <section className="mt-24">

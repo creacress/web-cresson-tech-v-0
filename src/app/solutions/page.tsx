@@ -1,8 +1,6 @@
 // app/solutions/page.tsx
-
 import { Metadata } from 'next';
 import Link from 'next/link';
-import NeonTitle from '@/components/ui/NeonTitle';
 import NeonDivider from '@/components/ui/NeonDivider';
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd';
 import ServiceSchema from '@/components/ServiceShema/ServiceSchema';
@@ -10,13 +8,24 @@ import BreadcrumbNav from '@/components/BreadcrumbNav/BreadcrumbNav';
 import SolutionsIA from '@/components/SolutionsIAPage/SolutionsIAPage';
 import CTA from '@/components/CTAButton/CTAButton';
 import Image from 'next/image';
+import PacksIA from './PacksIA';
 
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: 'Nos Solutions en Intelligence Artificielle | Web Cresson Tech',
-  description:
-    'Solutions IA personnalisées pour PME, ETI et grands comptes : audit offert, automatisation, agents IA, NLP, contenu génératif...',
+  title: "Solutions IA pour PME & Startups | Audit Gratuit - Web Cresson Tech",
+  description: "Boostez votre entreprise avec nos solutions IA sur mesure : automatisation, NLP, agents IA, audit gratuit. Accompagnement pour PME, ETI et Startups.",
+  keywords: [
+    "solutions IA",
+    "intelligence artificielle PME",
+    "automatisation processus",
+    "audit IA gratuit",
+    "IA pour startups",
+    "agents conversationnels",
+    "NLP",
+    "RPA",
+    "machine learning",
+  ],
   openGraph: {
     title: 'Nos Services - Expertise en IA',
     description:
@@ -91,7 +100,7 @@ export default function ServicesSolutions() {
         <BreadcrumbNav />
 
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-          Solutions IA sur mesure pour booster votre performance
+          Solutions d'Intelligence Artificielle pour PME et Startups | Audit Offert
         </h1>
         <NeonDivider />
         <p className="text-sm text-gray-300 mb-8 max-w-xl mx-auto">
@@ -120,57 +129,8 @@ export default function ServicesSolutions() {
           </div>
         </div>
       </section>
-       {/* Solutions par profil */}
-       <section className="py-20 max-w-4xl mx-auto bg-[#0c0c0c] rounded-xl px-6 border border-[#00e0ff11]">
-        <h2 className="text-3xl sm:text-4xl font-bold text-neon text-center mb-6">Nos solutions selon votre profil</h2>
-        <p className="text-gray-400 text-center max-w-2xl mx-auto mb-6">
-          Que vous soyez indépendant, dirigeant d’une PME ou fondateur d’une startup, l’IA peut booster votre activité.
-        </p>
-        <div className="grid md:grid-cols-3 gap-8 text-gray-300 text-center items-stretch">
-          {[{
-            img: "/avatars/julie.png",
-            nom: "Julie",
-            role: "TPE – Atelier de maroquinerie",
-            bio: "Julie dirige seule sa micro-entreprise. Elle veut automatiser la facturation et les suivis clients pour se libérer du temps sans embaucher.",
-            soluce: "👩‍💼 Outils simples : automatisation des tâches, génération de contenu, CRM intelligent."
-          }, {
-            img: "/avatars/marc.png",
-            nom: "Marc",
-            role: "PME – CTO d'une entreprise industrielle",
-            bio: "Marc cherche à connecter ses outils internes avec des solutions IA fiables, et améliorer l'efficacité des équipes techniques.",
-            soluce: "🏢 Optimisation des process, maintenance prédictive, marketing IA et prédiction des ventes."
-          }, {
-            img: "/avatars/lisa.png",
-            nom: "Lisa",
-            role: "Startup – CEO d'une startup IA",
-            bio: "Lisa a levé des fonds et veut lancer un MVP IA rapide et innovant. Elle cherche un partenaire agile pour l'accompagner.",
-            soluce: "🏛️ Stratégie IA, agents autonomes, intégration systèmes, gouvernance et conformité IA."
-          }].map((p, i) => (
-            <div key={i} className="flex flex-col justify-between bg-[#111] border border-[#00e0ff33] rounded-lg p-6 transition duration-300 hover:shadow-xl hover:scale-105 hover:border-[#00e0ff88]">
-              <Image src={p.img} alt={p.nom} width={80} height={80} className="rounded-full mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-white mb-1">{p.nom}</h3>
-              <p className="text-sm italic text-gray-400 mb-2">{p.role}</p>
-              <p className="text-sm mb-4">{p.bio}</p>
-              <p className="text-sm text-gray-400">{p.soluce}</p>
-              {p.nom === "Julie" && (
-                <Link href="/solutions/julie" className="mt-4 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-sm rounded transition text-center">
-                  Voir une démo adaptée
-                </Link>
-              )}
-              {p.nom === "Marc" && (
-                <Link href="/solutions/marc" className="mt-4 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-sm rounded transition text-center">
-                  Voir une démo adaptée
-                </Link>
-              )}
-              {p.nom === "Lisa" && (
-                <Link href="/solutions/lisa" className="mt-4 px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-sm rounded transition text-center">
-                  Voir une démo adaptée
-                </Link>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Packs IA prêts à l'emploi */}
+      <PacksIA />
       {/* Composants Client */}
       <SolutionsIA />
 

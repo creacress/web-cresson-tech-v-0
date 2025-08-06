@@ -41,19 +41,9 @@ export default function ContactPage() {
       />
       <main className="max-w-4xl mx-auto px-6 py-24 text-white">
         <BreadcrumbNav />
-        <section className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">Prenez Rendez-vous</h1>
-          <p className="text-gray-300 max-w-2xl mx-auto">
-            Réservez un appel avec notre équipe via notre agenda en ligne ci-dessous.
-          </p>
-        </section>
-
-        <section className="mb-16">
-          <GoogleCalendar />
-        </section>
 
         <section className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Contactez-nous</h2>
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">Contactez-nous</h1>
           <p className="text-gray-300 max-w-2xl mx-auto">
             Une question ? Un besoin ? Laissez-nous un message et nous vous répondrons rapidement.
           </p>
@@ -62,7 +52,16 @@ export default function ContactPage() {
         <section>
           <ContactSection />
         </section>
+        <section className="text-center mb-12">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">Prenez Rendez-vous</h2>
+          <p className="text-gray-300 max-w-2xl mx-auto">
+            Réservez un appel avec notre équipe via notre agenda en ligne ci-dessous.
+          </p>
+        </section>
 
+        <section className="mb-16">
+          <GoogleCalendar />
+        </section>
         <section className="mt-16 text-center">
           <p className="text-gray-400 text-sm">
             Ou écrivez-nous à{' '}

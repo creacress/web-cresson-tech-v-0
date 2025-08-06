@@ -166,25 +166,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Tableau traitement IA */}
-      <section className="my-20">
-        <h2 className="text-2xl font-bold text-white mb-4">IA appliquée à vos données</h2>
-        <table className="table-auto w-full text-left text-sm text-gray-400 border border-gray-700">
-          <thead>
-            <tr className="bg-[#222]">
-              <th className="p-2">Donnée d’entrée</th>
-              <th className="p-2">Traitement IA</th>
-              <th className="p-2">Sortie</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td className="p-2">Emails</td><td className="p-2">Classification</td><td className="p-2">Tickets triés</td></tr>
-            <tr><td className="p-2">Logs machines</td><td className="p-2">Prédiction</td><td className="p-2">Alertes automatiques</td></tr>
-            <tr><td className="p-2">Pages Web</td><td className="p-2">Scraping + Résumé</td><td className="p-2">Veille intelligente</td></tr>
-          </tbody>
-        </table>
-      </section>
-
       {/* Témoignage + CTA */}
       <section className="text-center my-20 max-w-3xl mx-auto">
         <blockquote className="italic text-gray-300 border-l-4 border-[#00e0ff] pl-4 mb-4">

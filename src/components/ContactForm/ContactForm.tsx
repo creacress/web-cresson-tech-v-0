@@ -9,13 +9,19 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 type ContactFormProps = {
-  plan?: string
+  plan?: string;
+  model?: string;
+  pipeline?: string;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ plan }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ plan, model, pipeline }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [comments, setComments] = useState('')
+  const [comments, setComments] = useState(
+    model || pipeline
+      ? `Bonjour, je suis intéressé par l'intégration du modèle IA "${model}" pour une tâche de type "${pipeline}". Pouvez-vous m'accompagner dans sa mise en œuvre ?`
+      : ''
+  )
   const [phone, setPhone] = useState('')
   const [company, setCompany] = useState('')
   const [website, setWebsite] = useState('')
@@ -25,7 +31,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ plan }) => {
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, phone, company, comments, plan, website }),
+      body: JSON.stringify({ name, email, phone, company, comments, plan, website, model, pipeline }),
     })
       .then((res) => {
         if (!res.ok) throw new Error('Erreur')
@@ -42,6 +48,16 @@ const ContactForm: React.FC<ContactFormProps> = ({ plan }) => {
           <div className="rounded border border-indigo-500 bg-indigo-950/50 text-indigo-300 text-sm px-4 py-2 flex items-center gap-2 shadow-md">
             <span className="font-semibold text-white">🎯 Offre sélectionnée :</span> {plan}
           </div>
+          {model && (
+            <div className="rounded border border-cyan-600 bg-cyan-950/50 text-cyan-300 text-sm px-4 py-2 flex items-center gap-2 shadow-md">
+              <span className="font-semibold text-white">🤖 Modèle IA :</span> {model}
+            </div>
+          )}
+          {pipeline && (
+            <div className="rounded border border-amber-500 bg-amber-950/50 text-amber-300 text-sm px-4 py-2 flex items-center gap-2 shadow-md">
+              <span className="font-semibold text-white">🔧 Tâche IA :</span> {pipeline}
+            </div>
+          )}
           <input type="hidden" name="plan" value={plan} />
         </>
       )}

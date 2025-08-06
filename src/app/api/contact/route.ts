@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Trop de requêtes. Réessayez plus tard.' }, { status: 429 })
   }
 
-  const { name, email, phone, company, comments, plan, website } = await req.json()
+  const { name, email, phone, company, comments, plan, website, model, pipeline } = await req.json()
 
   if (typeof website === 'string' && website.trim() !== '') {
     return NextResponse.json({ error: 'Requête non autorisée' }, { status: 400 })
@@ -19,6 +19,19 @@ export async function POST(req: Request) {
 
   if (!name || !email || !comments) {
     return NextResponse.json({ error: 'Champs requis manquants.' }, { status: 400 })
+  }
+
+  const isValid = (val: string | undefined, regex: RegExp) => typeof val === 'string' && regex.test(val)
+
+  const modelValid = isValid(model, /^[\w\-\/]+$/)
+  const pipelineValid = isValid(pipeline, /^[\w\-]+$/)
+
+  if (model && !modelValid) {
+    return NextResponse.json({ error: 'Modèle IA invalide.' }, { status: 400 })
+  }
+
+  if (pipeline && !pipelineValid) {
+    return NextResponse.json({ error: 'Pipeline IA invalide.' }, { status: 400 })
   }
 
   try {
@@ -43,6 +56,8 @@ export async function POST(req: Request) {
         <p><strong>Téléphone :</strong> ${phone || 'Non fourni'}</p>
         <p><strong>Entreprise :</strong> ${company || 'Non précisé'}</p>
         <p><strong>Plan choisi :</strong> ${plan || 'Non précisé'}</p>
+        ${model ? `<p><strong>Modèle IA :</strong> ${model}</p>` : ''}
+        ${pipeline ? `<p><strong>Tâche IA :</strong> ${pipeline}</p>` : ''}
         <p><strong>Message :</strong><br/>${comments.replace(/\n/g, '<br/>')}</p>
       `,
     })

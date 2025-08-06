@@ -1,17 +1,19 @@
+// @ts-nocheck
 "use client";
 import CTA from "@/components/CTAButton/CTAButton";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import ModelCardHuggingFace from "@/components/ModelCardHuggingFace";
 
-
-export default function JulieDemoPage() {
+export default function JulieClientPage({ tpeModels = [] }: { tpeModels?: any[] }) {
   return (
     <main className="max-w-4xl mx-auto px-6 py-20 text-white">
       <h1 className="text-4xl font-bold text-center mb-6">
         🧠 Démo IA personnalisée – Julie, TPE artisanale
       </h1>
       <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-        Julie dirige un atelier de maroquinerie. Elle veut automatiser sa facturation, relancer ses clients, et suivre ses ventes plus facilement.
-        Voici une démo d’IA adaptée à ses besoins.
+        Julie dirige un atelier de maroquinerie. Elle veut gagner du temps sur ses tâches répétitives :
+        automatiser sa facturation, relancer ses clients, et suivre ses ventes facilement.
+        Voici une démonstration de notre Pack IA TPE – pensé pour elle.
       </p>
 
       <img
@@ -49,9 +51,9 @@ export default function JulieDemoPage() {
           </svg>
 
           <div className="bg-[#1a1a1a] border border-cyan-700/20 rounded-xl p-6 text-center max-w-sm w-full shadow-lg animate-fade-in delay-400">
-            <h3 className="text-xl font-bold text-white mb-2">📊 Étape 3 – Suivi visuel</h3>
+            <h3 className="text-xl font-bold text-white mb-2">🎙️ Étape 3 – Dashboard + Assistant vocal</h3>
             <p className="text-gray-400 text-sm">
-              Visualisation des paiements et alertes dans un dashboard clair.
+              Julie accède à un dashboard clair, et peut même activer une IA vocale pour noter les rendez-vous en direct.
             </p>
           </div>
         </div>
@@ -81,13 +83,29 @@ export default function JulieDemoPage() {
         </div>
 
         <div className="bg-[#111] border border-neutral-700 p-6 rounded-xl">
-          <h2 className="text-2xl font-semibold mb-2">3. Tableau de bord simple et visuel</h2>
+          <h2 className="text-2xl font-semibold mb-2">3. Dashboard clair + Assistant vocal</h2>
           <p className="text-gray-400">
-            Julie visualise ses encaissements, les retards et les clients à fort potentiel sur un dashboard intuitif.
+            Julie visualise ses paiements, les relances, et peut utiliser un assistant vocal pour fixer des rendez-vous à la voix.
           </p>
         </div>
       </section>
 
+      {/* Section: Best IA Models Hugging Face pour TPE */}
+      <section className="mt-24 max-w-7xl mx-auto text-center">
+        <h2 className="text-3xl font-extrabold text-white mb-4">
+          ✨ Vous pouvez découvrir ici mon petit Hub d'IA
+        </h2>
+        <p className="text-gray-400 mb-6 max-w-xl mx-auto">
+          Explorez notre sélection des meilleurs modèles d’IA pour les TPE. Vous serez redirigé vers la bonne catégorie automatiquement.
+        </p>
+        <a
+          href="/IA?sector=TPE#sector-selector"
+          className="inline-block px-6 py-3 bg-cyan-600 text-white font-semibold rounded-full hover:bg-cyan-500 transition"
+        >
+          Voir les modèles IA pour TPE
+        </a>
+      </section>
+      
       <section className="mt-24 space-y-10">
         <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">🧰 Autres cas d’usage IA utiles pour Julie</h2>
         <div className="grid gap-6 md:grid-cols-2">
@@ -123,7 +141,7 @@ export default function JulieDemoPage() {
       </section>
 
       <div className="text-center mt-16">
-        <CTA label="Essayer cette solution pour ma TPE" />
+        <CTA label="Demander ce Pack IA pour mon entreprise" />
       </div>
       {/* Section: Navigation vers autres personas */}
       <section className="mt-24">

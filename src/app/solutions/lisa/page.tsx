@@ -10,8 +10,8 @@ export default function LisaDemoPage() {
                 🤖 Démo IA personnalisée – Lisa, Start-up innovante
             </h1>
             <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-                Lisa développe une solution SaaS. Elle veut automatiser l'onboarding client, répondre vite aux leads et suivre les signaux d'achat en temps réel.
-                Voici une démo faite pour elle.
+                Lisa développe une solution SaaS. Elle veut automatiser l'onboarding client, interagir rapidement avec ses leads et générer de la valeur dès les premiers clics.
+                Voici une démo de notre Pack IA Start-up – pensée pour elle.
             </p>
 
             <img
@@ -25,9 +25,9 @@ export default function LisaDemoPage() {
 
                 <div className="relative flex flex-col items-center gap-16 w-full">
                     <div className="bg-[#1a1a1a] border border-cyan-700/20 rounded-xl p-6 text-center max-w-sm w-full shadow-lg animate-fade-in">
-                        <h3 className="text-xl font-bold text-white mb-2">💬 Étape 1 – Chatbot intelligent</h3>
+                        <h3 className="text-xl font-bold text-white mb-2">💬 Étape 1 – Agent conversationnel IA</h3>
                         <p className="text-gray-400 text-sm">
-                            Un agent IA répond aux questions des leads, qualifie leurs besoins et les redirige vers l’équipe si nécessaire.
+                            Un agent IA répond aux leads, les guide, et peut déclencher des actions dans le produit (prise de RDV, essai gratuit...)
                         </p>
                     </div>
 
@@ -37,9 +37,9 @@ export default function LisaDemoPage() {
                     </svg>
 
                     <div className="bg-[#1a1a1a] border border-cyan-700/20 rounded-xl p-6 text-center max-w-sm w-full shadow-lg animate-fade-in delay-200">
-                        <h3 className="text-xl font-bold text-white mb-2">🧾 Étape 2 – Extraction de documents</h3>
+                        <h3 className="text-xl font-bold text-white mb-2">🛠️ Étape 2 – Générateur de contenu IA</h3>
                         <p className="text-gray-400 text-sm">
-                            Les pièces jointes reçues (PDF, CV, fiches produit...) sont lues et analysées automatiquement par l’IA.
+                            Lisa peut générer des réponses ou pages produit automatiquement selon les besoins du client.
                         </p>
                     </div>
 
@@ -49,9 +49,9 @@ export default function LisaDemoPage() {
                     </svg>
 
                     <div className="bg-[#1a1a1a] border border-cyan-700/20 rounded-xl p-6 text-center max-w-sm w-full shadow-lg animate-fade-in delay-400">
-                        <h3 className="text-xl font-bold text-white mb-2">⚡ Étape 3 – Scoring de leads</h3>
+                        <h3 className="text-xl font-bold text-white mb-2">🚀 Étape 3 – MVP IA modulaire</h3>
                         <p className="text-gray-400 text-sm">
-                            Les prospects sont scorés automatiquement selon leur intérêt, leur comportement et leur profil.
+                            Un prototype IA est mis en place avec modules texte / image / données en fonction de l’usage.
                         </p>
                     </div>
                 </div>
@@ -67,21 +67,21 @@ export default function LisaDemoPage() {
 
             <section className="space-y-12 mt-24">
                 <div className="bg-[#111] border border-neutral-700 p-6 rounded-xl">
-                    <h2 className="text-2xl font-semibold mb-2">1. Réponse automatisée aux leads</h2>
+                    <h2 className="text-2xl font-semibold mb-2">1. Réponses IA dynamiques dès l'onboarding</h2>
                     <p className="text-gray-400">
                         Les leads qui remplissent un formulaire reçoivent instantanément une réponse personnalisée, avec lien vers la démo adaptée.
                     </p>
                 </div>
 
                 <div className="bg-[#111] border border-neutral-700 p-6 rounded-xl">
-                    <h2 className="text-2xl font-semibold mb-2">2. Lecture automatique de CV ou PDF</h2>
+                    <h2 className="text-2xl font-semibold mb-2">2. Création de contenu automatisée</h2>
                     <p className="text-gray-400">
                         Les documents joints dans les candidatures ou demandes clients sont traités par l’IA sans effort.
                     </p>
                 </div>
 
                 <div className="bg-[#111] border border-neutral-700 p-6 rounded-xl">
-                    <h2 className="text-2xl font-semibold mb-2">3. Tableau de priorisation des leads</h2>
+                    <h2 className="text-2xl font-semibold mb-2">3. Suivi et amélioration continue via logs</h2>
                     <p className="text-gray-400">
                         Lisa voit immédiatement les leads les plus chauds, classés par pertinence et engagement.
                     </p>
@@ -110,9 +110,23 @@ export default function LisaDemoPage() {
             </section>
 
             <div className="text-center mt-16">
-                <CTA label="Découvrir l’IA pour ma start-up" />
+                <CTA label="Demander ce Pack IA pour ma Start-up" />
             </div>
-
+            {/* Section: Best IA Models Hugging Face pour TPE */}
+            <section className="mt-24 max-w-7xl mx-auto text-center">
+                <h2 className="text-3xl font-extrabold text-white mb-4">
+                    ✨ Vous pouvez découvrir ici mon petit Hub d'IA
+                </h2>
+                <p className="text-gray-400 mb-6 max-w-xl mx-auto">
+                    Explorez notre sélection des meilleurs modèles d’IA pour les TPE. Vous serez redirigé vers la bonne catégorie automatiquement.
+                </p>
+                <a
+                    href="/IA?sector=PME#sector-selector"
+                    className="inline-block px-6 py-3 bg-cyan-600 text-white font-semibold rounded-full hover:bg-cyan-500 transition"
+                >
+                    Voir les modèles IA pour Start-up
+                </a>
+            </section>
             {/* Section: Autres cas d’usage IA utiles pour Lisa */}
             <section className="mt-24 space-y-10">
                 <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">🚀 Autres cas d’usage IA utiles pour Lisa</h2>

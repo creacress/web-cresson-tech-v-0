@@ -3,6 +3,7 @@
 import { Rocket, Settings, Building, Puzzle, LucideIcon } from 'lucide-react'
 import React from 'react'
 import Link from 'next/link'
+import NeonDivider from '../ui/NeonDivider'
 
 type Plan = {
   name: string
@@ -102,102 +103,132 @@ export default function PricingSection() {
           </p>
         </div>
       </section>
-
-      <div className="max-w-6xl mx-auto space-y-20">
-
-        {/* Tarifs IA */}
-        <div>
-          <h2 className="text-2xl font-bold text-white mb-6">💡 Tarifs IA</h2>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            {/* IA Simple */}
-            <div className="bg-[#1a1a1a] border border-[#00e0ff33] rounded p-6">
-              <h3 className="text-xl font-semibold text-white mb-2" aria-label="Offre IA Simple">IA Simple</h3>
-              <p className="text-gray-400 text-sm mb-4">Classification, prédiction, détection d’objets ou de fraude sur données structurées.</p>
-              <ul className="text-sm text-gray-300 mb-4 space-y-2" role="list">
-                <li>✓ À partir de 3 000 €</li>
-                <li>✓ Modèles standards ML / scikit-learn</li>
-                <li>✓ Dashboard de prédiction intégré</li>
-              </ul>
-              <p className="text-xs text-gray-500">Parfait pour les TPE / PME souhaitant débuter avec l’IA sur un cas ciblé.</p>
-              <Link href="/contact?plan=starter" className="inline-block mt-4 text-cyan-400 underline hover:text-cyan-300">Choisir Starter maintenant</Link>
+      <NeonDivider />
+      {/* Section Abonnements mensuels (plans.map...) */}
+      <section className="py-20 bg-zinc-950 text-white text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-cyan-400">📦 Abonnements mensuels</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
+          {plans.map((plan, i) => (
+            <div
+              key={i}
+              className={`h-full flex flex-col justify-between bg-gradient-to-br from-zinc-900 to-zinc-950 rounded-xl border shadow-md transition-all duration-300 hover:shadow-cyan-500/20 border-zinc-800 hover:border-cyan-500 p-6 ${
+                plan.highlight ? 'scale-[1.03] border-cyan-500' : ''
+              }`}
+            >
+              <div>
+                <div className="flex justify-center text-cyan-400 mb-4">
+                  <plan.icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
+                <p className="text-cyan-400 font-semibold mb-4">{plan.price}</p>
+                <ul className="text-sm text-gray-300 text-left space-y-2 mb-6">
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx}>✔️ {feature}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <Link
+                  href={plan.ctaLink || '/contact'}
+                  className="inline-block px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-medium transition"
+                >
+                  {plan.ctaLabel}
+                </Link>
+              </div>
             </div>
-
-            {/* IA Intermédiaire */}
-            <div className="bg-[#1a1a1a] border border-[#00e0ff] shadow-cyan-500/10 rounded p-6">
-              <h3 className="text-xl font-semibold text-white mb-2" aria-label="Offre IA Intermédiaire">IA Intermédiaire</h3>
-              <p className="text-gray-400 text-sm mb-4">NLP, computer vision, retraining mensuel, intégration API REST, dashboards dynamiques.</p>
-              <ul className="text-sm text-gray-300 mb-4 space-y-2" role="list">
-                <li>✓ 10 000 € à 30 000 €</li>
-                <li>✓ Déploiement cloud & API</li>
-                <li>✓ Ateliers IA / accompagnement</li>
+          ))}
+        </div>
+      </section>
+      <NeonDivider />
+      {/* Section Packs RPA */}
+      <section className="py-20 bg-[#0c0c0c] text-white text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-amber-400">🦾 Nos Packs RPA Clés en Main</h2>
+        <p className="text-gray-400 max-w-3xl mx-auto mb-12">
+          Pour automatiser efficacement vos tâches répétitives avec des robots logiciels sur mesure.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {/* Pack RPA Simple */}
+          <div className="h-full flex flex-col justify-between bg-gradient-to-br from-[#2c1b00] to-[#0c0c0c] p-6 rounded-xl border border-amber-600/30 shadow-xl hover:shadow-amber-500/10 transition">
+            <div>
+              <h3 className="text-xl font-bold text-white mb-2">⚙️ Pack RPA Simple</h3>
+              <p className="text-amber-400 font-medium mb-4">à partir de 3 900€</p>
+              <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
+                <li>✔️ Extraction web / clics automatisés</li>
+                <li>✔️ Script Python ou Rust sur mesure</li>
+                <li>✔️ Déclenchement planifié ou manuel</li>
+                <li>✔️ Livraison clé en main</li>
               </ul>
-              <p className="text-xs text-gray-500">Idéal pour structurer des modèles IA internes et automatiser leur usage métier.</p>
-              <Link href="/contact?plan=pro" className="inline-block mt-4 text-cyan-400 underline hover:text-cyan-300">Choisir Pro maintenant</Link>
             </div>
+            <div>
+              <Link href="/contact?plan=rpa-simple" className="inline-block mt-4 bg-amber-500 hover:bg-amber-600 text-black px-5 py-2 rounded-lg font-semibold transition">Demander une démo</Link>
+            </div>
+          </div>
 
-            {/* IA Complexe */}
-            <div className="bg-[#1a1a1a] border border-[#00e0ff33] rounded p-6">
-              <h3 className="text-xl font-semibold text-white mb-2" aria-label="Offre IA Complexe">IA Complexe</h3>
-              <p className="text-gray-400 text-sm mb-4">LLM, fine-tuning de GPT/Mistral, MLOps, CI/CD, hébergement cloud ou on-premise.</p>
-              <ul className="text-sm text-gray-300 mb-4 space-y-2" role="list">
-                <li>✓ À partir de 30 000 €</li>
-                <li>✓ Modèle personnalisé sur vos données</li>
-                <li>✓ Infrastructure IA complète + suivi</li>
+          {/* Pack RPA Intermédiaire */}
+          <div className="h-full flex flex-col justify-between bg-gradient-to-br from-[#332400] to-[#0c0c0c] p-6 rounded-xl border border-amber-500 shadow-xl hover:shadow-amber-500/20 transition">
+            <div>
+              <h3 className="text-xl font-bold text-white mb-2">🤖 Pack RPA Intermédiaire</h3>
+              <p className="text-amber-400 font-medium mb-4">à partir de 7 900€</p>
+              <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
+                <li>✔️ Automatisation de workflows multi-étapes</li>
+                <li>✔️ Intégration aux outils internes</li>
+                <li>✔️ Dashboard de suivi</li>
+                <li>✔️ Maintenance incluse 6 mois</li>
               </ul>
-              <p className="text-xs text-gray-500">Pensé pour les grands comptes ou entreprises souhaitant déployer leur propre IA souveraine.</p>
-              <Link href="/contact?plan=entreprise" className="inline-block mt-4 text-cyan-400 underline hover:text-cyan-300">Demander un devis maintenant</Link>
+            </div>
+            <div>
+              <Link href="/contact?plan=rpa-intermediaire" className="inline-block mt-4 bg-amber-500 hover:bg-amber-600 text-black px-5 py-2 rounded-lg font-semibold transition">Demander une démo</Link>
+            </div>
+          </div>
+
+          {/* Pack RPA Avancé */}
+          <div className="h-full flex flex-col justify-between bg-gradient-to-br from-[#3d2f00] to-[#0c0c0c] p-6 rounded-xl border border-amber-600/30 shadow-xl hover:shadow-amber-500/10 transition">
+            <div>
+              <h3 className="text-xl font-bold text-white mb-2">🧠 Pack RPA Avancé</h3>
+              <p className="text-amber-400 font-medium mb-4">à partir de 19 500€</p>
+              <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
+                <li>✔️ Robots UiPath / Power Automate</li>
+                <li>✔️ OCR, formulaires, mail, bases de données</li>
+                <li>✔️ Orchestration cloud ou on-premise</li>
+                <li>✔️ Intégration CRM / ERP possible</li>
+              </ul>
+            </div>
+            <div>
+              <Link href="/contact?plan=rpa-avance" className="inline-block mt-4 bg-amber-500 hover:bg-amber-600 text-black px-5 py-2 rounded-lg font-semibold transition">Demander une démo</Link>
             </div>
           </div>
         </div>
+      </section>
+      <NeonDivider />
+      {/* Section Abonnement IA/RPA */}
+      <section className="py-24 bg-gradient-to-br from-black via-zinc-950 to-black text-white text-center relative overflow-hidden border-t border-zinc-800">
+        <div className="absolute -top-20 -left-20 w-[300px] h-[300px] bg-cyan-500/10 blur-3xl rounded-full animate-pulse-slow" />
+        <div className="absolute bottom-0 right-0 w-[200px] h-[200px] bg-indigo-500/10 blur-2xl rounded-full animate-pulse-slow" />
 
-        {/* Tarifs RPA */}
-        <div>
-          <h2 className="text-2xl font-bold text-white mb-6">🤖 Tarifs RPA</h2>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            {/* RPA Simple */}
-            <div className="bg-[#1a1a1a] border border-[#00e0ff33] rounded p-6">
-              <h3 className="text-xl font-semibold text-white mb-2" aria-label="Offre RPA Simple">RPA Simple</h3>
-              <p className="text-gray-400 text-sm mb-4">Automatisation avec Python, Rust ou Selenium pour extractions, clics, mails...</p>
-              <ul className="text-sm text-gray-300 mb-4 space-y-2" role="list">
-                <li>✓ 2 000 € à 5 000 €</li>
-                <li>✓ Script sur mesure</li>
-                <li>✓ Déclenchement manuel ou planifié</li>
-              </ul>
-              <p className="text-xs text-gray-500">Idéal pour automatiser des tâches simples sans licence.</p>
-              <Link href="/contact?plan=starter" className="inline-block mt-4 text-cyan-400 underline hover:text-cyan-300">Choisir Starter maintenant</Link>
-            </div>
-
-            {/* RPA Intermédiaire */}
-            <div className="bg-[#1a1a1a] border border-[#00e0ff] shadow-cyan-500/10 rounded p-6">
-              <h3 className="text-xl font-semibold text-white mb-2" aria-label="Offre RPA Intermédiaire">RPA Intermédiaire</h3>
-              <p className="text-gray-400 text-sm mb-4">Processus multi-étapes, gestion de flux, interactions avec outils métiers.</p>
-              <ul className="text-sm text-gray-300 mb-4 space-y-2" role="list">
-                <li>✓ 5 000 € à 15 000 €</li>
-                <li>✓ Dashboard + reporting</li>
-                <li>✓ Maintenance 6 mois incluse</li>
-              </ul>
-              <p className="text-xs text-gray-500">Pour structurer l’automatisation métier sans complexité excessive.</p>
-              <Link href="/contact?plan=pro" className="inline-block mt-4 text-cyan-400 underline hover:text-cyan-300">Choisir Pro maintenant</Link>
-            </div>
-
-            {/* RPA Complexe */}
-            <div className="bg-[#1a1a1a] border border-[#00e0ff33] rounded p-6">
-              <h3 className="text-xl font-semibold text-white mb-2" aria-label="Offre RPA Complexe">RPA Complexe</h3>
-              <p className="text-gray-400 text-sm mb-4">Robots UiPath, Power Automate, OCR, orchestrateur, connexion CRM / ERP.</p>
-              <ul className="text-sm text-gray-300 mb-4 space-y-2" role="list">
-                <li>✓ À partir de 15 000 €</li>
-                <li>✓ Robots autonomes et scalables</li>
-                <li>✓ Licences incluses si souhaité</li>
-              </ul>
-              <p className="text-xs text-gray-500">Pensé pour les grandes entreprises ou l’automatisation critique à fort ROI.</p>
-              <Link href="/contact?plan=entreprise" className="inline-block mt-4 text-cyan-400 underline hover:text-cyan-300">Demander un devis maintenant</Link>
-            </div>
+        <div className="max-w-4xl mx-auto px-6 relative z-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4 animate-fade-in">🔁 L’abonnement IA/RPA</h2>
+          <p className="text-gray-400 text-lg mb-8 animate-fade-in delay-100">
+            Pour garantir la qualité, la sécurité et la pérennité de votre projet IA/RPA, nous proposons un abonnement <strong>mensuel ou annuel</strong> incluant :
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left text-sm text-gray-300 animate-fade-in-up">
+            <ul className="space-y-3 bg-zinc-900 rounded-lg p-6 border border-zinc-800">
+              <li>✔️ Maintenance technique et mises à jour régulières</li>
+              <li>✔️ Support prioritaire (48h) & correctifs garantis</li>
+              <li>✔️ Monitoring et retraining IA mensuel</li>
+            </ul>
+            <ul className="space-y-3 bg-zinc-900 rounded-lg p-6 border border-zinc-800">
+              <li>✔️ Améliorations continues & suivi proactif</li>
+              <li>✔️ Supervision technique & hébergement sécurisé</li>
+              <li>✔️ Option MLOps/RPA orchestré (CI/CD, dashboards)</li>
+            </ul>
           </div>
+          <p className="text-sm text-gray-500 italic mt-8 animate-fade-in-up delay-300">
+            L’abonnement démarre à <strong>99€/mois</strong> pour les projets simples. Tarification ajustée selon volumétrie, nombre de modèles ou robots, et SLA souhaité.
+          </p>
         </div>
-      </div>
-
+      </section>
+      <NeonDivider />
+      {/* Section FAQ Tarifs */}
       <div className="max-w-4xl mx-auto mt-20 text-gray-400 text-sm text-left space-y-4">
         <h2 className="text-lg text-white font-semibold">FAQ Tarifs</h2>
         <p><strong>Quels sont les principaux facteurs de prix ?</strong> Le coût dépend du type d’IA ou RPA, de la complexité, du volume de données, des besoins d’intégration et de maintenance.</p>
@@ -206,6 +237,58 @@ export default function PricingSection() {
         <p><strong>Est-ce que vous travaillez avec les modèles GPT / Gemini / Claude ?</strong> Oui, nous intégrons ces modèles via API ou en version fine-tunée, et pouvons aussi héberger des modèles open-source.</p>
         <p><strong>Puis-je demander un audit gratuit ?</strong> Oui, inclus dans l’offre Starter.</p>
       </div>
+      <NeonDivider />
+      {/* Encadré entreprise : CIR, remises, mini-FAQ modernisé */}
+      <section className="py-20 bg-gradient-to-br from-black via-zinc-900 to-black text-white mt-20">
+        <div className="max-w-6xl mx-auto px-6 space-y-12">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4 animate-fade-in">💼 Avantages Entreprises</h2>
+            <p className="text-gray-400 text-lg max-w-3xl mx-auto animate-fade-in delay-100">
+              Nos services sont conçus pour les professionnels avec accompagnement aux aides publiques et des conditions préférentielles pour les projets stratégiques.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-zinc-900 p-6 rounded-xl border border-zinc-700 hover:border-cyan-500/50 transition-all duration-300 animate-fade-in-up">
+              <h3 className="text-xl font-semibold mb-3 text-cyan-300">🎯 Aides et financements</h3>
+              <ul className="text-sm text-gray-300 space-y-2 list-disc list-inside">
+                <li>✅ Éligibilité Crédit Impôt Recherche (CIR)</li>
+                <li>✅ Subventions BPI et dispositifs régionaux</li>
+                <li>✅ Aide à la constitution du dossier</li>
+              </ul>
+            </div>
+
+            <div className="bg-zinc-900 p-6 rounded-xl border border-zinc-700 hover:border-cyan-500/50 transition-all duration-300 animate-fade-in-up delay-100">
+              <h3 className="text-xl font-semibold mb-3 text-cyan-300">📦 Remises pros</h3>
+              <ul className="text-sm text-gray-300 space-y-2 list-disc list-inside">
+                <li>✔️ Remises pour engagement de 6 à 12 mois</li>
+                <li>✔️ Conditions préférentielles multi-filiales</li>
+                <li>✔️ Tarifs sur mesure pour projets récurrents</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-zinc-900 p-6 rounded-xl border border-zinc-700 mt-8 animate-fade-in-up delay-200">
+            <h3 className="text-xl font-semibold mb-4 text-cyan-300">❓ FAQ Entreprise</h3>
+            <ul className="text-sm text-gray-300 space-y-3 list-disc list-inside">
+              <li>Puis-je régler par mandat administratif ou virement entreprise ? ✅ Oui.</li>
+              <li>Fournissez-vous devis signés, contrats-cadres ? ✅ Sur demande.</li>
+              <li>Compatible avec achats publics / appels d’offres ? ✅ Oui.</li>
+              <li>Projets éligibles au CIR ? ✅ Oui, selon les cas.</li>
+            </ul>
+            <div className="text-center mt-6">
+              <Link
+                href="/contact"
+                className="inline-block px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-full transition-all animate-pulse"
+              >
+                📩 Discuter de votre projet
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      <NeonDivider />
+  
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
