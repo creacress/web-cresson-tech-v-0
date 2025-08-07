@@ -17,7 +17,7 @@ export default function IACurieuxPage({ hfModels, groupedModels, topModels }: Pr
           <span>
             Cette page est conçue pour les <span className="text-cyan-400 font-medium">curieux</span> et <span className="text-blue-400 font-medium">développeurs</span> souhaitant explorer les modèles IA.
             <br />
-            Pour découvrir nos solutions IA adaptées aux entreprises, <Link href="/IA" className="text-cyan-400 underline hover:text-cyan-300">cliquez ici</Link>.
+            Pour découvrir nos solutions IA adaptées aux entreprises, <Link href="/solutions" className="text-cyan-400 underline hover:text-cyan-300">cliquez ici</Link>.
           </span>
         </p>
       </div>
@@ -51,9 +51,18 @@ export default function IACurieuxPage({ hfModels, groupedModels, topModels }: Pr
           ))}
         </div>
       </section>
-
       {/* 1. Section Nouveautés HuggingFace */}
       <section className="mt-20 max-w-6xl mx-auto px-6">
+        {/* 🧪 Explication Nouveautés */}
+        <div className="flex items-start gap-3 bg-zinc-800/60 border border-zinc-700 p-4 rounded-xl mb-6">
+          <span className="text-cyan-400 text-xl">🧪</span>
+          <div>
+            <h3 className="font-semibold text-cyan-300 mb-1">Dernières nouveautés</h3>
+            <p className="text-sm text-gray-400">
+              Découvrez les modèles IA les plus récents, fraîchement publiés ou mis à jour sur Hugging Face. L’idéal pour rester à la pointe !
+            </p>
+          </div>
+        </div>
         <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">🧪 Nouveautés Hugging Face</h2>
         <p className="text-gray-400 mb-6">Modèles IA récemment publiés ou mis à jour sur la plateforme Hugging Face.</p>
         <p className="text-sm text-gray-500 italic mb-4">Cliquez sur une IA pour en savoir plus sur Hugging Face.</p>
@@ -71,29 +80,87 @@ export default function IACurieuxPage({ hfModels, groupedModels, topModels }: Pr
           ))}
         </div>
       </section>
-
-      {/* 2. Section Populaires (top likes/downloads) */}
+      {/* 🔥 Section Populaires (top likes/downloads) */}
       <section className="mt-32 max-w-6xl mx-auto px-6">
+        {/* 🔥 Explication Populaires */}
+        <div className="flex items-start gap-3 bg-zinc-800/60 border border-zinc-700 p-4 rounded-xl mb-6">
+          <span className="text-indigo-400 text-xl">🔥</span>
+          <div>
+            <h3 className="font-semibold text-indigo-300 mb-1">Modèles stars</h3>
+            <p className="text-sm text-gray-400">
+              Ces modèles sont les plus téléchargés ou aimés. Une valeur sûre pour vos projets IA ou vos tests personnels.
+            </p>
+          </div>
+        </div>
         <h2 className="text-3xl md:text-4xl font-bold text-indigo-400 mb-4">🔥 Les plus populaires</h2>
         <p className="text-gray-400 mb-6">Modèles IA les plus téléchargés ou likés sur Hugging Face.</p>
         <p className="text-sm text-gray-500 italic mb-4">Cliquez sur une IA pour en savoir plus sur Hugging Face.</p>
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {topModels.map((model) => (
-            <a key={model.id} href={`https://huggingface.co/${model.id}`} target="_blank" rel="noopener noreferrer"
-              className="relative group block bg-zinc-900 border border-zinc-800 p-5 rounded-xl hover:border-indigo-500 hover:shadow-lg hover:shadow-cyan-500/10 transition overflow-hidden">
-              <h3 className="text-white font-bold mb-1 flex items-center gap-2">⭐️ {model.name}</h3>
-              <p className="text-indigo-400 text-sm mb-1">{model.pipeline_tag || "IA"}</p>
-              <p className="text-gray-400 text-sm line-clamp-3">{model.description || "Modèle populaire sans description détaillée."}</p>
-              <span className="absolute top-4 right-4 text-cyan-500 opacity-0 group-hover:opacity-100 transition">
-                🔗
-              </span>
-            </a>
-          ))}
+          {topModels.map((model) => {
+            const name = model.cardData?.name || model.modelId || model.name
+            const description = model.cardData?.description || model.description || "Modèle populaire sans description détaillée."
+            const pipeline = model.pipeline_tag || "IA"
+            const thumb = model.cardData?.thumbnail
+
+            const emojiMap: Record<string, string> = {
+              "text-generation": "📝",
+              "image-classification": "🖼️",
+              "fill-mask": "🔍",
+              "sentence-similarity": "🔗",
+              "token-classification": "🏷️",
+              "text2text-generation": "🔄",
+            }
+
+            const colorMap: Record<string, string> = {
+              "text-generation": "text-pink-400",
+              "image-classification": "text-yellow-400",
+              "fill-mask": "text-green-400",
+              "sentence-similarity": "text-blue-400",
+              "token-classification": "text-orange-400",
+              "text2text-generation": "text-teal-400",
+            }
+
+            return (
+              <a
+                key={model.id}
+                href={`https://huggingface.co/${model.modelId || model.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group block bg-zinc-900 border border-zinc-800 p-5 rounded-xl hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/10 transition overflow-hidden"
+              >
+                {thumb && (
+                  <img src={thumb} alt={name} className="rounded-md w-full h-32 object-cover mb-3" />
+                )}
+                <h3 className="text-white font-bold mb-1 flex items-center gap-2">
+                  ⭐️ {name}
+                </h3>
+                <p className={`${colorMap[pipeline] || "text-gray-400"} text-sm mb-1`}>
+                  {emojiMap[pipeline] || "🤖"} {pipeline}
+                </p>
+                <p className="text-gray-400 text-sm line-clamp-3">
+                  {description}
+                </p>
+                <span className="absolute top-4 right-4 text-cyan-500 opacity-0 group-hover:opacity-100 transition">
+                  🔗
+                </span>
+              </a>
+            )
+          })}
         </div>
       </section>
-
       {/* 3. Section triée par spécialités uniques */}
       <section className="mt-32 max-w-6xl mx-auto px-6">
+        {/* 🗂️ Explication par spécialité */}
+        <div className="flex items-start gap-3 bg-zinc-800/60 border border-zinc-700 p-4 rounded-xl mb-6">
+          <span className="text-amber-400 text-xl">🗂️</span>
+          <div>
+            <h3 className="font-semibold text-amber-300 mb-1">Tri par usage</h3>
+            <p className="text-sm text-gray-400">
+              Explorez des modèles IA classés par spécialité : NLP, classification, génération de texte... Chaque domaine a ses pépites.
+            </p>
+          </div>
+        </div>
         <h2 className="text-3xl md:text-4xl font-bold text-amber-400 mb-4">🗂️ Explorer par spécialité</h2>
         <p className="text-gray-400 mb-6">Découvrez nos modèles IA triés par usage spécifique : NLP, classification, génération, etc.</p>
         <p className="text-sm text-gray-500 italic mb-4">Cliquez sur une IA pour en savoir plus sur Hugging Face.</p>
@@ -102,26 +169,35 @@ export default function IACurieuxPage({ hfModels, groupedModels, topModels }: Pr
           .filter(([, models]) => models.length > 0)
           .sort((a, b) => b[1].length - a[1].length)
           .map(([tag, models], i) => (
-          <div key={i} className="mb-12">
-            <h3 className="text-xl font-semibold text-white mb-2">📌 {tag}</h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {models.slice(0, 3).map((model, j) => (
-                <a key={j} href={`https://huggingface.co/${model.modelId || model.name}`} target="_blank" rel="noopener noreferrer"
-                  className="relative group block bg-zinc-900 border border-zinc-800 p-5 rounded-xl hover:border-amber-500 hover:shadow-lg hover:shadow-cyan-500/10 transition overflow-hidden">
-                  <h4 className="text-white font-bold mb-1">{model.modelId || model.name}</h4>
-                  <p className="text-amber-400 text-sm mb-1">{model.pipeline_tag || tag}</p>
-                  <p className="text-gray-400 text-sm line-clamp-3">{model.description || "Modèle IA par usage spécifique."}</p>
-                  <span className="absolute top-4 right-4 text-cyan-500 opacity-0 group-hover:opacity-100 transition">
-                    🔗
-                  </span>
-                </a>
-              ))}
+            <div key={i} className="mb-12">
+              <h3 className="text-xl font-semibold text-white mb-2">📌 {tag}</h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {models.slice(0, 3).map((model, j) => (
+                  <a key={j} href={`https://huggingface.co/${model.modelId || model.name}`} target="_blank" rel="noopener noreferrer"
+                    className="relative group block bg-zinc-900 border border-zinc-800 p-5 rounded-xl hover:border-amber-500 hover:shadow-lg hover:shadow-cyan-500/10 transition overflow-hidden">
+                    <h4 className="text-white font-bold mb-1">{model.modelId || model.name}</h4>
+                    <p className="text-amber-400 text-sm mb-1">{model.pipeline_tag || tag}</p>
+                    <p className="text-gray-400 text-sm line-clamp-3">{model.description || "Modèle IA par usage spécifique."}</p>
+                    <span className="absolute top-4 right-4 text-cyan-500 opacity-0 group-hover:opacity-100 transition">
+                      🔗
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </section>
-
       <section className="mt-32 max-w-6xl mx-auto text-white text-center px-6">
+        {/* 🚀 Explication applications concrètes */}
+        <div className="flex items-start gap-3 bg-zinc-800/60 border border-zinc-700 p-4 rounded-xl mb-10 text-left">
+          <span className="text-cyan-400 text-xl">🚀</span>
+          <div>
+            <h3 className="font-semibold text-cyan-300 mb-1">Exemples concrets</h3>
+            <p className="text-sm text-gray-400">
+              Inspirez-vous de cas d’usage réels pour comprendre comment l’IA peut booster votre activité ou vos projets.
+            </p>
+          </div>
+        </div>
         <h2 className="text-3xl font-bold text-amber-400 mb-8">Applications concrètes</h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 text-left">
           {[
