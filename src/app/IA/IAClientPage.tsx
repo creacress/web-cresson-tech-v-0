@@ -64,7 +64,7 @@ export default function IAClientPage({ hfModels, groupedModels, topModels }: Pro
         {topModels.length === 0 ? (
           <div className="text-center text-gray-400 animate-pulse">Chargement des modèles populaires...</div>
         ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {topModels.map((model) => (
               <div key={model.id} className="animate-fade-in h-full">
                 <ModelCardHuggingFace model={model} isTop={true} />
@@ -121,7 +121,7 @@ export default function IAClientPage({ hfModels, groupedModels, topModels }: Pro
                 return (
                   <div key={category} className="mb-12">
                     <h3 className="text-2xl font-semibold text-white mb-4">{category}</h3>
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                       {sortedModels.map((model: any) => (
                         <div key={model.id} className="animate-fade-in h-full">
                           <ModelCardHuggingFace model={model} />

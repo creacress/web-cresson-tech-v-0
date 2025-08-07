@@ -70,7 +70,7 @@ export default function ModelCardHuggingFace({ model, isTop }: ModelCardProps) {
   return (
     <a
       href={`/contact?model=${encodeURIComponent(model.id)}&pipeline=${encodeURIComponent(model.pipeline_tag || "")}`}
-      className="relative pt-4 flex flex-col justify-between h-full bg-gradient-to-b from-gray-950 to-gray-900 p-6 rounded-2xl border border-cyan-800 shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 ease-in-out"
+      className="w-full max-w-sm mx-auto relative pt-4 flex flex-col justify-between h-full min-h-[460px] bg-gradient-to-b from-gray-950 to-gray-900 p-6 rounded-2xl border border-cyan-800 shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 ease-in-out"
       title={`Voir le modèle ${model.id} sur Hugging Face`}
     >
       {isTop && (
