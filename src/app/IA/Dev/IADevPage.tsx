@@ -23,7 +23,9 @@ export default function IACurieuxPage({ hfModels, groupedModels, topModels }: Pr
       </div>
       <section className="text-center mb-16">
         <h1 className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
-          Intelligence Artificielle : Pour DEV et Curieux
+          <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-fuchsia-500 bg-clip-text text-transparent animate-gradient bg-[200%_auto]">
+            Intelligence Artificielle : Pour DEV et Curieux
+          </span>
         </h1>
         <p className="text-md text-gray-400 max-w-xl mx-auto mb-6">
           Cette page présente des outils et modèles d’intelligence artificielle pour des usages professionnels et pratiques.

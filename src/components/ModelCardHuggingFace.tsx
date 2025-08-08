@@ -66,12 +66,15 @@ export default function ModelCardHuggingFace({ model, isTop }: ModelCardProps) {
   }, [model.id])
 
   const useCases = getUseCasesByPipelineTag(model.pipeline_tag || "")
+  const pipelineCategory = getPipelineCategory(model.pipeline_tag)
+  const businessTagsToShow = model.businessTags ? model.businessTags.slice(0, 4) : []
+  const remainingTagsCount = model.businessTags ? model.businessTags.length - businessTagsToShow.length : 0
 
   return (
     <a
       href={`/contact?model=${encodeURIComponent(model.id)}&pipeline=${encodeURIComponent(model.pipeline_tag || "")}`}
       className="w-full max-w-sm mx-auto relative pt-4 flex flex-col justify-between h-full min-h-[460px] bg-gradient-to-b from-gray-950 to-gray-900 p-6 rounded-2xl border border-cyan-800 shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 ease-in-out"
-      title={`Voir le modèle ${model.id} sur Hugging Face`}
+      title={`Modèle ${model.id} – ${pipelineCategory}${model.businessTags && model.businessTags.length > 0 ? ` – ${model.businessTags.join(', ')}` : ''}`}
     >
       {isTop && (
         <div className="absolute -top-3 -right-3 bg-red-600 text-xs font-bold px-2 py-1 rounded-full shadow-lg z-10 animate-pulse">
@@ -79,8 +82,27 @@ export default function ModelCardHuggingFace({ model, isTop }: ModelCardProps) {
         </div>
       )}
       <h3 className="text-xl font-extrabold text-white mb-1 truncate">{model.id}</h3>
-      <p className="text-sm font-medium text-cyan-400 mb-2 uppercase tracking-wide">{model.pipeline_tag || "Modèle IA"}</p>
-      <p className="text-sm text-gray-300 mb-4 line-clamp-4">
+      <p className="text-sm font-medium text-cyan-400 mb-2 uppercase tracking-wide">{pipelineCategory}</p>
+      {(businessTagsToShow.length > 0 || model.library_name) && (
+        <div className="flex flex-wrap gap-2 mb-4">
+          {businessTagsToShow.map((tag) => (
+            <span key={tag} className="bg-cyan-900/40 border border-cyan-700 text-cyan-200 px-2 py-0.5 rounded-full backdrop-blur-sm">
+              {tag}
+            </span>
+          ))}
+          {remainingTagsCount > 0 && (
+            <span className="bg-cyan-900/40 border border-cyan-700 text-cyan-200 px-2 py-0.5 rounded-full backdrop-blur-sm">
+              +{remainingTagsCount}
+            </span>
+          )}
+          {model.library_name && (
+            <span className="bg-gray-800/60 border border-gray-600 text-gray-300 px-2 py-0.5 rounded-full backdrop-blur-sm">
+              🛠 {model.library_name}
+            </span>
+          )}
+        </div>
+      )}
+      <p aria-label={`Résumé du modèle ${model.id}`} className="text-sm text-gray-300 mb-4 line-clamp-4">
         {summary
           ? summary.slice(0, 160) + "..."
           : "Chargement de la description..."}
@@ -93,16 +115,7 @@ export default function ModelCardHuggingFace({ model, isTop }: ModelCardProps) {
         </ul>
       )}
       <div className="flex flex-wrap gap-2 text-xs mb-4">
-        {model.businessTags?.map((tag) => (
-          <span key={tag} className="bg-cyan-950/50 border border-cyan-700 text-cyan-200 px-2 py-0.5 rounded-full backdrop-blur-sm">
-            {tag}
-          </span>
-        ))}
-        {model.library_name && (
-          <span className="bg-gray-800/50 border border-gray-600 text-gray-300 px-2 py-0.5 rounded-full backdrop-blur-sm">
-            🛠 {model.library_name}
-          </span>
-        )}
+        {/* Removed businessTags here as they are now above summary */}
       </div>
       <div className="flex items-center justify-between text-sm text-gray-400 mb-6">
         <span>👍 {model.likes ?? 0}</span>

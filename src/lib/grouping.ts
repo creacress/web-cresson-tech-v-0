@@ -1,257 +1,320 @@
-function getPipelineCategory(tag: string) {
-    const categories: Record<string, string> = {
-      "text-generation": "📝 Génération de texte",
-      "text-classification": "🏷️ Classification de texte",
-      "image-classification": "🖼️ Classification d’image",
-      "object-detection": "🎯 Détection d’objets",
-      "text-to-image": "🎨 Texte vers image",
-      "text-to-video": "🎞️ Texte vers vidéo",
-      "image-to-3d": "🏗️ Image vers 3D",
-      "image-text-to-text": "🔄 Image+Texte vers Texte",
-      "automatic-speech-recognition": "🧠 Reconnaissance vocale automatique",
-      "feature-extraction": "📊 Extraction de caractéristiques",
-      "question-answering": "❓ Question/Réponse",
-      "translation": "🌍 Traduction",
-      "conversational": "💬 Conversation",
-      "summarization": "🧾 Résumé",
-      "speech-to-text": "🎙️ Audio vers texte",
-      "text-to-speech": "🔊 Texte vers audio",
-      "image-to-text": "🖼️→📝 Image vers texte",
-      "fill-mask": "🧩 Remplir les blancs",
-      "token-classification": "🔤 Étiquetage de tokens",
-      "image-to-video": "🎬 Image vers vidéo",
-      "image-to-image": "🖼️→🖼️ Image vers image",
-      "sentence-similarity": "🔗 Similarité de phrases",
-      "audio-text-to-text": "🔄 Audio+Texte vers Texte",
-      "text-to-audio": "📝→🔊 Texte vers audio",
-      "any-to-any": "🔁 Toute entrée vers toute sortie",
-      "video-text-to-text": "🎞️→📝 Vidéo vers texte",
-      "visual-document-retrieval": "📄🔍 Recherche documentaire visuelle",
-      "text-ranking": "📊 Classement de texte",
-      "zero-shot-image-classification": "🖼️❌ Classification image sans apprentissage",
-      "visual-question-answering": "🖼️❓ Q/R visuelle",
-      "zero-shot-classification": "❌🏷️ Classification sans apprentissage",
-      "robotics": "🤖 Robotique",
-      "image-feature-extraction": "🖼️📊 Extraction de caractéristiques image",
-      "image-segmentation": "🖼️✂️ Segmentation d'image",
-      "audio-classification": "🔉🏷️ Classification audio",
-      "mask-generation": "🎭 Génération de masque",
-      "time-series-forecasting": "📈 Prédiction séries temporelles",
-      "tabular-classification": "📋🏷️ Classification tabulaire",
-      "zero-shot-object-detection": "🎯❌ Détection d’objet sans apprentissage"
-    };
-  
-    return categories[tag] || "📦 Autres";
-  }
-  
-  export function getBusinessTags(model: any): string[] {
-    const tagMap: Record<string, string[]> = {
-      "text-generation": ["Marketing", "Relation client", "TPE", "PME"],
-      "summarization": ["Marketing", "RH", "TPE", "PME"],
-      "text-ranking": ["Marketing"],
-      "sentence-similarity": ["RH", "E-commerce"],
-      "translation": ["Marketing", "Relation client", "PME"],
-      "conversational": ["Relation client"],
-      "question-answering": ["Relation client", "RH"],
-      "speech-to-text": ["Relation client"],
-      "text-to-speech": ["Relation client"],
-      "image-classification": ["E-commerce", "Industrie/logistique", "TPE"],
-      "image-segmentation": ["Industrie/logistique"],
-      "object-detection": ["Industrie/logistique"],
-      "feature-extraction": ["Industrie/logistique"],
-      "audio-classification": ["Industrie/logistique"],
-      "time-series-forecasting": ["Industrie/logistique"],
-      "zero-shot-classification": ["RH", "Marketing", "TPE", "PME"],
-      "zero-shot-image-classification": ["E-commerce"],
-      "visual-question-answering": ["E-commerce", "TPE", "PME"],
-      "tabular-classification": ["RH"]
-    };
+// -----------------------------------------------------------------------------
+// grouping.ts – Regroupement des modèles + tags métier intelligents (SEO friendly)
+// -----------------------------------------------------------------------------
+// Objectif:
+//  - Grouper les modèles Hugging Face en catégories stables (Vision, NLP, Audio…)
+//  - Déduire des "businessTags" pertinents (TPE, PME, Marketing, E‑commerce, RH…)
+//  - Préserver la compatibilité avec le code existant (signatures exportées)
+// -----------------------------------------------------------------------------
 
-    return tagMap[model.pipeline_tag] || [];
-  }
+export type HFModel = {
+  id: string
+  likes?: number
+  pipeline_tag?: string
+  task?: string
+  name?: string
+  tags?: string[]
+  businessTags?: string[]
+  [key: string]: any
+}
 
+// Labels de catégories (avec emojis pour l'UI)
+const CAT_TEXT_GEN = "📝 Génération de texte"
+const CAT_NLP = "🧠 NLP"
+const CAT_VISION = "🖼️ Vision"
+const CAT_OCR = "🔎 OCR"
+const CAT_AUDIO = "🎧 Audio"
+const CAT_MULTIMODAL = "🧩 Multimodal"
+const CAT_AGENT = "🤖 Agent"
+const CAT_AUTRES = "📦 Autres"
+
+// Aliases courants -> catégorie
+const CATEGORY_ALIASES: Record<string, string> = {
+  // Texte / NLP
+  "text-generation": CAT_TEXT_GEN,
+  "text-classification": CAT_NLP,
+  "token-classification": CAT_NLP,
+  "question-answering": CAT_NLP,
+  "summarization": CAT_NLP,
+  "translation": CAT_NLP,
+  "fill-mask": CAT_NLP,
+  "sentence-similarity": CAT_NLP,
+  "text-ranking": CAT_NLP,
+
+  // Vision / OCR
+  "image-classification": CAT_VISION,
+  "zero-shot-image-classification": CAT_VISION,
+  "object-detection": CAT_VISION,
+  "image-segmentation": CAT_VISION,
+  "image-to-image": CAT_VISION,
+  "image-to-text": CAT_VISION,
+  "ocr": CAT_OCR,
+  "visual-document-retrieval": CAT_OCR,
+
+  // Audio
+  "automatic-speech-recognition": CAT_AUDIO,
+  "speech-to-text": CAT_AUDIO,
+  "text-to-speech": CAT_AUDIO,
+  "audio-classification": CAT_AUDIO,
+  "audio-text-to-text": CAT_AUDIO,
+  "text-to-audio": CAT_AUDIO,
+
+  // Multimodal / Agents
+  "image-text-to-text": CAT_MULTIMODAL,
+  "multimodal": CAT_MULTIMODAL,
+  "any-to-any": CAT_MULTIMODAL,
+  "agent": CAT_AGENT,
+}
+
+// --- Helpers internes --------------------------------------------------------
+function normList(l?: string[]): string[] {
+  return (l || []).map((x) => x?.toLowerCase?.() || "").filter(Boolean)
+}
+
+function getCategory(model: HFModel): string {
+  const tag = (model.pipeline_tag || model.task || "").toLowerCase()
+  if (CATEGORY_ALIASES[tag]) return CATEGORY_ALIASES[tag]
+
+  const tags = normList(model.tags)
+  const name = `${model.name || model.id}`.toLowerCase()
+  const hay = (k: string) => name.includes(k) || tags.some((t) => t.includes(k))
+
+  // Heuristiques
+  if (hay("layoutlm") || hay("invoice") || hay("document-ai") || hay("ocr")) return CAT_OCR
+  if (hay("yolo") || hay("detect") || hay("vision") || hay("segmentation")) return CAT_VISION
+  if (hay("asr") || hay("speech") || hay("audio")) return CAT_AUDIO
+  if (hay("llava") || hay("blip") || hay("multimodal")) return CAT_MULTIMODAL
+  if (hay("tool-calling") || hay("agent") || hay("assistant")) return CAT_AGENT
+  if (hay("generate") || hay("llm") || hay("gpt")) return CAT_TEXT_GEN
+
+  return CAT_NLP
+}
+
+// ----------------------------------------------------------------------------
+// Tags métiers intelligents – utilisés par les filtres de la page
+// ----------------------------------------------------------------------------
+export function getBusinessTags(model: any): string[] {
+  const m = model as HFModel
+  const name = `${m.name || m.id}`.toLowerCase()
+  const tags = normList(m.tags)
+  const has = (keys: string[]) => keys.some((k) => name.includes(k) || tags.some((t) => t.includes(k)))
+
+  const out = new Set<string>()
+
+  // E‑commerce / Marketing
+  if (has(["recommend", "recsys", "ctr", "ab-test", "product", "catalog", "retrieval", "search"])) out.add("E-commerce")
+  if (has(["sentiment", "keyword", "topic", "summariz", "seo", "copy", "ad", "classification"])) out.add("Marketing")
+
+  // RH / Relation client
+  if (has(["resume", "cv", "skills", "matching", "ner"])) out.add("RH")
+  if (has(["assistant", "chat", "intent", "faq", "asr", "speech", "tts"])) out.add("Relation client")
+
+  // Industrie / logistique
+  if (has(["yolo", "barcode", "defect", "inspection", "layoutlm", "invoice", "ocr", "time-series"])) out.add("Industrie/logistique")
+
+  // Taille par défaut (toujours pertinentes)
+  out.add("TPE")
+  out.add("PME")
+
+  return Array.from(out)
+}
+
+// ----------------------------------------------------------------------------
+// Groupement principal utilisé par la page (tri par likes desc)
+// ----------------------------------------------------------------------------
 export function groupModelsByCategory(models: any[]) {
-  const groups: { [category: string]: any[] } = {}
+  const groups: { [category: string]: HFModel[] } = {}
 
-  for (const model of models) {
-    const category = getPipelineCategory(model.pipeline_tag)
-    if (!groups[category]) {
-      groups[category] = []
+  for (const raw of models || []) {
+    const model: HFModel = { ...raw }
+
+    // Enrichir les businessTags si absents
+    if (!model.businessTags || model.businessTags.length === 0) {
+      model.businessTags = getBusinessTags(model)
     }
-    model.businessTags = getBusinessTags(model);
+
+    const category = getCategory(model)
+    if (!groups[category]) groups[category] = []
     groups[category].push(model)
   }
+
+  // Tri par popularité dans chaque catégorie
+  Object.keys(groups).forEach((cat) => {
+    groups[cat].sort((a, b) => (b.likes ?? 0) - (a.likes ?? 0))
+  })
 
   return groups
 }
 
-// Mapping des cas d’usage concrets pour chaque pipeline_tag
+// ----------------------------------------------------------------------------
+// Cas d’usage (existant) – conservé pour compatibilité
+// ----------------------------------------------------------------------------
 export function getUseCasesByPipelineTag(tag: string): string[] {
   const useCaseMap: Record<string, string[]> = {
     "text-generation": [
       "Génération automatique d'emails",
       "Création de contenu marketing",
-      "Rédaction assistée"
+      "Rédaction assistée",
     ],
     "summarization": [
       "Résumé de rapports RH",
       "Synthèse de mails clients",
-      "Lecture rapide de documents"
+      "Lecture rapide de documents",
     ],
     "translation": [
       "Traduction de documents techniques",
-      "Traduction de pages produit"
+      "Traduction de pages produit",
     ],
     "question-answering": [
       "Chatbot interne",
       "FAQ automatique",
-      "Support client IA"
+      "Support client IA",
     ],
     "text-classification": [
       "Tri d'e-mails",
       "Analyse de sentiments",
-      "Détection de spam"
+      "Détection de spam",
     ],
     "image-classification": [
       "Contrôle qualité visuel",
       "Reconnaissance d’objets",
-      "Inspection automatisée"
+      "Inspection automatisée",
     ],
     "object-detection": [
       "Détection de défauts produits",
       "Sécurité périmétrique",
-      "Analyse de scènes"
+      "Analyse de scènes",
     ],
     "audio-classification": [
       "Reconnaissance vocale",
       "Transcription de réunions",
-      "Commandes vocales"
+      "Commandes vocales",
     ],
     "zero-shot-classification": [
       "Catégorisation sans entraînement",
       "Analyse de tickets SAV",
-      "Étiquetage dynamique"
+      "Étiquetage dynamique",
     ],
     "text-to-image": [
       "Création d'illustrations à partir de descriptions",
-      "Génération de visuels marketing"
+      "Génération de visuels marketing",
     ],
     "text-to-video": [
       "Production de vidéos explicatives automatiques",
-      "Création de clips promotionnels"
+      "Création de clips promotionnels",
     ],
     "image-to-3d": [
       "Modélisation 3D à partir d'images",
-      "Prototypage rapide de produits"
+      "Prototypage rapide de produits",
     ],
     "image-text-to-text": [
       "Résumé de documents avec images",
-      "Extraction d'informations combinées"
+      "Extraction d'informations combinées",
     ],
     "automatic-speech-recognition": [
       "Transcription automatique de conférences",
-      "Sous-titrage en temps réel"
+      "Sous-titrage en temps réel",
     ],
     "feature-extraction": [
       "Extraction de caractéristiques pour analyse",
-      "Prétraitement de données visuelles"
+      "Prétraitement de données visuelles",
     ],
     "conversational": [
       "Assistants virtuels",
-      "Chatbots de support client"
+      "Chatbots de support client",
     ],
     "speech-to-text": [
       "Transcription vocale pour CRM",
-      "Analyse de conversations téléphoniques"
+      "Analyse de conversations téléphoniques",
     ],
     "text-to-speech": [
       "Synthèse vocale pour assistants",
-      "Lecture automatisée de contenu"
+      "Lecture automatisée de contenu",
     ],
     "image-to-text": [
       "Reconnaissance de texte dans les images",
-      "Automatisation de saisie de données"
+      "Automatisation de saisie de données",
     ],
     "fill-mask": [
       "Correction automatique de texte",
-      "Suggestions de complétion"
+      "Suggestions de complétion",
     ],
     "token-classification": [
       "Extraction d'entités nommées",
-      "Analyse syntaxique"
+      "Analyse syntaxique",
     ],
     "image-to-video": [
       "Création de vidéos à partir d'images",
-      "Animations promotionnelles"
+      "Animations promotionnelles",
     ],
     "image-to-image": [
       "Amélioration d'images",
-      "Transformation de style visuel"
+      "Transformation de style visuel",
     ],
     "sentence-similarity": [
       "Recherche sémantique",
-      "Détection de plagiat"
+      "Détection de plagiat",
     ],
     "audio-text-to-text": [
       "Transcription enrichie",
-      "Analyse de contenu audio"
+      "Analyse de contenu audio",
     ],
     "text-to-audio": [
       "Création de podcasts automatisés",
-      "Génération de messages audio"
+      "Génération de messages audio",
     ],
     "any-to-any": [
       "Conversion multi-format",
-      "Interopérabilité de données"
+      "Interopérabilité de données",
     ],
     "video-text-to-text": [
       "Résumé automatique de vidéos",
-      "Analyse de contenu vidéo"
+      "Analyse de contenu vidéo",
     ],
     "visual-document-retrieval": [
       "Recherche dans documents scannés",
-      "Indexation de contenus visuels"
+      "Indexation de contenus visuels",
     ],
     "text-ranking": [
       "Classement de résultats de recherche",
-      "Priorisation de contenu"
+      "Priorisation de contenu",
     ],
     "zero-shot-image-classification": [
       "Classification rapide sans données d'entraînement",
-      "Identification d'objets inconnus"
+      "Identification d'objets inconnus",
     ],
     "visual-question-answering": [
       "Réponses automatiques sur images",
-      "Support visuel interactif"
+      "Support visuel interactif",
     ],
     "robotics": [
       "Contrôle de robots autonomes",
-      "Automatisation industrielle"
+      "Automatisation industrielle",
     ],
     "image-feature-extraction": [
       "Extraction de points clés d'images",
-      "Analyse de contenu visuel"
+      "Analyse de contenu visuel",
     ],
     "image-segmentation": [
       "Segmentation pour imagerie médicale",
-      "Détection de zones d'intérêt"
+      "Détection de zones d'intérêt",
     ],
     "mask-generation": [
       "Création de masques pour retouche",
-      "Préparation de données annotées"
+      "Préparation de données annotées",
     ],
     "time-series-forecasting": [
       "Prévision de ventes",
-      "Analyse de tendances financières"
+      "Analyse de tendances financières",
     ],
     "tabular-classification": [
       "Classification de données tabulaires",
-      "Analyse de risque"
+      "Analyse de risque",
     ],
     "zero-shot-object-detection": [
       "Détection d'objets sans entraînement spécifique",
-      "Surveillance intelligente"
-    ]
-  };
-  return useCaseMap[tag] || ["Autres cas d’usage IA pro"];
+      "Surveillance intelligente",
+    ],
+  }
+  return useCaseMap[tag] || ["Autres cas d’usage IA pro"]
 }

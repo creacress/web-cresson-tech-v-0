@@ -1,157 +1,113 @@
 // @ts-nocheck
-"use client";
-import CTA from "@/components/CTAButton/CTAButton";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import ModelCardHuggingFace from "@/components/ModelCardHuggingFace";
+import { Metadata } from 'next'
+import JulieClient from '../PersonaClient'
 
-export default function JulieClientPage({ tpeModels = [] }: { tpeModels?: any[] }) {
+export const metadata: Metadata = {
+  title: 'Démo IA pour Julie (TPE) — Automatisation, Relances & Dashboard | Web Cresson Tech',
+  description:
+    "Cas d’usage IA pour TPE : saisie automatique de devis/factures, relances clients par IA et dashboard simplifié. Gains de temps et réduction d’erreurs.",
+  openGraph: {
+    title: 'Démo IA pour Julie (TPE) — Web Cresson Tech',
+    description:
+      'Automatiser la facturation, relancer les clients et suivre les ventes. Pack IA TPE : rapide, concret, ROI mesurable.',
+    url: 'https://webcresson.com/solutions/julie',
+    type: 'article',
+    images: [
+      { url: 'https://webcresson.com/avatars/julie.png', width: 800, height: 800, alt: 'Persona Julie — TPE' },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Démo IA pour Julie (TPE) — Web Cresson Tech',
+    description: 'Saisie auto, relances IA, dashboard clair — Pack IA TPE.',
+    images: ['https://webcresson.com/avatars/julie.png'],
+  },
+  alternates: { canonical: 'https://webcresson.com/solutions/julie' },
+}
+
+export default function Page() {
   return (
-    <main className="max-w-4xl mx-auto px-6 py-20 text-white">
-      <h1 className="text-4xl font-bold text-center mb-6">
-        🧠 Démo IA personnalisée – Julie, TPE artisanale
-      </h1>
-      <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-        Julie dirige un atelier de maroquinerie. Elle veut gagner du temps sur ses tâches répétitives :
-        automatiser sa facturation, relancer ses clients, et suivre ses ventes facilement.
-        Voici une démonstration de notre Pack IA TPE – pensé pour elle.
-      </p>
-
-      <img
-        src="/avatars/julie.png"
-        alt="Julie - Persona TPE"
-        className="w-32 h-32 mx-auto mb-10 rounded-full border border-cyan-500 shadow-lg"
+    <>
+      {/* Breadcrumb JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://webcresson.com/' },
+              { '@type': 'ListItem', position: 2, name: 'Solutions', item: 'https://webcresson.com/solutions' },
+              { '@type': 'ListItem', position: 3, name: 'Julie (TPE)', item: 'https://webcresson.com/solutions/julie' },
+            ],
+          })
+        }}
       />
 
-      <section className="flex flex-col items-center my-20 relative">
-        <h2 className="text-2xl font-bold text-center mb-8 text-white">🚀 Processus IA simplifié pour Julie</h2>
+      {/* HowTo JSON-LD (3 étapes) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org', '@type': 'HowTo',
+            name: "Mettre en place l'automatisation IA pour TPE (persona Julie)",
+            totalTime: 'P14D',
+            step: [
+              { '@type': 'HowToStep', position: 1, name: 'Saisie automatique', text: 'Importer les devis/factures pour extraction auto des champs.' },
+              { '@type': 'HowToStep', position: 2, name: 'Relances IA', text: 'Définir les scénarios de relance adaptés aux profils clients.' },
+              { '@type': 'HowToStep', position: 3, name: 'Dashboard & assistant', text: 'Suivre les KPIs et piloter à la voix si nécessaire.' },
+            ],
+          })
+        }}
+      />
 
-        <div className="relative flex flex-col items-center gap-16 w-full">
-          <div className="bg-[#1a1a1a] border border-cyan-700/20 rounded-xl p-6 text-center max-w-sm w-full shadow-lg animate-fade-in">
-            <h3 className="text-xl font-bold text-white mb-2">📥 Étape 1 – Saisie automatique</h3>
-            <p className="text-gray-400 text-sm">
-              Julie glisse ses devis. L’IA lit et extrait les infos clés.
-            </p>
-          </div>
 
-          <svg className="w-6 h-6 text-cyan-500 animate-bounce" fill="none" stroke="currentColor" strokeWidth="2"
-            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
+      {/* ItemList JSON-LD (autres cas d’usage) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org', '@type': 'ItemList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Lecture intelligente des e-mails' },
+              { '@type': 'ListItem', position: 2, name: 'CRM IA simplifié' },
+              { '@type': 'ListItem', position: 3, name: 'Contenu local généré' },
+              { '@type': 'ListItem', position: 4, name: 'Stocks simplifiés' },
+            ],
+          })
+        }}
+      />
 
-          <div className="bg-[#1a1a1a] border border-cyan-700/20 rounded-xl p-6 text-center max-w-sm w-full shadow-lg animate-fade-in delay-200">
-            <h3 className="text-xl font-bold text-white mb-2">🤖 Étape 2 – Relance IA</h3>
-            <p className="text-gray-400 text-sm">
-              Envoi automatique d’emails de relance selon les profils.
-            </p>
-          </div>
-
-          <svg className="w-6 h-6 text-cyan-500 animate-bounce" fill="none" stroke="currentColor" strokeWidth="2"
-            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-
-          <div className="bg-[#1a1a1a] border border-cyan-700/20 rounded-xl p-6 text-center max-w-sm w-full shadow-lg animate-fade-in delay-400">
-            <h3 className="text-xl font-bold text-white mb-2">🎙️ Étape 3 – Dashboard + Assistant vocal</h3>
-            <p className="text-gray-400 text-sm">
-              Julie accède à un dashboard clair, et peut même activer une IA vocale pour noter les rendez-vous en direct.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-12 w-[320px] h-[320px] mx-auto">
-          <DotLottieReact
-            src="https://lottie.host/cd6675fe-c94f-457b-b674-f7067cc74375/EzyzHwH8nw.lottie"
-            loop
-            autoplay
-          />
-        </div>
-      </section>
-
-      <section className="space-y-12">
-        <div className="bg-[#111] border border-neutral-700 p-6 rounded-xl">
-          <h2 className="text-2xl font-semibold mb-2">1. Traitement automatique des factures</h2>
-          <p className="text-gray-400">
-            Grâce à un outil de lecture intelligent, Julie peut glisser ses devis, et l’IA extrait automatiquement : nom client, montant, échéance.
-          </p>
-        </div>
-
-        <div className="bg-[#111] border border-neutral-700 p-6 rounded-xl">
-          <h2 className="text-2xl font-semibold mb-2">2. Relances automatisées des paiements</h2>
-          <p className="text-gray-400">
-            L’IA envoie des rappels personnalisés aux clients en retard, avec un ton adapté (ferme ou cordial), selon le contexte.
-          </p>
-        </div>
-
-        <div className="bg-[#111] border border-neutral-700 p-6 rounded-xl">
-          <h2 className="text-2xl font-semibold mb-2">3. Dashboard clair + Assistant vocal</h2>
-          <p className="text-gray-400">
-            Julie visualise ses paiements, les relances, et peut utiliser un assistant vocal pour fixer des rendez-vous à la voix.
-          </p>
-        </div>
-      </section>
-
-      {/* Section: Best IA Models Hugging Face pour TPE */}
-      <section className="mt-24 max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl font-extrabold text-white mb-4">
-          ✨ Vous pouvez découvrir ici mon petit Hub d'IA
-        </h2>
-        <p className="text-gray-400 mb-6 max-w-xl mx-auto">
-          Explorez notre sélection des meilleurs modèles d’IA pour les TPE. Vous serez redirigé vers la bonne catégorie automatiquement.
-        </p>
-        <a
-          href="/IA?sector=TPE#sector-selector"
-          className="inline-block px-6 py-3 bg-cyan-600 text-white font-semibold rounded-full hover:bg-cyan-500 transition"
-        >
-          Voir les modèles IA pour TPE
-        </a>
-      </section>
-      
-      <section className="mt-24 space-y-10">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">🧰 Autres cas d’usage IA utiles pour Julie</h2>
-        <div className="grid gap-6 md:grid-cols-2">
+      <JulieClient />
+      {/* FAQ visible — persona Julie */}
+      <section className="my-16">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6">FAQ — Persona Julie (TPE)</h2>
+        <div className="max-w-3xl mx-auto divide-y divide-[#1f1f1f] border border-[#1f1f1f] rounded">
           {[
-            {
-              icon: "📬",
-              title: "Lecture intelligente des e-mails",
-              desc: "L’IA extrait les infos clés (client, date, montant) depuis les emails entrants pour les trier automatiquement."
-            },
-            {
-              icon: "🧠",
-              title: "CRM IA simplifié",
-              desc: "Julie peut accéder à un historique client sans avoir besoin de remplir de tableaux manuellement."
-            },
-            {
-              icon: "📣",
-              title: "Contenu local auto-généré",
-              desc: "Publication automatique de posts Facebook ou Google Business optimisés pour sa visibilité locale."
-            },
-            {
-              icon: "📦",
-              title: "Gestion simplifiée des stocks",
-              desc: "Alertes automatiques basées sur les ventes pour éviter les ruptures."
-            }
+            { q: 'Combien de temps pour un premier résultat ?', a: 'Un POC en quelques jours, un MVP en 2–4 semaines selon la complexité.' },
+            { q: 'Faut‑il changer d’outils ?', a: 'Non. On s’intègre à vos outils (email, tableur, facturation) et on automatise autour.' },
+            { q: 'Quel budget prévoir ?', a: 'Packs TPE à partir de 1 290€ selon le périmètre; audit gratuit.' },
           ].map((item, i) => (
-            <div key={i} className="bg-[#111] border border-[#00e0ff33] p-5 rounded-lg">
-              <div className="text-2xl mb-2">{item.icon}</div>
-              <h3 className="text-lg font-semibold text-white mb-1">{item.title}</h3>
-              <p className="text-gray-400 text-sm">{item.desc}</p>
-            </div>
+            <details key={i} className="group p-4 open:bg-[#0b0b0b]">
+              <summary className="cursor-pointer font-semibold text-white flex items-center justify-between">
+                {item.q}
+                <span className="ml-4 transition group-open:rotate-45 text-[#00e0ff]">+</span>
+              </summary>
+              <p className="text-gray-400 mt-2">{item.a}</p>
+            </details>
           ))}
         </div>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org', '@type': 'FAQPage',
+            mainEntity: [
+              { '@type': 'Question', name: 'Combien de temps pour un premier résultat ?', acceptedAnswer: { '@type': 'Answer', text: 'POC en quelques jours, MVP en 2–4 semaines.' } },
+              { '@type': 'Question', name: 'Faut‑il changer d’outils ?', acceptedAnswer: { '@type': 'Answer', text: 'Non, intégration à vos outils existants.' } },
+              { '@type': 'Question', name: 'Quel budget prévoir ?', acceptedAnswer: { '@type': 'Answer', text: 'Packs TPE à partir de 1290€ selon périmètre; audit gratuit.' } },
+            ]
+          })
+        }} />
       </section>
-
-      <div className="text-center mt-16">
-        <CTA label="Demander ce Pack IA pour mon entreprise" />
-      </div>
-      {/* Section: Navigation vers autres personas */}
-      <section className="mt-24">
-        <h2 className="text-xl sm:text-2xl font-bold text-center mb-6 text-white">🔁 Explorer d'autres cas concrets</h2>
-        <div className="flex justify-center gap-4 flex-wrap">
-          <a href="/solutions/julie" className="bg-cyan-700 text-white px-4 py-2 rounded-lg font-semibold">Julie (vous êtes ici)</a>
-          <a href="/solutions/marc" className="bg-cyan-900 hover:bg-cyan-800 text-white px-4 py-2 rounded-lg transition">Voir Marc</a>
-          <a href="/solutions/lisa" className="bg-cyan-900 hover:bg-cyan-800 text-white px-4 py-2 rounded-lg transition">Voir Lisa</a>
-        </div>
-      </section>
-    </main>
-  );
+    </>
+  )
 }

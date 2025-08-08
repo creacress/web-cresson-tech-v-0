@@ -27,7 +27,7 @@ export default function Header() {
     { label: "Solutions IA", href: "/solutions" },
     { label: "Audit Gratuit", href: "/services/audit-gratuit" },
     { label: "Tarification", href: "/pricing" },
-    { label: "Services", href: "/services/page-services" },
+    { label: "Services", href: "/services" },
     { label: "Espace Dev IA", href: "/IA/Dev" },
     { label: "À propos", href: "/about" },
     { label: "Contact", href: "/contact" },

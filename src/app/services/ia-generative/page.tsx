@@ -3,20 +3,19 @@ import Link from "next/link"
 import NeonTitle from "@/components/ui/NeonTitle"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
-import PricingSection from "@/components/Pricing/PricingSection"
 import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
 import FinalCTA from "@/components/Pricing/FinalCTA"
 
 export const revalidate = 86400
 
 export const metadata: Metadata = {
-  title: "IA Générative - Créativité augmentée | Web Cresson Tech",
+  title: "IA Générative pour PME — Contenus, Images & Automations | Web Cresson Tech",
   description:
-    "Découvrez comment l'IA Générative révolutionne la création de contenu, la génération d'images et la créativité assistée avec Web Cresson Tech.",
+    "Solutions d’IA générative pour PME : contenus marketing, images produits, assistants IA et automatisations. Packs rapides, ROI mesurable. Audit gratuit.",
   openGraph: {
-    title: "IA Générative - Créativité augmentée | Web Cresson Tech",
+    title: "IA Générative pour PME — Contenus, Images & Automations | Web Cresson Tech",
     description:
-      "Boostez votre créativité avec l'IA Générative : génération d'images, création de contenu, ChatGPT, DALL-E et innovation.",
+      "Contenus, images, chatbots, templates SEO et automatisations pour PME. Déploiement rapide, ROI mesurable. Audit gratuit.",
     url: "https://webcresson.com/services/ia-generative",
     images: [
       {
@@ -29,9 +28,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IA Générative | Web Cresson Tech",
+    title: "IA Générative pour PME — Web Cresson Tech",
     description:
-      "Découvrez comment l'IA Générative améliore la créativité avec des outils comme ChatGPT, DALL-E pour la génération de contenu et d'images.",
+      "Générez des contenus, images et assistants IA. Packs rapides, ROI mesurable. Audit gratuit.",
     images: ["https://webcresson.com/images/deep-learning.webp"],
   },
   alternates: {
@@ -41,145 +40,194 @@ export const metadata: Metadata = {
 
 export default function IAGenerativePage() {
   return (
-    <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
+<main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
+  {/* SEO Structuré */}
+  <BreadcrumbJsonLd
+    overrides={{
+      services: "Services",
+      "ia-generative": "IA Générative",
+    }}
+  />
+  <ServiceSchema
+    serviceName="IA Générative pour PME — Web Cresson Tech"
+    serviceDescription="Contenus, images produits, assistants IA et automatisations pour petites et moyennes entreprises. Déploiement rapide et ROI mesurable."
+    serviceTypes={[
+      "IA Générative",
+      "Génération de contenu",
+      "Génération d'images",
+      "Assistants IA / Chatbots",
+      "Automatisation marketing",
+    ]}
+    faq={[
+      {
+        question: "Quels cas d’usage concrets pour une PME ?",
+        answer: "Création de contenus marketing, images produits, FAQ dynamique, réponses client, scripts vidéo, templates SEO, e‑mails et SMS automatiques.",
+      },
+      {
+        question: "Combien de temps pour un premier résultat ?",
+        answer: "Un POC en quelques jours, un MVP en 2–4 semaines selon la complexité.",
+      },
+      {
+        question: "Faut‑il beaucoup de données ?",
+        answer: "Non. On démarre avec ce que vous avez, on enrichit progressivement (fine‑tuning si nécessaire).",
+      },
+    ]}
+  />
 
-      {/* SEO Structuré */}
-      <BreadcrumbJsonLd
-        overrides={{
-          services: "Services",
-          "ia-generative": "IA Générative",
-        }}
-      />
-      <ServiceSchema
-        serviceName="IA Générative - Web Cresson Tech"
-        serviceDescription="Libérez votre créativité avec l'IA Générative : génération de contenu, d'images et automatisation créative."
-        serviceTypes={[
-          "IA Générative",
-          "Génération de contenu",
-          "Génération d'images",
-          "Automatisation créative",
-        ]}
-        faq={[
-          {
-            question: "Qu'est-ce que l'IA Générative ?",
-            answer: "L'IA Générative utilise des algorithmes avancés pour créer de nouveaux contenus originaux, tels que des images, du texte ou même des musiques, à partir de données existantes.",
-          },
-          {
-            question: "Quand utiliser l'IA Générative dans mon entreprise ?",
-            answer: "Pour créer du contenu marketing, générer des visuels de qualité, ou automatiser la production de contenu SEO.",
-          },
-          {
-            question: "Quelle est la différence avec le Machine Learning ?",
-            answer: "Le Machine Learning prédit et classe, l'IA Générative crée du contenu inédit.",
-          },
-        ]}
-      />
+  {/* Hero */}
+  <section className="text-center py-16">
+    <BreadcrumbNav />
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">IA Générative pour PME</h1>
+    <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+      Générez des <strong>contenus</strong>, des <strong>images produits</strong> et des <strong>assistants IA</strong> qui travaillent 24/7. Mise en place rapide, <strong>ROI mesurable</strong>.
+    </p>
+    <Link href="/services/audit-gratuit?utm_source=services&utm_medium=page&utm_campaign=genai_hero" className="mt-6 inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
+      Demander un audit gratuit
+    </Link>
+  </section>
 
-      {/* Héro */}
-      <section className="text-center py-20 px-6 sm:px-12 md:px-24 bg-gradient-to-br from-zinc-900 to-black text-white">
-        <BreadcrumbNav />
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-          Créez l’avenir avec l’IA Générative
-        </h1>
-        <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-          Génération de contenu, d’images ou de voix. Automatisez votre créativité avec les dernières avancées IA.
-        </p>
-        <Link href="/contact" className="mt-6 inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
-          Demander une démo gratuite
-        </Link>
-      </section>
-
-      <section className="my-24 text-center animate-fade-in">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-          Quels problèmes résolvons-nous ?
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
-            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Création lente</h3>
-            <p className="text-gray-400 text-sm">Produire du contenu prend trop de temps ? L’IA l’automatise pour vous.</p>
-          </div>
-          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
-            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Manque d’inspiration</h3>
-            <p className="text-gray-400 text-sm">L’IA vous suggère et génère des idées créatives en continu.</p>
-          </div>
-          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-6 rounded-xl border border-zinc-700 hover:shadow-[0_0_12px_#00e0ff] transition-all">
-            <h3 className="text-lg font-semibold mb-3 text-white flex items-center gap-2">Ressources limitées</h3>
-            <p className="text-gray-400 text-sm">Pas besoin d’une équipe de production : l’IA fait le boulot 24/7.</p>
-          </div>
+  {/* Points forts */}
+  <section className="grid md:grid-cols-4 gap-4 my-10">
+    {[
+      { t: "Déploiement rapide", d: "POC en jours, MVP en 2–4 semaines." },
+      { t: "Mesure du ROI", d: "Trafic, leads, productivité — suivi concret." },
+      { t: "Intégrations PME", d: "CRM/ERP, CMS, e‑commerce, emailing." },
+      { t: "Conformité & sécurité", d: "Bonnes pratiques, gouvernance des prompts & données." },
+    ].map((b, i) => (
+      <div key={i} className="group relative">
+        <div className="bg-[#111] p-5 rounded-xl border border-[#00e0ff22] transition-all duration-300 will-change-transform hover:-translate-y-1 hover:border-[#00e0ff66] hover:shadow-[0_10px_30px_-10px_#00e0ff66]">
+          <h3 className="font-semibold text-white">{b.t}</h3>
+          <p className="text-gray-400 text-sm">{b.d}</p>
         </div>
-      </section>
+        <span className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(400px_circle_at_50%_0%,#00e0ff22,transparent_60%)]"></span>
+      </div>
+    ))}
+  </section>
 
-      {/* Définition */}
-      <section className="my-20 animate-fade-in">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-          Qu’est-ce que l’IA Générative ?
-        </h2>
-        <div className="flex justify-center">
-          <div className="bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] p-8 rounded-2xl border border-zinc-700 max-w-xl w-full shadow-xl transition-all hover:shadow-[0_0_30px_#00e0ff]">
-            <p className="text-gray-400 text-sm mb-4 text-justify">
-              L’IA Générative est un domaine de l’intelligence artificielle capable de produire du contenu original : texte, image,
-              son ou vidéo. Basée sur des modèles comme <strong>GPT</strong> ou <strong>DALL-E</strong>, elle ouvre un monde de possibilités.
-            </p>
+  {/* Ce que nous faisons */}
+  <section className="my-16">
+    <h2 className="text-3xl font-bold mb-6 text-neon text-center">Tout ce qu’on peut faire pour vous</h2>
+    <div className="grid md:grid-cols-3 gap-6">
+      {[
+        { t: "Contenus marketing", d: "Articles, landing pages, posts, emails, fiches produits." },
+        { t: "Images produits & visuels", d: "Mockups, variantes, uniformisation du catalogue." },
+        { t: "Assistants & chatbots", d: "FAQ dynamique, support client, base de connaissances." },
+        { t: "Templates SEO", d: "Structures prêtes à l’emploi pour générer à l’échelle." },
+        { t: "Automation e‑mail/SMS", d: "Campagnes, relances, nurturing pilotés par IA." },
+        { t: "Scripts vidéo & pubs", d: "Scripts YouTube/Ads, hooks, storyboards." },
+      ].map((c, i) => (
+        <div key={i} className="group relative">
+          <div className="rounded-xl border border-[#00e0ff22] bg-[#0b0b0b] p-6 transition-all duration-300 will-change-transform hover:-translate-y-1 hover:border-[#00e0ff66] hover:shadow-[0_10px_30px_-10px_#00e0ff66]">
+            <h3 className="text-xl font-semibold mb-2">{c.t}</h3>
+            <p className="text-gray-400 text-sm">{c.d}</p>
           </div>
+          <span className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(400px_circle_at_50%_0%,#00e0ff22,transparent_60%)]"></span>
         </div>
-      </section>
+      ))}
+    </div>
+  </section>
 
-      {/* Tableau comparatif */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-bold text-white mb-4">Comparatif IA</h2>
-        <table className="table-auto w-full text-sm text-gray-400 border border-gray-700">
-          <thead className="bg-[#111] text-gray-200">
-            <tr>
-              <th className="p-2">Critère</th>
-              <th className="p-2">IA Générative</th>
-              <th className="p-2">Deep Learning</th>
-              <th className="p-2">Machine Learning</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="p-2">Objectif</td>
-              <td className="p-2">Créer du contenu</td>
-              <td className="p-2">Analyser données complexes</td>
-              <td className="p-2">Prédire, classifier</td>
-            </tr>
-            <tr>
-              <td className="p-2">Utilisation</td>
-              <td className="p-2">Marketing, design, SEO</td>
-              <td className="p-2">Santé, industrie, vision</td>
-              <td className="p-2">Commerce, finance, automatisation</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+  {/* Packs & prix (Product/Offer JSON‑LD) */}
+  <section className="my-16">
+    <h2 className="text-3xl font-bold text-center mb-2">Packs rapides pour PME</h2>
+    <p className="text-gray-400 text-center mb-8">Lancez‑vous sans friction. Évolutif ensuite.</p>
+    <div className="grid md:grid-cols-3 gap-6">
+      {[ 
+        { name: 'GenAI Starter', price: 1290, sku: 'genai-starter', features: ['Gabarits de contenu', 'Images + textes', "Workflow d'approbation", 'Formation 2h'], url: '/services/ia-generative' },
+        { name: 'GenAI Growth', price: 2490, sku: 'genai-growth', features: ['10 gabarits SEO', 'Assistant IA basique', 'Automations e‑mail', 'Tableau de bord ROI'], url: '/services/ia-generative' },
+        { name: 'GenAI Pro', price: 3990, sku: 'genai-pro', features: ['Assistant IA avancé', 'Fine‑tuning léger', 'Intégrations CRM/ERP', 'Atelier équipes'], url: '/services/ia-generative' },
+      ].map((p, i) => (
+        <div key={i} className="group relative">
+          <div className="rounded-xl border border-[#00e0ff44] bg-[#0b0b0b] p-6 transition-all duration-300 will-change-transform hover:-translate-y-1 hover:border-[#00e0ff88] hover:shadow-[0_12px_36px_-12px_#00e0ff88]">
+            <h3 className="text-xl font-bold">{p.name}</h3>
+            <p className="text-3xl font-extrabold my-2">{p.price}€</p>
+            <ul className="text-gray-400 text-sm space-y-1 mb-4 list-disc pl-5">
+              {p.features.map((f, fi) => (<li key={fi}>{f}</li>))}
+            </ul>
+            <Link href={`/services/audit-gratuit?utm_source=services&utm_medium=page&utm_campaign=genai_pack&plan=${p.sku}`} className="inline-block bg-[#00e0ff] text-black px-5 py-2 rounded font-semibold hover:scale-105 transition">Démarrer</Link>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'Product',
+                name: p.name,
+                description: 'Pack IA Générative pour PME',
+                sku: p.sku,
+                brand: { '@type': 'Brand', name: 'Web Cresson Tech' },
+                offers: {
+                  '@type': 'Offer',
+                  priceCurrency: 'EUR',
+                  price: p.price,
+                  availability: 'https://schema.org/InStock',
+                  url: `${p.url}?utm_source=services&utm_medium=card&utm_campaign=offer_schema&plan=${p.sku}`,
+                },
+                additionalProperty: p.features.map((f) => ({ '@type': 'PropertyValue', name: 'Feature', value: f })),
+              }) }}
+            />
+          </div>
+          <span className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(500px_circle_at_50%_0%,#00e0ff1f,transparent_60%)]"></span>
+        </div>
+      ))}
+    </div>
+  </section>
 
-      {/* Cas concrets */}
-      <section className="mb-16">
-        <h2 className="text-2xl font-bold text-white mb-4">Exemples concrets</h2>
-        <ul className="list-disc pl-6 text-gray-400 space-y-2">
-          <li>Génération automatique de visuels produits ou mockups</li>
-          <li>Contenus SEO pour articles ou landing pages</li>
-          <li>Scripts vidéo pour campagnes YouTube ou réseaux sociaux</li>
-          <li>Chatbots intelligents à base de LLM (Large Language Models)</li>
-        </ul>
-      </section>
+  {/* Méthode */}
+  <section className="my-16 text-center">
+    <h2 className="text-3xl font-bold mb-6">Méthode simple, résultats rapides</h2>
+    <div className="grid md:grid-cols-3 gap-6 text-gray-300">
+      <div>
+        <h3 className="font-semibold text-xl mb-2">1. Audit & cadrage</h3>
+        <p>Gratuit. On identifie cas d’usage à ROI rapide.</p>
+      </div>
+      <div>
+        <h3 className="font-semibold text-xl mb-2">2. POC rapide</h3>
+        <p>Prototype concret en quelques jours pour valider la valeur.</p>
+      </div>
+      <div>
+        <h3 className="font-semibold text-xl mb-2">3. Mise en prod</h3>
+        <p>Intégrations, formation, suivi du ROI.</p>
+      </div>
+    </div>
+  </section>
 
-      {/* CTA */}
-      <section className="text-center my-20 max-w-3xl mx-auto">
-        <h2 className="text-2xl font-bold text-white mb-4">Besoin d’un accompagnement ?</h2>
-        <p className="text-gray-400 mb-6">Nos experts IA vous aident à intégrer la Génération de contenu dans vos process.</p>
-        <Link
-          href="/services/audit-gratuit"
-          className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition"
-        >
-          Lancer mon audit gratuit
-        </Link>
-      </section>
+  {/* FAQ locale visible + JSON‑LD */}
+  <section className="my-20">
+    <h2 className="text-3xl font-bold text-center mb-6">FAQ — IA Générative pour PME</h2>
+    <div className="max-w-3xl mx-auto divide-y divide-[#1f1f1f] border border-[#1f1f1f] rounded">
+      {[
+        { q: 'IA générative : quels cas d’usage pour PME ?', a: 'Contenus marketing, images produits, FAQ dynamique, réponses client, scripts vidéo, templates SEO, automatisations e‑mail/SMS.' },
+        { q: 'Données nécessaires ?', a: 'On démarre avec vos données actuelles, on enrichit si besoin. Fine‑tuning ou prompts avancés selon le cas.' },
+        { q: 'Time‑to‑value ?', a: 'Premiers résultats en 1–2 semaines, itérations rapides pour la qualité.' },
+      ].map((item, i) => (
+        <details key={i} className="group p-4 open:bg-[#0b0b0b]">
+          <summary className="cursor-pointer font-semibold text-white flex items-center justify-between">
+            {item.q}
+            <span className="ml-4 transition group-open:rotate-45 text-[#00e0ff]">+</span>
+          </summary>
+          <p className="text-gray-400 mt-2">{item.a}</p>
+        </details>
+      ))}
+    </div>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'FAQPage',
+      mainEntity: [
+        { '@type': 'Question', name: 'IA générative : quels cas d’usage pour PME ?', acceptedAnswer: { '@type': 'Answer', text: 'Contenus marketing, images produits, FAQ dynamique, réponses client, scripts vidéo, templates SEO, automatisations e‑mail/SMS.' }},
+        { '@type': 'Question', name: 'Données nécessaires ?', acceptedAnswer: { '@type': 'Answer', text: 'On démarre avec vos données actuelles, on enrichit si besoin. Fine‑tuning ou prompts avancés selon le cas.' }},
+        { '@type': 'Question', name: 'Time‑to‑value ?', acceptedAnswer: { '@type': 'Answer', text: 'Premiers résultats en 1–2 semaines, itérations rapides pour la qualité.' }}
+      ]
+    }) }} />
+  </section>
 
-      {/* Section Tarifs */}
-      <PricingSection />
+  {/* CTA */}
+  <section className="text-center my-16">
+    <h2 className="text-3xl font-bold mb-4">Prêt à lancer la GénAI dans votre PME ?</h2>
+    <p className="text-gray-400 max-w-xl mx-auto mb-6">Audit gratuit pour identifier les meilleurs cas d’usage et un plan d’action concret.</p>
+    <Link href="/services/audit-gratuit?utm_source=services&utm_medium=page&utm_campaign=genai_final_cta" className="bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
+      Lancer mon audit gratuit
+    </Link>
+  </section>
 
-      <FinalCTA />
-    </main>
+  <FinalCTA />
+</main>
   )
 }

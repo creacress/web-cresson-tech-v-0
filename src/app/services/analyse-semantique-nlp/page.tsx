@@ -2,7 +2,6 @@ import { Metadata } from "next"
 import Link from "next/link"
 import BreadcrumbJsonLd from "@/components/seo/BreadcrumbJsonLd"
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
-import PricingSection from "@/components/Pricing/PricingSection"
 import BreadcrumbNav from "@/components/BreadcrumbNav/BreadcrumbNav"
 import FinalCTA from "@/components/Pricing/FinalCTA"
 
@@ -182,6 +181,199 @@ export default function NlpPage() {
         </div>
       </section>
 
+      {/* Packs NLP */}
+      <section aria-labelledby="packs-nlp" className="my-20 animate-fade-in max-w-5xl mx-auto">
+        <h2 id="packs-nlp" className="text-3xl sm:text-4xl font-extrabold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 scroll-mt-24">Packs NLP pour PME</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Starter Pack */}
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-8 rounded-2xl border border-zinc-700 hover:shadow-[0_0_30px_#00e0ff] transition-all flex flex-col justify-between">
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-cyan-400">Starter</h3>
+              <p className="text-gray-400 mb-6 text-sm">
+                Idéal pour démarrer avec l’analyse de texte et la segmentation basique.
+              </p>
+              <ul className="list-disc pl-5 text-gray-300 text-sm space-y-2 mb-6">
+                <li>Analyse sentimentale simple</li>
+                <li>Classification basique</li>
+                <li>Rapports mensuels</li>
+              </ul>
+            </div>
+            <div>
+              <Link
+                href="https://webcresson.com/contact?utm_source=nlp_pack_starter&utm_medium=website&utm_campaign=service_page"
+                className="inline-block w-full text-center py-3 px-6 rounded bg-cyan-500 text-black font-semibold hover:bg-cyan-600 transition"
+                aria-label="Contactez-nous pour le pack Starter NLP"
+              >
+                Contactez-nous
+              </Link>
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org/",
+                    "@type": "Product",
+                    name: "Pack Starter NLP",
+                    description: "Pack d'entrée de gamme pour analyse de texte et segmentation basique.",
+                    offers: {
+                      "@type": "Offer",
+                      priceCurrency: "EUR",
+                      price: "499.00",
+                      availability: "https://schema.org/InStock",
+                      url: "https://webcresson.com/contact?utm_source=nlp_pack_starter&utm_medium=website&utm_campaign=service_page",
+                    },
+                  }),
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Growth Pack */}
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-8 rounded-2xl border border-zinc-700 hover:shadow-[0_0_30px_#00e0ff] transition-all flex flex-col justify-between">
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-cyan-400">Growth</h3>
+              <p className="text-gray-400 mb-6 text-sm">
+                Pour PME souhaitant automatiser l’analyse avancée et la BI augmentée.
+              </p>
+              <ul className="list-disc pl-5 text-gray-300 text-sm space-y-2 mb-6">
+                <li>Analyse sentimentale avancée</li>
+                <li>Segmentation comportementale</li>
+                <li>Dashboards personnalisés</li>
+              </ul>
+            </div>
+            <div>
+              <Link
+                href="https://webcresson.com/contact?utm_source=nlp_pack_growth&utm_medium=website&utm_campaign=service_page"
+                className="inline-block w-full text-center py-3 px-6 rounded bg-cyan-500 text-black font-semibold hover:bg-cyan-600 transition"
+                aria-label="Contactez-nous pour le pack Growth NLP"
+              >
+                Contactez-nous
+              </Link>
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org/",
+                    "@type": "Product",
+                    name: "Pack Growth NLP",
+                    description: "Pack intermédiaire pour analyse avancée, segmentation et BI augmentée.",
+                    offers: {
+                      "@type": "Offer",
+                      priceCurrency: "EUR",
+                      price: "1499.00",
+                      availability: "https://schema.org/InStock",
+                      url: "https://webcresson.com/contact?utm_source=nlp_pack_growth&utm_medium=website&utm_campaign=service_page",
+                    },
+                  }),
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Pro Pack */}
+          <div className="bg-gradient-to-br from-zinc-900/60 to-zinc-800/50 p-8 rounded-2xl border border-zinc-700 hover:shadow-[0_0_30px_#00e0ff] transition-all flex flex-col justify-between">
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-cyan-400">Pro</h3>
+              <p className="text-gray-400 mb-6 text-sm">
+                Solution complète avec MLOps, monitoring et industrialisation IA.
+              </p>
+              <ul className="list-disc pl-5 text-gray-300 text-sm space-y-2 mb-6">
+                <li>Déploiement MLOps</li>
+                <li>Monitoring & alertes IA</li>
+                <li>Retraining automatique</li>
+              </ul>
+            </div>
+            <div>
+              <Link
+                href="https://webcresson.com/contact?utm_source=nlp_pack_pro&utm_medium=website&utm_campaign=service_page"
+                className="inline-block w-full text-center py-3 px-6 rounded bg-cyan-500 text-black font-semibold hover:bg-cyan-600 transition"
+                aria-label="Contactez-nous pour le pack Pro NLP"
+              >
+                Contactez-nous
+              </Link>
+              <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    "@context": "https://schema.org/",
+                    "@type": "Product",
+                    name: "Pack Pro NLP",
+                    description: "Pack complet avec MLOps, monitoring et industrialisation IA pour PME.",
+                    offers: {
+                      "@type": "Offer",
+                      priceCurrency: "EUR",
+                      price: "2999.00",
+                      availability: "https://schema.org/InStock",
+                      url: "https://webcresson.com/contact?utm_source=nlp_pack_pro&utm_medium=website&utm_campaign=service_page",
+                    },
+                  }),
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* AggregateOffer JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "AggregateOffer",
+              name: "Packs NLP Web Cresson Tech",
+              description: "Offres groupées pour solutions NLP, BI et MLOps adaptées aux PME.",
+              offerCount: 3,
+              lowPrice: "499.00",
+              highPrice: "2999.00",
+              priceCurrency: "EUR",
+              offers: [
+                {
+                  "@type": "Offer",
+                  name: "Pack Starter NLP",
+                  price: "499.00",
+                  priceCurrency: "EUR",
+                  url: "https://webcresson.com/contact?utm_source=nlp_pack_starter&utm_medium=website&utm_campaign=service_page",
+                  availability: "https://schema.org/InStock",
+                },
+                {
+                  "@type": "Offer",
+                  name: "Pack Growth NLP",
+                  price: "1499.00",
+                  priceCurrency: "EUR",
+                  url: "https://webcresson.com/contact?utm_source=nlp_pack_growth&utm_medium=website&utm_campaign=service_page",
+                  availability: "https://schema.org/InStock",
+                },
+                {
+                  "@type": "Offer",
+                  name: "Pack Pro NLP",
+                  price: "2999.00",
+                  priceCurrency: "EUR",
+                  url: "https://webcresson.com/contact?utm_source=nlp_pack_pro&utm_medium=website&utm_campaign=service_page",
+                  availability: "https://schema.org/InStock",
+                },
+              ],
+            }),
+          }}
+        />
+      </section>
+
+      {/* KPI Band */}
+      <section className="bg-gradient-to-r from-cyan-900 to-blue-900 text-white py-12 rounded-xl max-w-5xl mx-auto my-20 animate-fade-in">
+        <div className="flex flex-col sm:flex-row justify-around text-center max-w-4xl mx-auto">
+          <div className="mb-8 sm:mb-0">
+            <p className="text-4xl font-extrabold">+1200</p>
+            <p className="uppercase tracking-wide text-sm mt-2">Heures gagnées</p>
+          </div>
+          <div className="mb-8 sm:mb-0">
+            <p className="text-4xl font-extrabold">-93%</p>
+            <p className="uppercase tracking-wide text-sm mt-2">Erreurs réduites</p>
+          </div>
+          <div>
+            <p className="text-4xl font-extrabold">+35%</p>
+            <p className="uppercase tracking-wide text-sm mt-2">Productivité accrue</p>
+          </div>
+        </div>
+      </section>
+
       {/* Témoignage */}
       <section aria-labelledby="temoignage" className="text-center my-20 max-w-3xl mx-auto animate-fade-in">
         <blockquote className="italic text-gray-300 border-l-4 border-[#00e0ff] pl-4 mb-4">
@@ -193,8 +385,6 @@ export default function NlpPage() {
       {/* CTA final unifié */}
       <FinalCTA />
 
-      {/* Section Tarifs */}
-      <PricingSection />
     </main>
   )
 }
