@@ -7,7 +7,8 @@ import NeonDivider from '../ui/NeonDivider'
 
 type Plan = {
   name: string
-  price: string
+  setupFrom?: string
+  subscriptionFrom?: string
   features: string[]
   ctaLabel: string
   ctaLink?: string
@@ -18,13 +19,14 @@ type Plan = {
 const plans: Plan[] = [
   {
     name: 'Starter',
-    price: '99€/mois',
+    setupFrom: 'Setup dès 600€',
+    subscriptionFrom: 'Abonnement 99€/mois',
     features: [
-      '1 projet IA ou RPA simple',
-      'Audit de données offert',
-      'Déploiement cloud sécurisé',
-      'Dashboard de suivi',
-      'Support email (48h)',
+      'Jusqu’à 1 robot RPA ou 1 agent IA',
+      'Monitoring, mises à jour & correctifs',
+      'Petite volumétrie (jobs < 10k/mois)',
+      'Logs & alerte email',
+      'Support standard (48h)',
       'Sans engagement',
     ],
     ctaLabel: 'Choisir Starter',
@@ -32,15 +34,15 @@ const plans: Plan[] = [
   },
   {
     name: 'Pro',
-    price: '299€/mois',
+    setupFrom: 'Setup dès 800€',
+    subscriptionFrom: 'Abonnement 149€/mois',
     features: [
-      '3 projets IA ou RPA actifs',
-      'IA personnalisée (NLP, Vision, ML)',
-      'Intégration API REST / FastAPI',
-      'Dashboards interactifs & prédictifs',
+      'Jusqu’à 2 robots/agents + mini-RAG (≤ 200 docs)',
       'Retraining mensuel inclus',
+      'Intégrations Slack/Teams ou site web',
+      'Dashboards d’usage & garde-fous',
       'Support prioritaire (24h)',
-      '2 ateliers IA/RPA/an',
+      'Remise engagement 12 mois',
     ],
     ctaLabel: 'Choisir Pro',
     highlight: true,
@@ -48,27 +50,28 @@ const plans: Plan[] = [
   },
   {
     name: 'Entreprise',
-    price: 'Sur devis',
+    setupFrom: 'Setup dès 1 000€',
+    subscriptionFrom: 'Abonnement 199€/mois',
     features: [
-      'Projets IA/RPA illimités',
-      'Audit stratégique + roadmap IA/RPA',
-      'MLOps & orchestration RPA (CI/CD, monitoring)',
-      'Hébergement cloud dédié ou on-premise',
-      'Expert IA & RPA attitré',
-      'Workshops sur-mesure',
-      'Connexion à vos systèmes (ERP, CRM, etc.)',
+      '3+ robots/agents & modèles prédictifs',
+      'MLOps / orchestration (CI/CD, monitoring)',
+      'Déploiement API (FastAPI) & SLA renforcé',
+      'Hébergement dédié ou on-premise',
+      'Sécurité avancée & conformité',
+      'Expert IA/RPA attitré',
     ],
-    ctaLabel: 'Demander un devis',
+    ctaLabel: 'Parler à un expert',
     icon: Building,
   },
   {
     name: 'Personnalisé',
-    price: 'Sur-mesure',
+    setupFrom: 'Setup sur devis',
+    subscriptionFrom: 'Abonnement sur devis',
     features: [
       'Solution 100% adaptée à vos besoins',
       'Choix des technos (GPT, Claude, Mistral, UiPath, etc.)',
-      'Accompagnement stratégique complet',
       'Modèle IA fine-tuné ou RPA sur-mesure',
+      'Roadmap & accompagnement stratégique',
       'Support dédié et suivi mensuel',
     ],
     ctaLabel: 'Créer mon plan',
@@ -90,13 +93,13 @@ export default function PricingSection() {
             Nos offres couvrent toute la chaîne de valeur de l’IA et de la RPA : de la simple automatisation d’un processus métier jusqu’à la conception complète de modèles d’intelligence artificielle (Machine Learning, Deep Learning, NLP, LLM).
           </p>
           <p className="mb-4">
-            ➤ Pour les projets IA “simples” (classification, prédiction, détection…), nos forfaits débutent à 99€/mois. Pour des besoins plus spécifiques, nos plans Pro ou Entreprise incluent des intégrations personnalisées, du retraining, des ateliers et plus.
+            ➤ Pour les projets IA “simples” (classification, prédiction, détection…), le <strong>setup</strong> (one‑shot) couvre l’audit, le développement et le déploiement initial. L’<strong>abonnement</strong> assure le MCO (maintenance, correctifs, monitoring). Abonnement dès <strong>99€/mois</strong>.
           </p>
           <p className="mb-4">
             ➤ Pour les projets IA avancés ou sur-mesure (LLM, MLOps, fine-tuning de GPT, Claude, Mistral…), nous proposons une offre dédiée entièrement personnalisable.
           </p>
           <p className="mb-4">
-            ➤ Côté automatisation (RPA), nous proposons des robots sur mesure développés en Python, Rust ou via des plateformes comme UiPath et Power Automate, avec des packs adaptés à vos outils métiers.
+            ➤ Côté automatisation (RPA), nous proposons des robots sur mesure développés en Python, Rust ou via des plateformes comme UiPath et Power Automate, avec des packs adaptés à vos outils métiers. Chaque robot inclut un <strong>setup</strong> initial puis un <strong>abonnement</strong> selon la volumétrie.
           </p>
           <p className="mb-4">
             Pour plus de détails ou un devis sur-mesure ou un <Link href="/audit" className="underline text-cyan-400 hover:text-cyan-300">audit gratuit</Link>, n’hésitez pas à <Link href="/contact" className="underline text-cyan-400 hover:text-cyan-300">contactez-nous</Link>. Tous nos projets sont éligibles aux aides à l’innovation (Crédit Impôt Recherche, subventions BPI, etc.).
@@ -119,8 +122,15 @@ export default function PricingSection() {
                 <div className="flex justify-center text-cyan-400 mb-4">
                   <plan.icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
-                <p className="text-cyan-400 font-semibold mb-4">{plan.price}</p>
+                <h3 className="text-xl font-bold mb-3">{plan.name}</h3>
+                <div className="flex items-center justify-center gap-2 mb-4 flex-wrap">
+                  {plan.setupFrom && (
+                    <span className="text-xs uppercase tracking-wide bg-zinc-800 border border-zinc-700 rounded-full px-3 py-1">{plan.setupFrom}</span>
+                  )}
+                  {plan.subscriptionFrom && (
+                    <span className="text-xs uppercase tracking-wide bg-cyan-500/10 border border-cyan-600 text-cyan-300 rounded-full px-3 py-1">{plan.subscriptionFrom}</span>
+                  )}
+                </div>
                 <ul className="text-sm text-gray-300 text-left space-y-2 mb-6">
                   {plan.features.map((feature, idx) => (
                     <li key={idx}>✔️ {feature}</li>
@@ -138,6 +148,79 @@ export default function PricingSection() {
             </div>
           ))}
         </div>
+        <div className="max-w-4xl mx-auto mt-8 text-left">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+            <h3 className="text-base font-semibold text-white mb-2">Que couvre l’abonnement ?</h3>
+            <ul className="text-sm text-gray-300 grid grid-cols-1 md:grid-cols-2 gap-2 list-disc list-inside">
+              <li>Hébergement sécurisé, logs & monitoring</li>
+              <li>Mises à jour, correctifs & évolution des prompts/modèles</li>
+              <li>Retraining mensuel (selon plan)</li>
+              <li>Support (SLA 48h / 24h) et accompagnement</li>
+              <li>Option MLOps/RPA (CI/CD, dashboards, garde‑fous)</li>
+            </ul>
+            <p className="text-xs text-gray-500 mt-3">Tarification ajustée selon volumétrie, nombre de robots/modèles et exigences de SLA.</p>
+          </div>
+        </div>
+      </section>
+      <NeonDivider />
+      <section className="py-16 bg-[#0b0b0b] text-white text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-emerald-400">🧠 Solutions IA — Setup + Abonnement</h2>
+        <p className="text-gray-400 max-w-3xl mx-auto mb-10">Exemples d’offres prêtes à l’emploi, combinant un coût d’implémentation initial et un abonnement MCO.</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="h-full flex flex-col justify-between bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 rounded-xl border border-emerald-600/30">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Agent IA (Support/Rédaction)</h3>
+              <div className="flex items-center gap-2 mb-3 flex-wrap">
+                <span className="text-xs bg-zinc-800 border border-zinc-700 rounded-full px-3 py-1">Setup dès 800€</span>
+                <span className="text-xs bg-emerald-500/10 border border-emerald-600 text-emerald-300 rounded-full px-3 py-1">Abonnement 99€/mois</span>
+              </div>
+              <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
+                <li>✔️ Intégration site / Slack / Teams</li>
+                <li>✔️ Garde‑fous & analytics d’usage</li>
+                <li>✔️ Prompting évolutif & correctifs</li>
+              </ul>
+            </div>
+            <div>
+              <Link href="/contact?offre=agent-ia" className="inline-block mt-2 bg-emerald-500 hover:bg-emerald-600 text-black px-5 py-2 rounded-lg font-semibold transition">Demander un devis</Link>
+            </div>
+          </div>
+
+          <div className="h-full flex flex-col justify-between bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 rounded-xl border border-emerald-600/30">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Modèle prédictif (Forecast/Anomalies)</h3>
+              <div className="flex items-center gap-2 mb-3 flex-wrap">
+                <span className="text-xs bg-zinc-800 border border-zinc-700 rounded-full px-3 py-1">Setup dès 1 000€</span>
+                <span className="text-xs bg-emerald-500/10 border border-emerald-600 text-emerald-300 rounded-full px-3 py-1">Abonnement 149€/mois</span>
+              </div>
+              <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
+                <li>✔️ Datasources connectées & monitoring</li>
+                <li>✔️ Retraining mensuel</li>
+                <li>✔️ API FastAPI optionnelle</li>
+              </ul>
+            </div>
+            <div>
+              <Link href="/contact?offre=modele-predictif" className="inline-block mt-2 bg-emerald-500 hover:bg-emerald-600 text-black px-5 py-2 rounded-lg font-semibold transition">Demander un devis</Link>
+            </div>
+          </div>
+
+          <div className="h-full flex flex-col justify-between bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 rounded-xl border border-emerald-600/30">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">App / Site IA</h3>
+              <div className="flex items-center gap-2 mb-3 flex-wrap">
+                <span className="text-xs bg-zinc-800 border border-zinc-700 rounded-full px-3 py-1">Setup dès 1 500€</span>
+                <span className="text-xs bg-emerald-500/10 border border-emerald-600 text-emerald-300 rounded-full px-3 py-1">Abonnement 149€/mois</span>
+              </div>
+              <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
+                <li>✔️ Auth, CRM/ERP & intégrations</li>
+                <li>✔️ Monitoring, logs et SLA</li>
+                <li>✔️ Optimisations continues</li>
+              </ul>
+            </div>
+            <div>
+              <Link href="/contact?offre=app-ia" className="inline-block mt-2 bg-emerald-500 hover:bg-emerald-600 text-black px-5 py-2 rounded-lg font-semibold transition">Demander un devis</Link>
+            </div>
+          </div>
+        </div>
       </section>
       <NeonDivider />
       {/* Section Packs RPA */}
@@ -151,7 +234,8 @@ export default function PricingSection() {
           <div className="h-full flex flex-col justify-between bg-gradient-to-br from-[#2c1b00] to-[#0c0c0c] p-6 rounded-xl border border-amber-600/30 shadow-xl hover:shadow-amber-500/10 transition">
             <div>
               <h3 className="text-xl font-bold text-white mb-2">⚙️ Pack RPA Simple</h3>
-              <p className="text-amber-400 font-medium mb-4">à partir de 3 900€</p>
+              <p className="text-amber-400 font-medium mb-2">Setup à partir de 3 900€</p>
+              <p className="text-amber-300/80 text-sm">+ Abonnement dès 99€/mois</p>
               <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
                 <li>✔️ Extraction web / clics automatisés</li>
                 <li>✔️ Script Python ou Rust sur mesure</li>
@@ -168,7 +252,8 @@ export default function PricingSection() {
           <div className="h-full flex flex-col justify-between bg-gradient-to-br from-[#332400] to-[#0c0c0c] p-6 rounded-xl border border-amber-500 shadow-xl hover:shadow-amber-500/20 transition">
             <div>
               <h3 className="text-xl font-bold text-white mb-2">🤖 Pack RPA Intermédiaire</h3>
-              <p className="text-amber-400 font-medium mb-4">à partir de 7 900€</p>
+              <p className="text-amber-400 font-medium mb-2">Setup à partir de 7 900€</p>
+              <p className="text-amber-300/80 text-sm">+ Abonnement dès 149€/mois</p>
               <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
                 <li>✔️ Automatisation de workflows multi-étapes</li>
                 <li>✔️ Intégration aux outils internes</li>
@@ -185,7 +270,8 @@ export default function PricingSection() {
           <div className="h-full flex flex-col justify-between bg-gradient-to-br from-[#3d2f00] to-[#0c0c0c] p-6 rounded-xl border border-amber-600/30 shadow-xl hover:shadow-amber-500/10 transition">
             <div>
               <h3 className="text-xl font-bold text-white mb-2">🧠 Pack RPA Avancé</h3>
-              <p className="text-amber-400 font-medium mb-4">à partir de 19 500€</p>
+              <p className="text-amber-400 font-medium mb-2">Setup à partir de 19 500€</p>
+              <p className="text-amber-300/80 text-sm">+ Abonnement sur devis</p>
               <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
                 <li>✔️ Robots UiPath / Power Automate</li>
                 <li>✔️ OCR, formulaires, mail, bases de données</li>
@@ -223,7 +309,7 @@ export default function PricingSection() {
             </ul>
           </div>
           <p className="text-sm text-gray-500 italic mt-8 animate-fade-in-up delay-300">
-            L’abonnement démarre à <strong>99€/mois</strong> pour les projets simples. Tarification ajustée selon volumétrie, nombre de modèles ou robots, et SLA souhaité.
+            Abonnement dès <strong>99€/mois</strong> (projets simples). Le montant dépend de la volumétrie, du nombre de robots/modèles et du SLA choisi.
           </p>
         </div>
       </section>
