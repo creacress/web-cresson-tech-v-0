@@ -13,7 +13,7 @@ import Footer from '@/components/Footer'
 import CookieConsent from "@/components/CookieModal/CookieModal";
 import AnalyticsScripts from '@/components/AnalyticsProvider/AnalyticsScripts';
 import PageTransition from '@/components/ui/PageTransition'
-
+export const dynamic = 'force-dynamic';
 const play = Play({ subsets: ['latin'], display: 'swap', weight: ['400', '700'] })
 
 export const viewport: Viewport = {
@@ -100,7 +100,12 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const nonce = (await headers()).get('x-nonce') || undefined;
+  let nonce: string | undefined;
+  try {
+    nonce = (await headers()).get('x-nonce') || undefined;
+  } catch {
+    nonce = undefined;
+  }
   return (
     <html lang="fr" data-scroll-behavior="smooth" className="scroll-smooth">
       <head>
@@ -145,47 +150,53 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           `}
         </Script>
 
-        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "WebCressonTech",
-          "url": "https://webcresson.com",
-          "logo": "https://webcresson.com/images/Logo_webcressontech.webp",
-          "sameAs": [
-            "https://www.facebook.com/profile.php?id=61579372888241",
-            "https://twitter.com/WebCresson",
-            "https://www.linkedin.com/in/alexis-cresson/",
-            "https://wa.me/33766029632"
-          ]
-        })}} />
+        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "WebCressonTech",
+            "url": "https://webcresson.com",
+            "logo": "https://webcresson.com/images/Logo_webcressontech.webp",
+            "sameAs": [
+              "https://www.facebook.com/profile.php?id=61579372888241",
+              "https://twitter.com/WebCresson",
+              "https://www.linkedin.com/in/alexis-cresson/",
+              "https://wa.me/33766029632"
+            ]
+          })
+        }} />
 
-        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "url": "https://webcresson.com",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://webcresson.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
-        })}} />
+        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://webcresson.com",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://webcresson.com/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })
+        }} />
 
-        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          "name": "WebCressonTech",
-          "areaServed": {
-            "@type": "Country",
-            "name": "France"
-          },
-          "url": "https://webcresson.com"
-        })}} />
+        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "WebCressonTech",
+            "areaServed": {
+              "@type": "Country",
+              "name": "France"
+            },
+            "url": "https://webcresson.com"
+          })
+        }} />
       </head>
 
       <body className={`bg-black text-white min-h-screen antialiased ${play.className}`}>
         <GTMNoScript />
         <Toaster position="top-center" theme="dark" richColors />
-        
+
         <Header />
         <PageTransition>
           <main>{children}</main>

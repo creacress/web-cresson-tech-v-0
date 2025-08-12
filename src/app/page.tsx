@@ -15,6 +15,7 @@ import FAQSection from '@/components/Home/FAQSection'
 import TemoignageSection from '@/components/Home/TemoignageSection'
 import CiblesSection from '@/components/Home/CiblesSection'
 import { HoverPreview, KpiCounter, SafeLink } from '@/components/Home/HomeInteractive'
+export const dynamic = 'force-dynamic';
 
 export const revalidate = 86400
 
@@ -104,7 +105,12 @@ export const metadata: Metadata = {
 
 
 export default async function Home() {
-  const nonce = (await headers()).get('x-nonce') || undefined;
+  let nonce: string | undefined;
+  try {
+    nonce = (await headers()).get('x-nonce') || undefined;
+  } catch {
+    nonce = undefined;
+  }
   return (
     <>
       <ServiceSchema
