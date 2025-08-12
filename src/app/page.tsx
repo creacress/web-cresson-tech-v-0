@@ -1,6 +1,7 @@
 import Image from "next/image"
+import { headers } from 'next/headers'
 import Link from "next/link"
-import { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import NeonDivider from "@/components/ui/NeonDivider"
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import ServiceSchema from "@/components/ServiceShema/ServiceSchema"
@@ -17,43 +18,93 @@ import { HoverPreview, KpiCounter, SafeLink } from '@/components/Home/HomeIntera
 
 export const revalidate = 86400
 
+// Viewport configuration for SEO & CWV
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#0b0b0b",
+  colorScheme: "dark",
+  maximumScale: 5,
+  userScalable: true,
+};
+
 export const metadata: Metadata = {
-  title: 'Agence IA & Automatisation | WebCressonTech – Solutions Python & RPA sur mesure',
+  metadataBase: new URL("https://webcresson.com"),
+  title: {
+    default: "Agence IA & Automatisation | WebCressonTech – Solutions Python & RPA sur mesure",
+    template: "%s | WebCressonTech",
+  },
   description:
     "Découvrez comment WebCressonTech transforme vos process grâce à l'IA, la RPA et Python. Audit gratuit & solutions personnalisées.",
-  keywords: ['Agence IA', 'support automatisation', 'WebCressonTech', 'expert IA', 'Python'],
+  keywords: [
+    "Agence IA",
+    "Automatisation RPA",
+    "WebCressonTech",
+    "Expert IA",
+    "Python",
+    "Agents IA",
+    "Intégration IA PME",
+    "Audit IA gratuit",
+  ],
+  referrer: "origin-when-cross-origin",
   alternates: {
-    canonical: 'https://webcresson.com',
+    canonical: "/",
+    languages: {
+      "fr-FR": "/",
+    },
   },
   openGraph: {
-    title: 'Agence IA & RPA | WebCressonTech',
+    type: "website",
+    locale: "fr_FR",
+    title: "Agence IA & RPA | WebCressonTech",
     description: "WebCressonTech, votre partenaire pour l'IA et l'automatisation.",
-    url: 'https://webcresson.com',
-    siteName: 'WebCresson Tech',
+    url: "/",
+    siteName: "WebCressonTech",
     images: [
       {
-        url: 'https://webcresson.com/images/Logo_webcressontech.webp',
+        url: "/images/Logo_webcressontech.webp",
         width: 1200,
         height: 630,
-        alt: 'WebCressonTech',
+        alt: "WebCressonTech",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: "WebCressonTech, votre partenaire pour l'IA et l'automatisation",
     description: "Discutons de vos projets IA & automatisation.",
-    images: ['https://webcresson.com/images/Logo_webcressontech.webp'],
-    creator: '@WebCresson',
+    images: ["/images/Logo_webcressontech.webp"],
+    site: "@WebCresson",
+    creator: "@WebCresson",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  category: "technology",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-32x32.png",
+  },
+  other: {
+    "geo.region": "FR",
+    "geo.country": "FR",
+    "geo.placename": "France",
   },
 };
 
 
-export default function Home() {
+export default async function Home() {
+  const nonce = (await headers()).get('x-nonce') || undefined;
   return (
     <>
       <ServiceSchema
@@ -91,27 +142,61 @@ export default function Home() {
         ]}
       />
       <script
+        nonce={nonce}
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'Organization',
-          name: 'WebCressonTech',
-          url: 'https://webcresson.com',
-          logo: 'https://webcresson.com/images/Logo_webcressontech.webp',
-          sameAs: ['https://x.com/WebCresson'],
-          contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', availableLanguage: ['fr'], url: 'https://webcresson.com/contact' }],
-        }) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "WebCressonTech",
+            "url": "https://webcresson.com",
+            "logo": "https://webcresson.com/images/Logo_webcressontech.webp",
+            "sameAs": [
+              "https://www.facebook.com/profile.php?id=61579372888241",
+              "https://twitter.com/WebCresson",
+              "https://www.linkedin.com/in/alexis-cresson/",
+              "https://wa.me/33766029632"
+            ]
+          })
+        }}
       />
       <script
+        nonce={nonce}
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'WebSite',
-          name: 'WebCressonTech',
-          url: 'https://webcresson.com',
-          inLanguage: 'fr',
-          publisher: { '@type': 'Organization', name: 'WebCressonTech' }
-        }) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'WebCressonTech',
+            url: 'https://webcresson.com',
+            inLanguage: 'fr',
+            publisher: { '@type': 'Organization', name: 'WebCressonTech' },
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: 'https://webcresson.com/search?q={search_term_string}',
+              'query-input': 'required name=search_term_string'
+            }
+          })
+        }}
+      />
+      <script
+        nonce={nonce}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ProfessionalService',
+            name: 'WebCressonTech',
+            url: 'https://webcresson.com',
+            areaServed: [{ '@type': 'Country', name: 'France' }],
+            address: {
+              '@type': 'PostalAddress',
+              addressCountry: 'FR'
+            },
+            sameAs: ['https://x.com/WebCresson'],
+            image: 'https://webcresson.com/images/Logo_webcressontech.webp'
+          })
+        }}
       />
 
       <main className="bg-black text-white px-4 sm:px-6 lg:px-12">
@@ -157,9 +242,10 @@ export default function Home() {
                   src="/images/hero-ia.jpg"
                   alt="Illustration IA"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 600px"
                   className="object-contain"
                   priority
+                  fetchPriority="high"
                 />
               </div>
             </div>
@@ -430,7 +516,8 @@ export default function Home() {
               className="w-full px-5 py-3 rounded-lg bg-zinc-900 border border-zinc-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder-gray-400"
               id="glossary-search"
             />
-            <script dangerouslySetInnerHTML={{ __html: `
+            <script nonce={nonce} dangerouslySetInnerHTML={{
+              __html: `
   (function(){
     var input = document.getElementById('glossary-search');
     if (!input) return;
@@ -485,7 +572,7 @@ export default function Home() {
             <Link
               href="/contact?utm_source=home&utm_medium=final_cta&utm_campaign=contact"
               className="relative px-6 py-3 rounded-lg font-semibold transition bg-indigo-600 hover:bg-indigo-700 text-white"
-              style={{boxShadow: "0 0 0 2px #818cf8, 0 0 16px 2px #818cf8"}}
+              style={{ boxShadow: "0 0 0 2px #818cf8, 0 0 16px 2px #818cf8" }}
             >
               <span className="absolute -inset-1 rounded-lg bg-gradient-to-r from-indigo-500 via-cyan-400 to-fuchsia-400 animate-gradient border-gradient pointer-events-none z-0"></span>
               <span className="relative z-10">Contactez-nous</span>
@@ -518,7 +605,7 @@ export default function Home() {
           <Link
             href="/services/audit-gratuit?utm_source=home&utm_medium=fab&utm_campaign=audit_free"
             className="relative bg-[#00e0ff] text-black px-5 py-3 rounded shadow hover:scale-110 transition-all font-bold animate-pulse"
-            style={{boxShadow: "0 0 16px 4px #00e0ff55"}}
+            style={{ boxShadow: "0 0 16px 4px #00e0ff55" }}
           >
             <span className="absolute -inset-1 rounded-lg bg-gradient-to-r from-cyan-400 via-fuchsia-400 to-indigo-400 animate-gradient pointer-events-none z-0 blur-sm opacity-60"></span>
             <span className="relative z-10">📩 Audit IA gratuit</span>

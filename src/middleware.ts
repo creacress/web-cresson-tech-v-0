@@ -1,6 +1,15 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
+function makeNonce() {
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  let binary = "";
+  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+  // base64
+  return btoa(binary);
+}
+
 const ALLOWED_IPS = ['91.167.54.242']
 const BLOCKED_IPS = ['139.59.136.184', '178.128.207.138']
 const ALLOWED_POST_ROUTES = ['/contact', '/api/send-email']
@@ -12,6 +21,13 @@ export function middleware(request: NextRequest) {
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '0.0.0.0'
   const path = url.pathname
   const method = request.method
+
+  // --- CSP nonce per request
+  const nonce = makeNonce();
+
+  // Propagate the nonce to the app via a request header
+  const reqHeaders = new Headers(request.headers);
+  reqHeaders.set('x-nonce', nonce);
 
   // --- 1. Autoriser les IP spécifiques
   if (ALLOWED_IPS.includes(ip)) return NextResponse.next()
@@ -49,7 +65,32 @@ export function middleware(request: NextRequest) {
     return new NextResponse('Méthode non autorisée', { status: 403 })
   }
 
-  return NextResponse.next()
+  const res = NextResponse.next({ request: { headers: reqHeaders } });
+  const isProd = process.env.NODE_ENV === 'production';
+  if (isProd) {
+    // Strict CSP with nonce + strict-dynamic (no unsafe-inline in scripts)
+    const csp = [
+      "default-src 'self'",
+      `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "img-src 'self' https: data:",
+      "font-src 'self' https://fonts.gstatic.com data:",
+      "connect-src 'self' https:",
+      "frame-ancestors 'none'",
+      "frame-src https://www.googletagmanager.com",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "upgrade-insecure-requests"
+    ].join('; ');
+    res.headers.set('Content-Security-Policy', csp);
+    if (request.nextUrl.protocol === 'https:') {
+      // 1 year HSTS + includeSubDomains + preload (adjust max-age gradually if needed)
+      res.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+    }
+    res.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+  }
+  return res;
 }
 
 export const config = {

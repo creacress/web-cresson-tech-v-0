@@ -1,10 +1,12 @@
 import './globals.css'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Toaster } from 'sonner'
 import { Play } from 'next/font/google'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from '@vercel/analytics/next'
-import { GoogleTagManager, GTMNoScript } from '../components/GoogleTagManager/GoogleTagManager'
+import { GTMNoScript } from '../components/GoogleTagManager/GoogleTagManager'
+import Script from 'next/script'
+import { headers } from 'next/headers'
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -14,54 +16,170 @@ import PageTransition from '@/components/ui/PageTransition'
 
 const play = Play({ subsets: ['latin'], display: 'swap', weight: ['400', '700'] })
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#0b0b0b",
+  colorScheme: "dark",
+  maximumScale: 5,
+  userScalable: true,
+};
+
 export const metadata: Metadata = {
-  title: 'Agence IA & Automatisation | WebCressonTech – Solutions Python & RPA sur mesure',
+  metadataBase: new URL("https://webcresson.com"),
+  title: {
+    default: "Agence IA & Automatisation | WebCressonTech – Solutions Python & RPA sur mesure",
+    template: "%s | WebCressonTech",
+  },
   description:
     "Découvrez comment WebCressonTech transforme vos process grâce à l'IA, la RPA et Python. Audit gratuit & solutions personnalisées.",
-  keywords: ['Agence IA', 'support automatisation', 'WebCressonTech', 'expert IA', 'Python'],
+  keywords: [
+    "Agence IA",
+    "Automatisation RPA",
+    "WebCressonTech",
+    "Expert IA",
+    "Python",
+    "Agents IA",
+    "Intégration IA PME",
+    "Audit IA gratuit",
+  ],
+  referrer: "origin-when-cross-origin",
   alternates: {
-    canonical: 'https://webcresson.com',
+    canonical: "/",
+    languages: {
+      "fr-FR": "/",
+    },
   },
   openGraph: {
-    title: 'Agence IA & RPA | WebCressonTech',
+    type: "website",
+    locale: "fr_FR",
+    title: "Agence IA & RPA | WebCressonTech",
     description: "WebCressonTech, votre partenaire pour l'IA et l'automatisation.",
-    url: 'https://webcresson.com',
-    siteName: 'WebCresson Tech',
+    url: "/",
+    siteName: "WebCressonTech",
     images: [
       {
-        url: 'https://webcresson.com/images/Logo_webcressontech.webp',
+        url: "/images/Logo_webcressontech.webp",
         width: 1200,
         height: 630,
-        alt: 'WebCressonTech',
+        alt: "WebCressonTech",
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: "WebCressonTech, votre partenaire pour l'IA et l'automatisation",
     description: "Discutons de vos projets IA & automatisation.",
-    images: ['https://webcresson.com/images/Logo_webcressontech.webp'],
-    creator: '@WebCresson',
+    images: ["/images/Logo_webcressontech.webp"],
+    site: "@WebCresson",
+    creator: "@WebCresson",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  category: "technology",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-32x32.png",
+  },
+  other: {
+    "geo.region": "FR",
+    "geo.country": "FR",
+    "geo.placename": "France",
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const nonce = (await headers()).get('x-nonce') || undefined;
   return (
     <html lang="fr" data-scroll-behavior="smooth" className="scroll-smooth">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Web Cresson Tech" />
         <meta name="description" content="Découvrez comment WebCressonTech transforme vos process grâce à l'IA, la RPA et Python. Audit gratuit & solutions personnalisées." />
         <link rel="icon" href="/images/Logo_webcressontech.ico" />
         <link rel="canonical" href="https://webcresson.com/" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://region1.analytics.google.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://region1.analytics.google.com" />
 
         {/* Google Tag Manager */}
-        <GoogleTagManager />
+        <Script id="facade-consent" strategy="afterInteractive" nonce={nonce}>
+          {`
+            (function(){
+              window.dataLayer = window.dataLayer || [];
+              window.gtag = function(){ dataLayer.push(arguments); };
+              // Minimal consent defaults (adjust if you use a CMP)
+              gtag('consent', 'default', { ad_user_data: 'denied', ad_personalization: 'denied', ad_storage: 'denied', analytics_storage: 'granted', wait_for_update: 0 });
+
+              function loadGTM(){
+                if (window.__gtmLoaded) return; window.__gtmLoaded = true;
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-5SG8GNR8'; s.async = true;
+                document.head.appendChild(s);
+              }
+              function loadGA(){
+                if (window.__gaLoaded) return; window.__gaLoaded = true;
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-H206EG4TH7'; s.async = true;
+                document.head.appendChild(s);
+                gtag('js', new Date()); gtag('config', 'G-H206EG4TH7', { send_page_view: true });
+              }
+              var fired = false;
+              function trigger(){ if (fired) return; fired = true; loadGA(); loadGTM(); }
+              // Load on idle or first interaction
+              if ('requestIdleCallback' in window) requestIdleCallback(trigger, { timeout: 3000 }); else setTimeout(trigger, 3000);
+              ['scroll','pointerdown','keydown','touchstart'].forEach(function(evt){ window.addEventListener(evt, trigger, { once: true, passive: true }); });
+            })();
+          `}
+        </Script>
+
+        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "WebCressonTech",
+          "url": "https://webcresson.com",
+          "logo": "https://webcresson.com/images/Logo_webcressontech.webp",
+          "sameAs": [
+            "https://www.facebook.com/profile.php?id=61579372888241",
+            "https://twitter.com/WebCresson",
+            "https://www.linkedin.com/in/alexis-cresson/",
+            "https://wa.me/33766029632"
+          ]
+        })}} />
+
+        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "https://webcresson.com",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://webcresson.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        })}} />
+
+        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          "name": "WebCressonTech",
+          "areaServed": {
+            "@type": "Country",
+            "name": "France"
+          },
+          "url": "https://webcresson.com"
+        })}} />
       </head>
 
       <body className={`bg-black text-white min-h-screen antialiased ${play.className}`}>
