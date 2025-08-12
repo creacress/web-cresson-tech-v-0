@@ -13,6 +13,7 @@ function makeNonce() {
 const ALLOWED_IPS = ['91.167.54.242']
 const BLOCKED_IPS = ['139.59.136.184', '178.128.207.138']
 const ALLOWED_POST_ROUTES = ['/contact', '/api/send-email']
+const ALLOWED_PATHS = ['/IA/Dev'];
 
 export function middleware(request: NextRequest) {
   const url = new URL(request.url)
@@ -28,6 +29,11 @@ export function middleware(request: NextRequest) {
   // Propagate the nonce to the app via a request header
   const reqHeaders = new Headers(request.headers);
   reqHeaders.set('x-nonce', nonce);
+
+  // --- Bypass protections for specific internal endpoints (e.g., dev/probing)
+  if (ALLOWED_PATHS.some(p => path.startsWith(p))) {
+    return NextResponse.next({ request: { headers: reqHeaders } });
+  }
 
   // --- 1. Autoriser les IP spécifiques
   if (ALLOWED_IPS.includes(ip)) return NextResponse.next()
