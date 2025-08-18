@@ -27,11 +27,13 @@ export default function ServiceLink({ href, title, icon, text }: ServiceLinkProp
       <Link
         href={href}
         onClick={handleClick}
-        className="group relative block p-6 border border-[#00e0ff33] rounded-xl bg-[#111] transition-all duration-300 will-change-transform hover:-translate-y-1 hover:border-[#00e0ff66] hover:shadow-[0_10px_30px_-10px_#00e0ff66]"
+        className="relative flex h-full flex-col justify-between p-6 border border-[#00e0ff33] rounded-xl bg-[#111] transition-all duration-300 will-change-transform hover:-translate-y-1 hover:border-[#00e0ff66] hover:shadow-[0_10px_30px_-10px_#00e0ff66]"
       >
         <div className="flex items-start gap-4 mb-4">
           <div className="text-[#00e0ff]">{icon}</div>
-          <h2 className="text-xl font-bold text-white">{title}</h2>
+          <h2 className="text-lg md:text-xl font-bold text-white leading-snug line-clamp-2">
+            {title}
+          </h2>
         </div>
         <p className="text-gray-400 mb-4">{text}</p>
         <span className="inline-block text-sm font-semibold text-[#00e0ff] group-hover:underline transition">

@@ -115,6 +115,14 @@ export default function Page() {
               longDesc: 'Assistants connectés à vos données/outils avec garde-fous (RGPD, logs, rôles).'
             },
             {
+              icon: '🎬',
+              title: 'Générateur IA — Vidéos & Images',
+              desc: 'Vidéos verticales 9:16 et visuels e‑commerce réalistes, exports social‑ready.',
+              link: '/services/generateur-ia',
+              img: '/images/services/generateur-ia-preview.jpg',
+              longDesc: 'Pipeline IA pour créer rapidement des vidéos et images de haute qualité (9:16, 16:9, 1:1), cohérentes avec votre charte. Optimisé réseaux sociaux et e‑commerce.'
+            },
+            {
               icon: '📈',
               title: 'Modèles prédictifs',
               desc: 'Prévision ventes, détection d’anomalies, maintenance prédictive.',
@@ -179,6 +187,7 @@ export default function Page() {
             { name: 'Pack RPA Starter', price: 1490, sku: 'rpa-starter', url: '/services/rpa' },
             { name: 'Pack GénAI Starter', price: 1990, sku: 'genai-starter', url: '/services/intelligence-artificielle' },
             { name: 'Pack Prédictif Starter', price: 2490, sku: 'ml-starter', url: '/services/bi' },
+            { name: 'Pack Générateur IA — Médias', price: 990, sku: 'genai-media-starter', url: '/services/generateur-ia' },
           ].map((p, i) => (
             <div key={i} className="group relative">
               <div className="rounded-xl border border-[#00e0ff44] bg-[#0b0b0b] p-6 transition-all duration-300 will-change-transform hover:-translate-y-1 hover:border-[#00e0ff88] hover:shadow-[0_12px_36px_-12px_#00e0ff88]">
@@ -203,11 +212,12 @@ export default function Page() {
       </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org', '@type': 'AggregateOffer', url: 'https://webcresson.com/solutions', priceCurrency: 'EUR', lowPrice: 1490, highPrice: 2490, offerCount: 3,
+        '@context': 'https://schema.org', '@type': 'AggregateOffer', url: 'https://webcresson.com/solutions', priceCurrency: 'EUR', lowPrice: 1490, highPrice: 2490, offerCount: 4,
         offers: [
           { '@type': 'Offer', price: 1490, priceCurrency: 'EUR', url: 'https://webcresson.com/solutions?plan=rpa-starter', availability: 'https://schema.org/InStock' },
           { '@type': 'Offer', price: 1990, priceCurrency: 'EUR', url: 'https://webcresson.com/solutions?plan=genai-starter', availability: 'https://schema.org/InStock' },
           { '@type': 'Offer', price: 2490, priceCurrency: 'EUR', url: 'https://webcresson.com/solutions?plan=ml-starter', availability: 'https://schema.org/InStock' },
+          { '@type': 'Offer', price: 990, priceCurrency: 'EUR', url: 'https://webcresson.com/solutions?plan=genai-media-starter', availability: 'https://schema.org/InStock' },
         ],
       }) }} />
 

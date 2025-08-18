@@ -351,6 +351,18 @@ export const featuredServices = [
     link: "/services/machine-deep-learning",
     price: 2990, priceCurrency: "EUR", sku: "ml-pilot", features: ["POC prédictif", "Nettoyage dataset", "Notebook & API", "Workshop 2h"]
   },
+  {
+    icon: <FaMagic className="text-3xl text-[#00e0ff]" />,
+    title: "Générateur IA — Vidéos & Images",
+    text: "Créez en quelques secondes des vidéos 9:16 et des images réalistes pour booster votre communication digitale.",
+    link: "/services/generateur-ia",
+    price: 990, priceCurrency: "EUR", sku: "genai-video-img", features: [
+      "Vidéos 9:16",
+      "Images HD réalistes",
+      "Optimisation SEO & réseaux sociaux",
+      "Livraison rapide"
+    ]
+  },
 ];
 
 export const groupedServices = [
@@ -409,6 +421,18 @@ export const groupedServices = [
         title: "Analyse sémantique & data intelligente",
         text: "Exploitez vos données textuelles pour mieux comprendre vos clients et optimiser vos décisions.",
         link: "/services/analyse-semantique-nlp",
+      },
+      {
+        icon: <FaMagic className="text-3xl text-[#00e0ff]" />,
+        title: "Générateur IA — Vidéos & Images",
+        text: "Créez en quelques secondes des vidéos 9:16 et des images réalistes pour booster votre communication digitale.",
+        link: "/services/generateur-ia",
+        price: 990, priceCurrency: "EUR", sku: "genai-video-img", features: [
+          "Vidéos 9:16",
+          "Images HD réalistes",
+          "Optimisation SEO & réseaux sociaux",
+          "Livraison rapide"
+        ]
       },
     ],
   },

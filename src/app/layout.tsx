@@ -43,6 +43,13 @@ export const metadata: Metadata = {
     "Agents IA",
     "Intégration IA PME",
     "Audit IA gratuit",
+    "Agence IA PME",
+    "Automatisation Python",
+    "Déploiement RPA France",
+    "Consultant IA Paris",
+    "Intégration IA entreprise",
+    "Audit IA PME",
+    "Agent IA personnalisé"
   ],
   referrer: "origin-when-cross-origin",
   alternates: {
@@ -95,7 +102,8 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "FR",
     "geo.country": "FR",
-    "geo.placename": "France",
+    "geo.placename": "Paris",
+    "ICBM": "48.8566,2.3522",
   },
 };
 
@@ -107,17 +115,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     nonce = undefined;
   }
   return (
-    <html lang="fr" data-scroll-behavior="smooth" className="scroll-smooth">
+    <html lang="fr-FR" data-scroll-behavior="smooth" className="scroll-smooth">
       <head>
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Web Cresson Tech" />
-        <meta name="description" content="Découvrez comment WebCressonTech transforme vos process grâce à l'IA, la RPA et Python. Audit gratuit & solutions personnalisées." />
         <link rel="icon" href="/images/Logo_webcressontech.ico" />
-        <link rel="canonical" href="https://webcresson.com/" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://region1.analytics.google.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://region1.analytics.google.com" />
+        <link rel="preload" as="image" href="/images/hero-ia.webp" fetchPriority="high" />
 
         {/* Google Tag Manager */}
         <Script id="facade-consent" strategy="afterInteractive" nonce={nonce}>
@@ -150,8 +157,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           `}
         </Script>
 
-        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+        <Script id="ld-org" nonce={nonce} type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "WebCressonTech",
@@ -162,12 +169,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               "https://twitter.com/WebCresson",
               "https://www.linkedin.com/in/alexis-cresson/",
               "https://wa.me/33766029632"
-            ]
-          })
-        }} />
+            ],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+33-7-66-02-96-32",
+              "contactType": "customer service",
+              "areaServed": "FR",
+              "availableLanguage": ["French", "English"]
+            }
+          })}
+        </Script>
 
-        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+        <Script id="ld-website" nonce={nonce} type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
             "url": "https://webcresson.com",
@@ -176,21 +190,25 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               "target": "https://webcresson.com/search?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
-          })
-        }} />
+          })}
+        </Script>
 
-        <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+        <Script id="ld-service" nonce={nonce} type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
             "name": "WebCressonTech",
-            "areaServed": {
-              "@type": "Country",
-              "name": "France"
-            },
-            "url": "https://webcresson.com"
-          })
-        }} />
+            "url": "https://webcresson.com",
+            "areaServed": { "@type": "Country", "name": "France" },
+            "serviceType": [
+              "Audit IA",
+              "Automatisation RPA",
+              "Développement Python",
+              "Agents IA sur mesure",
+              "Intégration IA PME"
+            ]
+          })}
+        </Script>
       </head>
 
       <body className={`bg-black text-white min-h-screen antialiased ${play.className}`}>

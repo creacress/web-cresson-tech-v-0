@@ -217,7 +217,7 @@ export default async function Home() {
           </div>
           <div className="relative z-20 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-fuchsia-500 bg-clip-text text-transparent animate-gradient bg-[200%_auto]">
                   Libérez le pouvoir de l’IA dans votre entreprise
                 </span>
@@ -245,12 +245,14 @@ export default async function Home() {
             <div className="flex-1 relative w-full h-64 md:h-96 animate-fade-in-up delay-500">
               <div className="w-full h-full rounded-xl overflow-hidden border-4 border-indigo-500/20 shadow-inner shadow-indigo-700/10">
                 <Image
-                  src="/images/hero-ia.jpg"
-                  alt="Illustration IA"
+                  src="/images/hero-ia.webp"
+                  alt="Optimisation SEO et automatisation IA pour PME par WebCressonTech"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 600px"
-                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1200px"
                   priority
+                  loading="eager"
+                  quality={90}
+                  className="object-cover"
                   fetchPriority="high"
                 />
               </div>
@@ -258,6 +260,27 @@ export default async function Home() {
           </div>
         </section>
         {/* Divider */}
+        <script
+          nonce={nonce}
+          dangerouslySetInnerHTML={{
+            __html: `
+(function(){
+  var loaded = false;
+  function loadGTM(){
+    if(loaded) return; loaded = true;
+    if (window.dataLayer) return;
+    window.dataLayer = window.dataLayer || [];
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-XXXXXXX';
+    s.async = true; s.defer = true;
+    document.head.appendChild(s);
+  }
+  window.addEventListener('scroll', loadGTM, { once: true, passive: true });
+  window.addEventListener('click', loadGTM, { once: true });
+})();
+    `,
+          }}
+        />
         <NeonDivider />
         {/* Problèmes fréquents */}
         <section className="py-20 bg-gradient-to-br from-zinc-950 via-black to-zinc-900 text-white text-center px-4">
