@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import NeonDivider from '@/components/ui/NeonDivider';
 
 export const metadata = {
@@ -17,8 +16,50 @@ export const metadata = {
     card: "summary_large_image",
     title: "L’intelligence artificielle expliquée simplement",
     description: "Une introduction complète et accessible à l’intelligence artificielle, ses définitions, cas d’usage, et métaphores pour mieux comprendre.",
+    site: "@webcressontech",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
+  alternates: { canonical: 'https://www.webcressontech.com/blog/debutant/ia-simplement' },
 };
+
+export const viewport = {
+  themeColor: '#0b0f1a',
+  colorScheme: 'dark',
+  width: 'device-width',
+  initialScale: 1,
+};
+
+function Section({ id, title, desc, children }: { id?: string; title?: string; desc?: string; children: React.ReactNode }) {
+  return (
+    <section id={id} aria-labelledby={id ? `${id}-title` : undefined} className="mx-auto my-16 max-w-5xl rounded-2xl border border-white/10 bg-white/[0.04] p-6 md:p-10 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset,0_20px_80px_-20px_rgba(0,0,0,0.4)] animate-slide-up">
+      {title && (
+        <h2 id={id ? `${id}-title` : undefined} className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+          {title}
+        </h2>
+      )}
+      {desc && <p className="mt-2 text-white/80 max-w-2xl">{desc}</p>}
+      <div className="mt-6">{children}</div>
+    </section>
+  )
+}
+
+function Card({ className = '', children }: { className?: string; children: React.ReactNode }) {
+  return (
+    <div className={`animated-card rounded-xl border border-white/15 bg-white/[0.06] p-5 ring-1 ring-white/5 hover:border-cyan-400/40 hover:bg-white/[0.08] transition ${className}`}>
+      {children}
+    </div>
+  )
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -46,20 +87,18 @@ const jsonLd = {
 export default function IASimplement() {
   return (
     <>
-      <Head>
-        <title>L’intelligence artificielle expliquée simplement</title>
-        <meta name="description" content="Une introduction complète et accessible à l’intelligence artificielle, ses définitions, cas d’usage, et métaphores pour mieux comprendre." />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </Head>
-      <main className="max-w-5xl mx-auto px-6 py-12 font-sans text-white space-y-24">
-        <h1 className="text-4xl font-extrabold mb-12 animate-fade-in transition duration-700">
-          L’intelligence artificielle expliquée simplement
+      <a href="#content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-black/80 focus:px-4 focus:py-2 focus:text-white">Aller au contenu</a>
+      <main id="content" className="max-w-5xl mx-auto px-6 py-12 font-sans text-white space-y-24">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-12 tracking-tight animate-fade-in-up">
+          <span className="relative header-glow">
+            <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(56,189,248,0.45)]">
+              L’intelligence artificielle expliquée simplement
+            </span>
+          </span>
         </h1>
 
-        <section className="fade-in-section mb-16">
+        <Section>
           <article>
             <h2 className="text-2xl font-bold mb-4">Introduction</h2>
             <p className="mb-4 leading-relaxed">
@@ -69,9 +108,9 @@ export default function IASimplement() {
               Nous aborderons les définitions clés, des cas d’usage concrets, des métaphores pour mieux visualiser les concepts, ainsi que des schémas textuels pour clarifier les idées. Enfin, nous conclurons avec une réflexion sur l’avenir de l’IA.
             </p>
           </article>
-        </section>
+        </Section>
         <NeonDivider />
-        <section className="fade-in-section mb-16">
+        <Section>
           <article>
             <h2 className="text-2xl font-bold mb-4">Qu’est-ce que l’intelligence artificielle ?</h2>
             <p className="mb-4 leading-relaxed">
@@ -86,9 +125,9 @@ export default function IASimplement() {
               <li><strong>IA superintelligente :</strong> hypothétique, surpassant l’intelligence humaine dans tous les domaines.</li>
             </ul>
           </article>
-        </section>
+        </Section>
         <NeonDivider />
-        <section className="fade-in-section mb-16">
+        <Section>
           <article>
             <h2 className="text-2xl font-bold mb-4">Cas d’usage de l’intelligence artificielle</h2>
             <p className="mb-4 leading-relaxed">
@@ -105,9 +144,9 @@ export default function IASimplement() {
               Ces cas d’usage montrent l’impact profond de l’IA sur différents secteurs et notre manière de vivre.
             </p>
           </article>
-        </section>
+        </Section>
         <NeonDivider />
-        <section className="fade-in-section mb-16">
+        <Section>
           <article>
             <h2 className="text-2xl font-bold mb-4">Métaphores pour comprendre l’IA</h2>
             <p className="mb-4 leading-relaxed">
@@ -119,9 +158,9 @@ export default function IASimplement() {
               <li><strong>Le cerveau artificiel :</strong> Un réseau de neurones artificiels fonctionne un peu comme un cerveau simplifié, avec des neurones connectés qui transmettent des signaux.</li>
             </ul>
           </article>
-        </section>
+        </Section>
         <NeonDivider />
-        <section className="fade-in-section mb-16">
+        <Section>
           <article>
             <h2 className="text-2xl font-bold mb-4">Schémas textuels explicatifs</h2>
             <div className="bg-gray-800 text-green-300 font-mono text-sm p-6 rounded-lg whitespace-pre-wrap shadow-lg overflow-x-auto border border-gray-700 mb-6">
@@ -152,25 +191,9 @@ Retour d'information pour amélioration`}
               Ces schémas montrent, en simplifiant, comment les données circulent et sont traitées au sein d’un système d’IA.
             </p>
           </article>
-        </section>
+        </Section>
         <NeonDivider />
-        <section className="fade-in-section mb-16">
-          <article>
-            <h2 className="text-2xl font-bold mb-4">Vidéo explicative</h2>
-            <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube-nocookie.com/embed/2ePf9rue1Ao"
-                title="Vidéo explicative sur l'intelligence artificielle"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </article>
-        </section>
-        <NeonDivider />
-        <section className="fade-in-section mb-16">
+        <Section>
           <article>
             <h2 className="text-2xl font-bold mb-4">Conclusion</h2>
             <p className="mb-4 leading-relaxed">
@@ -185,13 +208,14 @@ Retour d'information pour amélioration`}
             <div className="mt-10 text-center">
               <a
                 href="https://webcresson.com/solutions"
+                aria-label="Découvrir les solutions IA de Web Cresson Tech"
                 className="inline-block px-8 py-4 bg-blue-600 text-white text-lg font-semibold rounded-full shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105"
               >
                 Découvrez nos solutions IA sur WebCressonTech.com 🚀
               </a>
             </div>
           </article>
-        </section>
+        </Section>
       </main>
     </>
   );

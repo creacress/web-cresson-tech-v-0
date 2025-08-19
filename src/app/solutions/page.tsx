@@ -103,7 +103,7 @@ export default function Page() {
               title: 'Automatisation RPA',
               desc: 'Bots Python/low-code pour supprimer la saisie répétitive et orchestrer vos workflows.',
               link: '/services/rpa',
-              img: '/images/services/rpa-preview.jpg',
+              img: '/images/rpa.webp',
               longDesc: 'Gagnez du temps et fiabilisez la production : extraction de données, ETL, emails, factures.'
             },
             {
@@ -111,7 +111,7 @@ export default function Page() {
               title: 'IA générative (agents)',
               desc: 'Agents IA pour support, qualification prospects et rédaction assistée.',
               link: '/services/intelligence-artificielle',
-              img: '/images/services/ia-preview.jpg',
+              img: '/images/ia-générative.png',
               longDesc: 'Assistants connectés à vos données/outils avec garde-fous (RGPD, logs, rôles).'
             },
             {
@@ -119,7 +119,7 @@ export default function Page() {
               title: 'Générateur IA — Vidéos & Images',
               desc: 'Vidéos verticales 9:16 et visuels e‑commerce réalistes, exports social‑ready.',
               link: '/services/generateur-ia',
-              img: '/images/services/generateur-ia-preview.jpg',
+              img: '/assets/generateur-ia/spider-man-IA.webp',
               longDesc: 'Pipeline IA pour créer rapidement des vidéos et images de haute qualité (9:16, 16:9, 1:1), cohérentes avec votre charte. Optimisé réseaux sociaux et e‑commerce.'
             },
             {
@@ -127,7 +127,7 @@ export default function Page() {
               title: 'Modèles prédictifs',
               desc: 'Prévision ventes, détection d’anomalies, maintenance prédictive.',
               link: '/services/bi',
-              img: '/images/services/ml-preview.jpg',
+              img: '/images/Création_IA_sur_mesure.webp',
               longDesc: 'Des modèles utiles, monitorés et expliqués (features & drift).'
             },
             {
@@ -135,7 +135,7 @@ export default function Page() {
               title: 'Apps & Sites modernes',
               desc: 'Sites rapides (CWV), portails clients, intégrations ERP/CRM.',
               link: '/website',
-              img: '/images/website-hero.webp',
+              img: '/images/pexels-kevin-ku-92347-577585.webp',
               longDesc: 'Design premium, sécurité, formulaires avancés, analytics & SEO.'
             },
           ].map((sol, i) => (

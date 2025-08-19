@@ -234,7 +234,7 @@ export default function PricingSection() {
           <div className="h-full flex flex-col justify-between bg-gradient-to-br from-[#2c1b00] to-[#0c0c0c] p-6 rounded-xl border border-amber-600/30 shadow-xl hover:shadow-amber-500/10 transition">
             <div>
               <h3 className="text-xl font-bold text-white mb-2">⚙️ Pack RPA Simple</h3>
-              <p className="text-amber-400 font-medium mb-2">Setup à partir de 3 900€</p>
+              <p className="text-amber-400 font-medium mb-2">Setup à partir de 1 490€</p>
               <p className="text-amber-300/80 text-sm">+ Abonnement dès 99€/mois</p>
               <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
                 <li>✔️ Extraction web / clics automatisés</li>
@@ -252,7 +252,7 @@ export default function PricingSection() {
           <div className="h-full flex flex-col justify-between bg-gradient-to-br from-[#332400] to-[#0c0c0c] p-6 rounded-xl border border-amber-500 shadow-xl hover:shadow-amber-500/20 transition">
             <div>
               <h3 className="text-xl font-bold text-white mb-2">🤖 Pack RPA Intermédiaire</h3>
-              <p className="text-amber-400 font-medium mb-2">Setup à partir de 7 900€</p>
+              <p className="text-amber-400 font-medium mb-2">Setup à partir de 2 990€</p>
               <p className="text-amber-300/80 text-sm">+ Abonnement dès 149€/mois</p>
               <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
                 <li>✔️ Automatisation de workflows multi-étapes</li>
@@ -270,7 +270,7 @@ export default function PricingSection() {
           <div className="h-full flex flex-col justify-between bg-gradient-to-br from-[#3d2f00] to-[#0c0c0c] p-6 rounded-xl border border-amber-600/30 shadow-xl hover:shadow-amber-500/10 transition">
             <div>
               <h3 className="text-xl font-bold text-white mb-2">🧠 Pack RPA Avancé</h3>
-              <p className="text-amber-400 font-medium mb-2">Setup à partir de 19 500€</p>
+              <p className="text-amber-400 font-medium mb-2">Setup à partir de 4 990€</p>
               <p className="text-amber-300/80 text-sm">+ Abonnement sur devis</p>
               <ul className="text-sm text-gray-300 space-y-2 text-left mb-4">
                 <li>✔️ Robots UiPath / Power Automate</li>
