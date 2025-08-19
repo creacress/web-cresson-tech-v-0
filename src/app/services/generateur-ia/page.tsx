@@ -59,10 +59,26 @@ const jsonLd = {
     offers: {
         "@type": "Offer",
         availability: "https://schema.org/InStock",
-        priceSpecification: { "@type": "PriceSpecification", priceCurrency: "EUR", price: "Sur devis" },
-        url: "https://webcresson.com/contact",
+        url: "https://webcresson.com/contact"
     },
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "37" },
+}
+
+const productLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "Générateur IA — Vidéos & Images",
+    brand: { "@type": "Organization", name: "WebCressonTech" },
+    sku: "genai-media",
+    offers: {
+        "@type": "AggregateOffer",
+        priceCurrency: "EUR",
+        lowPrice: "49.00",
+        highPrice: "1490.00",
+        offerCount: "3",
+        url: "https://webcresson.com/services/generateur-ia#pricing",
+        availability: "https://schema.org/InStock"
+    },
+    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "37" }
 }
 
 const faqLd = {
@@ -168,6 +184,7 @@ export default function Page() {
         <main className="relative">
             {/* SEO/AI structured data */}
             <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+            <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(productLd) }} />
             <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
             <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
             <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(processLd) }} />
