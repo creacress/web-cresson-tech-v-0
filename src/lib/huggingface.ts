@@ -3,47 +3,73 @@
 import fs from "fs/promises"
 import path from "path"
 
-const MODELS_CACHE_PATH = path.resolve("./public/hfModelsCache.json")
-const TOP_MODELS_CACHE_PATH = path.resolve("./public/hfTopModelsCache.json")
+// Répertoire de cache runtime (RW en prod, ex: Vercel = /tmp)
+const RUNTIME_CACHE_DIR = process.env.VERCEL
+  ? "/tmp/hf-cache"
+  : path.resolve("./.cache/hf-cache")
+
 const CACHE_DURATION = 1000 * 60 * 60 * 6 // 6h
 
-export async function getModels(limit: number = 1000) {
-  const stat = await fs.stat(MODELS_CACHE_PATH).catch(() => null)
-  const isFresh = stat && Date.now() - stat.mtimeMs < CACHE_DURATION
+async function ensureCacheDir() {
+  try { await fs.mkdir(RUNTIME_CACHE_DIR, { recursive: true }) } catch {}
+}
 
-  if (isFresh) {
-    const content = await fs.readFile(MODELS_CACHE_PATH, "utf-8")
-    return JSON.parse(content)
+function cachePath(filename: string) {
+  return path.join(RUNTIME_CACHE_DIR, filename)
+}
+
+async function readJsonSafe<T = any>(p: string): Promise<T | null> {
+  try {
+    const stat = await fs.stat(p)
+    if (Date.now() - stat.mtimeMs < CACHE_DURATION) {
+      const content = await fs.readFile(p, "utf-8")
+      return JSON.parse(content) as T
+    }
+  } catch {}
+  return null
+}
+
+async function writeJsonSafe(p: string, data: unknown) {
+  try {
+    await ensureCacheDir()
+    await fs.writeFile(p, JSON.stringify(data), "utf-8")
+  } catch {
+    // En environnements RO (edge/serverless), ignorer l'écriture
   }
+}
 
-  const res = await fetch(`https://huggingface.co/api/models?limit=${limit}`, {
-    headers: { Authorization: `Bearer ${process.env.HUGGINGFACE_TOKEN || ""}` },
+function authHeaders() {
+  const token = process.env.HUGGINGFACE_TOKEN
+  return token ? { Authorization: `Bearer ${token}` } : undefined
+}
+
+export async function getModels(limit: number = 1000) {
+  const file = cachePath("hfModelsCache.json")
+  const cached = await readJsonSafe(file)
+  if (cached) return cached
+
+  const res = await fetch(`https://huggingface.co/api/models?limit=${limit}` , {
+    headers: authHeaders(),
     cache: "no-store",
   })
-  if (!res.ok) throw new Error("Erreur Hugging Face")
+  if (!res.ok) throw new Error(`Erreur Hugging Face (${res.status})`)
   const data = await res.json()
-
-  await fs.writeFile(MODELS_CACHE_PATH, JSON.stringify(data), "utf-8")
+  await writeJsonSafe(file, data)
   return data
 }
 
 export async function getTopModels(limit: number = 100) {
-  const stat = await fs.stat(TOP_MODELS_CACHE_PATH).catch(() => null)
-  const isFresh = stat && Date.now() - stat.mtimeMs < CACHE_DURATION
-
-  if (isFresh) {
-    const content = await fs.readFile(TOP_MODELS_CACHE_PATH, "utf-8")
-    return JSON.parse(content)
-  }
+  const file = cachePath("hfTopModelsCache.json")
+  const cached = await readJsonSafe(file)
+  if (cached) return cached
 
   const url = `https://huggingface.co/api/models?sort=downloads&direction=-1&limit=${limit}`
   const res = await fetch(url, {
-    headers: { Authorization: `Bearer ${process.env.HUGGINGFACE_TOKEN || ""}` },
+    headers: authHeaders(),
     cache: "no-store",
   })
-  if (!res.ok) throw new Error("Erreur Hugging Face (top models)")
+  if (!res.ok) throw new Error(`Erreur Hugging Face (top models) (${res.status})`)
   const data = await res.json()
-
-  await fs.writeFile(TOP_MODELS_CACHE_PATH, JSON.stringify(data), "utf-8")
+  await writeJsonSafe(file, data)
   return data
 }

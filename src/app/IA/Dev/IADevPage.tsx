@@ -1,5 +1,4 @@
 "use client"
-import { useState } from "react"
 import Link from "next/link"
 
 type Props = {
@@ -8,7 +7,11 @@ type Props = {
   topModels: any[]
 }
 
-export default function IACurieuxPage({ hfModels, groupedModels, topModels }: Props) {
+export default function IADevPage({ hfModels, groupedModels, topModels }: Props) {
+  const safeHf = Array.isArray(hfModels) ? hfModels : [];
+  const safeTop = Array.isArray(topModels) ? topModels : [];
+  const safeGrouped = groupedModels && typeof groupedModels === "object" ? groupedModels : {} as { [key: string]: any[] };
+
   return (
     <main className="relative bg-black text-white px-6 py-20 min-h-screen">
       <div className="bg-zinc-800 border-l-4 border-cyan-500 text-sm text-gray-300 px-4 py-4 rounded-xl shadow-md max-w-3xl mx-auto mb-10 mt-[-1rem]">
@@ -68,8 +71,11 @@ export default function IACurieuxPage({ hfModels, groupedModels, topModels }: Pr
         <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">🧪 Nouveautés Hugging Face</h2>
         <p className="text-gray-400 mb-6">Modèles IA récemment publiés ou mis à jour sur la plateforme Hugging Face.</p>
         <p className="text-sm text-gray-500 italic mb-4">Cliquez sur une IA pour en savoir plus sur Hugging Face.</p>
+        {safeHf.length === 0 && (
+          <p className="text-sm text-gray-500 mb-6">Aucune donnée disponible pour le moment. Réessayez plus tard.</p>
+        )}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {hfModels.slice(0, 6).map((model, i) => (
+          {safeHf.slice(0, 6).map((model, i) => (
             <a key={i} href={`https://huggingface.co/${model.modelId}`} target="_blank" rel="noopener noreferrer"
               className="relative group block bg-zinc-900 border border-zinc-800 p-5 rounded-xl hover:border-cyan-500 hover:shadow-lg hover:shadow-cyan-500/10 transition h-full overflow-hidden">
               <h3 className="text-white font-bold mb-1 flex items-center gap-2">🧠 {model.modelId}</h3>
@@ -97,10 +103,13 @@ export default function IACurieuxPage({ hfModels, groupedModels, topModels }: Pr
         <h2 className="text-3xl md:text-4xl font-bold text-indigo-400 mb-4">🔥 Les plus populaires</h2>
         <p className="text-gray-400 mb-6">Modèles IA les plus téléchargés ou likés sur Hugging Face.</p>
         <p className="text-sm text-gray-500 italic mb-4">Cliquez sur une IA pour en savoir plus sur Hugging Face.</p>
+        {safeTop.length === 0 && (
+          <p className="text-sm text-gray-500 mb-6">Aucun modèle populaire n'est disponible actuellement.</p>
+        )}
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {topModels.map((model) => {
-            const name = model.cardData?.name || model.modelId || model.name
+          {safeTop.map((model: any, i: number) => {
+            const name = model.cardData?.name || model.modelId || model.name || `Model ${i}`
             const description = model.cardData?.description || model.description || "Modèle populaire sans description détaillée."
             const pipeline = model.pipeline_tag || "IA"
             const thumb = model.cardData?.thumbnail
@@ -125,14 +134,16 @@ export default function IACurieuxPage({ hfModels, groupedModels, topModels }: Pr
 
             return (
               <a
-                key={model.id}
+                key={model.modelId || model.id || i}
                 href={`https://huggingface.co/${model.modelId || model.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`Ouvrir ${name} sur Hugging Face`}
+                title={`Voir ${name} sur Hugging Face`}
                 className="relative group block bg-zinc-900 border border-zinc-800 p-5 rounded-xl hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/10 transition overflow-hidden"
               >
                 {thumb && (
-                  <img src={thumb} alt={name} className="rounded-md w-full h-32 object-cover mb-3" />
+                  <img src={thumb} alt={name} loading="lazy" decoding="async" className="rounded-md w-full h-32 object-cover mb-3" />
                 )}
                 <h3 className="text-white font-bold mb-1 flex items-center gap-2">
                   ⭐️ {name}
@@ -167,7 +178,7 @@ export default function IACurieuxPage({ hfModels, groupedModels, topModels }: Pr
         <p className="text-gray-400 mb-6">Découvrez nos modèles IA triés par usage spécifique : NLP, classification, génération, etc.</p>
         <p className="text-sm text-gray-500 italic mb-4">Cliquez sur une IA pour en savoir plus sur Hugging Face.</p>
 
-        {Object.entries(groupedModels)
+        {Object.entries(safeGrouped)
           .filter(([, models]) => models.length > 0)
           .sort((a, b) => b[1].length - a[1].length)
           .map(([tag, models], i) => (
@@ -175,7 +186,7 @@ export default function IACurieuxPage({ hfModels, groupedModels, topModels }: Pr
               <h3 className="text-xl font-semibold text-white mb-2">📌 {tag}</h3>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {models.slice(0, 3).map((model, j) => (
-                  <a key={j} href={`https://huggingface.co/${model.modelId || model.name}`} target="_blank" rel="noopener noreferrer"
+                  <a key={model.modelId || model.name || j} href={`https://huggingface.co/${model.modelId || model.name}`} target="_blank" rel="noopener noreferrer"
                     className="relative group block bg-zinc-900 border border-zinc-800 p-5 rounded-xl hover:border-amber-500 hover:shadow-lg hover:shadow-cyan-500/10 transition overflow-hidden">
                     <h4 className="text-white font-bold mb-1">{model.modelId || model.name}</h4>
                     <p className="text-amber-400 text-sm mb-1">{model.pipeline_tag || tag}</p>
