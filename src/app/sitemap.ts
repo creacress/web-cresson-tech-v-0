@@ -21,13 +21,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       '/contact',
       '/bug-bounty',
-      '/cancel',
       '/developpement-python',
       '/IA',
       '/IA/Dev',
-      '/legal-mentions',
       '/maintenance',
-      '/merci',
       '/pricing',
       '/pricing/custom',
       '/services',
@@ -49,8 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       '/solutions/julie',
       '/solutions/lisa',
       '/solutions/marc',
-      '/success',
-      '/terms-of-sale',
       '/website',
     ].filter(route => route !== '/api')
 
