@@ -2,7 +2,20 @@ import { NextResponse } from "next/server"
 import nodemailer from "nodemailer"
 import { checkRateLimit } from "@/lib/rate-limit"
 
-const { EMAIL_USER, EMAIL_PASS, EMAIL_RECIPIENT } = process.env
+export const runtime = "nodejs"
+export const dynamic = "force-dynamic"
+
+const {
+  EMAIL_USER,
+  EMAIL_PASS,
+  EMAIL_RECIPIENT,
+  SMTP_HOST,
+  SMTP_PORT,
+  SMTP_SECURE,
+  NODE_ENV,
+} = process.env
+
+const isProd = NODE_ENV === "production"
 
 export async function POST(req: Request) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0] || "0.0.0.0"
@@ -42,16 +55,66 @@ export async function POST(req: Request) {
       )
     }
 
-    // 📦 Setup du transport SMTP
-    const transporter = nodemailer.createTransport({
-      host: "smtp.hostinger.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: EMAIL_USER,
-        pass: EMAIL_PASS,
-      },
-    })
+    // 📦 Setup du transport SMTP (DEV/PROD + fallback Ethereal)
+    let transporter: nodemailer.Transporter
+
+    if (isProd) {
+      // En prod, on exige les identifiants
+      if (!EMAIL_USER || !EMAIL_PASS || !EMAIL_RECIPIENT) {
+        console.error("[Audit] Variables d'environnement manquantes en production: ", {
+          hasUser: !!EMAIL_USER,
+          hasPass: !!EMAIL_PASS,
+          hasRecipient: !!EMAIL_RECIPIENT,
+        })
+        return NextResponse.json(
+          { error: "Configuration e-mail incomplète côté serveur." },
+          { status: 500 }
+        )
+      }
+
+      const host = SMTP_HOST || "smtp.hostinger.com"
+      const port = Number(SMTP_PORT || 465)
+      const secure = String(SMTP_SECURE || "true").toLowerCase() === "true" || port === 465
+
+      transporter = nodemailer.createTransport({
+        host,
+        port,
+        secure,
+        auth: {
+          user: EMAIL_USER,
+          pass: EMAIL_PASS,
+        },
+      })
+    } else {
+      // En DEV: si identifiants fournis, on les utilise; sinon Ethereal
+      if (EMAIL_USER && EMAIL_PASS) {
+        const host = SMTP_HOST || "smtp.hostinger.com"
+        const port = Number(SMTP_PORT || 587)
+        const secure = String(SMTP_SECURE || "false").toLowerCase() === "true" || port === 465
+
+        transporter = nodemailer.createTransport({
+          host,
+          port,
+          secure,
+          auth: {
+            user: EMAIL_USER,
+            pass: EMAIL_PASS,
+          },
+        })
+      } else {
+        const testAccount = await nodemailer.createTestAccount()
+        transporter = nodemailer.createTransport({
+          host: "smtp.ethereal.email",
+          port: 587,
+          secure: false,
+          auth: {
+            user: testAccount.user,
+            pass: testAccount.pass,
+          },
+        })
+        console.warn("[Audit] Mode DEV sans creds SMTP: utilisation d'Ethereal. Aperçus dispo dans les logs.")
+      }
+    }
 
     const solutionList =
       Array.isArray(solutions) && solutions.length > 0
@@ -73,6 +136,11 @@ export async function POST(req: Request) {
         <p><strong>Message :</strong><br/>${needs.replace(/\n/g, "<br/>")}</p>
       `,
     })
+    // 🔎 Log de prévisualisation Ethereal en DEV
+    if (!isProd) {
+      const infoPreview = nodemailer.getTestMessageUrl?.(arguments?.[0] as any)
+      if (infoPreview) console.log("[Audit] Prévisualisation équipe:", infoPreview)
+    }
 
     // ✅ Confirmation client
     await transporter.sendMail({
@@ -95,12 +163,26 @@ export async function POST(req: Request) {
         <p>Cordialement,<br/>L’équipe WebCressonTech</p>
       `,
     })
+    if (!isProd) {
+      const infoPreview2 = nodemailer.getTestMessageUrl?.(arguments?.[0] as any)
+      if (infoPreview2) console.log("[Audit] Prévisualisation client:", infoPreview2)
+    }
 
     return NextResponse.json(
       { message: "Audit soumis avec succès et e-mails envoyés !" },
       { status: 200 }
     )
-  } catch (error) {
+  } catch (error: any) {
+    const message = (error && error.message) || String(error)
+    const isMissingPlain = message.includes('Missing credentials for "PLAIN"')
+    if (isMissingPlain) {
+      console.error("❌ Erreur API Audit (auth manquante) :", message)
+      return NextResponse.json(
+        { error: "Configuration SMTP manquante: EMAIL_USER/EMAIL_PASS." },
+        { status: 500 }
+      )
+    }
+
     console.error("❌ Erreur API Audit :", error)
     return NextResponse.json({ error: "Erreur interne du serveur." }, { status: 500 })
   }
