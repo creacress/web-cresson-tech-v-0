@@ -1,6 +1,23 @@
+.
+├── ecosystem.config.js
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next-sitemap.config.js
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
 ├── public
 │   ├── assets
 │   │   └── generateur-ia
+│   │       ├── cat-music-IA.webp
+│   │       ├── erreur-404-video.webp
+│   │       ├── spider-man-IA.webp
+│   │       ├── terre-generateur-IA.webp
+│   │       ├── video-generateur-commerce.mp4
+│   │       ├── video-generative-cafe-surf.mp4
+│   │       ├── video-generative-mouton.mp4
+│   │       └── video-generative-youtube.mp4
 │   ├── avatars
 │   │   ├── julie.png
 │   │   ├── lisa.png
@@ -55,67 +72,168 @@
 │   │   ├── rpa.webp
 │   │   ├── solutions-rpa.png
 │   │   └── templates
+│   │       ├── association.png
+│   │       ├── entreprise.png
+│   │       ├── particulier.png
+│   │       ├── PME.png
+│   │       └── tpe.png
 │   ├── pgp-key.txt
-│   ├── robots.txt
-│   ├── sitemap.xml
 │   └── test.txt
 ├── README.md
 ├── src
 │   ├── app
 │   │   ├── about
+│   │   │   └── page.tsx
 │   │   ├── api
+│   │   │   ├── audit
+│   │   │   ├── checkout
+│   │   │   ├── contact
+│   │   │   ├── custom-plan
+│   │   │   └── huggingface
 │   │   ├── blog
+│   │   │   ├── debutant
+│   │   │   ├── ia-education
+│   │   │   ├── ia-entreprise
+│   │   │   ├── ia-finance
+│   │   │   ├── ia-industrie
+│   │   │   ├── ia-operations
+│   │   │   ├── ia-services
+│   │   │   ├── intelligence-artificelle
+│   │   │   └── page.tsx
 │   │   ├── bug-bounty
+│   │   │   └── page.tsx
 │   │   ├── cancel
-│   │   ├── chat
+│   │   │   └── page.tsx
 │   │   ├── contact
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
 │   │   ├── developpement-python
+│   │   │   └── page.tsx
 │   │   ├── error.tsx
 │   │   ├── globals.css
 │   │   ├── IA
+│   │   │   ├── Dev
+│   │   │   ├── IAClientPage.tsx
+│   │   │   ├── metadata.ts
+│   │   │   └── page.tsx
 │   │   ├── layout.tsx
 │   │   ├── legal-mentions
+│   │   │   └── page.tsx
 │   │   ├── maintenance
+│   │   │   └── page.tsx
 │   │   ├── merci
+│   │   │   └── page.tsx
 │   │   ├── not-found.tsx
 │   │   ├── page.tsx
 │   │   ├── pricing
+│   │   │   ├── custom
+│   │   │   └── page.tsx
+│   │   ├── robots.ts
 │   │   ├── services
+│   │   │   ├── analyse-semantique-nlp
+│   │   │   ├── audit-gratuit
+│   │   │   ├── bi-ia
+│   │   │   ├── data-engineering
+│   │   │   ├── developpement-api
+│   │   │   ├── generateur-ia
+│   │   │   ├── ia-archeologie
+│   │   │   ├── ia-generative
+│   │   │   ├── intelligence-artificielle
+│   │   │   ├── layout.tsx
+│   │   │   ├── machine-deep-learning
+│   │   │   ├── page.tsx
+│   │   │   ├── rpa-automatisation
+│   │   │   └── scraping-intelligent
+│   │   ├── sitemap.ts
 │   │   ├── solutions
+│   │   │   ├── julie
+│   │   │   ├── lisa
+│   │   │   ├── marc
+│   │   │   ├── page.tsx
+│   │   │   └── PersonaClient.tsx
 │   │   ├── success
+│   │   │   └── page.tsx
 │   │   ├── terms-of-sale
+│   │   │   └── page.tsx
 │   │   ├── viewport.ts
 │   │   └── website
+│   │       └── page.tsx
 │   ├── components
 │   │   ├── AnalyticsProvider
+│   │   │   ├── AnalyticsProvider.tsx
+│   │   │   └── AnalyticsScripts.tsx
 │   │   ├── AuditForm
+│   │   │   └── AuditForm.tsx
 │   │   ├── BreadcrumbNav
+│   │   │   └── BreadcrumbNav.tsx
 │   │   ├── BreadcrumbSchema
+│   │   │   └── BreadcrumbSchema.tsx
 │   │   ├── ContactForm
+│   │   │   └── ContactForm.tsx
 │   │   ├── ContactSection
+│   │   │   └── ContactSection.tsx
 │   │   ├── CookieModal
+│   │   │   ├── CookieModal.tsx
+│   │   │   └── index.ts
 │   │   ├── CTAButton
+│   │   │   └── CTAButton.tsx
 │   │   ├── CustomPlanForm
+│   │   │   └── CustomPlanForm.tsx
 │   │   ├── FilteredModelSection.tsx
 │   │   ├── Footer
+│   │   │   ├── Footer.tsx
+│   │   │   └── index.ts
 │   │   ├── GoogleCalendar
+│   │   │   └── GoogleCalendar.tsx
 │   │   ├── GoogleTagManager
+│   │   │   └── GoogleTagManager.tsx
 │   │   ├── Header
+│   │   │   ├── Header.tsx
+│   │   │   └── index.ts
 │   │   ├── Home
+│   │   │   ├── CiblesSection.tsx
+│   │   │   ├── DynamicHomeSections.tsx
+│   │   │   ├── ExpertiseSection.tsx
+│   │   │   ├── FAQSection.tsx
+│   │   │   ├── FinalCTASection.tsx
+│   │   │   ├── GlossaireSection.tsx
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── HomeInteractive.tsx
+│   │   │   ├── MethodologieSection.tsx
+│   │   │   ├── PersonasSection.tsx
+│   │   │   ├── ProblemesSection.tsx
+│   │   │   ├── solutionsData.ts
+│   │   │   └── TemoignageSection.tsx
 │   │   ├── IAComposantHugging.tsx
 │   │   ├── IAServiceCard.tsx
 │   │   ├── LivreBlanc
+│   │   │   └── LivreBlanc.tsx
 │   │   ├── MessageText
+│   │   │   └── MessageText.tsx
 │   │   ├── ModelCardHuggingFace.tsx
 │   │   ├── NavLink
+│   │   │   └── NavLink.tsx
 │   │   ├── Page-IA-Entreprise
+│   │   │   └── PageIaEntreprise.tsx
 │   │   ├── Pricing
+│   │   │   ├── FinalCTA.tsx
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── PlanDetails.tsx
+│   │   │   └── PricingSection.tsx
 │   │   ├── seo
+│   │   │   └── BreadcrumbJsonLd.tsx
 │   │   ├── ServiceLink
+│   │   │   └── ServiceLink.tsx
 │   │   ├── ServiceShema
+│   │   │   └── ServiceSchema.tsx
 │   │   ├── SolutionsIAPage
+│   │   │   └── SolutionsIAPage.tsx
 │   │   ├── Stripe
+│   │   │   └── CheckoutButton.tsx
 │   │   ├── ui
+│   │   │   ├── NeonDivider.tsx
+│   │   │   ├── NeonTitle.tsx
+│   │   │   └── PageTransition.tsx
 │   │   └── VoiceAgent.tsx
 │   ├── lib
 │   │   ├── askOllama.ts
@@ -133,4 +251,4 @@
 ├── structure.txt
 └── tsconfig.json
 
-57 directories, 86 files
+86 directories, 166 files
