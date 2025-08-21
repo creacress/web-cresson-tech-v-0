@@ -183,9 +183,32 @@ export default function WebCreationPage() {
                 </ul>
                 <Link href={`/services/audit-gratuit?utm_source=website&utm_medium=pricing&utm_campaign=pack&plan=${p.sku}`} className="inline-block bg-[#00e0ff] text-black px-5 py-2 rounded font-semibold hover:scale-105 transition">Choisir</Link>
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-                  '@context': 'https://schema.org', '@type': 'Product', name: p.name, description: 'Pack site web pour PME', sku: p.sku, brand: { '@type': 'Brand', name: 'Web Cresson Tech' },
-                  offers: { '@type': 'Offer', priceCurrency: 'EUR', price: p.price, availability: 'https://schema.org/InStock', url: `https://webcresson.com/website?plan=${p.sku}` },
-                  additionalProperty: p.features.map((f: string) => ({ '@type': 'PropertyValue', name: 'Feature', value: f })),
+                  '@context': 'https://schema.org',
+                  '@type': 'Product',
+                  name: p.name,
+                  description: 'Pack site web pour PME',
+                  sku: p.sku,
+                  image: 'https://webcresson.com/images/website-hero.webp',
+                  brand: { '@type': 'Brand', name: 'Web Cresson Tech' },
+                  offers: {
+                    '@type': 'Offer',
+                    priceCurrency: 'EUR',
+                    price: p.price,
+                    availability: 'https://schema.org/InStock',
+                    url: `https://webcresson.com/website?plan=${p.sku}`,
+                    hasMerchantReturnPolicy: {
+                      '@type': 'MerchantReturnPolicy',
+                      name: 'Pas de retour (prestation de service)',
+                      applicableCountry: 'FR',
+                      returnPolicyCategory: 'https://schema.org/NoReturn'
+                    },
+                    shippingDetails: {
+                      '@type': 'OfferShippingDetails',
+                      shippingRate: { '@type': 'MonetaryAmount', value: 0, currency: 'EUR' },
+                      shippingDestination: { '@type': 'DefinedRegion', name: 'FR' }
+                    }
+                  },
+                  additionalProperty: p.features.map((f: string) => ({ '@type': 'PropertyValue', name: 'Feature', value: f }))
                 }) }} />
               </div>
               <span className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(500px_circle_at_50%_0%,#00e0ff1f,transparent_60%)]"></span>
@@ -219,6 +242,7 @@ export default function WebCreationPage() {
         </div>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org', '@type': 'FAQPage',
+          inLanguage: 'fr',
           mainEntity: [
             { '@type': 'Question', name: 'En combien de temps livrez‑vous ?', acceptedAnswer: { '@type': 'Answer', text: 'Vitrine 1–2 semaines. PME/Pro 3–6 semaines selon périmètre.' }},
             { '@type': 'Question', name: 'Gérez‑vous l’hébergement ?', acceptedAnswer: { '@type': 'Answer', text: 'Oui. Hébergement managé, domaine et certificats selon pack.' }},

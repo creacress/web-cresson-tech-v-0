@@ -42,7 +42,9 @@ export const metadata: Metadata = {
 export const viewport = {
     themeColor: "#0B1020",
 }
+
 export const revalidate = 3600
+const SITE_URL = "https://webcresson.com"
 
 export const dynamic = "force-static"
 
@@ -67,8 +69,14 @@ const productLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: "Générateur IA — Vidéos & Images",
+    description: "Génération vidéo & image par IA : texte→vidéo, texte→image, upscaling, lot/studio et API.",
     brand: { "@type": "Organization", name: "WebCressonTech" },
     sku: "genai-media",
+    image: [
+        `${SITE_URL}/assets/generateur-ia/cat-music-IA.webp`,
+        `${SITE_URL}/assets/generateur-ia/spider-man-IA.webp`,
+        `${SITE_URL}/assets/generateur-ia/terre-generateur-IA.webp`
+    ],
     offers: {
         "@type": "AggregateOffer",
         priceCurrency: "EUR",

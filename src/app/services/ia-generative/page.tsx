@@ -8,6 +8,7 @@ import FinalCTA from "@/components/Pricing/FinalCTA"
 import Image from "next/image"
 
 export const revalidate = 86400
+const SITE_URL = "https://webcresson.com"
 
 export const viewport = {
   themeColor: '#0b0f1a',
@@ -187,7 +188,24 @@ export default function IAGenerativePage() {
                     {p.features.map((f, fi) => (<li key={fi}>{f}</li>))}
                   </ul>
                   <Link href={`/services/audit-gratuit?utm_source=services&utm_medium=page&utm_campaign=genai_pack&plan=${p.sku}`} className="inline-block bg-[#00e0ff] text-black px-5 py-2 rounded font-semibold hover:scale-105 transition" aria-label={`Démarrer le pack ${p.name}`}>Commencer par un Audit Gratuit</Link>
-                  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'Product', name: p.name, description: 'Pack IA Générative pour PME', sku: p.sku, brand: { '@type': 'Brand', name: 'Web Cresson Tech' }, offers: { '@type': 'Offer', priceCurrency: 'EUR', price: p.price, availability: 'https://schema.org/InStock', url: `${p.url}?utm_source=services&utm_medium=card&utm_campaign=offer_schema&plan=${p.sku}` }, additionalProperty: p.features.map((f) => ({ '@type': 'PropertyValue', name: 'Feature', value: f })), }) }} />
+                  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                    '@context': 'https://schema.org',
+                    '@type': 'Product',
+                    name: p.name,
+                    description: 'Pack IA Générative pour PME',
+                    sku: p.sku,
+                    brand: { '@type': 'Brand', name: 'Web Cresson Tech' },
+                    image: `${SITE_URL}/images/deep-learning.webp`,
+                    offers: {
+                      '@type': 'Offer',
+                      priceCurrency: 'EUR',
+                      price: p.price,
+                      availability: 'https://schema.org/InStock',
+                      url: `${SITE_URL}${p.url}?utm_source=services&utm_medium=card&utm_campaign=offer_schema&plan=${p.sku}`,
+                      itemCondition: 'https://schema.org/NewCondition'
+                    },
+                    additionalProperty: p.features.map((f) => ({ '@type': 'PropertyValue', name: 'Feature', value: f }))
+                  }) }} />
                 </Card>
               </div>
             ))}

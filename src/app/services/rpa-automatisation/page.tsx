@@ -9,6 +9,7 @@ import FinalCTA from "@/components/Pricing/FinalCTA"
 
 
 export const revalidate = 86400
+const SITE_URL = "https://webcresson.com"
 
 export const viewport = {
   themeColor: '#0b0f1a',
@@ -174,8 +175,16 @@ export default function RPAAutomatisationPage() {
                       description: 'Pack RPA pour PME',
                       sku: p.sku,
                       brand: { '@type': 'Brand', name: 'Web Cresson Tech' },
-                      offers: { '@type': 'Offer', priceCurrency: 'EUR', price: p.price, availability: 'https://schema.org/InStock', url: `${p.url}?utm_source=services&utm_medium=card&utm_campaign=offer_schema&plan=${p.sku}` },
-                      additionalProperty: p.features.map((f) => ({ '@type': 'PropertyValue', name: 'Feature', value: f })),
+                      image: `${SITE_URL}/images/rpa.webp`,
+                      offers: {
+                        '@type': 'Offer',
+                        priceCurrency: 'EUR',
+                        price: p.price,
+                        availability: 'https://schema.org/InStock',
+                        url: `${SITE_URL}${p.url}?utm_source=services&utm_medium=card&utm_campaign=offer_schema&plan=${p.sku}`,
+                        itemCondition: 'https://schema.org/NewCondition'
+                      },
+                      additionalProperty: p.features.map((f) => ({ '@type': 'PropertyValue', name: 'Feature', value: f }))
                     }) }}
                   />
                 </Card>

@@ -252,14 +252,42 @@ export default function Page() {
             </details>
           ))}
         </div>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          '@context': 'https://schema.org', '@type': 'FAQPage',
-          mainEntity: [
-            { '@type': 'Question', name: 'Combien de temps pour un premier résultat ?', acceptedAnswer: { '@type': 'Answer', text: 'POC en quelques jours, MVP en 2–4 semaines.' }},
-            { '@type': 'Question', name: 'Et la sécurité / RGPD ?', acceptedAnswer: { '@type': 'Answer', text: 'Contrôles d’accès, journalisation, cloisonnement des données, hébergement en UE lorsque requis.' }},
-            { '@type': 'Question', name: 'Budget type ?', acceptedAnswer: { '@type': 'Answer', text: 'Packs Starter 1490–2490€, projets sur mesure via audit.' }},
-          ]
-        }) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              'inLanguage': 'fr',
+              'mainEntity': [
+                {
+                  '@type': 'Question',
+                  'name': 'Combien de temps pour un premier résultat ?',
+                  'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': 'Un POC en quelques jours, un MVP en 2–4 semaines selon la complexité.'
+                  }
+                },
+                {
+                  '@type': 'Question',
+                  'name': 'Et la sécurité / RGPD ?',
+                  'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': 'Contrôles d’accès, journalisation, cloisonnement des données, hébergement en UE lorsque requis.'
+                  }
+                },
+                {
+                  '@type': 'Question',
+                  'name': 'Budget type ?',
+                  'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': 'Packs Starter 1 490–2 490€, projets sur mesure selon périmètre. Audit gratuit pour cadrer.'
+                  }
+                }
+              ]
+            })
+          }}
+        />
       </section>
 
       {/* Final CTA */}
