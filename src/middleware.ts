@@ -72,30 +72,58 @@ export function middleware(request: NextRequest) {
   }
 
   const res = NextResponse.next({ request: { headers: reqHeaders } });
-  const isProd = process.env.NODE_ENV === 'production';
-  if (isProd) {
-    // Strict CSP with nonce + strict-dynamic (no unsafe-inline in scripts)
-    const csp = [
-      "default-src 'self'",
-      `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "img-src 'self' https: data:",
-      "font-src 'self' https://fonts.gstatic.com data:",
-      "connect-src 'self' https:",
-      "frame-ancestors 'none'",
-      "frame-src https://www.googletagmanager.com",
-      "object-src 'none'",
-      "base-uri 'self'",
-      "form-action 'self'",
-      "upgrade-insecure-requests"
-    ].join('; ');
-    res.headers.set('Content-Security-Policy', csp);
-    if (request.nextUrl.protocol === 'https:') {
-      // 1 year HSTS + includeSubDomains + preload (adjust max-age gradually if needed)
-      res.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-    }
-    res.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+  const isHttps = request.nextUrl.protocol === 'https:';
+
+  // Strict CSP with nonce + strict-dynamic. In dev we allow eval for Webpack/runtime.
+  const allowUnsafeEval = process.env.NODE_ENV !== 'production' || request.nextUrl.searchParams.get('csp-relax') === '1';
+
+  const scriptSrcParts = [
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+    'https://www.googletagmanager.com',
+    'https://www.google-analytics.com',
+    'https://www.googleadservices.com',
+    'https://pagead2.googlesyndication.com',
+    'https://www.gstatic.com',
+    'https://apis.google.com',
+    'https://va.vercel-scripts.com',
+  ];
+  const scriptSrcElemParts = [
+    `script-src-elem 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+    'https://www.googletagmanager.com',
+    'https://www.google-analytics.com',
+    'https://www.googleadservices.com',
+    'https://pagead2.googlesyndication.com',
+    'https://www.gstatic.com',
+    'https://apis.google.com',
+    'https://va.vercel-scripts.com',
+  ];
+  if (allowUnsafeEval) {
+    scriptSrcParts.push("'unsafe-eval'", "'wasm-unsafe-eval'");
+    scriptSrcElemParts.push("'unsafe-eval'", "'wasm-unsafe-eval'");
   }
+
+  const csp = [
+    "default-src 'self'",
+    scriptSrcParts.join(' '),
+    scriptSrcElemParts.join(' '),
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "img-src 'self' https: data: blob:",
+    "font-src 'self' https://fonts.gstatic.com data:",
+    "connect-src 'self' https: wss:",
+    "frame-ancestors 'none'",
+    "frame-src https://www.googletagmanager.com https://www.google.com",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self' https://www.google.com",
+    'upgrade-insecure-requests',
+  ].join('; ');
+
+  res.headers.set('Content-Security-Policy', csp);
+
+  if (isHttps) {
+    res.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  }
+  res.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
   return res;
 }
 

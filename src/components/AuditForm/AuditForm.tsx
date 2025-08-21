@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 
 const EMAIL_RE = /^(?:[a-z0-9_+.-]+)@(?:[a-z0-9.-]+)\.[a-z]{2,}$/i
 const PHONE_RE = /^[0-9+().\s-]{6,}$/
-const MIN_NEEDS = 30
 const MAX_NEEDS = 1000
 
 type UTM = {
@@ -36,7 +35,6 @@ function validate(data: FormDataType) {
   if (!EMAIL_RE.test(data.email)) errors.email = 'Email invalide'
   if (data.phone && !PHONE_RE.test(data.phone)) errors.phone = 'Téléphone invalide'
   if (!data.sector) errors.sector = 'Secteur requis'
-  if ((data.needs || '').trim().length < MIN_NEEDS) errors.needs = `Décrivez au moins ${MIN_NEEDS} caractères`
   if (!data.consent) errors.consent = 'Consentement requis'
   if (data.website) errors.website = 'Bot détecté'
   return errors
@@ -281,13 +279,11 @@ export default function AuditPage() {
         <div>
           <div className="flex items-center justify-between">
             <label className="block mb-1 font-semibold" htmlFor="needs">Décrivez vos enjeux ou besoins</label>
-            <span className={`text-xs ${needsLen < MIN_NEEDS ? 'text-gray-400' : 'text-gray-500'}`}>{needsLen}/{MAX_NEEDS}</span>
           </div>
           <textarea
             id="needs"
             name="needs"
             required
-            minLength={MIN_NEEDS}
             maxLength={MAX_NEEDS}
             aria-label="Décrivez vos besoins en IA"
             rows={5}
