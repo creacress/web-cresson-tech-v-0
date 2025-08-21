@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://webcresson.com
-
-# Sitemaps
-Sitemap: https://webcresson.com/sitemap.xml

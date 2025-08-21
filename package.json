@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "NEXT_PUBLIC_DISABLE_ESLINT=true next build && next-sitemap",
+    "build": "NEXT_PUBLIC_DISABLE_ESLINT=true next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
+    "sitemap": "next-sitemap --config next-sitemap.config.js",
     "analyze": "next build && next-bundle-analyzer",
     "start": "next start",
     "lint": "echo 'Skipping lint step' && exit 0"
