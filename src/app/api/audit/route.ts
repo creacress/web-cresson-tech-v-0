@@ -48,7 +48,7 @@ function escapeHTML(input: string) {
 
 function isLikelyGibberish(text: string) {
   const t = text.toLowerCase().trim()
-  if (t.length < 20) return true
+  if (t.length < 15) return true
   // doit contenir au moins 2 voyelles et un espace
   const vowels = (t.match(/[aeiouyàâäéèêëîïôöùûü]/g) || []).length
   if (vowels < 2) return true
@@ -117,7 +117,7 @@ export async function POST(req: Request) {
   if (!checkRateLimit(ip)) {
     console.warn(`🚫 Rate limit dépassé | IP: ${ip}`)
     return NextResponse.json(
-      { error: "Trop de requêtes. Réessayez plus tard." },
+      { error: "Trop de requêtes depuis votre IP. Réessayez dans quelques minutes.", code: "rate_limited" },
       { status: 429 }
     )
   }
@@ -139,14 +139,14 @@ export async function POST(req: Request) {
     // 🕵️‍♂️ Honeypot
     if (typeof website === "string" && website.trim() !== "") {
       console.warn("🤖 Bot détecté - honeypot")
-      return NextResponse.json({ error: "Requête non autorisée" }, { status: 400 })
+      return NextResponse.json({ error: "Votre message n'a pas pu être envoyé. Merci de réessayer.", code: "honeypot" }, { status: 400 })
     }
 
     // 🧠 reCAPTCHA (v3 ou hCaptcha compatible côté front)
     const captchaOk = await verifyRecaptcha(recaptchaToken, ip)
     if (!captchaOk) {
       return NextResponse.json(
-        { error: "Vérification anti-robot échouée." },
+        { error: "Petit contrôle anti-robot requis. Merci de réessayer l'envoi.", code: "captcha_failed" },
         { status: 400 }
       )
     }
@@ -154,21 +154,21 @@ export async function POST(req: Request) {
     // 📝 Validation stricte
     if (!name || !email || !sector || !needs || consent !== true) {
       return NextResponse.json(
-        { error: "Champs requis manquants ou consentement absent." },
+        { error: "Merci de compléter les champs requis et d'accepter le consentement.", code: "missing_required" },
         { status: 400 }
       )
     }
 
     if (!(await isValidEmail(String(email)))) {
       return NextResponse.json(
-        { error: "Adresse e-mail invalide ou non délivrable." },
+        { error: "Adresse e-mail invalide ou non délivrable. Vérifiez l'orthographe.", code: "email_invalid" },
         { status: 400 }
       )
     }
 
     if (isLikelyGibberish(String(needs))) {
       return NextResponse.json(
-        { error: "Message trop court ou non pertinent." },
+        { error: "Merci de décrire vos besoins un peu plus clairement (quelques phrases, contexte, objectifs).", code: "needs_too_short" },
         { status: 400 }
       )
     }

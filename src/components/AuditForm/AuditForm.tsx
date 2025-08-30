@@ -211,7 +211,20 @@ export default function AuditPage() {
         return
       } else {
         const data = await res.json().catch(() => ({}))
-        setMessage(`❌ Erreur : ${data.error || res.statusText}`)
+        if (data?.code === 'needs_too_short') {
+          setErrors(prev => ({ ...prev, needs: data.error }))
+        } else if (data?.code === 'email_invalid') {
+          setErrors(prev => ({ ...prev, email: data.error }))
+        } else if (data?.code === 'missing_required') {
+          setErrors(validate(formData))
+          setMessage(data.error)
+        } else if (data?.code === 'captcha_failed') {
+          setMessage(data.error)
+        } else if (data?.code === 'rate_limited') {
+          setMessage(data.error)
+        } else {
+          setMessage(`❌ Erreur : ${data.error || res.statusText}`)
+        }
       }
     } catch (error: any) {
       setMessage(error?.name === 'AbortError' ? '❌ Délai dépassé, réessayez.' : "❌ Une erreur s'est produite, veuillez réessayer.")
@@ -360,6 +373,12 @@ export default function AuditPage() {
             className={`w-full px-4 py-2 rounded bg-[#111] border ${errors.needs ? 'border-red-500' : 'border-[#333]'} focus:outline-none focus:ring-2 focus:ring-[#00e0ff]`}
           />
           {errors.needs && <p id="needs-error" className="text-red-400 text-xs mt-1">{errors.needs}</p>}
+          {!errors.needs && (
+            <p className="text-gray-400 text-xs mt-1">
+              Astuce: décrivez le contexte (activité), l'objectif (ex: gagner du temps), et un exemple concret. Min {MIN_NEEDS} caractères.
+            </p>
+          )}
+          <p className="text-gray-500 text-[11px] mt-1">{needsLen}/{MAX_NEEDS}</p>
         </div>
 
         {/* Consentement */}
@@ -396,6 +415,11 @@ export default function AuditPage() {
             <p className={`mt-4 ${message.startsWith('✅') ? 'text-green-400' : 'text-red-400'}`}>{message}</p>
           )}
         </div>
+        {Boolean(RECAPTCHA_SITE_KEY) && (
+          <p className="mt-4 text-[11px] text-gray-500">
+            Ce site est protégé par reCAPTCHA et la <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" className="underline">Politique de confidentialité</a> et les <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer" className="underline">Conditions d'utilisation</a> de Google s'appliquent.
+          </p>
+        )}
       </form>
     </section>
   )
