@@ -8,7 +8,7 @@ const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string 
 const EMAIL_RE = /^(?:[a-z0-9_+.-]+)@(?:[a-z0-9.-]+)\.[a-z]{2,}$/i
 const PHONE_RE = /^[0-9+().\s-]{6,}$/
 const MAX_NEEDS = 1000
-const MIN_NEEDS = 30
+const MIN_NEEDS = 15
 const BAD_WORDS = ["caca", "shit", "spam", "test", "fake"]
 const DISPOSABLE_DOMAINS = new Set([
   "mailinator.com",
