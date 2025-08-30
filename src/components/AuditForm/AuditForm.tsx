@@ -3,9 +3,20 @@
 import React, { useState } from "react"
 import { useRouter } from 'next/navigation'
 
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string | undefined
+
 const EMAIL_RE = /^(?:[a-z0-9_+.-]+)@(?:[a-z0-9.-]+)\.[a-z]{2,}$/i
 const PHONE_RE = /^[0-9+().\s-]{6,}$/
 const MAX_NEEDS = 1000
+const MIN_NEEDS = 30
+const BAD_WORDS = ["caca", "shit", "spam", "test", "fake"]
+const DISPOSABLE_DOMAINS = new Set([
+  "mailinator.com",
+  "10minutemail.com",
+  "guerrillamail.com",
+  "yopmail.com",
+  "tempmail.com",
+])
 
 type UTM = {
   utm_source?: string
@@ -29,14 +40,33 @@ type FormDataType = {
   referrer?: string
 } & UTM
 
+declare global {
+  interface Window {
+    grecaptcha?: any
+    gtag: (...args: any[]) => void
+  }
+}
+
 function validate(data: FormDataType) {
   const errors: Partial<Record<keyof FormDataType, string>> = {}
   if (!data.name.trim()) errors.name = 'Nom requis'
   if (!EMAIL_RE.test(data.email)) errors.email = 'Email invalide'
+  else {
+    const domain = data.email.split('@')[1]?.toLowerCase()
+    if (domain && DISPOSABLE_DOMAINS.has(domain)) errors.email = 'Domain jetable non accepté'
+  }
   if (data.phone && !PHONE_RE.test(data.phone)) errors.phone = 'Téléphone invalide'
   if (!data.sector) errors.sector = 'Secteur requis'
   if (!data.consent) errors.consent = 'Consentement requis'
   if (data.website) errors.website = 'Bot détecté'
+
+  const needs = (data.needs || '').trim()
+  if (needs.length < MIN_NEEDS) errors.needs = `Décrivez un peu plus (≥ ${MIN_NEEDS} caractères)`
+  const low = needs.toLowerCase()
+  if (!errors.needs && BAD_WORDS.some(w => low.includes(w))) errors.needs = 'Contenu inapproprié'
+  // très simple détection de charabia: pas d'espace ou trop de consonnes d'affilée
+  if (!errors.needs && (!/\s/.test(low) || /[bcdfghjklmnpqrstvwxz]{6,}/i.test(needs))) errors.needs = 'Message semble non pertinent'
+
   return errors
 }
 
@@ -71,6 +101,7 @@ export default function AuditPage() {
   const [message, setMessage] = useState("")
   const [errors, setErrors] = useState<Partial<Record<keyof FormDataType, string>>>({})
   const needsLen = formData.needs?.length || 0
+  const [captchaReady, setCaptchaReady] = useState(!RECAPTCHA_SITE_KEY) // ready by default if no key
 
   React.useEffect(() => {
     // UTM + context
@@ -89,6 +120,31 @@ export default function AuditPage() {
       const draft = loadDraft()
       if (Object.keys(draft).length) setFormData((prev) => ({ ...prev, ...draft }))
     }
+  }, [])
+
+  React.useEffect(() => {
+    if (!RECAPTCHA_SITE_KEY) return
+    // already loaded
+    if (window.grecaptcha && typeof window.grecaptcha.ready === 'function') {
+      window.grecaptcha.ready(() => setCaptchaReady(true))
+      return
+    }
+    const id = 'recaptcha-v3'
+    if (document.getElementById(id)) return
+    const s = document.createElement('script')
+    s.id = id
+    s.async = true
+    s.defer = true
+    s.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`
+    s.onload = () => {
+      if (window.grecaptcha && typeof window.grecaptcha.ready === 'function') {
+        window.grecaptcha.ready(() => setCaptchaReady(true))
+      } else {
+        setCaptchaReady(false)
+      }
+    }
+    s.onerror = () => setCaptchaReady(false)
+    document.head.appendChild(s)
   }, [])
 
   const handleChange = (
@@ -124,6 +180,16 @@ export default function AuditPage() {
     setErrors(v)
     if (Object.keys(v).length) { setLoading(false); return }
 
+    // Get reCAPTCHA token if configured
+    let recaptchaToken: string | undefined
+    try {
+      if (RECAPTCHA_SITE_KEY && window.grecaptcha && captchaReady) {
+        recaptchaToken = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit_audit' })
+      }
+    } catch {
+      // ignore, backend will decide
+    }
+
     // Abort after 15s
     const controller = new AbortController()
     const timer = setTimeout(() => controller.abort(), 15000)
@@ -132,14 +198,14 @@ export default function AuditPage() {
       const res = await fetch('/api/audit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, submittedAt: new Date().toISOString() }),
+        body: JSON.stringify({ ...formData, recaptchaToken, submittedAt: new Date().toISOString() }),
         signal: controller.signal,
       })
 
       if (res.ok) {
         clearDraft()
-        if (typeof window !== 'undefined' && (window as any).gtag) {
-          ;(window as any).gtag('event', 'submit_audit', { method: 'audit_form', ...formData })
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'submit_audit', { method: 'audit_form', ...formData })
         }
         router.push('/merci')
         return
@@ -319,8 +385,8 @@ export default function AuditPage() {
         <div className="text-center">
           <button
             type="submit"
-            disabled={loading || !!Object.keys(validate(formData)).length}
-            title={Object.keys(validate(formData)).length ? 'Complétez les champs requis' : 'Envoyer ma demande'}
+            disabled={loading || !!Object.keys(validate(formData)).length || (Boolean(RECAPTCHA_SITE_KEY) && !captchaReady)}
+            title={Object.keys(validate(formData)).length ? 'Complétez les champs requis' : (Boolean(RECAPTCHA_SITE_KEY) && !captchaReady ? 'Vérification anti-robot en cours…' : 'Envoyer ma demande')}
             className={`bg-[#00e0ff] text-black font-semibold px-8 py-3 rounded-md transition ${loading ? 'animate-pulse opacity-80' : 'hover:scale-105'} disabled:opacity-50 disabled:cursor-not-allowed`}
           >
             {loading ? 'Envoi en cours...' : 'Envoyer ma demande'}
