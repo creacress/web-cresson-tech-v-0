@@ -7,14 +7,6 @@ const testimonials = [
     name: "La Poste",
     text: "WebCressonTech nous a permis de moderniser nos processus internes grâce à des automatisations sur mesure. Un partenaire fiable et efficace.",
   },
-  {
-    name: "Primark",
-    text: "Leur solution RPA nous a offert un gain de productivité énorme. Une équipe experte et très à l'écoute.",
-  },
-  {
-    name: "Crédit Agricole",
-    text: "Excellente collaboration avec WebCressonTech pour intégrer une IA de traitement documentaire. Résultat au-delà de nos attentes.",
-  },
 ];
 
 export default function TemoignageSection() {

@@ -33,20 +33,20 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://webcresson.com"),
   title: {
-    default: "Agence IA & Automatisation | WebCressonTech – Solutions Python & RPA sur mesure",
+    default: "Agence d’Automatisation & RPA | WebCressonTech – Workflows & scripts Python sur mesure",
     template: "%s | WebCressonTech",
   },
   description:
-    "Découvrez comment WebCressonTech transforme vos process grâce à l'IA, la RPA et Python. Audit gratuit & solutions personnalisées.",
+    "Automatisez vos processus avec WebCressonTech : RPA, intégrations n8n/Zapier/Power Automate et scripts Python fiables. Audit gratuit & solutions concrètes.",
   keywords: [
-    "Agence IA",
-    "Automatisation RPA",
-    "WebCressonTech",
-    "Expert IA",
+    "Automatisation",
+    "RPA",
+    "Workflows n8n",
+    "Zapier",
+    "Power Automate",
     "Python",
-    "Agents IA",
-    "Intégration IA PME",
-    "Audit IA gratuit",
+    "Intégrations API",
+    "Audit automatisation gratuit"
   ],
   referrer: "origin-when-cross-origin",
   alternates: {
@@ -58,8 +58,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    title: "Agence IA & RPA | WebCressonTech",
-    description: "WebCressonTech, votre partenaire pour l'IA et l'automatisation.",
+    title: "Agence d’Automatisation & RPA | WebCressonTech",
+    description: "WebCressonTech, votre partenaire pour l’automatisation et la RPA.",
     url: "/",
     siteName: "WebCressonTech",
     images: [
@@ -73,8 +73,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "WebCressonTech, votre partenaire pour l'IA et l'automatisation",
-    description: "Discutons de vos projets IA & automatisation.",
+    title: "WebCressonTech, votre partenaire pour l’automatisation et la RPA",
+    description: "Discutons de vos projets d’automatisation, RPA et intégrations.",
     images: ["/images/Logo_webcressontech.webp"],
     site: "@WebCresson",
     creator: "@WebCresson",
@@ -114,24 +114,24 @@ export default async function Home() {
   return (
     <>
       <ServiceSchema
-        serviceName="Entreprise Experte en IA | WebCressonTech"
-        serviceDescription="Développez votre entreprise avec des solutions d'intelligence artificielle sur mesure : automatisation, machine learning et deep learning."
+        serviceName="Entreprise experte en automatisation | WebCressonTech"
+        serviceDescription="Automatisez vos processus avec des workflows RPA, des intégrations API et des scripts Python robustes."
         serviceTypes={[
-          "Intelligence Artificielle",
-          "Machine Learning",
-          "Deep Learning",
-          "Solutions Technologiques",
+          "Automatisation",
+          "RPA",
+          "Orchestration de workflows",
+          "Intégrations API",
           "Développement Python",
-          "Automatisation Python",
+          "Automatisation n8n / Zapier"
         ]}
         faq={[
           {
             question: "Quels services propose WebCressonTech ?",
-            answer: "Solutions sur mesure en intelligence artificielle, machine learning, deep learning et automatisation des processus.",
+            answer: "Workflows RPA, intégrations (n8n/Zapier/Power Automate), scripts Python et automatisation des processus.",
           },
           {
-            question: "Pourquoi choisir WebCressonTech pour vos projets IA et Python ?",
-            answer: "Nous offrons une expertise certifiée, un accompagnement complet et des solutions adaptées à vos besoins.",
+            question: "Pourquoi choisir WebCressonTech pour vos projets d’automatisation et Python ?",
+            answer: "Expertise opérationnelle, accompagnement de bout en bout et solutions adaptées à vos contraintes.",
           },
           {
             question: "Comment contacter WebCressonTech ?",
@@ -219,26 +219,26 @@ export default async function Home() {
             <div className="flex-1">
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-fuchsia-500 bg-clip-text text-transparent animate-gradient bg-[200%_auto]">
-                  Libérez le pouvoir de l’IA dans votre entreprise
+                  Automatisez vos processus, gagnez du temps
                 </span>
               </h1>
               <p className="text-lg text-gray-300 mb-8 animate-fade-in-up delay-200">
-                Automatisation, agents IA, traitement de données, NLP, génération de contenu...
+                Automatisez vos tâches avec la RPA (L’automatisation robotisée des processus), des intégrations puissantes (n8n, Zapier, Power Automate) et des scripts Python connectés à vos outils métier.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-300">
                 <Link
-                  href="/solutions?utm_source=home&utm_medium=hero&utm_campaign=cta_primary"
+                  href="/automatisation?utm_source=home&utm_medium=hero&utm_campaign=cta_primary"
                   className="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-6 rounded-lg font-medium transition flex items-center gap-2 shadow-lg hover:shadow-indigo-400/50 hover:scale-105 animate-glow"
                   style={{ boxShadow: "0 0 12px 2px #6366F1" }}
                 >
-                  🚀 Découvrir nos solutions
+                  🚀 Découvrir l’automatisation
                 </Link>
                 <Link
                   href="/contact?utm_source=home&utm_medium=hero&utm_campaign=cta_secondary"
                   className="border border-white hover:bg-white hover:text-black text-white py-3 px-6 rounded-lg font-medium transition flex items-center gap-2 hover:shadow-cyan-400/40 hover:scale-105 animate-glow"
                   style={{ boxShadow: "0 0 12px 2px #22d3ee" }}
                 >
-                  📞 Contactez-nous
+                  📞 Parler à un expert
                 </Link>
               </div>
             </div>
@@ -246,7 +246,7 @@ export default async function Home() {
               <div className="w-full h-full rounded-xl overflow-hidden border-4 border-indigo-500/20 shadow-inner shadow-indigo-700/10">
                 <Image
                   src="/images/hero-ia.webp"
-                  alt="Optimisation SEO et automatisation IA pour PME par WebCressonTech"
+                  alt="Automatisation RPA et workflows pour PME par WebCressonTech"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 1200px"
                   priority
@@ -285,26 +285,28 @@ export default async function Home() {
         {/* Problèmes fréquents */}
         <section className="py-20 bg-gradient-to-br from-zinc-950 via-black to-zinc-900 text-white text-center px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-10">
-            Quels problèmes résolvons-nous ?
+            Vos priorités d’automatisation
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto mb-12">
-            Voici les défis récurrents que nous aidons nos clients à surmonter grâce à des solutions IA adaptées.
+            Des cas d’usage concrets que nous mettons en production pour gagner du temps, fiabiliser vos opérations et connecter vos outils.
           </p>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {problems.map((item, i) => {
-              // Choose an icon per problem (Heroicons or emoji)
-              let icon = "💡";
-              if (item.title.toLowerCase().includes("temps")) icon = "⏳";
-              else if (item.title.toLowerCase().includes("erreur")) icon = "🚫";
-              else if (item.title.toLowerCase().includes("coût")) icon = "💸";
-              else if (item.title.toLowerCase().includes("saisie")) icon = "⌨️";
-              else if (item.title.toLowerCase().includes("données")) icon = "📊";
-              else if (item.title.toLowerCase().includes("répétitif")) icon = "🔁";
-              else if (item.title.toLowerCase().includes("qualité")) icon = "✨";
-              else if (item.title.toLowerCase().includes("retard")) icon = "⏰";
-              else if (item.title.toLowerCase().includes("analyse")) icon = "🔎";
-              else if (item.title.toLowerCase().includes("communication")) icon = "📢";
-              // Animate fade-in and slide-up on scroll (Tailwind animate-in, fadeInUp, or custom)
+              // Icônes orientées bénéfices
+              let icon = "⚡";
+              const t = item.title.toLowerCase();
+              if (t.includes("temps")) icon = "⏳";
+              else if (t.includes("erreur")) icon = "🛡️";   // protection / qualité
+              else if (t.includes("coût")) icon = "💰";      // économies
+              else if (t.includes("saisie")) icon = "⌨️";
+              else if (t.includes("données")) icon = "📊";
+              else if (t.includes("répétitif")) icon = "🔁";
+              else if (t.includes("qualité")) icon = "✨";
+              else if (t.includes("retard")) icon = "🚀";    // accélération
+              else if (t.includes("analyse")) icon = "🔎";
+              else if (t.includes("communication")) icon = "🤝";
+
               return (
                 <div
                   key={i}
@@ -319,12 +321,13 @@ export default async function Home() {
               );
             })}
           </div>
+
           <div className="text-center mt-12">
             <Link
-              href="/IA?utm_source=home&utm_medium=problems&utm_campaign=see_how_ia_helps"
+              href="/automatisation?utm_source=home&utm_medium=problems&utm_campaign=see_how_auto_helps"
               className="inline-block px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-full transition"
             >
-              💡 Voir comment l’IA peut résoudre ces problèmes
+              ⚡ Voir des exemples d’automatisation
             </Link>
           </div>
         </section>
@@ -370,7 +373,7 @@ export default async function Home() {
         {/* Nos expertises */}
         <section className="py-20 bg-black text-white">
           <div className="container mx-auto px-4 text-center max-w-7xl">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12">Nos Solutions IA</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-12">Nos solutions d’automatisation</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {SolutionsSection.map((sol, i) => (
                 <HoverPreview
@@ -394,10 +397,10 @@ export default async function Home() {
             </div>
             <div className="text-center mt-12">
               <Link
-                href="/IA?utm_source=home&utm_medium=solutions&utm_campaign=explore_models"
+                href="/automatisation?utm_source=home&utm_medium=solutions&utm_campaign=explore_workflows"
                 className="inline-block px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-full transition"
               >
-                🔍 Explorer tous nos modèles IA
+                🔍 Explorer nos workflows d’automatisation
               </Link>
             </div>
           </div>
@@ -427,10 +430,10 @@ export default async function Home() {
           <div className="container mx-auto px-6 max-w-5xl text-center">
 
             <h2 className="text-4xl font-extrabold mb-6">
-              Notre expertise IA
+              Notre expertise en automatisation & RPA
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-10">
-              Nous concevons et déployons des solutions d’intelligence artificielle pour répondre aux besoins concrets des entreprises.
+              Nous concevons et déployons des workflows qui éliminent les tâches répétitives, réduisent les erreurs et connectent vos outils (ERP, CRM, e-commerce, bureautique).
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left max-w-3xl mx-auto">
@@ -448,94 +451,12 @@ export default async function Home() {
         </section>
         {/* Divider */}
         <NeonDivider />
-        {/* Personas types */}
-        <section className="py-20 max-w-6xl mx-auto bg-[#0d0d0d] rounded-xl px-6 border border-cyan-700/20">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-cyan-400 mb-4">À qui s’adresse cet audit ?</h2>
-          <p className="text-gray-400 text-center max-w-2xl mx-auto mb-12">
-            Pour les TPE, PME ou startups qui veulent booster leur efficacité grâce à l’IA, sans complexité.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {personas.map((p, i) => {
-              // Choose a dynamic halo color per sector
-              const sectorColors = ["from-cyan-400 to-fuchsia-400", "from-indigo-400 to-cyan-400", "from-fuchsia-500 to-indigo-400"];
-              const halo = sectorColors[i % sectorColors.length];
-              return (
-                <div
-                  key={i}
-                  className="flip-card group perspective-1000"
-                  tabIndex={0}
-                >
-                  <div className="flip-card-inner transition-transform duration-500 group-hover:rotate-y-180 group-focus:rotate-y-180 relative w-full h-full min-h-[410px]">
-                    {/* Front */}
-                    <div className={`flip-card-front absolute inset-0 w-full h-full flex flex-col bg-[#111] p-6 rounded-lg border border-cyan-500/20 transition shadow-lg z-10 ring-2 ring-transparent group-hover:ring-4 group-hover:ring-cyan-400/60`}
-                      style={{
-                        boxShadow: `0 0 0 6px rgba(0,255,255,0.08), 0 0 24px 1px rgba(0,255,255,0.07)`,
-                        borderImage: `linear-gradient(to bottom right, ${halo.replace('from-', '').replace('to-', '').split(' ').join(', ')}) 1`
-                      }}
-                    >
-                      <div className={`relative mb-4 mx-auto w-20 h-20 rounded-full bg-gradient-to-br ${halo} p-[2px]`}>
-                        <Image src={p.img} alt={p.nom} width={80} height={80} className="rounded-full w-full h-full object-cover" />
-                        <div className={`absolute inset-0 rounded-full pointer-events-none animate-pulse border-2 border-cyan-400/20`}></div>
-                      </div>
-                      <h3 className="text-xl font-semibold text-white text-center">{p.nom}</h3>
-                      <p className="text-sm text-gray-400 italic text-center mb-3">{p.role}</p>
-                      <p className="text-sm text-gray-300 text-center mb-2">{p.bio}</p>
-                      <SafeLink
-                        href={`/solutions/${p.nom.toLowerCase()}?utm_source=home&utm_medium=personas&utm_campaign=demo`}
-                        className="mt-4 mx-auto px-4 py-2 bg-cyan-600 hover:bg-cyan-700 text-white text-sm rounded"
-                      >
-                        Voir une démo
-                      </SafeLink>
-                    </div>
-                    {/* Back */}
-                    <div className="flip-card-back absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-cyan-900/90 to-fuchsia-900/90 p-6 rounded-lg border border-cyan-400/30 text-center text-white z-20 rotate-y-180">
-                      <h4 className="text-lg font-bold mb-2">Solution IA adaptée :</h4>
-                      <p className="text-sm text-gray-200">{p.soluce}</p>
-                      <Link
-                        href={`/solutions/${p.nom.toLowerCase()}?utm_source=home&utm_medium=personas&utm_campaign=flip`}
-                        aria-label={`Voir la démo pour ${p.nom}`}
-                        className="absolute inset-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
-                      />
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-          {/* Flip-card styles */}
-          <style>{`
-            .perspective-1000 { perspective: 1000px; }
-            .flip-card-inner {
-              transform-style: preserve-3d;
-              transition: transform 0.6s cubic-bezier(.4,2,.6,1);
-              min-height: 410px;
-            }
-            .flip-card:focus .flip-card-inner,
-            .flip-card:hover .flip-card-inner {
-              transform: rotateY(180deg);
-            }
-            .flip-card-front, .flip-card-back {
-              backface-visibility: hidden;
-              position: absolute;
-              width: 100%;
-              height: 100%;
-            }
-            .flip-card-back {
-              transform: rotateY(180deg);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              flex-direction: column;
-            }
-          `}</style>
-        </section>
-        <NeonDivider />
         <CiblesSection />
         {/* Glossaire IA */}
         <section className="py-20 px-4 md:px-12 bg-zinc-950 text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Glossaire</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Glossaire de l’automatisation (RPA & data)</h2>
           <p className="text-center text-gray-400 max-w-3xl mx-auto mb-12">
-            Familiarisez-vous avec les concepts clés de l’IA, du machine learning, du deep learning, et de l’automatisation.
+            Familiarisez-vous avec les concepts clés de l’automatisation : RPA, orchestrateurs, intégrations API, files d’attente, webhooks, ETL, etc.
           </p>
           {/* Search bar */}
           <div className="max-w-xl mx-auto mb-8">
@@ -574,14 +495,6 @@ export default async function Home() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-12">
-            <Link
-              href="/blog?utm_source=home&utm_medium=glossary&utm_campaign=read_blog"
-              className="inline-block px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-full transition"
-            >
-              📚 Lire des articles IA sur notre blog
-            </Link>
-          </div>
         </section>
         {/* Questions fréquentes */}
         <FAQSection />
@@ -592,10 +505,10 @@ export default async function Home() {
         {/* CTA final */}
         <section className="py-16 px-4 text-center bg-gradient-to-br from-black to-zinc-900 text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Prêt à propulser votre business avec l&apos;IA ?
+            Prêt à propulser votre business avec l’automatisation ?
           </h2>
           <p className="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
-            Contactez-nous pour une démo gratuite ou découvrez nos plans adaptés à votre structure.
+            Contactez-nous pour une démo de workflows RPA ou découvrez nos plans adaptés à votre structure.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <Link
@@ -637,10 +550,9 @@ export default async function Home() {
             style={{ boxShadow: "0 0 16px 4px #00e0ff55" }}
           >
             <span className="absolute -inset-1 rounded-lg bg-gradient-to-r from-cyan-400 via-fuchsia-400 to-indigo-400 animate-gradient pointer-events-none z-0 blur-sm opacity-60"></span>
-            <span className="relative z-10">📩 Audit IA gratuit</span>
+            <span className="relative z-10">📩 Audit d’automatisation gratuit</span>
           </Link>
         </div>
-        <NeonDivider />
       </main>
     </>
   )

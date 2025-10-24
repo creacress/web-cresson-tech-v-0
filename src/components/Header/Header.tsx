@@ -34,25 +34,19 @@ export default function Header() {
     { label: "Audit Gratuit", href: "/services/audit-gratuit" },
     { label: "Tarification", href: "/pricing" },
     { label: "Services", href: "/services" },
-    { label: "Espace Dev IA", href: "/IA/Dev" },
     { label: "À propos", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "Réflexion IA", href: "/blog" },
   ]
 
   const serviceLinks = [
     { label: "Tous les services", href: "/services", desc: "Aperçu global de nos offres" },
     { label: "Audit gratuit", href: "/services/audit-gratuit", desc: "Analyse rapide de votre site" },
-    { label: "Générateur IA", href: "/services/generateur-ia", desc: "Vidéos & images IA, 9:16, 4K" },
-    { label: "Analyse sémantique & NLP", href: "/services/analyse-semantique-nlp", desc: "Moteurs de recherche, RAG, clustering" },
-    { label: "BI & IA", href: "/services/bi-ia", desc: "Dashboards décisionnels augmentés" },
-    { label: "Data Engineering", href: "/services/data-engineering", desc: "Pipelines, quality, gouvernance" },
-    { label: "Développement API", href: "/services/developpement-api", desc: "API robustes & scalables" },
-    { label: "IA & Archéologie", href: "/services/ia-archeologie", desc: "SIG, 3D, photogrammétrie, dataviz" },
+    { label: "RPA & automatisation", href: "/services/rpa-automatisation", desc: "Playwright, n8n, workflows" },
     { label: "IA générative", href: "/services/ia-generative", desc: "Agents, chatbots, copilotes" },
+    { label: "Générateur IA", href: "/services/generateur-ia", desc: "Vidéos & images IA, 9:16, 4K" },
+    { label: "Développement API", href: "/services/developpement-api", desc: "API robustes & scalables" },
     { label: "Intelligence artificielle", href: "/services/intelligence-artificielle", desc: "ML classique & MLOps" },
     { label: "Machine & Deep Learning", href: "/services/machine-deep-learning", desc: "Entraînement, fine-tuning, eval" },
-    { label: "RPA & automatisation", href: "/services/rpa-automatisation", desc: "Playwright, n8n, workflows" },
     { label: "Scraping intelligent", href: "/services/scraping-intelligent", desc: "OSINT, collecte web à grande échelle" },
   ]
 
@@ -144,6 +138,7 @@ export default function Header() {
                         <div className="grid grid-cols-3 gap-3 p-4">
                           {serviceLinks.slice(2).map((s) => {
                             const isNew = ["/services/ia-generative", "/services/generateur-ia"].includes(s.href)
+                            const isTrending = s.href === "/services/rpa-automatisation"
                             return (
                               <Link
                                 key={s.href}
@@ -161,6 +156,9 @@ export default function Header() {
                                   </div>
                                   {isNew && (
                                     <span className="text-[10px] leading-4 px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">Nouveau</span>
+                                  )}
+                                  {isTrending && (
+                                    <span className="text-[10px] leading-4 px-1.5 py-0.5 rounded-sm bg-cyan-500/20 text-cyan-300 border border-cyan-400/40">Tendances</span>
                                   )}
                                 </div>
                                 <div className="mt-1.5 text-xs text-white/65 leading-5">{s.desc}</div>
@@ -231,6 +229,14 @@ export default function Header() {
           className="md:hidden bg-[#111] border-t border-[#00e0ff33] px-6 py-4 space-y-4"
           aria-hidden={!menuOpen}
         >
+          <Link
+            href="/services/rpa-automatisation"
+            onClick={() => handleLinkClick("RPA & automatisation", "/services/rpa-automatisation")}
+            className="flex items-center justify-between rounded-lg px-4 py-3 ring-1 ring-cyan-400/40 bg-white/[0.03] hover:bg-white/[0.08] transition"
+          >
+            <span className="text-sm font-semibold text-white">RPA &amp; automatisation</span>
+            <span className="text-[10px] leading-4 px-1.5 py-0.5 rounded-sm bg-cyan-500/20 text-cyan-300 border border-cyan-400/40">Tendances</span>
+          </Link>
           {links.map((link) => (
             <NavLink
               key={link.href}

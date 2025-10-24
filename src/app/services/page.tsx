@@ -59,7 +59,9 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
+    <main className="relative px-6 pt-24 pb-16 text-white max-w-6xl mx-auto">
+      <span aria-hidden className="pointer-events-none absolute -top-24 right-[-20%] h-80 w-80 rounded-full bg-[#00e0ff22] blur-3xl" />
+      <span aria-hidden className="pointer-events-none absolute -bottom-24 left-[-10%] h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl" />
       <BreadcrumbJsonLd overrides={{ services: 'Services' }} />
       <ServiceSchema
         serviceName="Solutions IA & Développement pour PME"
@@ -105,24 +107,29 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="text-center mb-16">
         <BreadcrumbNav />
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-          Solutions IA & Web modernes pour PME ambitieuses
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-400 to-fuchsia-400 drop-shadow-[0_2px_10px_rgba(56,189,248,0.45)] header-glow">
+          Solutions IA & Web, simples et efficaces pour votre PME
         </h1>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
           De l’automatisation intelligente à la création d’applications et sites web performants, nous aidons les petites et moyennes entreprises à gagner en productivité et en visibilité.
         </p>
+        <div className="mt-3 flex items-center justify-center gap-2 text-xs text-gray-300">
+          <span className="rounded-full border border-white/10 bg-white/5 px-2 py-1">Micro</span>
+          <span className="rounded-full border border-white/10 bg-white/5 px-2 py-1">PME</span>
+          <span className="rounded-full border border-white/10 bg-white/5 px-2 py-1">ETI</span>
+        </div>
         <a href="/services/audit-gratuit" className="mt-6 inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
           Demander un audit gratuit
         </a>
       </section>
 
       {/* Quick nav */}
-      <nav className="my-6 flex gap-3 flex-wrap justify-center">
+      <nav className="my-8 flex gap-3 flex-wrap justify-center">
         {groupedServices.map((g) => (
           <a
             key={g.anchor}
             href={`#${g.anchor}`}
-            className="text-xs bg-[#111] border border-[#00e0ff33] px-3 py-1 rounded transition-all hover:border-[#00e0ff] hover:scale-105"
+            className="text-sm bg-white/[0.04] border border-white/10 px-3.5 py-1.5 rounded-full transition-all hover:border-[#00e0ff66] hover:bg-white/[0.08] hover:scale-105"
           >
             {g.category}
           </a>
@@ -139,8 +146,11 @@ export default function ServicesPage() {
           {featuredServices.map((service, index) => (
             <div
               key={index}
-              className="group relative transition-transform duration-300 hover:-translate-y-1"
+              className="group relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.08] hover:ring-1 hover:ring-cyan-400/30 shadow-sm hover:shadow-cyan-400/10"
             >
+              {service.link === "/services/rpa-automatisation" && (
+                <span className="absolute top-3 right-3 text-[10px] leading-4 px-1.5 py-0.5 rounded-sm bg-cyan-500/20 text-cyan-300 border border-cyan-400/40">Tendances</span>
+              )}
               <ServiceLink href={service.link} icon={service.icon} title={service.title} text={service.text} />
               <span className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(420px_circle_at_50%_0%,#00e0ff22,transparent_60%)]"></span>
               {typeof service.price !== 'undefined' && (
@@ -176,8 +186,11 @@ export default function ServicesPage() {
               {group.services.map((service, i) => (
                 <div
                   key={i}
-                  className="group relative transition-transform duration-300 hover:-translate-y-1"
+                  className="group relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.08] hover:ring-1 hover:ring-cyan-400/30 shadow-sm hover:shadow-cyan-400/10"
                 >
+                  {service.link === "/services/rpa-automatisation" && (
+                    <span className="absolute top-3 right-3 text-[10px] leading-4 px-1.5 py-0.5 rounded-sm bg-cyan-500/20 text-cyan-300 border border-cyan-400/40">Tendances</span>
+                  )}
                   <ServiceLink href={service.link} icon={service.icon} title={service.title} text={service.text} />
                   <span className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(420px_circle_at_50%_0%,#00e0ff22,transparent_60%)]"></span>
                   {typeof service.price !== 'undefined' && (
@@ -252,23 +265,23 @@ export default function ServicesPage() {
           {[
             {
               q: "En quoi l’IA peut aider une PME ?",
-              a: "Automatiser les tâches (RPA), prévoir les ventes, détecter les anomalies et améliorer la relation client via NLP. Gains mesurables : temps, coût, qualité."
+              a: "Elle prend en charge les tâches répétitives, aide à prévoir et améliore la relation client. Résultats : gain de temps et de qualité."
             },
             {
               q: "Combien de temps pour un premier résultat ?",
-              a: "POC en quelques jours, MVP en 2–4 semaines selon la complexité et vos données."
+              a: "Un test rapide en quelques jours, puis un MVP entre 2 et 4 semaines selon le périmètre."
             },
             {
               q: "Quel budget prévoir pour une PME ?",
-              a: "Nous proposons des packages progressifs (projet pilote, MVP, montée en charge). L’audit gratuit permet d’estimer un ROI réaliste."
+              a: "Des packs progressifs. L’audit gratuit sert à estimer un ROI réaliste avant de se lancer."
             },
             {
               q: "Pouvez‑vous intégrer nos outils existants (ERP/CRM) ?",
-              a: "Oui. Nous créons des APIs, des connecteurs et des automatisations robustes pour intégrer vos systèmes."
+              a: "Oui. On crée des connecteurs et des API pour relier vos systèmes sans tout changer."
             },
             {
               q: "Faites‑vous aussi des sites web modernes et SEO‑first ?",
-              a: "Oui. Performance, accessibilité, SEO technique et contenu optimisé. Intégration tracking et formulaire de prise de contact."
+              a: "Oui : site rapide, accessible et optimisé SEO, avec formulaire et tracking intégrés."
             }
           ].map((item, i) => (
             <details key={i} className="group p-4 open:bg-[#0b0b0b]">
@@ -333,28 +346,28 @@ export const featuredServices = [
   {
     icon: <FaRobot className="text-3xl text-[#00e0ff]" />,
     title: "Automatisation intelligente pour PME",
-    text: "Libérez vos équipes des tâches répétitives et gagnez en productivité grâce à nos solutions RPA adaptées aux petites et moyennes entreprises.",
+    text: "On automatise les tâches répétitives (saisie, relances, reporting) pour vous faire gagner du temps, sans changer vos outils.",
     link: "/services/rpa-automatisation",
     price: 1490, priceCurrency: "EUR", sku: "rpa-starter", features: ["Automatisation 1 processus", "Jusqu'à 2 robots", "Monitoring de base", "Support 30 jours"]
   },
   {
     icon: <FaMagic className="text-3xl text-[#00e0ff]" />,
     title: "IA Générative & Création de contenu",
-    text: "Boostez votre visibilité avec des contenus générés automatiquement : images, textes et visuels marketing sur mesure.",
+    text: "Produisez vite des textes et visuels adaptés à votre marque pour votre site et vos réseaux, prêts à publier.",
     link: "/services/ia-generative",
     price: 1290, priceCurrency: "EUR", sku: "genai-starter", features: ["Gabarits de contenu", "Images + textes", "Workflow d'approbation", "Formation 2h"]
   },
   {
     icon: <FaChartLine className="text-3xl text-[#00e0ff]" />,
     title: "Machine Learning prédictif",
-    text: "Anticipez vos ventes, ruptures ou fraudes grâce à des modèles prédictifs conçus pour les enjeux des PME.",
+    text: "On construit des modèles qui anticipent ventes, ruptures ou fraudes pour mieux décider au quotidien.",
     link: "/services/machine-deep-learning",
     price: 2990, priceCurrency: "EUR", sku: "ml-pilot", features: ["POC prédictif", "Nettoyage dataset", "Notebook & API", "Workshop 2h"]
   },
   {
     icon: <FaMagic className="text-3xl text-[#00e0ff]" />,
     title: "Générateur IA — Vidéos & Images",
-    text: "Créez en quelques secondes des vidéos 9:16 et des images réalistes pour booster votre communication digitale.",
+    text: "Générez en quelques clics des vidéos 9:16 et des images nettes pour booster vos campagnes.",
     link: "/services/generateur-ia",
     price: 990, priceCurrency: "EUR", sku: "genai-video-img", features: [
       "Vidéos 9:16",
@@ -374,20 +387,20 @@ export const groupedServices = [
       {
         icon: <FaRobot className="text-3xl text-[#00e0ff]" />,
         title: "Automatisation intelligente pour PME",
-        text: "Libérez vos équipes des tâches répétitives et gagnez en productivité grâce à nos solutions RPA adaptées aux petites et moyennes entreprises.",
+        text: "Automatisez les tâches répétitives (emails, factures, copier‑coller) et concentrez‑vous sur l’essentiel.",
         link: "/services/rpa-automatisation",
         price: 1490, priceCurrency: "EUR", sku: "rpa-starter", features: ["Automatisation 1 processus", "Jusqu'à 2 robots", "Monitoring de base", "Support 30 jours"]
       },
       {
         icon: <FaSearch className="text-3xl text-[#00e0ff]" />,
-        title: "Scraping intelligent (Rust + Selenium)",
-        text: "Collecte rapide et fiable de données pour alimenter vos analyses et décisions, même sur sites dynamiques.",
+        title: "Scraping intelligent (collecte web)",
+        text: "Récupérez automatiquement des données utiles (prix, fiches produits, annonces) même sur des sites dynamiques.",
         link: "/services/scraping-intelligent",
       },
       {
         icon: <FaCode className="text-3xl text-[#00e0ff]" />,
         title: "Développement API performant",
-        text: "Des backends robustes et scalables pour vos applications métiers, SaaS ou automatisations personnalisées.",
+        text: "Exposez vos données et automatisez vos échanges entre outils avec des API stables et rapides.",
         link: "/services/developpement-api",
       },
     ],
@@ -400,32 +413,32 @@ export const groupedServices = [
       {
         icon: <FaMagic className="text-3xl text-[#00e0ff]" />,
         title: "IA Générative & Création de contenu",
-        text: "Boostez votre visibilité avec des contenus générés automatiquement : images, textes et visuels marketing sur mesure.",
+        text: "Des contenus clairs et cohérents avec votre ton de marque, générés et validés avec vous.",
         link: "/services/ia-generative",
         price: 1290, priceCurrency: "EUR", sku: "genai-starter", features: ["Gabarits de contenu", "Images + textes", "Workflow d'approbation", "Formation 2h"]
       },
       {
         icon: <FaChartLine className="text-3xl text-[#00e0ff]" />,
         title: "Machine Learning prédictif",
-        text: "Anticipez vos ventes, ruptures ou fraudes grâce à des modèles prédictifs conçus pour les enjeux des PME.",
+        text: "Des prévisions simples à lire pour planifier vos stocks, ventes et achats.",
         link: "/services/machine-deep-learning",
       },
       {
         icon: <FaBrain className="text-3xl text-[#00e0ff]" />,
         title: "Deep Learning & traitement complexe",
-        text: "Analyse avancée d’images, vidéos ou signaux pour des cas d’usage spécifiques et innovants.",
+        text: "Analyse d’images, de vidéos ou de signaux quand un œil humain ne suffit pas.",
         link: "/services/machine-deep-learning",
       },
       {
         icon: <FaLanguage className="text-3xl text-[#00e0ff]" />,
         title: "Analyse sémantique & data intelligente",
-        text: "Exploitez vos données textuelles pour mieux comprendre vos clients et optimiser vos décisions.",
+        text: "Classez vos emails, comprenez les retours clients et tirez des tendances de vos textes.",
         link: "/services/analyse-semantique-nlp",
       },
       {
         icon: <FaMagic className="text-3xl text-[#00e0ff]" />,
         title: "Générateur IA — Vidéos & Images",
-        text: "Créez en quelques secondes des vidéos 9:16 et des images réalistes pour booster votre communication digitale.",
+        text: "Créez rapidement des visuels et vidéos adaptés aux réseaux et à votre site.",
         link: "/services/generateur-ia",
         price: 990, priceCurrency: "EUR", sku: "genai-video-img", features: [
           "Vidéos 9:16",
@@ -444,19 +457,19 @@ export const groupedServices = [
       {
         icon: <FaCompass className="text-3xl text-[#00e0ff]" />,
         title: "Exploration de données avancée",
-        text: "Révélez des insights cachés dans vos données métiers, géospatiales ou historiques pour mieux piloter votre activité.",
+        text: "Faites parler vos données pour trouver des leviers concrets de chiffre d’affaires ou d’économies.",
         link: "/services/ia-archeologie",
       },
       {
         icon: <FaDatabase className="text-3xl text-[#00e0ff]" />,
         title: "Data Engineering & Dashboards",
-        text: "Nettoyez, structurez et exploitez vos données pour des analyses précises et des décisions éclairées.",
+        text: "Nettoyez et organisez vos données pour obtenir des tableaux de bord clairs et fiables.",
         link: "/services/data-engineering",
       },
       {
         icon: <FaChartLine className="text-3xl text-[#00e0ff]" />,
         title: "Business Intelligence augmentée",
-        text: "Des dashboards intelligents intégrant des prédictions pour un pilotage agile et performant.",
+        text: "Des dashboards qui combinent vos chiffres et nos prédictions pour décider plus vite.",
         link: "/services/bi-ia",
       },
     ],
@@ -468,8 +481,8 @@ export const groupedServices = [
     services: [
       {
         icon: <FaCode className="text-3xl text-[#00e0ff]" />,
-        title: "Création de site web moderne",
-        text: "Sites vitrines, e-commerce ou institutionnels, conçus pour séduire et convertir vos clients.",
+        title: "Sites web modernes et visibles",
+        text: "Un site rapide, beau et bien référencé pour attirer des clients et recevoir des demandes.",
         link: "/website",
         price: 1990, priceCurrency: "EUR", sku: "site-starter", features: ["Design responsive", "SEO technique", "Jusqu'à 5 pages", "Formulaire & tracking"]
       },

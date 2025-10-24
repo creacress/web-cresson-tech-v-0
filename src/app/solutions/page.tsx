@@ -5,22 +5,23 @@ import { Metadata } from 'next'
 import { HoverPreview, KpiCounter, SafeLink } from '@/components/Home/HomeInteractive'
 
 export const metadata: Metadata = {
-  title: 'Solutions IA pour PME — RPA, IA générative, Prédiction & Sites | Web Cresson Tech',
+  title: 'Solutions IA & Automatisation — Micro‑entreprises, PME, ETI | WebCressonTech',
   description:
-    "Tout ce qu'il faut pour accélérer votre PME avec l'IA : automatisation RPA, IA générative (agents), modèles prédictifs, apps & sites modernes. Audit gratuit en 48h.",
+    "Accélérez vos opérations avec des solutions concrètes : automatisation (RPA), assistants IA, prédiction et sites/applications modernes. Audit gratuit sous 48 h.",
+  keywords: ['automatisation', 'RPA', 'assistants IA', 'prédiction', 'modèles prédictifs', 'sites web', 'Next.js', 'PME', 'ETI', 'micro‑entreprise', 'WebCressonTech'],
   alternates: { canonical: 'https://webcresson.com/solutions' },
   openGraph: {
-    title: 'Solutions IA pour PME — Web Cresson Tech',
-    description: "RPA, GénAI, Prédictif, Apps & Sites : nos solutions prêtes à déployer pour PME.",
+    title: 'Solutions IA & Automatisation — WebCressonTech',
+    description: "Automatisation, assistants IA, prédiction, sites & apps — pensés pour micro‑entreprises, PME et ETI.",
     url: 'https://webcresson.com/solutions',
     images: [
-      { url: 'https://webcresson.com/images/solutions-hero.webp', width: 1200, height: 630, alt: 'Solutions IA pour PME' },
+      { url: 'https://webcresson.com/images/solutions-hero.webp', width: 1200, height: 630, alt: 'Solutions IA & Automatisation' },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Solutions IA pour PME',
-    description: 'Automatisation RPA, IA générative, prédiction, apps & sites modernes. Audit gratuit en 48h.',
+    title: 'Solutions IA & Automatisation',
+    description: 'Des gains rapides et mesurables pour micro‑entreprises, PME et ETI. Audit gratuit sous 48 h.',
     images: ['https://webcresson.com/images/solutions-hero.webp'],
   },
 }
@@ -35,7 +36,7 @@ export default function Page() {
           '@context': 'https://schema.org', '@type': 'BreadcrumbList',
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://webcresson.com/' },
-            { '@type': 'ListItem', position: 2, name: 'Solutions IA', item: 'https://webcresson.com/solutions' },
+            { '@type': 'ListItem', position: 2, name: 'Solutions IA & Automatisation', item: 'https://webcresson.com/solutions' },
           ],
         }) }}
       />
@@ -45,21 +46,24 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org', '@type': 'WebPage',
-          name: 'Solutions IA pour PME — Web Cresson Tech',
+          name: 'Solutions IA & Automatisation — WebCressonTech',
           url: 'https://webcresson.com/solutions',
           inLanguage: 'fr',
           isPartOf: { '@type': 'WebSite', name: 'WebCressonTech', url: 'https://webcresson.com' },
+          audience: {
+            '@type': 'Audience',
+            audienceType: ['Micro‑entreprise', 'PME', 'ETI']
+          }
         }) }}
       />
 
       {/* HERO */}
-      <section className="relative overflow-hidden text-center py-16 sm:py-20 bg-gradient-to-br from-zinc-900 via-black to-zinc-950 rounded-2xl border border-[#1f1f1f]">
-        <h1 className="text-5xl sm:text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-fuchsia-400">
-          Solutions IA pour les PME
+      <section className="relative overflow-hidden text-center py-24 sm:py-28 bg-gradient-to-br from-zinc-900 via-black to-zinc-950 rounded-2xl border border-[#1f1f1f]">
+        <h1 className="text-5xl sm:text-6xl font-extrabold mb-12 sm:mb-14 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-fuchsia-400">
+          IA et automatisation pour startups, PME et ETI
         </h1>
         <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-          Automatisation <strong>RPA</strong>, <strong>IA générative</strong>, <strong>modèles prédictifs</strong> et <strong>apps & sites modernes</strong>.
-          Des résultats concrets, en semaines, pas en mois.
+          Gagnez du temps et de la clarté. Nous installons des automatisations simples (RPA = robots logiciels), des assistants IA concrets et des sites/applications modernes. Objectif : moins de tâches répétitives, des données fiables et des décisions plus rapides.
         </p>
         <div className="mt-8 flex items-center justify-center gap-3">
           <Link href="/services/audit-gratuit?utm_source=solutions&utm_medium=hero&utm_campaign=audit" className="inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition">
@@ -69,24 +73,38 @@ export default function Page() {
             Parler à un expert
           </Link>
         </div>
+        <div className="mt-6 max-w-4xl mx-auto grid sm:grid-cols-3 gap-4 text-left text-sm text-gray-300">
+          <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+            <h3 className="font-semibold text-white mb-1">Simplifier</h3>
+            <p>On clarifie vos façons de faire et on enlève les actions inutiles.</p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+            <h3 className="font-semibold text-white mb-1">Automatiser</h3>
+            <p>Des robots logiciels gèrent l’email, les factures, les exports et les copies entre outils.</p>
+          </div>
+          <div className="bg-white/5 border border-white/10 rounded-lg p-4">
+            <h3 className="font-semibold text-white mb-1">Valoriser la donnée</h3>
+            <p>Des tableaux de bord et alertes compréhensibles pour savoir quoi faire, au bon moment.</p>
+          </div>
+        </div>
         <span aria-hidden className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 h-[420px] w-[420px] rounded-full blur-3xl bg-[radial-gradient(circle_at_center,rgba(0,224,255,0.15),transparent_60%)]" />
       </section>
 
       {/* PROOF / KPI */}
       <section className="my-16 bg-[#0b0b0b] rounded-xl border border-[#00e0ff22] p-8 text-center">
-        <h2 className="text-3xl font-bold mb-8">Impact mesurable</h2>
+        <h2 className="text-3xl font-bold mb-8">Résultats concrets</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-white">
           <div>
             <KpiCounter to={120} suffix="h" className="text-5xl font-extrabold text-cyan-400" />
             <p className="text-gray-400">heures économisées / mois</p>
           </div>
           <div>
-            <KpiCounter to={35} prefix="-" suffix="%" className="text-5xl font-extrabold text-indigo-300" />
-            <p className="text-gray-400">erreurs en moins</p>
+            <KpiCounter to={30} prefix="+" suffix="%" className="text-5xl font-extrabold text-indigo-300" />
+            <p className="text-gray-400">processus plus fiables</p>
           </div>
           <div>
             <KpiCounter to={250} prefix="+" suffix="%" className="text-5xl font-extrabold text-pink-400" />
-            <p className="text-gray-400">ROI sur 6–12 mois</p>
+            <p className="text-gray-400">vitesse de traitement</p>
           </div>
         </div>
       </section>
@@ -94,49 +112,49 @@ export default function Page() {
       {/* WHAT WE DELIVER */}
       <section className="my-16 text-center">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-          Nos 4 piliers
+          Nos solutions clés
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
               icon: '🤖',
-              title: 'Automatisation RPA',
-              desc: 'Bots Python/low-code pour supprimer la saisie répétitive et orchestrer vos workflows.',
+              title: 'Automatisation & RPA',
+              desc: 'Robots logiciels qui exécutent vos tâches répétitives (email, factures, exports).',
               link: '/services/rpa',
               img: '/images/rpa.webp',
-              longDesc: 'Gagnez du temps et fiabilisez la production : extraction de données, ETL, emails, factures.'
+              longDesc: 'Nous créons des robots fiables pour saisir, extraire et transférer des données entre vos outils. Résultat : gain de temps et continuité de service.'
             },
             {
               icon: '🧠',
-              title: 'IA générative (agents)',
-              desc: 'Agents IA pour support, qualification prospects et rédaction assistée.',
+              title: 'Assistants IA (générative)',
+              desc: 'Assistants virtuels pour le support, la qualification de prospects et la rédaction.',
               link: '/services/intelligence-artificielle',
               img: '/images/ia-générative.png',
-              longDesc: 'Assistants connectés à vos données/outils avec garde-fous (RGPD, logs, rôles).'
+              longDesc: 'Des assistants connectés à vos données avec des règles claires (droits d’accès, journaux, hébergement UE quand nécessaire). Utiles au quotidien et faciles à piloter.'
             },
             {
               icon: '🎬',
               title: 'Générateur IA — Vidéos & Images',
-              desc: 'Vidéos verticales 9:16 et visuels e‑commerce réalistes, exports social‑ready.',
+              desc: 'Création rapide de vidéos 9:16 et visuels e‑commerce cohérents avec votre marque.',
               link: '/services/generateur-ia',
               img: '/assets/generateur-ia/spider-man-IA.webp',
-              longDesc: 'Pipeline IA pour créer rapidement des vidéos et images de haute qualité (9:16, 16:9, 1:1), cohérentes avec votre charte. Optimisé réseaux sociaux et e‑commerce.'
+              longDesc: 'Un pipeline clé en main pour produire des contenus visuels en quelques clics (9:16, 16:9, 1:1), optimisés pour les réseaux et vos fiches produit.'
             },
             {
               icon: '📈',
-              title: 'Modèles prédictifs',
-              desc: 'Prévision ventes, détection d’anomalies, maintenance prédictive.',
+              title: 'Prédiction & alertes',
+              desc: 'Prévisions de ventes, détection d’anomalies, maintenance anticipée.',
               link: '/services/bi',
               img: '/images/Création_IA_sur_mesure.webp',
-              longDesc: 'Des modèles utiles, monitorés et expliqués (features & drift).'
+              longDesc: 'Des modèles simples à interpréter, avec suivi de performance. Vous savez quoi faire et pourquoi le faire.'
             },
             {
               icon: '🌐',
-              title: 'Apps & Sites modernes',
-              desc: 'Sites rapides (CWV), portails clients, intégrations ERP/CRM.',
+              title: 'Sites & Apps modernes',
+              desc: 'Sites rapides et portails clients intégrés à vos outils (ERP/CRM).',
               link: '/website',
               img: '/images/pexels-kevin-ku-92347-577585.webp',
-              longDesc: 'Design premium, sécurité, formulaires avancés, analytics & SEO.'
+              longDesc: 'Design premium, formulaires avancés et SEO soigné. Objectif : visibilité et efficacité.'
             },
           ].map((sol, i) => (
             <HoverPreview
@@ -161,13 +179,13 @@ export default function Page() {
 
       {/* How it works (Timeline) */}
       <section className="my-20">
-        <h2 className="text-3xl font-bold text-center mb-10">Comment on déploie (sans frictions)</h2>
+        <h2 className="text-3xl font-bold text-center mb-10">Déploiement simple et rapide</h2>
         <ol className="relative border-l border-[#1f1f1f] max-w-3xl mx-auto pl-6">
-          {[ 
-            { t: 'Audit 48h', d: 'Vous décrivez vos processus. On rend un diagnostic + quick wins + ROI.' },
-            { t: 'POC rapide', d: '1 cas d’usage prioritaire pour valider la valeur en conditions réelles.' },
-            { t: 'MVP 2–4 semaines', d: 'Intégrations, sécurité, logs, monitoring. Formation des équipes.' },
-            { t: 'Run & amélioration', d: 'SLA, supervision, nouvelles features selon vos retours.' },
+          {[
+            { t: 'Audit 48 h', d: 'Vous décrivez vos processus. Nous remettons un diagnostic clair, des actions rapides et une estimation de gains.' },
+            { t: 'POC rapide', d: 'Un premier cas d’usage pour valider la valeur et l’adoption terrain.' },
+            { t: 'MVP 2–4 semaines', d: 'Intégrations, sécurité, suivi et formation des équipes.' },
+            { t: 'Run & évolutions', d: 'Supervision, nouvelles fonctions et montée en charge.' },
           ].map((s, i) => (
             <li key={i} className="mb-10 ml-4">
               <div className="absolute w-3 h-3 bg-cyan-400 rounded-full -left-[7px] mt-2" />
@@ -178,36 +196,77 @@ export default function Page() {
         </ol>
       </section>
 
-      {/* Packs (Offer JSON-LD + AggregateOffer) */}
+      {/* Audience section (revamped: concrete solutions by size) */}
       <section className="my-16">
-        <h2 className="text-3xl font-bold text-center mb-2">Packs prêts à démarrer</h2>
-        <p className="text-gray-400 text-center mb-8">Choisissez un point d’entrée, on adapte ensuite.</p>
+        <h2 className="text-3xl font-bold text-center mb-3">Solutions prêtes selon votre taille</h2>
+        <p className="text-gray-400 text-center mb-8">Des exemples concrets et des mots simples. Cliquez pour voir la démo détaillée.</p>
         <div className="grid md:grid-cols-3 gap-6">
-          {[ 
-            { name: 'Pack RPA Starter', price: 1490, sku: 'rpa-starter', url: '/services/rpa' },
-            { name: 'Pack GénAI Starter', price: 1990, sku: 'genai-starter', url: '/services/intelligence-artificielle' },
-            { name: 'Pack Prédictif Starter', price: 2490, sku: 'ml-starter', url: '/services/bi' },
-            { name: 'Pack Générateur IA — Médias', price: 990, sku: 'genai-media-starter', url: '/services/generateur-ia' },
-          ].map((p, i) => (
-            <div key={i} className="group relative">
-              <div className="rounded-xl border border-[#00e0ff44] bg-[#0b0b0b] p-6 transition-all duration-300 will-change-transform hover:-translate-y-1 hover:border-[#00e0ff88] hover:shadow-[0_12px_36px_-12px_#00e0ff88]">
-                <h3 className="text-xl font-bold">{p.name}</h3>
-                <p className="text-3xl font-extrabold my-2">{p.price}€</p>
-                <ul className="text-gray-400 text-sm space-y-1 mb-4 list-disc pl-5">
-                  <li>Atelier cadrage & ROI</li>
-                  <li>Implémentation rapide (1 use case)</li>
-                  <li>Intégrations & sécurité</li>
-                  <li>Formation & transfert</li>
-                </ul>
-                <Link href={`${p.url}?utm_source=solutions&utm_medium=pricing&utm_campaign=${p.sku}`} className="inline-block bg-[#00e0ff] text-black px-5 py-2 rounded font-semibold hover:scale-105 transition">Choisir</Link>
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-                  '@context': 'https://schema.org', '@type': 'Product', name: p.name, description: 'Pack IA pour PME', sku: p.sku, brand: { '@type': 'Brand', name: 'Web Cresson Tech' },
-                  offers: { '@type': 'Offer', priceCurrency: 'EUR', price: p.price, availability: 'https://schema.org/InStock', url: `https://webcresson.com/solutions?plan=${p.sku}` }
-                }) }} />
-              </div>
-              <span className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[radial-gradient(500px_circle_at_50%_0%,#00e0ff1f,transparent_60%)]"></span>
+          {/* Micro‑entreprise */}
+          <Link href="/solutions/micro?utm_source=solutions&utm_medium=audience_cards&utm_campaign=micro" className="group block rounded-xl border border-[#00e0ff22] hover:border-[#00e0ff88] bg-[#0b0b0b] p-6 transition-all hover:-translate-y-1">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-xl font-bold">Micro‑entreprise</h3>
+              <span className="text-sm px-2 py-1 rounded bg-white/5 border border-white/10">Idéal pour démarrer</span>
             </div>
-          ))}
+            <ul className="text-gray-300 text-sm space-y-2 list-disc pl-5">
+              <li>Boîte mail allégée : réponses auto simples, tri & relances</li>
+              <li>Devis → facture → suivi payé (workflow léger)</li>
+              <li>Site vitrine rapide + prise de contact/WhatsApp</li>
+              <li>Posts auto (LinkedIn/TikTok) à partir de vos idées</li>
+              <li>Tableau de bord : rendez‑vous, paiements, stocks</li>
+            </ul>
+            <span className="mt-4 inline-block text-[#00e0ff] font-semibold underline decoration-dotted">Voir la démo Micro →</span>
+          </Link>
+
+          {/* PME */}
+          <Link href="/solutions/pme?utm_source=solutions&utm_medium=audience_cards&utm_campaign=pme" className="group block rounded-xl border border-[#00e0ff22] hover:border-[#00e0ff88] bg-[#0b0b0b] p-6 transition-all hover:-translate-y-1">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-xl font-bold">PME</h3>
+              <span className="text-sm px-2 py-1 rounded bg-white/5 border border-white/10">Gain de temps immédiat</span>
+            </div>
+            <ul className="text-gray-300 text-sm space-y-2 list-disc pl-5">
+              <li>Mise en qualité des données (contacts, produits, tarifs)</li>
+              <li>Automatisation des tâches récurrentes (commandes, SAV)</li>
+              <li>Connecteurs ERP/CRM : exports, imports, synchronisation</li>
+              <li>Reporting en temps réel (ventes, marge, ruptures)</li>
+              <li>Assistants IA pour support et prospection (scripts guidés)</li>
+            </ul>
+            <span className="mt-4 inline-block text-[#00e0ff] font-semibold underline decoration-dotted">Voir la démo PME →</span>
+          </Link>
+
+          {/* ETI */}
+          <Link href="/solutions/eti?utm_source=solutions&utm_medium=audience_cards&utm_campaign=eti" className="group block rounded-xl border border-[#00e0ff22] hover:border-[#00e0ff88] bg-[#0b0b0b] p-6 transition-all hover:-translate-y-1">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-xl font-bold">ETI</h3>
+              <span className="text-sm px-2 py-1 rounded bg-white/5 border border-white/10">Scalabilité & fiabilité</span>
+            </div>
+            <ul className="text-gray-300 text-sm space-y-2 list-disc pl-5">
+              <li>Migrations de systèmes d’information (SI) sans rupture</li>
+              <li>Architecture de données fiable (catalogue, traçabilité)</li>
+              <li>Workflows n8n orchestrés (droits, journaux, supervision)</li>
+              <li>Détection d’anomalies & alertes (qualité, finance, prod)</li>
+              <li>Portails clients & APIs sécurisées, intégrées à vos outils</li>
+            </ul>
+            <span className="mt-4 inline-block text-[#00e0ff] font-semibold underline decoration-dotted">Voir la démo ETI →</span>
+          </Link>
+        </div>
+        <p className="text-center text-xs text-gray-500 mt-4">SI = système d’information. Tout est expliqué avec des mots simples lors de l’audit.</p>
+      </section>
+      {/* Problems to solutions (client‑friendly) */}
+      <section className="my-16">
+        <h2 className="text-3xl font-bold text-center mb-6">Problèmes courants → solutions rapides</h2>
+        <div className="grid md:grid-cols-3 gap-6 text-sm">
+          <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+            <h3 className="font-semibold mb-2">Emails et demandes qui s’accumulent</h3>
+            <p className="text-gray-300">Tri auto, réponses modèles, relances programmées, assignation au bon interlocuteur.</p>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+            <h3 className="font-semibold mb-2">Factures / devis en retard</h3>
+            <p className="text-gray-300">Chaîne devis → facture → paiement, rappels automatiques et suivi des impayés.</p>
+          </div>
+          <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+            <h3 className="font-semibold mb-2">Données dispersées ou incohérentes</h3>
+            <p className="text-gray-300">Mise en qualité (doublons, formats), synchronisation ERP/CRM et tableau de bord clair.</p>
+          </div>
         </div>
       </section>
 
@@ -223,14 +282,14 @@ export default function Page() {
 
       {/* Personas entry points */}
       <section className="my-16 text-center">
-        <h2 className="text-3xl font-bold mb-6">Voir une démo adaptée à votre profil</h2>
+        <h2 className="text-3xl font-bold mb-6">Voir une démo selon votre besoin</h2>
         <div className="grid sm:grid-cols-3 gap-4">
           {[
-            { key: 'julie', t: 'Julie — TPE', href: '/solutions/julie' },
-            { key: 'marc', t: 'Marc — PME services', href: '/solutions/marc' },
-            { key: 'lisa', t: 'Lisa — Industrie', href: '/solutions/lisa' },
+            { key: 'micro', t: 'Micro‑entreprise', href: '/solutions/micro' },
+            { key: 'pme', t: 'PME', href: '/solutions/pme' },
+            { key: 'eti', t: 'ETI', href: '/solutions/eti' },
           ].map((p) => (
-            <Link key={p.key} href={`${p.href}?utm_source=solutions&utm_medium=personas&utm_campaign=${p.key}`} className="px-4 py-3 rounded-lg border border-[#00e0ff33] hover:border-[#00e0ff66] hover:bg-white/5 transition inline-block">
+            <Link key={p.key} href={`${p.href}?utm_source=solutions&amp;utm_medium=personas&amp;utm_campaign=${p.key}`} className="px-4 py-3 rounded-lg border border-[#00e0ff33] hover:border-[#00e0ff66] hover:bg-white/5 transition inline-block">
               {p.t}
             </Link>
           ))}
@@ -242,9 +301,9 @@ export default function Page() {
         <h2 className="text-3xl font-bold text-center mb-6">FAQ — Solutions IA</h2>
         <div className="max-w-3xl mx-auto divide-y divide-[#1f1f1f] border border-[#1f1f1f] rounded">
           {[
-            { q: 'Combien de temps pour un premier résultat ?', a: 'Un POC en quelques jours, un MVP en 2–4 semaines selon la complexité.' },
-            { q: 'Et la sécurité / RGPD ?', a: 'Contrôles d’accès, journalisation, cloisonnement des données, hébergement en UE lorsque requis.' },
-            { q: 'Budget type ?', a: 'Packs Starter 1 490–2 490€, projets sur mesure selon périmètre. Audit gratuit pour cadrer.' },
+            { q: 'Quand verrai‑je un premier résultat ?', a: 'Un POC en quelques jours, un MVP en 2–4 semaines selon le périmètre. On vise des gains visibles dès le 1er mois.' },
+            { q: 'Comment gérez‑vous la sécurité et le RGPD ?', a: 'Droits d’accès, journaux, cloisonnement, hébergement en UE si nécessaire. Nous expliquons chaque mesure simplement et par écrit.' },
+            { q: 'Quel budget prévoir ?', a: 'Packs Starter 1 490–2 490€, puis projet sur mesure selon vos objectifs. L’audit gratuit permet de cadrer précisément.' },
           ].map((item, i) => (
             <details key={i} className="group p-4 open:bg-[#0b0b0b]">
               <summary className="cursor-pointer font-semibold text-white flex items-center justify-between">{item.q}<span className="ml-4 transition group-open:rotate-45 text-[#00e0ff]">+</span></summary>
@@ -256,32 +315,32 @@ export default function Page() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              'inLanguage': 'fr',
-              'mainEntity': [
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "inLanguage": "fr",
+              "mainEntity": [
                 {
-                  '@type': 'Question',
-                  'name': 'Combien de temps pour un premier résultat ?',
-                  'acceptedAnswer': {
-                    '@type': 'Answer',
-                    'text': 'Un POC en quelques jours, un MVP en 2–4 semaines selon la complexité.'
+                  "@type": "Question",
+                  "name": "Quand verrai‑je un premier résultat ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Un POC en quelques jours, un MVP en 2–4 semaines selon le périmètre. On vise des gains visibles dès le 1er mois."
                   }
                 },
                 {
-                  '@type': 'Question',
-                  'name': 'Et la sécurité / RGPD ?',
-                  'acceptedAnswer': {
-                    '@type': 'Answer',
-                    'text': 'Contrôles d’accès, journalisation, cloisonnement des données, hébergement en UE lorsque requis.'
+                  "@type": "Question",
+                  "name": "Comment gérez‑vous la sécurité et le RGPD ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Droits d’accès, journaux, cloisonnement, hébergement en UE si nécessaire. Nous expliquons chaque mesure simplement et par écrit."
                   }
                 },
                 {
-                  '@type': 'Question',
-                  'name': 'Budget type ?',
-                  'acceptedAnswer': {
-                    '@type': 'Answer',
-                    'text': 'Packs Starter 1 490–2 490€, projets sur mesure selon périmètre. Audit gratuit pour cadrer.'
+                  "@type": "Question",
+                  "name": "Quel budget prévoir ?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Packs Starter 1 490–2 490€, puis projet sur mesure selon vos objectifs. L’audit gratuit permet de cadrer précisément."
                   }
                 }
               ]

@@ -19,14 +19,14 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "RPA pour PME — Automatisation intelligente & robots logiciels | Web Cresson Tech",
+  title: "RPA pour PME — Automatisez simplement vos tâches | WebCressonTech",
   description:
-    "Automatisez vos processus métiers avec la RPA pour PME : robots logiciels fiables, réduction des coûts, zéro erreur, ROI rapide. Packs Starter à Pro. Audit gratuit.",
+    "Automatisation simple et claire pour PME : robots logiciels qui exécutent vos tâches 24/7. Moins d’erreurs, plus de temps, ROI rapide. Packs Starter à Pro.",
   openGraph: {
     type: "website",
-    title: "RPA pour PME — Automatisation intelligente & robots logiciels | Web Cresson Tech",
+    title: "RPA pour PME — Automatisez simplement vos tâches | WebCressonTech",
     description:
-      "Bots RPA pour PME : factures, saisies, relances, ERP/CRM, e‑mails. Déploiement rapide, ROI mesurable. Audit gratuit.",
+      "Robots logiciels pour PME : factures, saisies, relances, e‑mails. Mise en service rapide, résultats mesurables. Audit gratuit.",
     url: "https://webcresson.com/services/rpa-automatisation",
     images: [
       {
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@webcressontech",
-    title: "RPA pour PME — Web Cresson Tech",
+    title: "RPA pour PME — WebCressonTech",
     description:
-      "Automatisation intelligente des processus : ERP/CRM, factures, e‑mails. Audit gratuit.",
+      "Automatisation claire et utile : ERP/CRM, factures, e‑mails. Audit gratuit.",
     images: ["https://webcresson.com/images/rpa.webp"],
   },
   alternates: {
@@ -114,15 +114,11 @@ export default function RPAAutomatisationPage() {
         {/* Hero */}
         <section className="text-center py-16 animate-fade-in-up">
           <BreadcrumbNav />
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">
-            <span className="relative header-glow">
-              <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-[0_2px_10px_rgba(56,189,248,0.45)]">
-                RPA pour PME — Automatisez les tâches répétitives
-              </span>
-            </span>
+          <h1 className="text-5xl sm:text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-fuchsia-400">
+            L’automatisation robotisée des processus (RPA)
           </h1>
           <p className="text-white/85 text-lg max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '120ms' }}>
-            Des <strong>robots logiciels</strong> fiables pour exécuter vos tâches à votre place : plus vite, sans erreur, 24/7.
+            Des robots logiciels réalisent vos actions à votre place : plus vite, sans erreur, 24/7. Vous gagnez du temps, vos équipes se concentrent sur l’essentiel.
           </p>
           <Link href="/services/audit-gratuit?utm_source=services&utm_medium=page&utm_campaign=rpa_hero" className="mt-6 inline-block bg-[#00e0ff] text-black px-6 py-3 rounded font-semibold hover:scale-105 transition" aria-label="Demander un audit RPA gratuit">
             Demander un audit gratuit
@@ -131,7 +127,7 @@ export default function RPAAutomatisationPage() {
 
         <Section id="points-forts" title="Pourquoi la RPA en PME ?">
           <div className="grid md:grid-cols-4 gap-4">
-            {[{ t: "Déploiement rapide", d: "POC en jours, mise en prod en 2–4 semaines." }, { t: "Zéro erreur", d: "Fiabilité, traçabilité, conformité." }, { t: "Intégrations faciles", d: "ERP/CRM, e‑mail, tableurs, webapps, APIs." }, { t: "ROI mesurable", d: "Temps gagné, coûts réduits, qualité accrue." }].map((b, i) => (
+            {[{ t: "Gain de temps immédiat", d: "Nous supprimons les tâches répétitives dès les premières semaines." }, { t: "Moins d’erreurs", d: "Exécution fiable et traçable, qualité constante." }, { t: "Connexion à vos outils", d: "Logiciels, e‑mails, tableurs, CRM : on s’intègre à votre quotidien." }, { t: "Résultats mesurables", d: "Heures économisées, coûts réduits, meilleure satisfaction." }].map((b, i) => (
               <div key={i} className="tilt-wrap h-full">
                 <Card className="h-full flex flex-col justify-between">
                   <h3 className="font-semibold text-white">{b.t}</h3>
@@ -142,9 +138,9 @@ export default function RPAAutomatisationPage() {
           </div>
         </Section>
 
-        <Section id="use-cases" title="Ce que nous automatisons" desc="Des robots logiciels fiables exécutent vos tâches à votre place : plus vite, sans erreur, 24/7.">
+        <Section id="use-cases" title="Ce que nous automatisons" desc="Des robots logiciels exécutent vos tâches à votre place : plus vite, sans erreur, 24/7.">
           <div className="grid md:grid-cols-3 gap-6">
-            {[{ t: "Factures & commandes", d: "Lecture, vérification, rapprochement, export compta." }, { t: "Saisies ERP/CRM", d: "Création/MAJ fiches, imports, contrôles qualité." }, { t: "E‑mails & relances", d: "Rappels, réponses modèles, notifications pilotées." }, { t: "Onboarding RH", d: "Comptes, droits, dossiers, signatures électroniques." }, { t: "Extraction & scraping", d: "Collecte multi‑sites, CAPTCHAs, exports structurés." }, { t: "Reporting auto", d: "Consolidation, KPIs, diffusion périodique." }].map((c, i) => (
+            {[{ t: "Factures & commandes", d: "Lecture, vérification, rapprochement et export comptable." }, { t: "Mises à jour clients / produits", d: "Création et mise à jour des fiches dans vos outils." }, { t: "E‑mails & relances", d: "Rappels automatiques, réponses modèles, notifications." }, { t: "Onboarding RH", d: "Comptes, droits, dossiers, signatures électroniques." }, { t: "Collecte de données web", d: "Extraction multi‑sites, nettoyage et export structuré." }, { t: "Reporting automatique", d: "Consolidation, indicateurs, envoi périodique." }].map((c, i) => (
               <div key={i} className="tilt-wrap">
                 <Card>
                   <h3 className="text-xl font-semibold mb-2">{c.t}</h3>
@@ -155,9 +151,9 @@ export default function RPAAutomatisationPage() {
           </div>
         </Section>
 
-        <Section id="packs" title="Packs RPA pour PME" desc="Démarrez vite, scalez ensuite.">
+        <Section id="packs" title="Packs RPA clairs pour PME" desc="Démarrez vite, puis faites évoluer selon vos besoins.">
           <div className="grid md:grid-cols-3 gap-6">
-            {[{ name: 'RPA Starter', price: 1490, sku: 'rpa-starter', features: ["Automatisation 1 processus", "Jusqu'à 2 robots", "Monitoring de base", "Support 30 jours"], url: '/services/rpa-automatisation' }, { name: 'RPA Growth', price: 2990, sku: 'rpa-growth', features: ["2–3 processus", "Robots parallèles", "Logs & alertes", "Connecteurs ERP/CRM"], url: '/services/rpa-automatisation' }, { name: 'RPA Pro', price: 4990, sku: 'rpa-pro', features: ["4+ processus", "Orchestrateur", "SLA & supervision", "Atelier équipes"], url: '/services/rpa-automatisation' }].map((p, i) => (
+            {[{ name: 'RPA Starter', price: 1490, sku: 'rpa-starter', features: ["1 processus automatisé", "Jusqu’à 2 robots", "Suivi et assistance 30 jours", "Mise en service rapide"], url: '/services/rpa-automatisation' }, { name: 'RPA Intermédiaire', price: 2990, sku: 'rpa-inter', features: ["2–3 processus", "Robots en parallèle", "Journal des actions & alertes", "Connexion à vos outils"], url: '/services/rpa-automatisation' }, { name: 'RPA Pro', price: 4990, sku: 'rpa-pro', features: ["4+ processus", "Pilotage centralisé des robots", "Accompagnement dédié", "Atelier équipes"], url: '/services/rpa-automatisation' }].map((p, i) => (
               <div key={i} className="tilt-wrap">
                 <Card className="relative">
                   <h3 className="text-xl font-bold">{p.name}</h3>
@@ -165,27 +161,30 @@ export default function RPAAutomatisationPage() {
                   <ul className="text-white/80 text-sm space-y-1 mb-4 list-disc pl-5">
                     {p.features.map((f, fi) => (<li key={fi}>{f}</li>))}
                   </ul>
+                  <p className="text-xs text-white/60 mb-3">💡 Hors licences éventuelles d’outils tiers (ex. Microsoft Power Automate) et coûts d’usage API si nécessaire.</p>
                   <Link href={`/services/audit-gratuit?utm_source=services&utm_medium=page&utm_campaign=rpa_pack&plan=${p.sku}`} className="inline-block bg-[#00e0ff] text-black px-5 py-2 rounded font-semibold hover:scale-105 transition" aria-label={`Démarrer le pack ${p.name}`}>Démarrer</Link>
                   <script
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify({
-                      '@context': 'https://schema.org',
-                      '@type': 'Product',
-                      name: p.name,
-                      description: 'Pack RPA pour PME',
-                      sku: p.sku,
-                      brand: { '@type': 'Brand', name: 'Web Cresson Tech' },
-                      image: `${SITE_URL}/images/rpa.webp`,
-                      offers: {
-                        '@type': 'Offer',
-                        priceCurrency: 'EUR',
-                        price: p.price,
-                        availability: 'https://schema.org/InStock',
-                        url: `${SITE_URL}${p.url}?utm_source=services&utm_medium=card&utm_campaign=offer_schema&plan=${p.sku}`,
-                        itemCondition: 'https://schema.org/NewCondition'
-                      },
-                      additionalProperty: p.features.map((f) => ({ '@type': 'PropertyValue', name: 'Feature', value: f }))
-                    }) }}
+                    dangerouslySetInnerHTML={{
+                      __html: JSON.stringify({
+                        '@context': 'https://schema.org',
+                        '@type': 'Product',
+                        name: p.name,
+                        description: 'Pack RPA pour PME',
+                        sku: p.sku,
+                        brand: { '@type': 'Brand', name: 'Web Cresson Tech' },
+                        image: `${SITE_URL}/images/rpa.webp`,
+                        offers: {
+                          '@type': 'Offer',
+                          priceCurrency: 'EUR',
+                          price: p.price,
+                          availability: 'https://schema.org/InStock',
+                          url: `${SITE_URL}${p.url}?utm_source=services&utm_medium=card&utm_campaign=offer_schema&plan=${p.sku}`,
+                          itemCondition: 'https://schema.org/NewCondition'
+                        },
+                        additionalProperty: p.features.map((f) => ({ '@type': 'PropertyValue', name: 'Feature', value: f }))
+                      })
+                    }}
                   />
                 </Card>
               </div>
@@ -195,16 +194,16 @@ export default function RPAAutomatisationPage() {
 
         <Section id="methode" title="Méthode simple, résultats rapides">
           <div className="grid md:grid-cols-3 gap-6 text-white/85">
-            <Card><h3 className="font-semibold text-xl mb-2">1. Audit & cadrage</h3><p>Gratuit. On identifie cas d’usage à ROI rapide.</p></Card>
-            <Card><h3 className="font-semibold text-xl mb-2">2. POC rapide</h3><p>Prototype concret en quelques jours pour valider la valeur.</p></Card>
-            <Card><h3 className="font-semibold text-xl mb-2">3. Mise en prod</h3><p>Intégrations, formation, suivi du ROI.</p></Card>
+            <Card><h3 className="font-semibold text-xl mb-2">1. Diagnostic gratuit</h3><p>On identifie ensemble les tâches à automatiser et l’impact attendu.</p></Card>
+            <Card><h3 className="font-semibold text-xl mb-2">2. Prototype rapide</h3><p>Une version test en quelques jours pour valider la valeur.</p></Card>
+            <Card><h3 className="font-semibold text-xl mb-2">3. Mise en service</h3><p>Intégration à vos outils, formation et suivi des résultats.</p></Card>
           </div>
         </Section>
 
         <Section id="kpi" title="Impact mesurable de la RPA">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-white text-center">
             <Card><p className="text-5xl font-extrabold text-[#00e0ff]">120h</p><p className="text-white/80">Heures gagnées par mois</p></Card>
-            <Card><p className="text-5xl font-extrabold text-[#00e0ff]">-95%</p><p className="text-white/80">% d’erreurs sur les process</p></Card>
+            <Card><p className="text-5xl font-extrabold text-[#00e0ff]">-95%</p><p className="text-white/80">% d’erreurs en moins</p></Card>
             <Card><p className="text-5xl font-extrabold text-[#00e0ff]">+40%</p><p className="text-white/80">Productivité des équipes</p></Card>
           </div>
         </Section>
@@ -227,7 +226,7 @@ export default function RPAAutomatisationPage() {
 
         <Section id="faq" title="FAQ — RPA pour PME">
           <div className="max-w-3xl mx-auto divide-y divide-[#1f1f1f] border border-[#1f1f1f] rounded">
-            {[{ q: 'Quels processus RPA prioriser ?', a: 'Facturation, relances, saisies répétitives, extraction de données, reporting.' }, { q: 'Délai de mise en production ?', a: 'POC en quelques jours, déploiement en 2–4 semaines selon la complexité.' }, { q: 'Budget d’entrée ?', a: 'Pack Starter dès 1 490€ (1 processus, 2 robots, support 30 jours).' }].map((item, i) => (
+            {[{ q: 'Quels processus RPA prioriser en premier ?', a: 'Facturation, relances, saisies répétitives, collecte de données et reporting sont les plus rapides à rentabiliser.' }, { q: 'Quel délai pour obtenir un résultat ?', a: 'Un prototype en quelques jours et une mise en service en 2 à 4 semaines selon la complexité.' }, { q: 'Quel budget faut‑il prévoir ?', a: 'Le pack Starter débute à 1 490€ (1 processus, jusqu’à 2 robots, assistance 30 jours). Les packs Intermédiaire (2 990€) et Pro (4 990€) couvrent des périmètres plus larges.' }].map((item, i) => (
               <details key={i} className="group p-4 open:bg-[#0b0b0b]">
                 <summary className="cursor-pointer font-semibold text-white flex items-center justify-between">
                   {item.q}
@@ -237,7 +236,8 @@ export default function RPAAutomatisationPage() {
               </details>
             ))}
           </div>
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [ { '@type': 'Question', name: 'Quels processus RPA prioriser ?', acceptedAnswer: { '@type': 'Answer', text: 'Facturation, relances, saisies répétitives, extraction de données, reporting.' }}, { '@type': 'Question', name: 'Délai de mise en production ?', acceptedAnswer: { '@type': 'Answer', text: 'POC en quelques jours, déploiement en 2–4 semaines selon la complexité.' }}, { '@type': 'Question', name: 'Budget d’entrée ?', acceptedAnswer: { '@type': 'Answer', text: 'Pack Starter dès 1 490€ (1 processus, 2 robots, support 30 jours).' }} ] }) }} />
+          <p className="text-sm text-white/60 mt-6">Transparence des coûts : nos tarifs incluent la mise en service et l’assistance. Les éventuelles licences logicielles tierces (ex. Microsoft Power Automate) ou coûts d’usage d’API sont indiqués clairement avant démarrage.</p>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [{ '@type': 'Question', name: 'Quels processus RPA prioriser en premier ?', acceptedAnswer: { '@type': 'Answer', text: 'Facturation, relances, saisies répétitives, collecte de données et reporting sont les plus rapides à rentabiliser.' } }, { '@type': 'Question', name: 'Quel délai pour obtenir un résultat ?', acceptedAnswer: { '@type': 'Answer', text: 'Un prototype en quelques jours et une mise en service en 2 à 4 semaines selon la complexité.' } }, { '@type': 'Question', name: 'Quel budget faut‑il prévoir ?', acceptedAnswer: { '@type': 'Answer', text: 'Le pack Starter débute à 1 490€ (1 processus, jusqu’à 2 robots, assistance 30 jours). Les packs Intermédiaire (2 990€) et Pro (4 990€) couvrent des périmètres plus larges.' } }] }) }} />
         </Section>
 
         <Section id="contact">
